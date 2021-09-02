@@ -1,24 +1,36 @@
-*,
-*:before,
-*:after {
+html {
   box-sizing: border-box;
+}
+
+* {
   margin: 0;
   padding: 0;
 }
 
-/* using rem unit */
-html {
-  font-size: 62.5%;
-  scroll-behavior: smooth;
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+select,
+button {
+  outline: none;
+}
+
+input {
+  line-height: normal;
+}
+
+label,
+button {
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
-}
-
-ul,
-ol {
-  list-style: none;
 }
 
 img {
@@ -26,28 +38,52 @@ img {
   max-width: 100%;
 }
 
+ul {
+  list-style: none;
+}
+
+/* using px unit */
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+
 body {
-  font-family: "Poppins", sans-serif;
-  font-size: 16px;
+  font-family: sans-serif;
+  font-size: 18px;
   line-height: 1;
+  overflow-x: hidden;
 }
 
 input,
 button,
 textarea,
 select {
-  outline: none;
-  font-family: "Poppins", sans-serif;
+  font-family: sans-serif;
   font-size: 16px;
-  line-height: 1;
+  outline: none;
+  border: 0;
 }
 
 input {
   line-height: normal;
 }
 
-button {
-  cursor: pointer;
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: sans-serif;
+}
+
+section[id] {
+  scroll-margin-top: 30px;
 }
 
 /*# sourceMappingURL=app.css.map */

@@ -1,0 +1,38 @@
+/* using px unit */
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+body {
+  font-family: $primary-font;
+  font-size: 18px;
+  line-height: 1;
+  overflow-x: hidden;
+}
+input,
+button,
+textarea,
+select {
+  font-family: $primary-font;
+  font-size: 16px;
+  outline: none;
+  border: 0;
+}
+input {
+  line-height: normal;
+}
+a {
+  color: inherit;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $secondary-font;
+}
+section[id] {
+  scroll-margin-top: 30px;
+}
+
