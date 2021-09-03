@@ -44,6 +44,9 @@ export default class RegisterScreen extends BaseComponent {
     let $container = document.createElement("div");
     $container.classList.add("container");
 
+    let $modal = document.createElement("div");
+    $modal.classList.add("modal");
+
     let $title = document.createElement("h2");
     $title.innerHTML = "Create an account";
     $title.classList.add("form-title");
@@ -107,7 +110,7 @@ export default class RegisterScreen extends BaseComponent {
     $btn.classList.add("form-btn", "btn", "btn-primary");
 
     let $p = document.createElement("p");
-    $p.innerHTML = "Not have account yet?"
+    $p.innerHTML = "Not have account yet?";
     $p.style.color = "#6a727f";
     let $link = document.createElement("a");
     $link.classList.add("form-link");
@@ -124,7 +127,8 @@ export default class RegisterScreen extends BaseComponent {
     $form.onsubmit = this.handleRegister;
     $wrap.append($wrap1, $form);
 
-    $container.append($wrap);
+    $modal.append($wrap);
+    $container.append($modal);
     return $container;
   }
   // ==========================  ==========================
