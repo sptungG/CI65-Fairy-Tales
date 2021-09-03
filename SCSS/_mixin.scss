@@ -8,3 +8,36 @@
     @content;
   }
 }
+@mixin size($width, $height: $width) {
+  width: $width;
+  height: $height;
+}
+
+@mixin absoluteFull() {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+@mixin textGradient(){
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, $primary-color, $secondary-color);
+}
+
+@mixin flexCenter(){
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin flex($items: stretch, $content: flex-start, $direction: row, $flex: flex, $wrap: wrap) {
+  align-items: $items;
+  justify-content: $content;
+  flex-direction: $direction;
+  display: $flex;
+  flex-wrap: $wrap;
+}
