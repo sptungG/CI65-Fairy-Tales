@@ -149,17 +149,21 @@ section[id] {
 }
 .form-wrap {
   width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .form-fill {
   width: 55%;
 }
 .form-img {
+  flex-shrink: 0;
   object-fit: cover;
   border-radius: 15px;
 }
 .form-caption {
-  margin-bottom: 15px;
   width: 100%;
+  padding-bottom: 20px;
 }
 .form-link {
   color: #f58826;
