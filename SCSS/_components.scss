@@ -1,8 +1,14 @@
 .form {
-  width: 100%;
+  width: 60%;
   background-color: $gray-darker;
   padding: 50px;
   border-radius: 15px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -22,9 +28,7 @@
     width: 100%;
     color: $gray;
     border-bottom: 1px solid $primary-color;
-    &:focus {
-      color: #fff;
-    }
+    color: #fff;
   }
   &-btn {
     display: block;
@@ -43,13 +47,17 @@
   }
   &-caption {
     margin-bottom: 15px;
-    width: 328px;
+    width: 100%;
   }
   &-link {
     color: $secondary-color;
   }
+  &-error {
+    color: red;
+    font-size: 16px;
+  }
 }
-.form p{
+.form p {
   font-size: 16px;
   text-align: center;
 }
@@ -70,5 +78,5 @@
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-  background-image: linear-gradient(to right, #f56766, #f58826);
+  background-image: linear-gradient(to right, $primary-color, $secondary-color);
 }

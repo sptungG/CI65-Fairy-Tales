@@ -23,14 +23,8 @@ export default class LoginScreen extends BaseComponent {
    * Xử lý sự kiện onchange của input
    */
   handleInputChange = (fieldName, fieldValue) => {
-    // console.log(fieldName, fieldValue);
     let tmpState = this.state;
-    // lấy dữ liệu
     tmpState.data[fieldName] = fieldValue.trim();
-    // kiểm tra dữ liệu
-    // 1. nhập đến đâu kiểm tra dữ liệu đến đó
-    // 2. nhập rồi bấm Register rồi mới kiểm tra *
-
     this.setState(tmpState);
     console.log(this.state);
   };
@@ -39,6 +33,9 @@ export default class LoginScreen extends BaseComponent {
   render() {
     let $container = document.createElement("div");
     $container.classList.add("container");
+
+    let $modal = document.createElement("div");
+    $modal.classList.add("modal");
 
     let $title = document.createElement("h2");
     $title.innerHTML = "Sign In your account";
@@ -100,20 +97,20 @@ export default class LoginScreen extends BaseComponent {
     $form.append($title, _email.render(), _password.render(), $btn, $p);
     $form.onsubmit = this.handleRegister;
     $wrap.append($wrap1, $form);
+    $modal.append($wrap);
 
-    $container.append($wrap);
+    $container.append($modal);
     return $container;
   }
   // ==========================  ==========================
   handleRegister = (event) => {
     event.preventDefault();
+    let tmpState = this.state;
 
     let data = this.state.data;
     let error = this.state.error;
-    // error.name = "";
     // error.email = "";
     // error.password = "";
-    // error.confirmPassword = "";
 
     if (data.email === "" || !validateEmail(data.email)) {
       error.email = "Invalid Email";
@@ -121,6 +118,6 @@ export default class LoginScreen extends BaseComponent {
     if (data.password === "") {
       error.password = "Invalid Password";
     }
-    this.setState(this.state);
+    this.setState(tmpState);
   };
 }

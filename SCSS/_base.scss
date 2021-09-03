@@ -33,12 +33,29 @@ section[id] {
   scroll-margin-top: 30px;
 }
 .wrapper {
-  max-width: 1920px;
+  max-width: 1792px;
+  min-height: 100vh;
   margin: 0 auto;
-  // background: url("../IMG/bg-night.png") no-repeat center / 100%;
+  // background: url("../IMG/bg-night.png") no-repeat center / cover;
 }
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 0 15px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999999;
+  background-color: rgba(0, 0, 0, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  cursor: pointer;
+  background: linear-gradient(to right, rgba($primary-color, 0.4), rgba($secondary-color, 0.4)), url("../IMG/bg-modal.png") no-repeat center / cover;
 }

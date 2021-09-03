@@ -14,12 +14,13 @@ export default class InputWrapper extends BaseComponent {
     $input.onchange = this.props.onchange;
 
     let $error = document.createElement("div");
+    $error.innerHTML = "error";
     $error.classList.add("form-error");
     if (!this.props.error) {
-      $error.style.display = "none";
+      $error.style.opacity = "0";
     } else {
-      $error.style.display = "block";
-      $error.textContent = this.props.error;
+      $error.style.opacity = "1";
+      $error.innerHTML = this.props.error;
       console.log(this.props.error);
     }
 
