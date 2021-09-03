@@ -49,7 +49,7 @@ html {
 }
 
 body {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 18px;
   line-height: 1;
   overflow-x: hidden;
@@ -59,7 +59,7 @@ input,
 button,
 textarea,
 select {
-  font-family: "Montserrat", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 16px;
   outline: none;
   border: 0;
@@ -69,25 +69,106 @@ input {
   line-height: normal;
 }
 
-a {
-  color: inherit;
-}
-
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  font-family: "Roboto", sans-serif;
+  font-family: "Righteous", cursive, sans-serif;
 }
 
 section[id] {
   scroll-margin-top: 30px;
 }
 
-a {
-  color: aqua;
+.wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+.form {
+  width: 100%;
+  background-color: #222831;
+  padding: 50px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.form-title {
+  margin-bottom: 30px;
+  color: #fff;
+  text-align: center;
+  font-size: 36px;
+}
+.form-group {
+  margin-bottom: 20px;
+}
+.form-input {
+  background-color: transparent;
+  padding: 10px 0;
+  display: block;
+  width: 100%;
+  color: #393e46;
+  border-bottom: 1px solid #f56766;
+}
+.form-input:focus {
+  color: #fff;
+}
+.form-btn {
+  display: block;
+  margin: 0 auto;
+  margin-bottom: 10px;
+}
+.form-wrap {
+  width: 40%;
+}
+.form-fill {
+  width: 55%;
+}
+.form-img {
+  object-fit: cover;
+  border-radius: 15px;
+}
+.form-caption {
+  margin-bottom: 15px;
+  width: 328px;
+}
+.form-link {
+  color: #f58826;
+}
+
+.form p {
+  font-size: 16px;
+  text-align: center;
+}
+
+.btn {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  height: 55px;
+  padding: 0 70px;
+  border-radius: 4px;
+}
+.btn-primary {
+  color: white;
+  background-image: linear-gradient(to right, #f56766, #f58826);
+}
+
+.caption {
+  font-family: "Kaushan Script", cursive;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, #f56766, #f58826);
 }
 
 /*# sourceMappingURL=app.css.map */

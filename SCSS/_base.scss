@@ -21,9 +21,6 @@ select {
 input {
   line-height: normal;
 }
-a {
-  color: inherit;
-}
 h1,
 h2,
 h3,
@@ -35,4 +32,13 @@ h6 {
 section[id] {
   scroll-margin-top: 30px;
 }
-
+.wrapper {
+  max-width: 1920px;
+  margin: 0 auto;
+  // background: url("../IMG/bg-night.png") no-repeat center / 100%;
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 15px;
+}

@@ -1,0 +1,74 @@
+.form {
+  width: 100%;
+  background-color: $gray-darker;
+  padding: 50px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  &-title {
+    margin-bottom: 30px;
+    color: #fff;
+    text-align: center;
+    font-size: 36px;
+  }
+  &-group {
+    margin-bottom: 20px;
+  }
+  &-input {
+    background-color: transparent;
+    padding: 10px 0;
+    display: block;
+    width: 100%;
+    color: $gray;
+    border-bottom: 1px solid $primary-color;
+    &:focus {
+      color: #fff;
+    }
+  }
+  &-btn {
+    display: block;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+  &-wrap {
+    width: 40%;
+  }
+  &-fill {
+    width: 55%;
+  }
+  &-img {
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  &-caption {
+    margin-bottom: 15px;
+    width: 328px;
+  }
+  &-link {
+    color: $secondary-color;
+  }
+}
+.form p{
+  font-size: 16px;
+  text-align: center;
+}
+.btn {
+  font-size: 24px;
+  text-align: center;
+  font-weight: bold;
+  height: 55px;
+  padding: 0 70px;
+  border-radius: 4px;
+  &-primary {
+    color: white;
+    background-image: linear-gradient(to right, $primary-color, $secondary-color);
+  }
+}
+.caption {
+  font-family: $third-font;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to right, #f56766, #f58826);
+}
