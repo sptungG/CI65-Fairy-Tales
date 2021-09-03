@@ -4,4 +4,4 @@ import LoginScreen from "./screens/LoginScreen.js";
 let $app = document.getElementById("app");
 const register = new RegisterScreen();
 const login = new LoginScreen();
-$app.append(register.render());
+$app.append(login.render());

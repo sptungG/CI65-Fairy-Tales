@@ -44,13 +44,6 @@ export default class RegisterScreen extends BaseComponent {
     let $container = document.createElement("div");
     $container.classList.add("container");
 
-    let $modal = document.createElement("div");
-    $modal.classList.add("modal");
-
-    let $title = document.createElement("h2");
-    $title.innerHTML = "Create an account";
-    $title.classList.add("form-title");
-
     let _name = new InputWrapper({
       placeholder: "Your name",
       type: "text",
@@ -89,22 +82,19 @@ export default class RegisterScreen extends BaseComponent {
       },
     });
 
-    let $wrap = document.createElement("div");
-    $wrap.classList.add("form");
-
     let $wrap1 = document.createElement("div");
     $wrap1.classList.add("form-wrap");
-
     let $img = document.createElement("img");
     $img.src = "../../IMG/img-bedroom.png";
     $img.classList.add("form-img");
-
     let $caption = document.createElement("h1");
     $caption.innerHTML = "Find all types of Fairy tale story here.";
     $caption.classList.add("form-caption", "caption");
-
     $wrap1.append($caption, $img);
 
+    let $title = document.createElement("h2");
+    $title.innerHTML = "Create an account";
+    $title.classList.add("form-title");
     let $btn = document.createElement("button");
     $btn.innerHTML = "Register";
     $btn.classList.add("form-btn", "btn", "btn-primary");
@@ -121,13 +111,16 @@ export default class RegisterScreen extends BaseComponent {
 
     let $form = document.createElement("form");
     $form.classList.add("form-fill");
-    // nếu ko có action thì mặc định action là trang hiện tại -> ~reload lại trang
-    // $form.action = "https://google.come";
     $form.append($title, _name.render(), _email.render(), _password.render(), _confirmPassword.render(), $btn, $p);
     $form.onsubmit = this.handleRegister;
+    
+    let $wrap = document.createElement("div");
+    $wrap.classList.add("form");
     $wrap.append($wrap1, $form);
-
+    let $modal = document.createElement("div");
+    $modal.classList.add("modal");
     $modal.append($wrap);
+
     $container.append($modal);
     return $container;
   }
