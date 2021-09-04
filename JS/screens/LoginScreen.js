@@ -56,7 +56,7 @@ export default class LoginScreen extends BaseComponent {
     let $wrap1 = document.createElement("div");
     $wrap1.classList.add("form-wrap");
     let $img = document.createElement("img");
-    $img.setAttribute("src", "../../IMG/img-bedroom.png");
+    $img.setAttribute("src", "https://i.pinimg.com/originals/95/49/7f/95497f8ac6d24a2070cf561784c6fa1c.jpg");
     $img.classList.add("form-img");
     let $caption = document.createElement("h1");
     $caption.innerHTML = "Find all types of Fairy tale story here.";
