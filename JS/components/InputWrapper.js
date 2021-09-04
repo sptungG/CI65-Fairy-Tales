@@ -14,15 +14,8 @@ export default class InputWrapper extends BaseComponent {
     $input.onchange = this.props.onchange;
 
     let $error = document.createElement("div");
-    $error.innerHTML = "error";
     $error.classList.add("form-error");
-    if (!this.props.error) {
-      $error.style.opacity = "0";
-    } else {
-      $error.style.opacity = "1";
-      $error.innerHTML = this.props.error;
-      console.log(this.props.error);
-    }
+    $error.innerHTML = this.props.error;
 
     $container.append($input, $error);
     return $container;
