@@ -28,6 +28,10 @@
   background-image: linear-gradient(to right, $primary-color, $secondary-color);
 }
 
+@mixin gradient($color1, $color2, $alpha1: 1, $alpha2: 1, $direction: to right) {
+  background-image: linear-gradient($direction, rgba($color1, $alpha1), rgba($color2, $alpha2));
+}
+
 @mixin flexCenter(){
   display: flex;
   justify-content: center;
