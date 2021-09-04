@@ -1,6 +1,6 @@
 # Filter
 
-*Controller, not a page*
+*Controller*
 
 Phía trên danh sách truyện, hiển thị 1 **form nhập:**
 
