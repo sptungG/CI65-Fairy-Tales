@@ -1,12 +1,12 @@
 import BaseComponent from "../components/BaseComponent.js";
 import InputWrapper from "../components/InputWrapper.js";
-import { validateEmail } from "../utils.js";
+import { login } from "../models/user.js";
+import { validateEmail, appendTo } from "../models/utils.js";
 
 export default class LoginScreen extends BaseComponent {
   // truyền dữ liệu thông qua props
   constructor(props) {
     super(props);
-    // lưu tất cả dữ liệu name, email, password qua state
     this.state = {
       data: {
         email: "",
@@ -82,8 +82,9 @@ export default class LoginScreen extends BaseComponent {
 
     let $form = document.createElement("form");
     $form.classList.add("form-fill");
-    $form.append($title, _email.render(), _password.render(), $btn, $p);
     $form.onsubmit = this.handleRegister;
+    appendTo($form, _email, _password);
+    $form.append($btn, $p, $title);
 
     let $wrap = document.createElement("div");
     $wrap.classList.add("form");
@@ -98,19 +99,25 @@ export default class LoginScreen extends BaseComponent {
   // ==========================  ==========================
   handleRegister = (event) => {
     event.preventDefault();
-    let tmpState = this.state;
 
     let data = this.state.data;
     let error = this.state.error;
-    // error.email = "";
-    // error.password = "";
+    let isPassed = true;
 
     if (data.email === "" || !validateEmail(data.email)) {
+      isPassed = false;
       error.email = "Invalid Email";
     }
     if (data.password === "") {
+      isPassed = false;
       error.password = "Invalid Password";
     }
+    if (isPassed) {
+      console.log("Sign in Successfully");
+    }
+
+    let tmpState = this.state;
+    tmpState.error = error;
     this.setState(tmpState);
   };
 }
