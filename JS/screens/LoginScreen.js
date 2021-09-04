@@ -71,7 +71,6 @@ export default class LoginScreen extends BaseComponent {
     $btn.classList.add("form-btn", "btn", "btn-primary");
 
     let $p = document.createElement("p");
-    $p.style.color = "#6a727f";
     $p.innerHTML = "Already have account? ";
     let $link = document.createElement("a");
     $link.classList.add("form-link");

@@ -95,7 +95,6 @@ export default class RegisterScreen extends BaseComponent {
 
     let $p = document.createElement("p");
     $p.innerHTML = "Not have account yet? ";
-    $p.style.color = "#6a727f";
     let $link = document.createElement("a");
     $link.classList.add("form-link");
     $link.href = "#";
