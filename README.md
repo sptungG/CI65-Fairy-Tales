@@ -5,9 +5,9 @@
 1. Thực hiện chức năng xem danh sách truyện
 2. Chọn truyện muốn đọc và nghe bằng cách bấm vào nút “Xem chi tiết”
 3. Hiển thị màn hình đọc & nghe truyện gồm các thông tin:
-- Tên truyện
-- Tác giả
-- Mô tả ngắn gọn
+  - Tên truyện
+  - Tác giả
+  - Mô tả ngắn gọn
 
 Và phần chi tiết của truyện (Phác thảo ở hình dưới)
 
@@ -24,7 +24,9 @@ Luồng phụ 2
 - Chỉnh thời gian trên thanh chạy audio
 - Hiển thị trang truyện tương ứng với thời gian chạy của audio
 
-Ví dụ: 00:00 đến 05:00 → Trang 1
+Ví dụ: 
+
+00:00 đến 05:00 → Trang 1
 
 05:01 đến 10:00 → Trang 2
 
