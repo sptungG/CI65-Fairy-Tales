@@ -17,9 +17,27 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./CSS/app.css" />
   </head>
   <body>
-    <div id="app" class="wrapper">
-      
-    </div>
+    <div id="app" class="wrapper"></div>
+    
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyCJErQzwph09c5qc4aWDmCl-6f8FID8uDc",
+        authDomain: "ci65-chatting.firebaseapp.com",
+        projectId: "ci65-chatting",
+        storageBucket: "ci65-chatting.appspot.com",
+        messagingSenderId: "914462577049",
+        appId: "1:914462577049:web:65a47a957077df89768308",
+      };
+
+      // Initialize Firebase
+      const firebaseApp = firebase.initializeApp(firebaseConfig);
+      // const app = initializeApp(firebaseConfig);
+      const db = firebaseApp.firestore();
+      const auth = firebaseApp.auth();
+    </script>
     <script type="module" src="./JS/app.js"></script>
   </body>
 </html>
