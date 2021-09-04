@@ -1,12 +1,12 @@
 import BaseComponent from "../components/BaseComponent.js";
 import InputWrapper from "../components/InputWrapper.js";
-import { validateEmail } from "../utils.js";
+import { register } from "../models/user.js";
+import { validateEmail, appendTo } from "../models/utils.js";
 
 export default class RegisterScreen extends BaseComponent {
   // truyền dữ liệu thông qua props
   constructor(props) {
     super(props);
-    // lưu tất cả dữ liệu name, email, password qua state
     this.state = {
       data: {
         name: "",
@@ -27,14 +27,8 @@ export default class RegisterScreen extends BaseComponent {
    * Xử lý sự kiện onchange của input
    */
   handleInputChange = (fieldName, fieldValue) => {
-    // console.log(fieldName, fieldValue);
     let tmpState = this.state;
-    // lấy dữ liệu
     tmpState.data[fieldName] = fieldValue.trim();
-    // kiểm tra dữ liệu
-    // 1. nhập đến đâu kiểm tra dữ liệu đến đó
-    // 2. nhập rồi bấm Register rồi mới kiểm tra *
-
     this.setState(tmpState);
     console.log(this.state);
   };
@@ -100,8 +94,7 @@ export default class RegisterScreen extends BaseComponent {
     $btn.classList.add("form-btn", "btn", "btn-primary");
 
     let $p = document.createElement("p");
-    $p.innerHTML = "Not have account yet?";
-    $p.style.color = "#6a727f";
+    $p.innerHTML = "Not have account yet? ";
     let $link = document.createElement("a");
     $link.classList.add("form-link");
     $link.href = "#";
@@ -111,9 +104,10 @@ export default class RegisterScreen extends BaseComponent {
 
     let $form = document.createElement("form");
     $form.classList.add("form-fill");
-    $form.append($title, _name.render(), _email.render(), _password.render(), _confirmPassword.render(), $btn, $p);
+    appendTo($form, _name, _email, _password, _confirmPassword);
+    $form.append($btn, $p, $title);
     $form.onsubmit = this.handleRegister;
-    
+
     let $wrap = document.createElement("div");
     $wrap.classList.add("form");
     $wrap.append($wrap1, $form);
@@ -130,26 +124,36 @@ export default class RegisterScreen extends BaseComponent {
 
     let data = this.state.data;
     let error = this.state.error;
-    // error.name = "";
-    // error.email = "";
-    // error.password = "";
-    // error.confirmPassword = "";
 
+    let isPassed = true;
     if (data.name === "") {
+      isPassed = false;
       error.name = "Invalid Name";
     }
     if (data.email === "" || !validateEmail(data.email)) {
+      isPassed = false;
       error.email = "Invalid Email";
     }
     if (data.password === "") {
+      isPassed = false;
       error.password = "Invalid Password";
     }
     if (data.confirmPassword === "") {
+      isPassed = false;
       error.confirmPassword = "Invalid Confirm Password";
     }
     if (data.password != "" && data.confirmPassword != "" && data.password != data.confirmPassword) {
+      isPassed = false;
       error.confirmPassword = "Confirmation Password is not correct";
     }
-    this.setState(this.state);
+
+    if (isPassed) {
+      console.log("Sign up Successfully");
+      register(data.name, data.email, data.password);
+      return;
+    }
+    let tmpState = this.state;
+    tmpState.error = error;
+    this.setState(tmpState);
   };
 }

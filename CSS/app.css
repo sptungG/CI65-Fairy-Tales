@@ -112,13 +112,15 @@ section[id] {
 .btn {
   font-size: 24px;
   text-align: center;
-  font-weight: bold;
+  font-weight: 700;
   height: 55px;
   padding: 0 70px;
   border-radius: 4px;
+  letter-spacing: 1px;
 }
 .btn-primary {
   color: #fff;
+  font-family: "Righteous", cursive, sans-serif;
   background-image: linear-gradient(to right, #f56766, #f58826);
 }
 
@@ -136,23 +138,27 @@ section[id] {
   background-color: #222831;
   padding: 50px;
   border-radius: 15px;
-  display: flex;
+  align-items: stretch;
   justify-content: center;
-  align-items: center;
-  gap: 50px;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 .form-title {
-  margin-bottom: 30px;
+  order: -1;
+  padding-bottom: 30px;
   color: #fff;
   text-align: center;
   font-size: 36px;
 }
 .form-group {
-  margin-bottom: 20px;
+  padding-bottom: 20px;
+  padding-left: 10px;
 }
 .form-input {
   background-color: transparent;
-  padding: 10px 0;
+  padding: 10px 5px;
   display: block;
   width: 100%;
   color: #393e46;
@@ -166,12 +172,19 @@ section[id] {
 }
 .form-wrap {
   width: 40%;
-  display: flex;
-  flex-direction: column;
+  align-items: stretch;
   justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
 }
 .form-fill {
   width: 55%;
+  align-items: stretch;
+  justify-content: space-evenly;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
 }
 .form-img {
   flex-shrink: 0;
@@ -188,7 +201,9 @@ section[id] {
 }
 .form-error {
   color: red;
-  font-size: 16px;
+  padding-top: 5px;
+  padding-left: 5px;
+  font-size: 14px;
 }
 
 .form p {
