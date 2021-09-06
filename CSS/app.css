@@ -84,8 +84,8 @@ section[id] {
 
 .wrapper {
   max-width: 1792px;
-  min-height: 100vh;
-  margin: 0 auto;
+  max-height: 879px;
+  margin: 0;
 }
 
 .container {
@@ -121,7 +121,7 @@ section[id] {
 .btn-primary {
   color: #fff;
   font-family: "Righteous", cursive, sans-serif;
-  background-image: linear-gradient(to right, #f56766, #f58826);
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
 }
 
 .caption {
@@ -130,7 +130,7 @@ section[id] {
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-  background-image: linear-gradient(to right, #f56766, #f58826);
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
 }
 
 .form {
@@ -142,7 +142,7 @@ section[id] {
   justify-content: center;
   flex-direction: row;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   gap: 40px;
 }
 .form-title {
@@ -176,7 +176,7 @@ section[id] {
   justify-content: space-between;
   flex-direction: column;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .form-fill {
   width: 55%;
@@ -184,7 +184,7 @@ section[id] {
   justify-content: space-evenly;
   flex-direction: column;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 .form-fill p {
   color: #f7f8f9;
@@ -209,6 +209,416 @@ section[id] {
   padding-top: 5px;
   padding-left: 5px;
   font-size: 14px;
+}
+
+.header {
+  width: 100vw;
+  height: 120px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: wrap;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  position: relative;
+  z-index: 10;
+}
+.header > * {
+  z-index: 20;
+}
+.header-toggle {
+  width: 230px;
+  height: inherit;
+  background: url("../IMG/header-airship.png") no-repeat center/cover;
+  cursor: pointer;
+  position: relative;
+}
+.header-toggle::before {
+  content: "";
+  width: 120px;
+  height: 85px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  left: 45%;
+  top: 46%;
+  background: url("../IMG/header-toggle.png") no-repeat center/cover;
+}
+.header-content {
+  width: 732px;
+  height: 100px;
+  align-items: center;
+  justify-content: space-evenly;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  background: url("../IMG/headermenu-cloud.png") no-repeat center/cover;
+}
+.header-content-item {
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  font-size: 30px;
+  color: #fff;
+  position: relative;
+  transform: translateY(-5%);
+}
+.header-content-item::before {
+  content: "";
+  width: 50px;
+  height: 25px;
+  background: url("../IMG/cloud-item.png") no-repeat top/cover;
+  border-radius: 0 0 10px 10px;
+  position: absolute;
+  bottom: 0;
+}
+.header-content-item::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.header-content-item:hover {
+  cursor: pointer;
+}
+.header-content-item:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.header-content-link {
+  color: #fff;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.dashboard {
+  width: 1661px;
+  height: 834px;
+  background: url("../IMG/bg-night.png") no-repeat center/cover;
+  background-attachment: scroll;
+  position: relative;
+}
+
+.dashboard-rating {
+  position: fixed;
+  width: 170px;
+  height: 170px;
+  left: 175px;
+  top: 155px;
+  z-index: 1;
+  background: url("../IMG/rating.png") no-repeat center/cover;
+  transform: rotate(0);
+}
+.dashboard-rating::before {
+  content: "Your Rating";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 36px;
+  font-family: "Righteous", cursive, sans-serif;
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+}
+.dashboard-rating::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.dashboard-rating:hover {
+  cursor: pointer;
+}
+.dashboard-rating:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.dashboard-welcome {
+  position: fixed;
+  width: 200px;
+  height: 155px;
+  left: 25px;
+  top: 420px;
+  z-index: 1;
+  background: url("../IMG/welcome.png") no-repeat center/cover;
+  transform: rotate(0);
+}
+
+.category-all {
+  width: 215px;
+  height: 215px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.category-all::before {
+  content: "All Categories";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 36px;
+  font-family: "Righteous", cursive, sans-serif;
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+}
+.category-all::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.category-all:hover {
+  cursor: pointer;
+}
+.category-all:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.category-kid {
+  position: fixed;
+  width: 207px;
+  height: 170px;
+  left: 1210px;
+  top: 510px;
+  z-index: 1;
+  background: url("../IMG/kid.png") no-repeat center/cover;
+  transform: rotate(0);
+}
+.category-kid::before {
+  content: "Kid";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 36px;
+  font-family: "Righteous", cursive, sans-serif;
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+}
+.category-kid::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.category-kid:hover {
+  cursor: pointer;
+}
+.category-kid:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.category-family {
+  position: fixed;
+  width: 200px;
+  height: 170px;
+  left: 345px;
+  top: 525px;
+  z-index: 1;
+  background: url("../IMG/family.png") no-repeat center/cover;
+  transform: rotate(0);
+}
+.category-family::before {
+  content: "Family";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 36px;
+  font-family: "Righteous", cursive, sans-serif;
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+}
+.category-family::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.category-family:hover {
+  cursor: pointer;
+}
+.category-family:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.category-school {
+  position: fixed;
+  width: 195px;
+  height: 170px;
+  left: 520px;
+  top: 150px;
+  z-index: 1;
+  background: url("../IMG/school.png") no-repeat center/cover;
+  transform: rotate(0);
+}
+.category-school::before {
+  content: "School";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 36px;
+  font-family: "Righteous", cursive, sans-serif;
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+}
+.category-school::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.category-school:hover {
+  cursor: pointer;
+}
+.category-school:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.category-history {
+  position: fixed;
+  width: 150px;
+  height: 150px;
+  left: 1055px;
+  top: 342px;
+  z-index: 1;
+  background: url("../IMG/history.png") no-repeat center/cover;
+  transform: rotate(-5deg);
+}
+.category-history::before {
+  content: "History";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 36px;
+  font-family: "Righteous", cursive, sans-serif;
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+}
+.category-history::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.category-history:hover {
+  cursor: pointer;
+}
+.category-history:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.category-motivate {
+  position: fixed;
+  width: 170px;
+  height: 170px;
+  left: 1185px;
+  top: 135px;
+  z-index: 1;
+  background: url("../IMG/motivate.png") no-repeat center/cover;
+  transform: rotate(0);
+}
+.category-motivate::before {
+  content: "Motivation";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 36px;
+  font-family: "Righteous", cursive, sans-serif;
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+}
+.category-motivate::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.category-motivate:hover {
+  cursor: pointer;
+}
+.category-motivate:hover::before {
+  opacity: 1;
+  visibility: visible;
+}
+.category-world {
+  position: fixed;
+  width: 170px;
+  height: 170px;
+  left: 1430px;
+  top: 160px;
+  z-index: 1;
+  background: url("../IMG/world.png") no-repeat center/cover;
+  transform: rotate(0);
+}
+.category-world::before {
+  content: "World";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-size: 36px;
+  font-family: "Righteous", cursive, sans-serif;
+  text-align: center;
+  color: transparent;
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-image: linear-gradient(to bottom right, #f56766, #f58826);
+}
+.category-world::before {
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s linear;
+}
+.category-world:hover {
+  cursor: pointer;
+}
+.category-world:hover::before {
+  opacity: 1;
+  visibility: visible;
 }
 
 /*# sourceMappingURL=app.css.map */

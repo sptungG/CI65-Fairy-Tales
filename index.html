@@ -17,8 +17,46 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./CSS/app.css" />
   </head>
   <body>
-    <div id="app" class="wrapper"></div>
-    
+    <div id="app" class="wrapper">
+      <main class="dashboard">
+        <header class="header">
+          <div class="header-toggle"></div>
+          <ul class="header-content">
+            <li class="header-content-item">
+              <a href="#" class="header-content-link"><ion-icon name="layers-outline"></ion-icon></a>
+            </li>
+            <li class="header-content-item">
+              <a href="#" class="header-content-link"><ion-icon name="search-outline"></ion-icon></a>
+            </li>
+            <li class="header-content-item">
+              <a href="#" class="header-content-link"><ion-icon name="star-outline"></ion-icon></a>
+            </li>
+            <li class="header-content-item">
+              <a href="#" class="header-content-link"><ion-icon name="reader-outline"></ion-icon></a>
+            </li>
+            <li class="header-content-item">
+              <a href="#" class="header-content-link"><ion-icon name="cog-outline"></ion-icon></a>
+            </li>
+          </ul>
+        </header>
+        <section class="dashboard-main">
+          <ul class="dashboard-list">
+            <li class="dashboard-item"><a href="#" class="dashboard-item-link dashboard-rating"></a></li>
+            <li class="dashboard-item"><a href="#" class="dashboard-item-link dashboard-welcome"></a></li>
+          </ul>
+          <ul class="category-list">
+            <li class="category-item"><a href="#" class="category-link category-all"></a></li>
+            <li class="category-item"><a href="#" class="category-link category-kid"></a></li>
+            <li class="category-item"><a href="#" class="category-link category-family"></a></li>
+            <li class="category-item"><a href="#" class="category-link category-school"></a></li>
+            <li class="category-item"><a href="#" class="category-link category-motivate"></a></li>
+            <li class="category-item"><a href="#" class="category-link category-history"></a></li>
+            <li class="category-item"><a href="#" class="category-link category-world"></a></li>
+          </ul>
+        </section>
+      </main>
+    </div>
+
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
@@ -38,6 +76,6 @@
       const db = firebaseApp.firestore();
       const auth = firebaseApp.auth();
     </script>
-    <script type="module" src="./JS/app.js"></script>
+    <!-- <script type="module" src="./JS/app.js"></script> -->
   </body>
 </html>

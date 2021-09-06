@@ -1,1 +1,54 @@
-
+.header {
+  @include size(100vw, 120px);
+  @include flex(center, center, row, wrap);
+  @include centerPosition("x");
+  position: relative;
+  z-index: 10;
+  & > * {
+    z-index: 20;
+  }
+  &-toggle {
+    @include size(230px, inherit);
+    background: url("../IMG/header-airship.png") no-repeat center / cover;
+    cursor: pointer;
+    position: relative;
+    &::before {
+      content: "";
+      @include size(120px, 85px);
+      @include centerPosition("both");
+      left: 45%;
+      top: 46%;
+      background: url("../IMG/header-toggle.png") no-repeat center / cover;
+    }
+    // @include hoverShow();
+  }
+  &-content {
+    @include size(732px, 100px);
+    @include flex(center, space-evenly);
+    background: url("../IMG/headermenu-cloud.png") no-repeat center / cover;
+  }
+  &-content-item {
+    @include flex(center, center);
+    @include gradient($primary-color, $secondary-color);
+    @include size(45px);
+    border-radius: 10px;
+    font-size: 30px;
+    color: #fff;
+    position: relative;
+    transform: translateY(-5%);
+    &::before {
+      content: "";
+      @include size(50px, 25px);
+      background: url("../IMG/cloud-item.png") no-repeat top / cover;
+      border-radius: 0 0 10px 10px;
+      position: absolute;
+      bottom: 0;
+    }
+    @include hoverShow();
+  }
+  &-content-link {
+    color: #fff;
+    @include flex(center, center);
+    @include absoluteFull();
+  }
+}

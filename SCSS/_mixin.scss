@@ -13,6 +13,21 @@
   height: $height;
 }
 
+@mixin centerPosition($pos) {
+  position: absolute;
+  @if $pos == "both" {
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  } @else if $pos == "x" {
+    left: 50%;
+    transform: translateX(-50%);
+  } @else if $pos == "y" {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
 @mixin absoluteFull() {
   position: absolute;
   top: 0;
@@ -21,27 +36,68 @@
   height: 100%;
 }
 
-@mixin textGradient(){
+@mixin textGradient($color1: $primary-color, $color2: $secondary-color) {
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
-  background-image: linear-gradient(to right, $primary-color, $secondary-color);
+  background-image: linear-gradient(to bottom right, $color1, $color2);
 }
 
-@mixin gradient($color1, $color2, $alpha1: 1, $alpha2: 1, $direction: to right) {
+@mixin gradient($color1: $primary-color, $color2: $secondary-color, $alpha1: 1, $alpha2: 1, $direction: to bottom right) {
   background-image: linear-gradient($direction, rgba($color1, $alpha1), rgba($color2, $alpha2));
 }
 
-@mixin flexCenter(){
+@mixin flexCenter() {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-@mixin flex($items: stretch, $content: flex-start, $direction: row, $flex: flex, $wrap: wrap) {
+@mixin flex($items: stretch, $content: flex-start, $direction: row, $wrap: nowrap, $flex: flex) {
   align-items: $items;
   justify-content: $content;
   flex-direction: $direction;
   display: $flex;
   flex-wrap: $wrap;
+}
+
+@mixin hoverShow() {
+  &::before {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s linear;
+  }
+  &:hover {
+    cursor: pointer;
+    &::before {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+}
+@mixin itemPosition($imgSrc, $w, $h, $left, $top, $rotate: 0) {
+  position: fixed;
+  width: $w;
+  height: $h;
+  left: $left;
+  top: $top;
+  z-index: 1;
+  background: url("../IMG/#{$imgSrc}") no-repeat center / cover;
+  transform: rotate($rotate);
+}
+
+@mixin showItemTitle($title) {
+  &::before {
+    content: "#{$title}";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    font-size: 36px;
+    font-family: $secondary-font;
+    text-align: center;
+    @include textGradient();
+  }
+  @include hoverShow();
 }
