@@ -3,3 +3,10 @@
   line-height: 1.4;
   @include textGradient();
 }
+.title{
+  font-family: $secondary-font;
+  color: $gray-lighter;
+  font-size: 24px;
+  font-weight: bold;
+  letter-spacing: 2px;
+}

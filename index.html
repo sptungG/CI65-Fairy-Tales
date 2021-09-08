@@ -10,50 +10,55 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Righteous&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
     <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
-    <!-- ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <!-- fontawesome -->
+    <script src="https://kit.fontawesome.com/7dd4672799.js" crossorigin="anonymous"></script>
     <!-- css -->
     <link rel="stylesheet" type="text/css" media="screen" href="./CSS/app.css" />
   </head>
   <body>
     <div id="app" class="wrapper">
-      <main class="dashboard">
-        <header class="header">
-          <div class="header-toggle"></div>
-          <ul class="header-content">
-            <li class="header-content-item">
-              <a href="#" class="header-content-link"><ion-icon name="layers-outline"></ion-icon></a>
-            </li>
-            <li class="header-content-item">
-              <a href="#" class="header-content-link"><ion-icon name="search-outline"></ion-icon></a>
-            </li>
-            <li class="header-content-item">
-              <a href="#" class="header-content-link"><ion-icon name="star-outline"></ion-icon></a>
-            </li>
-            <li class="header-content-item">
-              <a href="#" class="header-content-link"><ion-icon name="reader-outline"></ion-icon></a>
-            </li>
-            <li class="header-content-item">
-              <a href="#" class="header-content-link"><ion-icon name="cog-outline"></ion-icon></a>
-            </li>
-          </ul>
-        </header>
-        <section class="dashboard-main">
-          <ul class="dashboard-list">
-            <li class="dashboard-item"><a href="#" class="dashboard-item-link dashboard-rating"></a></li>
-            <li class="dashboard-item"><a href="#" class="dashboard-item-link dashboard-welcome"></a></li>
-          </ul>
+      <header class="header">
+        <div class="container">
+          <div class="header-top">
+            <a href="index.html" class="header-logo-link"><img src="./IMG/book.svg" alt="" class="header-logo" /><span>FairyStory</span></a>
+            <div class="header-top-right">
+              <div class="header-search">
+                <input type="text" name="search" placeholder="Type your Fairy Tale name." />
+                <button><i class="fas fa-search"></i></button>
+              </div>
+              <div class="header-avatar dropdown" id="lightdropdown">
+                <div class="dropdown-select">
+                  <a class="header-user">
+                    <img src="https://source.unsplash.com/900x900/?vietnam" alt="" />
+                  </a>
+                  <span class="header-user-name">Tung</span>
+                  <i class="fa fa-angle-down dropdown-caret"></i>
+                </div>
+                <ul class="dropdown-list">
+                  <li class="dropdown-item" data-value="user-profile"><span>Dashboard</span><i class="far fa-address-card dropdown-item-icon"></i></li>
+                  <li class="dropdown-item" data-value="mode"><span>Dark mode</span><i class="far fa-moon dropdown-item-icon"></i></li>
+                  <li class="dropdown-item" data-value="logout"><span>Logout</span><i class="fas fa-sign-out-alt dropdown-item-icon"></i></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+      <section class="category">
+        <div class="container">
+          <div class="category-title title">Categories</div>
           <ul class="category-list">
-            <li class="category-item"><a href="#" class="category-link category-all"></a></li>
-            <li class="category-item"><a href="#" class="category-link category-kid"></a></li>
-            <li class="category-item"><a href="#" class="category-link category-family"></a></li>
-            <li class="category-item"><a href="#" class="category-link category-school"></a></li>
-            <li class="category-item"><a href="#" class="category-link category-motivate"></a></li>
-            <li class="category-item"><a href="#" class="category-link category-history"></a></li>
-            <li class="category-item"><a href="#" class="category-link category-world"></a></li>
+            <li class="category-item"><img src="./IMG/categories/all.png" alt="" class="category-all"><span>All</span></li>
+            <li class="category-item"><img src="./IMG/categories/family-1.png" alt=""><span>Family</span></li>
+            <li class="category-item"><img src="./IMG/categories/kid.png" alt=""><span>Kid</span></li>
+            <li class="category-item"><img src="./IMG/categories/school.png" alt=""><span>Education</span></li>
+            <li class="category-item"><img src="./IMG/categories/history.png" alt=""><span>History</span></li>
+            <li class="category-item"><img src="./IMG/categories/motivate.png" alt=""><span>Motivation</span></li>
+            <li class="category-item"><img src="./IMG/categories/world.png" alt=""><span>World</span></li>
           </ul>
-        </section>
+        </div>
+      </section>
+      <main class="dashboard">
       </main>
     </div>
 
@@ -77,5 +82,6 @@
       const auth = firebaseApp.auth();
     </script>
     <!-- <script type="module" src="./JS/app.js"></script> -->
+    <script src="./JS/header.js"></script>
   </body>
 </html>

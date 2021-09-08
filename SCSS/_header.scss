@@ -1,54 +1,152 @@
 .header {
-  @include size(100vw, 120px);
-  @include flex(center, center, row, wrap);
-  @include centerPosition("x");
-  position: relative;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
   z-index: 10;
-  & > * {
-    z-index: 20;
+  background-color: $gray-darkest;
+  &-top {
+    height: 60px;
+    @include flex(center, space-between);
+    padding: 0 5px;
+    background-color: $gray-darkest;
+    z-index: 10;
+    & > * {
+      z-index: 20;
+    }
   }
-  &-toggle {
-    @include size(230px, inherit);
-    background: url("../IMG/header-airship.png") no-repeat center / cover;
+  &-top-right {
+    margin-left: auto;
+    width: 60%;
+    @include flex(center, space-between);
+  }
+  &-logo-link {
+    @include flex(center);
+    & > span {
+      font-family: $secondary-font;
+      @include textGradient();
+      font-size: 30px;
+    }
+  }
+  &-search {
+    width: 80%;
+    display: flex;
+    padding: 5px;
+    border-radius: 100px;
+    border: 1px solid $gray-light;
+    & > button {
+      padding: 10px 20px;
+      color: #fff;
+      flex-shrink: 0;
+      border-radius: 100px;
+      @include gradient();
+    }
+    & > input {
+      width: 100%;
+      padding: 10px;
+      background-color: transparent;
+      -webkit-appearance: none;
+      font-size: 14px;
+      font-weight: lighter;
+      color: $gray-lighter;
+    }
+  }
+  &-avatar {
+    @include flex(center, flex-end);
+    width: 25%;
+    margin-left: 5px;
+  }
+  &-user {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid $gray-lighter;
+    z-index: 1;
+    @include flex(center, center);
+    & > img {
+      flex-shrink: 0;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+}
+.dropdown {
+  position: relative;
+  border-radius: 8px;
+  color: $gray-lighter;
+  &-caret {
+    @include textGradient();
+    font-size: 22px;
+  }
+  &-select {
+    @include flex(center, space-between);
     cursor: pointer;
-    position: relative;
-    &::before {
-      content: "";
-      @include size(120px, 85px);
-      @include centerPosition("both");
-      left: 45%;
-      top: 46%;
-      background: url("../IMG/header-toggle.png") no-repeat center / cover;
+    & > span {
+      padding: 0 5px;
+      font-family: $secondary-font;
+      @include textGradient();
     }
-    // @include hoverShow();
   }
-  &-content {
-    @include size(732px, 100px);
-    @include flex(center, space-evenly);
-    background: url("../IMG/headermenu-cloud.png") no-repeat center / cover;
+  &-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    margin-top: 18px;
+    padding: 5px;
+    border-radius: 8px;
+    background-color: $gray-darkest;
+    display: none;
+    border: 1px solid $gray-darkest;
+    box-shadow: 1px 1px 2px 0px rgba(black, 0.2);
   }
-  &-content-item {
-    @include flex(center, center);
-    @include gradient($primary-color, $secondary-color);
-    @include size(45px);
-    border-radius: 10px;
-    font-size: 30px;
-    color: #fff;
-    position: relative;
-    transform: translateY(-5%);
-    &::before {
-      content: "";
-      @include size(50px, 25px);
-      background: url("../IMG/cloud-item.png") no-repeat top / cover;
-      border-radius: 0 0 10px 10px;
-      position: absolute;
-      bottom: 0;
+  &-list::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: 10px;
+    background-color: $gray-darkest;
+    border-radius: 4px;
+    transform: translateY(-50%) rotate(45deg);
+    z-index: -1;
+  }
+  &-list::after {
+    content: "";
+    height: 18px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    transform: translateY(-100%);
+  }
+
+  &-list.show {
+    display: block;
+    box-shadow: rgba(#111, 0.5) 0px 2.5px 5px;
+  }
+  &-item {
+    padding: 10px;
+    margin-top: 5px;
+    transition: all 0.25s ease;
+    border-radius: 8px;
+    cursor: pointer;
+    @include flex(center, space-between);
+    & > span {
+      color: $gray-lighter;
     }
-    @include hoverShow();
+    &-icon {
+      color: $gray-lighter;
+    }
+    &:last-child{
+      border-radius: 0 0 8px 8px;
+      border-top: 2px solid #fff;
+    }
   }
-  &-content-link {
-    color: #fff;
-    @include flex(center, center);
-    @include absoluteFull();
+
+  &-item:not(:last-child):hover {
+    @include gradient();
   }
 }
