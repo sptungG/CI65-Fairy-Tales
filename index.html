@@ -17,21 +17,23 @@
   </head>
   <body>
     <div id="app" class="wrapper">
+      <div onclick="topFunction()" id="toTopBtn" class="toTopBtn" title="Go to top"><i class="fas fa-angle-up"></i><i class="fas fa-angle-double-up"></i></div>
       <header class="header">
         <div class="container">
           <div class="header-top">
-            <a href="index.html" class="header-logo-link"><img src="./IMG/book.svg" alt="" class="header-logo" /><span>FairyStory</span></a>
+            <a href="index.html" class="header-logo-link"><img src="./IMG/icons/book.svg" alt="" class="header-logo" /><span>FairyStory</span></a>
             <div class="header-top-right">
-              <div class="header-search">
+              <div class="header-filter-wrapper">
+                <button class="header-filter-dropdown"><span>All Categories</span><i class="fas fa-angle-down"></i></button>
                 <input type="text" name="search" placeholder="Type your Fairy Tale name." />
-                <button><i class="fas fa-search"></i></button>
+                <button class="header-search"><i class="fas fa-search"></i></button>
               </div>
               <div class="header-avatar dropdown" id="lightdropdown">
                 <div class="dropdown-select">
                   <a class="header-user">
                     <img src="https://source.unsplash.com/900x900/?vietnam" alt="" />
                   </a>
-                  <span class="header-user-name">Tung</span>
+                  <span class="header-user-name">Tunggggggggggggggggggggggggggggg</span>
                   <i class="fa fa-angle-down dropdown-caret"></i>
                 </div>
                 <ul class="dropdown-list">
@@ -46,19 +48,163 @@
       </header>
       <section class="category">
         <div class="container">
-          <div class="category-title title">Categories</div>
+          <span class="category-title title">Categories</span>
           <ul class="category-list">
-            <li class="category-item"><img src="./IMG/categories/all.png" alt="" class="category-all"><span>All</span></li>
-            <li class="category-item"><img src="./IMG/categories/family-1.png" alt=""><span>Family</span></li>
-            <li class="category-item"><img src="./IMG/categories/kid.png" alt=""><span>Kid</span></li>
-            <li class="category-item"><img src="./IMG/categories/school.png" alt=""><span>Education</span></li>
-            <li class="category-item"><img src="./IMG/categories/history.png" alt=""><span>History</span></li>
-            <li class="category-item"><img src="./IMG/categories/motivate.png" alt=""><span>Motivation</span></li>
-            <li class="category-item"><img src="./IMG/categories/world.png" alt=""><span>World</span></li>
+            <li class="category-item"><img src="./IMG/categories/all.png" alt="" class="category-all" /><span>All</span></li>
+            <li class="category-item"><img src="./IMG/categories/family-1.png" alt="" /><span>Family</span></li>
+            <li class="category-item"><img src="./IMG/categories/kid.png" alt="" /><span>Kid</span></li>
+            <li class="category-item"><img src="./IMG/categories/education.png" alt="" /><span>Education</span></li>
+            <li class="category-item"><img src="./IMG/categories/history-1.png" alt="" /><span>History</span></li>
+            <li class="category-item"><img src="./IMG/categories/motivate.png" alt="" /><span>Motivation</span></li>
+            <li class="category-item"><img src="./IMG/categories/world.png" alt="" /><span>World</span></li>
           </ul>
         </div>
       </section>
-      <main class="dashboard">
+      <main class="main">
+        <div class="container">
+          <div class="main-header">
+            <span class="main-header-title title">Fairy Tales</span>
+            <div class="main-header-mode">
+              <button class="mode-active"><i class="fas fa-th"></i></button>
+              <button><i class="fas fa-th-list"></i></button>
+            </div>
+          </div>
+          <ul class="story-list" data-columns="5">
+            <li class="story story-item">
+              <span class="story-time">7min</span>
+              <div class="story-image">
+                <img src="https://source.unsplash.com/random/?vietnam" alt="" />
+                <div class="author-img--wrapper story-author">
+                  <img src="https://source.unsplash.com/random" alt="" class="author-img" />
+                </div>
+              </div>
+              <div class="story-content">
+                <span class="story-by">Author</span>
+                <h3 class="story-title">Applying for a Design Job</h3>
+
+                <div class="story-view">
+                  <span class="story-view-num"> 54K views </span>
+                  <span class="story-date">1 week ago</span>
+                </div>
+                <div class="story-line active"><i class="far fa-heart"></i><span class="heart-num">98</span></div>
+              </div>
+            </li>
+            <li class="story story-item">
+              <span class="story-time">7min</span>
+              <div class="story-image">
+                <img src="https://source.unsplash.com/random/?vietnam" alt="" />
+                <div class="author-img--wrapper story-author">
+                  <img src="https://source.unsplash.com/random" alt="" class="author-img" />
+                </div>
+              </div>
+              <div class="story-content">
+                <span class="story-by">Author</span>
+                <h3 class="story-title">Applying for a Design Job</h3>
+
+                <div class="story-view">
+                  <span class="story-view-num"> 54K views </span>
+                  <span class="story-date">1 week ago</span>
+                </div>
+                <div class="story-line"><i class="far fa-heart"></i><span class="heart-num">98</span></div>
+              </div>
+            </li>
+            <li class="story story-item">
+              <span class="story-time">7min</span>
+              <div class="story-image">
+                <img src="https://source.unsplash.com/random/?vietnam" alt="" />
+                <div class="author-img--wrapper story-author">
+                  <img src="https://source.unsplash.com/random" alt="" class="author-img" />
+                </div>
+              </div>
+              <div class="story-content">
+                <span class="story-by">Author</span>
+                <h3 class="story-title">Applying for a Design Job</h3>
+
+                <div class="story-view">
+                  <span class="story-view-num"> 54K views </span>
+                  <span class="story-date">1 week ago</span>
+                </div>
+                <div class="story-line"><i class="far fa-heart"></i><span class="heart-num">98</span></div>
+              </div>
+            </li>
+            <li class="story story-item">
+              <span class="story-time">7min</span>
+              <div class="story-image">
+                <img src="https://source.unsplash.com/random/?vietnam" alt="" />
+                <div class="author-img--wrapper story-author">
+                  <img src="https://source.unsplash.com/random" alt="" class="author-img" />
+                </div>
+              </div>
+              <div class="story-content">
+                <span class="story-by">Author</span>
+                <h3 class="story-title">Applying for a Design Job</h3>
+
+                <div class="story-view">
+                  <span class="story-view-num"> 54K views </span>
+                  <span class="story-date">1 week ago</span>
+                </div>
+                <div class="story-line"><i class="far fa-heart"></i><span class="heart-num">98</span></div>
+              </div>
+            </li>
+            <li class="story story-item">
+              <span class="story-time">7min</span>
+              <div class="story-image">
+                <img src="https://source.unsplash.com/random/?vietnam" alt="" />
+                <div class="author-img--wrapper story-author">
+                  <img src="https://source.unsplash.com/random" alt="" class="author-img" />
+                </div>
+              </div>
+              <div class="story-content">
+                <span class="story-by">Author</span>
+                <h3 class="story-title">Applying for a Design Job</h3>
+
+                <div class="story-view">
+                  <span class="story-view-num"> 54K views </span>
+                  <span class="story-date">1 week ago</span>
+                </div>
+                <div class="story-line"><i class="far fa-heart"></i><span class="heart-num">98</span></div>
+              </div>
+            </li>
+            <li class="story story-item">
+              <span class="story-time">7min</span>
+              <div class="story-image">
+                <img src="https://source.unsplash.com/random/?vietnam" alt="" />
+                <div class="author-img--wrapper story-author">
+                  <img src="https://source.unsplash.com/random" alt="" class="author-img" />
+                </div>
+              </div>
+              <div class="story-content">
+                <span class="story-by">Author</span>
+                <h3 class="story-title">Applying for a Design Job</h3>
+
+                <div class="story-view">
+                  <span class="story-view-num"> 54K views </span>
+                  <span class="story-date">1 week ago</span>
+                </div>
+                <div class="story-line"><i class="far fa-heart"></i><span class="heart-num">98</span></div>
+              </div>
+            </li>
+            <li class="story story-item">
+              <span class="story-time">7min</span>
+              <div class="story-image">
+                <img src="https://source.unsplash.com/random/?vietnam" alt="" />
+                <div class="author-img--wrapper story-author">
+                  <img src="https://source.unsplash.com/random" alt="" class="author-img" />
+                </div>
+              </div>
+              <div class="story-content">
+                <span class="story-by">Author</span>
+                <h3 class="story-title">Applying for a Design Job</h3>
+
+                <div class="story-view">
+                  <span class="story-view-num"> 54K views </span>
+                  <span class="story-date">1 week ago</span>
+                </div>
+                <div class="story-line"><i class="far fa-heart"></i><span class="heart-num">98</span></div>
+              </div>
+            </li>
+          </ul>
+        </div>
       </main>
     </div>
 

@@ -28,18 +28,34 @@
       font-size: 30px;
     }
   }
-  &-search {
+  &-filter-wrapper {
     width: 80%;
+    height: inherit;
     display: flex;
     padding: 5px;
     border-radius: 100px;
     border: 1px solid $gray-light;
-    & > button {
+    & > .header-search {
       padding: 10px 20px;
       color: #fff;
       flex-shrink: 0;
       border-radius: 100px;
       @include gradient();
+    }
+    & > .header-filter-dropdown {
+      background-color: transparent;
+      border: none;
+      @include flex(center, space-between);
+      color: $gray-light;
+      flex-shrink: 0;
+      flex-basis: 140px;
+      max-width: 140px;
+      padding: 0 10px;
+      border-right: 2px solid $gray-light;
+      & > i {
+        margin-left: auto;
+        font-size: 20px;
+      }
     }
     & > input {
       width: 100%;
@@ -79,12 +95,13 @@
     font-size: 22px;
   }
   &-select {
-    @include flex(center, space-between);
+    @include flex(center, flex-end);
     cursor: pointer;
     & > span {
       padding: 0 5px;
       font-family: $secondary-font;
       @include textGradient();
+      @include textClamp(1, 50%);
     }
   }
   &-list {
@@ -134,19 +151,33 @@
     border-radius: 8px;
     cursor: pointer;
     @include flex(center, space-between);
+    border: 1px solid transparent;
+    transition: all 0.25s linear;
     & > span {
       color: $gray-lighter;
+      font-weight: bold;
     }
     &-icon {
       color: $gray-lighter;
     }
-    &:last-child{
-      border-radius: 0 0 8px 8px;
-      border-top: 2px solid #fff;
-    }
   }
 
   &-item:not(:last-child):hover {
-    @include gradient();
+    @include gradient($primary-color, $secondary-color, 0.05, 0.05);
+    border: 1px solid $primary-color;
+    & > span,
+    i {
+      @include textGradient();
+    }
+  }
+  &-item:last-child {
+    border-radius: 0 0 8px 8px;
+    border-top: 2px solid $gray-light;
+    &:hover {
+      & > span,
+      i {
+        color: $gray-light;
+      }
+    }
   }
 }

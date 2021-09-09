@@ -40,7 +40,7 @@ section[id] {
   margin: 0 auto;
 }
 .container {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 0 15px;
 }
@@ -65,5 +65,50 @@ section[id] {
     color: #fff;
     font-family: $secondary-font;
     @include gradient($primary-color, $secondary-color);
+  }
+}
+#toTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 20px;
+  @include gradient($primary-color, $secondary-color, 0.05, 0.05);
+  border: 1px solid transparent;
+  font-size: 32px;
+  & > i {
+    @include textGradient();
+  }
+  & > .fa-angle-double-up {
+    display: none;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-45%, -110%);
+    @include size(90px, 52px);
+    background: url("../IMG/header-airship.png") no-repeat center / cover;
+    transition: 0.3s;
+  }
+}
+
+#toTopBtn:hover {
+  border: 1px solid $primary-color;
+  & > .fa-angle-double-up {
+    display: block;
+  }
+  & > .fa-angle-up {
+    display: none;
+  }
+  &::before {
+    transform: translate(-50%, -150%);
   }
 }
