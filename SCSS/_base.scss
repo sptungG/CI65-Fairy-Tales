@@ -36,11 +36,11 @@ section[id] {
   scroll-margin-top: 30px;
 }
 .wrapper {
-  max-width: 1792px;
   margin: 0 auto;
+  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
 }
 .container {
-  max-width: 1400px;
+  max-width: 100vw;
   margin: 0 auto;
   padding: 0 15px;
 }

@@ -1,6 +1,8 @@
 .main {
-  padding: 70px 0;
-  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
+  padding-top: 70px;
+  margin-left: auto;
+  width: 88%;
+  min-height: 100vh;
   &-header {
     @include flex(center, space-between);
   }
@@ -122,11 +124,11 @@
         font-weight: bold;
       }
       & > span::before {
-        background-color: $primary-color;
+        background-color: currentColor;
       }
     }
     &:hover{
-      border: 1px solid $primary-color;
+      border: 1px solid currentColor;
     }
   }
   &:hover {
