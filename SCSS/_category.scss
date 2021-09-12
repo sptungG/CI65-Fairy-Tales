@@ -4,7 +4,7 @@
     padding-right: 10px;
     @include iconTitle("../IMG/icons/all-icon.png", 25px);
   }
-  @include flexLayout(4, 25px);
+  @include flexLayout(4, 20px);
   width: 100%;
   @include customScroll($primary-color);
   &-item {
