@@ -1,8 +1,8 @@
 .main {
   padding-top: 70px;
-  margin-left: auto;
-  width: 88%;
+
   min-height: 100vh;
+  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
   &-header {
     @include flex(center, space-between);
   }
@@ -32,7 +32,7 @@
 }
 
 .story {
-  @include flexLayout(5, 25px);
+  @include flexLayout(4, 25px);
 }
 
 .story {
