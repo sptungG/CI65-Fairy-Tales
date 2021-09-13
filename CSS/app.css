@@ -191,6 +191,14 @@ section[id] {
   transform: translate(-50%, -150%);
 }
 
+.category {
+  display: none;
+}
+
+.main {
+  display: none;
+}
+
 .caption {
   font-family: "Kaushan Script", cursive;
   line-height: 1.4;
