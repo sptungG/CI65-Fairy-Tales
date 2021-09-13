@@ -1,0 +1,29 @@
+.cart {
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .cart-items {
+    padding-left: 0;
+  }
+  @media screen and (max-width: 767px) {
+    .cart-item{
+      flex-direction: column;
+      flex-grow: 1;
+    }
+    .cart-item-image {
+      margin-bottom: 10px;
+      width: 100%;
+    }
+    .cart-item-counter {
+      width: 100px;
+    }
+    .total-cost{
+      position: fixed;
+      width: 34%;
+      bottom: 0;
+      right: 0;
+      background-color: rgba(70, 64, 64, 0.4);
+      padding: 10px;
+      border-radius: 20px 0 0 0;
+    }
+  }
