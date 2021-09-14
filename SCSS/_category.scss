@@ -1,76 +1,91 @@
 .category {
-  padding-top: 80px;
+  width: 100%;
+  @include gridLayout(20px, "fit", 235px);
+  margin-bottom: 50px;
   &-title {
     padding-right: 10px;
     @include iconTitle("../IMG/icons/all-icon.png", 25px);
+    display: inline-block;
   }
-  @include flexLayout(4, 20px);
-  width: 100%;
-  @include customScroll($primary-color);
   &-item {
-    background-color: $gray;
     padding-bottom: 20px;
     padding: 10px;
     @include flex();
-    & > img {
-      width: 50%;
-      height: 100%;
-      border-radius: 10px;
-      flex-shrink: 0;
-      object-fit: cover;
-      transition: 0.3s;
-    }
-    &-content {
-      height: 100%;
-      @include flex(flex-start, flex-start, column);
-      padding-left: 10px;
-    }
-    &-content > p{
-      font-size: 14px;
-      padding-top: 15px;
-      @include textClamp(5);
-    }
-    &-content > span {
-      font-family: $secondary-font;
-      color: $gray-lighter;
-      font-size: 20px;
-      font-weight: normal;
-      letter-spacing: 2px;
-      padding-top: 10px;
-      position: relative;
-      &::before {
-        content: "";
-        background-color: $primary-color;
-        height: 3px;
-        width: 100%;
-        position: absolute;
-        bottom: -5px;
-        left: 50%;
-        transform: translate(-50%, 100%);
-        opacity: 0;
-        border-radius: 10px;
-      }
-    }
-    &:nth-child(3n) span::before {
-      background: $primary-color;
-    }
-    &:nth-child(3n + 2) span::before {
-      background: $secondary-color;
-    }
-    &:nth-child(3n + 1) span::before {
-      background: #ffd651;
-    }
+  }
+  &-item > img {
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+    flex-shrink: 0;
+    object-fit: cover;
+    transition: 0.3s;
+  }
+  &-item-content {
+    height: 100%;
+    @include flex(flex-start, flex-start, column);
+    padding-left: 10px;
+  }
+  &-item-content > p {
+    font-size: 14px;
+    padding-top: 15px;
+    @include textClamp(5);
+  }
+  &-item-content > h3 {
+    font-family: $secondary-font;
+    color: $gray-lighter;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    padding-top: 10px;
+    position: relative;
+  }
+  &-item-content > h3::before {
+    content: "";
+    background-color: $primary-color;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    bottom: -5px;
+    left: 50%;
+    transform: translate(-50%, 100%);
+    opacity: 0;
+    border-radius: 10px;
+  }
+  &-item:nth-child(3n) h3::before {
+    background: $primary-color;
+  }
+  &-item:nth-child(3n + 2) h3::before {
+    background: $secondary-color;
+  }
+  &-item:nth-child(3n + 1) h3::before {
+    background: $third-color;
   }
 
   &-item:hover {
     & > img {
       transform: scale(0.9);
     }
-    & span {
+    & h3 {
       @include textGradient();
       &::before {
         opacity: 1;
       }
     }
+  }
+}
+@include maxWidth(1023px) {
+  .category-item-content > h3 {
+    font-size: 16px;
+  }
+  .category-item-content > p {
+    font-size: 12px;
+  }
+  .category-list {
+    @include touchSlider(40%, 10px);
+  }
+}
+@include maxWidth(767px) {
+  .category-list {
+    @include touchSlider(80%, 10px);
   }
 }

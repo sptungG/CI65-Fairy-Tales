@@ -9,8 +9,9 @@ body {
   line-height: 1;
   color: $gray-light;
   background-color: $gray-darker;
-  @include customScroll($primary-color);
   overflow-x: hidden;
+  padding-top: 60px;
+  @include hideScroll();
 }
 input,
 button,
@@ -42,7 +43,7 @@ section[id] {
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 .modal {
   @include absoluteFull();
@@ -121,3 +122,6 @@ section[id] {
 .main{
   display: none;
 }
+// .profile{
+//   display: none;
+// }

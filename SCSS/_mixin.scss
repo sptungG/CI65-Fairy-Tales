@@ -141,24 +141,67 @@
   }
 }
 
-@mixin flexLayout($columns: 1, $column-space: 20px, $row-space: $column-space) {
-  &-list {
-    padding-top: 50px;
-    display: flex;
-    flex-wrap: wrap;
-    margin-left: calc(-1 * #{$column-space});
-    margin-bottom: calc(-1 * #{$row-space});
+// @mixin flexLayout($columns: 1, $column-space: 20px, $row-space: $column-space) {
+//   &-list {
+//     display: flex;
+//     flex-wrap: wrap;
+//     margin-left: calc(-1 * #{$column-space});
+//     margin-bottom: calc(-1 * #{$row-space});
+//   }
+//   &-item {
+//     @include flex(center, flex-start, column);
+//     width: calc((100% / #{$columns}) - #{$column-space});
+//     margin-left: $column-space;
+//     margin-bottom: $row-space;
+//     height: auto;
+//     overflow: hidden;
+//     border-radius: 20px;
+//     box-sizing: border-box;
+//     // box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+//     box-shadow: 0 2px 2px rgb(0 0 0 / 5%), 0 4px 4px rgb(0 0 0 / 5%), 0 8px 8px rgb(0 0 0 / 5%), 0 16px 16px rgb(0 0 0 / 5%);
+//   }
+// }
+
+@mixin gridLayout($gap: 20px, $fit: "no-fit",$fit-min: 293px){
+  &-list{
+    display: grid;
+    grid-gap: $gap;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    @if $fit == "fit" {
+      grid-template-columns: repeat(auto-fit, minmax($fit-min, 1fr));
+    }
   }
   &-item {
-    @include flex(center, flex-start, column);
-    width: calc((100% / #{$columns}) - #{$column-space});
-    margin-left: $column-space;
-    margin-bottom: $row-space;
+    background-color: $gray;
     height: auto;
     overflow: hidden;
     border-radius: 20px;
-    box-sizing: border-box;
-    box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+    transition: 0.4s;
     box-shadow: 0 2px 2px rgb(0 0 0 / 5%), 0 4px 4px rgb(0 0 0 / 5%), 0 8px 8px rgb(0 0 0 / 5%), 0 16px 16px rgb(0 0 0 / 5%);
+  }
+}
+
+@mixin hideScroll() {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+@mixin touchSlider($width: 80%, $gap: 25px, $padding: 10px) {
+  display: grid !important;
+  justify-content: flex-start !important;
+  grid-auto-columns: $width;
+  grid-template-columns: unset;
+  grid-column-gap: $gap;
+  overflow-x: scroll;
+  padding: $padding;
+  grid-auto-flow: column;
+  scroll-snap-type: x mandatory;
+  scroll-snap-stop: always;
+  @include hideScroll();
+  & > * {
+    scroll-snap-align: center;
+    width: auto;
   }
 }
