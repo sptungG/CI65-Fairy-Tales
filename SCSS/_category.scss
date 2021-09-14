@@ -28,6 +28,7 @@
   &-item-content > p {
     font-size: 14px;
     padding-top: 15px;
+    line-height: 1.4;
     @include textClamp(5);
   }
   &-item-content > h3 {
@@ -73,13 +74,15 @@
     }
   }
 }
-@include maxWidth(1023px) {
+@include maxWidth(1366px) {
   .category-item-content > h3 {
     font-size: 16px;
   }
   .category-item-content > p {
     font-size: 12px;
   }
+}
+@include maxWidth(1023px) {
   .category-list {
     @include touchSlider(40%, 10px);
   }
