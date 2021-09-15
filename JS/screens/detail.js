@@ -1,6 +1,6 @@
 import BaseComponent from "../components/BaseComponent.js";
 import FairyList from "../components/FairyList.js";
-import fairyScreen from "../components/fairyScreen.js";
+import fairyScreen from "../components/FairyScreen.js/index.js";
 import { appendTo } from "../models/utils.js";
 
 export default class detail extends BaseComponent {

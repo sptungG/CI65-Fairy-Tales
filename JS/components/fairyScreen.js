@@ -1,6 +1,6 @@
 import BaseComponent from "./BaseComponent.js";
 
-export default class fairyScreen extends BaseComponent {
+export default class FairyScreen extends BaseComponent {
   render() {
     let $container = document.createElement("div");
     $container.className = "containerFairy";
