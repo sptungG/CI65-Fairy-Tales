@@ -94,6 +94,10 @@
   }
   &-view-num {
     @include dotSeparate("right", $gray-light);
+    margin-right: 0;
+  }
+  &-date{
+    margin-left: 0;
   }
 
   &-line {
