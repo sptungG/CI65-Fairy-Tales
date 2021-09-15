@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Story Detail
 
 *Đọc và Nghe Truyện*
@@ -42,3 +43,21 @@ Ví dụ:
     - Nếu người dùng chỉnh thời gian trên thanh audio về 04:00 => Hiển thị nội dung trang 1
     - Nếu người dùng chỉnh thời gian trên thanh audio về 16:35 => Hiển thị nội dung trang 4
     - ….
+=======
+# Dash Board
+
+*User*
+
+1. Đăng nhập vào ứng dụng
+2. Hiển thị danh sách truyện dưới dạng **grid**, mỗi truyện gồm các thông tin:
+- Tên truyện
+- Tác giả
+- Thời lượng
+- Chủ đề
+- Ngày tạo
+
+Và nút:
+
+- Xem chi tiết
+- Đánh giá
+>>>>>>> dash-board
