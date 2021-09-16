@@ -1,0 +1,272 @@
+.profile > .container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  grid-gap: 0 20px;
+  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
+  @include maxWidth(767px) {
+    grid-template-columns: 1fr;
+  }
+}
+.section-wrapper {
+  padding-top: 20px;
+  height: 100vh;
+  overflow-y: scroll;
+  // @include customScroll($primary-color);
+  @include hideScroll();
+  @include maxWidth(767px) {
+    height: auto;
+  }
+}
+.favorite {
+  margin-bottom: 40px;
+  @include gridLayout(10px);
+  &-list {
+    @include touchSlider(25%, 10px);
+    padding: 10px 0;
+  }
+  @include maxWidth(1366px) {
+    &-list {
+      grid-auto-columns: 40%;
+    }
+  }
+  @include maxWidth(1023px) {
+    &-list {
+      grid-auto-columns: 60%;
+    }
+  }
+  @include maxWidth(767px) {
+    &-list {
+      grid-auto-columns: 80%;
+    }
+  }
+}
+
+.profile {
+  &-info {
+    height: 100%;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 5%), 0 4px 4px rgb(0 0 0 / 5%), 0 8px 8px rgb(0 0 0 / 5%), 0 16px 16px rgb(0 0 0 / 5%);
+    margin-right: auto;
+    background-color: $gray;
+  }
+  &-image {
+    height: 245px;
+    position: relative;
+  }
+  &-image img {
+    @include size(100%);
+    object-fit: cover;
+    object-position: top;
+  }
+  &-wallpaper {
+    @include size(100%);
+    overflow: hidden;
+  }
+  &-avt {
+    @include size(200px);
+    border-radius: 50%;
+    border: 1px solid rgba($primary-color, 0.8);
+    padding: 4px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 40%);
+    z-index: 10;
+  }
+  &-avt > img {
+    border-radius: 50%;
+  }
+  &-edit {
+    margin-top: 20px;
+    padding-right: 10px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 32px;
+    z-index: 10;
+    cursor: pointer;
+  }
+  &-edit:hover {
+    color: $primary-color;
+  }
+  &-content {
+    width: 100%;
+    padding: 0 10px;
+    padding-top: 100px;
+    transform: translateY(-15px);
+    border-radius: 20px 20px 0 0;
+    background-color: $gray;
+    position: relative;
+    border-top: 1px solid $secondary-color;
+  }
+  &-content > div {
+    margin-bottom: 20px;
+  }
+  &-name {
+    @include textGradient();
+  }
+  &-bio {
+    font-size: 14px;
+    text-align: justify;
+    line-height: 1.6;
+  }
+  &-total {
+    color: $gray-lighter;
+    @include flex(center, space-between);
+  }
+  &-total span {
+    font-size: 14px;
+    @include dotSeparate("left", currentColor);
+  }
+  &-total > div {
+    padding: 6px;
+    border-radius: 10px;
+  }
+  &-favor {
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.2);
+  }
+  &-read {
+    color: $secondary-color;
+    background-color: rgba($secondary-color, 0.2);
+  }
+  &-comment {
+    color: $third-color;
+    background-color: rgba($third-color, 0.2);
+  }
+  @include maxWidth(1366px) {
+    &-edit {
+      margin-top: 35px;
+      padding-right: 5px;
+    }
+  }
+  @include maxWidth(767px) {
+    &-edit {
+      padding-right: 20px;
+    }
+  }
+}
+.activity {
+  &-item {
+    display: flex;
+    padding: 10px;
+    background-color: $gray;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    box-shadow: 0 2px 2px rgb(0 0 0 / 5%), 0 4px 4px rgb(0 0 0 / 5%), 0 8px 8px rgb(0 0 0 / 5%), 0 16px 16px rgb(0 0 0 / 5%);
+  }
+  &-item-image {
+    width: 150px;
+    height: 160px;
+    object-fit: cover;
+    flex-shrink: 0;
+    border-radius: 10px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+  }
+  &-item-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+  }
+  &-item-time {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    background: rgba(21, 13, 13, 0.5);
+    color: rgb(255 255 255 / 85%);
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+  }
+  &-item-info {
+    flex: 1;
+    padding: 10px;
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+  &-item-author {
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+  &-item-desc {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    @include textClamp(2);
+    white-space: normal;
+  }
+  &-item-title {
+    font-size: 20px;
+  }
+  &-item-act {
+    margin-bottom: 0;
+    margin-top: auto;
+  }
+  &-item-date > span {
+    font-size: 14px;
+    @include dotSeparate("left", currentColor);
+  }
+  &-item-delete {
+    position: absolute;
+    right: 0;
+    top: 0;
+    font-size: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+    cursor: pointer;
+  }
+  &-item:hover {
+    .activity-item-delete {
+      opacity: 1;
+      visibility: visible;
+    }
+  }
+  &-tabs {
+    display: flex;
+    background-color: $gray;
+    border-radius: 8px;
+    padding: 10px;
+    margin: 20px 0;
+    flex-wrap: wrap;
+  }
+  &-tab-item.active {
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.3);
+  }
+  &-tab-item {
+    white-space: nowrap;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-weight: 500;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: inherit;
+  }
+  @include maxWidth(1366px) {
+    &-item-delete {
+      opacity: 1;
+      visibility: visible;
+    }
+    &-item-image {
+      width: 140px;
+      height: 180px;
+    }
+  }
+  @include maxWidth(1023px) {
+    &-tabs {
+      justify-content: center;
+    }
+    &-tab-item {
+      flex: none;
+    }
+  }
+}
