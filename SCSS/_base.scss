@@ -7,7 +7,11 @@ body {
   font-family: $primary-font;
   font-size: 18px;
   line-height: 1;
+  color: $gray-light;
+  background-color: $gray-darker;
   overflow-x: hidden;
+  padding-top: 60px;
+  @include hideScroll();
 }
 input,
 button,
@@ -33,15 +37,13 @@ section[id] {
   scroll-margin-top: 30px;
 }
 .wrapper {
-  max-width: 1792px;
-  min-height: 100vh;
   margin: 0 auto;
-  // background: url("../IMG/bg-night.png") no-repeat center / cover;
+  // background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
 }
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 15px;
+  padding: 0 10px;
 }
 .modal {
   @include absoluteFull();
@@ -66,3 +68,60 @@ section[id] {
     @include gradient($primary-color, $secondary-color);
   }
 }
+#toTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  outline: none;
+  cursor: pointer;
+  padding: 24px 32px;
+  border-radius: 20px;
+  @include gradient($primary-color, $secondary-color, 0.1, 0.1);
+  border: 1px solid transparent;
+  font-size: 32px;
+  & > i {
+    @include centerPosition("both");
+    @include textGradient();
+  }
+  & > .fa-angle-double-up {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  &::before {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 0;
+    transform: translate(-45%, -110%);
+    @include size(90px, 52px);
+    background: url("../IMG/header-airship.png") no-repeat center / cover;
+    transition: 0.3s;
+  }
+}
+
+#toTopBtn:hover {
+  border: 1px solid $primary-color;
+  & > .fa-angle-double-up {
+    opacity: 1;
+    visibility: visible;
+  }
+  & > .fa-angle-up {
+    opacity: 0;
+    visibility: hidden;
+  }
+  &::before {
+    transform: translate(-50%, -150%);
+  }
+}
+.category{
+  display: none;
+}
+.main{
+  display: none;
+}
+// .profile{
+//   display: none;
+// }
