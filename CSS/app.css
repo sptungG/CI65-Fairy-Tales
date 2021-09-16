@@ -1325,3 +1325,62 @@ section[id] {
 }
 
 /*# sourceMappingURL=app.css.map */
+
+/* css part details */
+
+.h1-detail{
+  margin-top: 20px;
+  margin-left: 30px;
+  color: #f56766;
+}
+.list-group{
+  margin-top: 30px;
+  display: flex;
+}
+
+.totalIteam{
+  margin-left: 20px;
+  padding: 10px 10px 40px 10px;
+  transform: scale(1);
+  transition: all 0.5s;
+}
+
+.totalIteam:hover{
+  transform: scale(1.1);
+}
+
+.list-group-item{
+  padding-top: 15px;
+  text-align: center;
+  text-align: left;
+  
+  font-size: 20px;
+  color: #de62fd;
+  font-weight: bold;
+  padding-left: 10px;
+  line-height: 7px;
+  
+}
+.list-img-item{
+  display: block;
+  max-width: 500px;
+  max-height: 500px;
+  width: 204px;
+  height: auto;
+}
+.screen-detail{
+  border-radius: 30px;
+  border:3px solid rgba(245, 136, 38, 0.4);
+  background-color: white;
+  width: 900px;
+  height: 450px;
+  margin-top: 30px;
+}
+.containerFairy{
+  display: flex;
+  justify-content: center;
+}
+.containerDetail{
+  background-image: url("../IMG/BackGroundDetail.png");
+  border-radius: 0px;
+}
