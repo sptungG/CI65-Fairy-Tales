@@ -1,50 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>FairyStory</title>
-    <!-- Gg font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Kaushan+Script&family=Righteous&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet" />
-    <!-- <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" /> -->
-    <!-- ionicons -->
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <!-- css -->
-    <link rel="stylesheet" type="text/css" media="screen" href="./CSS/app.css" />
-    <script src="https://kit.fontawesome.com/7dd4672799.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Octavian</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&family=Raleway:wght@400;600;700;800&display=swap"
-      rel="stylesheet"
-    />
-    <script
-      type="module"
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"
-    ></script>
-    <script
-      nomodule
-      src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"
-    ></script>
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.css"
-    />
-    <link rel="stylesheet" href="./css/app.css" />
-  </head>
-  <body data-scroll-container>
+import BaseComponent from "../components/BaseComponent.js"
 
-    <!-- <div class="wrapper"> -->
-      <!-- <header class="header">
+export default class LandingPage extends BaseComponent {
+
+    constructor(props) {
+        super(props);
+    }
+    render() {
+        
+        return `
+        <header class="header">
         <div class="container">
           <div class="header-main">
             <img src="./images/logo.png" alt="" class="header-logo" />
@@ -66,10 +30,10 @@
                   <a href="#contact" class="menu-link">Contact</a>
                 </li>
                 <li class="menu-item">
-                  <a href="#contact" class="menu-link">Signin</a>
+                  <a href="#" class="menu-link">Signin</a>
                 </li>
                 <li class="menu-item">
-                  <a href="#contact" class="menu-link">Login</a>
+                  <a href="#" class="menu-link">Login</a>
                 </li>
               </ul>
             </div>
@@ -363,35 +327,8 @@
             </p>
           </div>
         </div>
-      </footer> -->
-    <!-- </div> -->
-    <script src="https://cdn.jsdelivr.net/npm/locomotive-scroll@3.5.4/dist/locomotive-scroll.min.js"></script>    
-
-    
-
-
-
-    <div id="app" class="wrapper"></div>
-    
-    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
-    <script>
-      const firebaseConfig = {
-        apiKey: "AIzaSyCJErQzwph09c5qc4aWDmCl-6f8FID8uDc",
-        authDomain: "ci65-chatting.firebaseapp.com",
-        projectId: "ci65-chatting",
-        storageBucket: "ci65-chatting.appspot.com",
-        messagingSenderId: "914462577049",
-        appId: "1:914462577049:web:65a47a957077df89768308",
-      };
-
-      // Initialize Firebase
-      const firebaseApp = firebase.initializeApp(firebaseConfig);
-      // const app = initializeApp(firebaseConfig);
-      const db = firebaseApp.firestore();
-      const auth = firebaseApp.auth();
-    </script>
-    <script type="module" src="./JS/app.js"></script>
-  </body>
-</html>
+      </footer>
+        `
+        
+    }
+}
