@@ -186,7 +186,11 @@ section[id] {
   transform: translate(-50%, -150%);
 }
 
-.profile {
+.category {
+  display: none;
+}
+
+.main {
   display: none;
 }
 

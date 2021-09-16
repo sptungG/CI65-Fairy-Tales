@@ -23,6 +23,8 @@ export default class Story extends BaseComponent {
       <div class="story-line active"><i class="far fa-heart"></i><span class="heart-num">${this.props.rating}</span></div>
     </div>
     `;
+    if(this.props.isRated){
+    }else{}
     return $storyItem;
   }
 }
