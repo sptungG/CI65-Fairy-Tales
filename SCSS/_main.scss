@@ -1,0 +1,186 @@
+.main {
+  min-height: 100vh;
+  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
+  &-header {
+    @include flex(center, space-between);
+    margin-bottom: 20px;
+  }
+  &-header-title {
+    @include iconTitle("../IMG/icons/moon.svg", 50px);
+  }
+  &-header-mode {
+    margin-left: auto;
+    & > button {
+      padding: 10px 20px;
+      transition: all 0.25s ease;
+      border-radius: 8px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      background-color: $gray;
+      color: $gray-lighter;
+    }
+    & > button:hover,
+    .mode-active > i {
+      @include textGradient();
+    }
+    & > button:hover,
+    .mode-active {
+      border: 1px solid $primary-color;
+    }
+  }
+}
+
+.story {
+  @include gridLayout(20px, "fit", 280px);
+  &-item {
+    position: relative;
+  }
+  &-image {
+    width: 100%;
+    height: 0;
+    padding-top: 60%;
+    flex-shrink: 0;
+    position: relative;
+  }
+  &-image > img {
+    @include absoluteFull();
+    object-fit: cover;
+    border-radius: 20px 20px 0 0;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+  &-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 10px;
+    padding-top: 0;
+  }
+  &-author {
+    position: absolute !important;
+    right: 10px;
+    bottom: -25px;
+    z-index: 2;
+    transition: 0.4s;
+  }
+  &-title {
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 1.6;
+    margin-bottom: 15px;
+    color: $gray-lighter;
+    z-index: 2;
+    @include textClamp(1);
+  }
+  &-time {
+    position: absolute;
+    background: rgba(21, 13, 13, 0.44);
+    color: rgb(255 255 255 / 85%);
+    padding: 3px 8px;
+    font-size: 12px;
+    border-radius: 6px;
+    top: 10px;
+    z-index: 2;
+    right: 8px;
+  }
+
+  &-by {
+    transition: 0.3s;
+    padding: 15px 0;
+    display: inline-flex;
+  }
+  &-view {
+    font-size: 12px;
+  }
+  &-view-num {
+    @include dotSeparate("right", $gray-light);
+    margin-right: 0;
+  }
+  &-date{
+    margin-left: 0;
+  }
+
+  &-line {
+    padding: 6px;
+    margin-left: auto;
+    margin-top: auto;
+    border-radius: 10px;
+    background-color: transparent;
+    border: 1px solid transparent;
+    cursor: pointer;
+    @include flex(center, center);
+    & > span {
+      font-size: 14px;
+      @include dotSeparate("left", $gray-light);
+    }
+  }
+  &-line {
+    transition: 0.3s;
+    &:hover,
+    &.active {
+      color: $primary-color;
+      background: rgba($primary-color, 0.2);
+      & > span,
+      & > i {
+        font-weight: bold;
+      }
+      & > span::before {
+        background-color: currentColor;
+      }
+    }
+    &:hover {
+      border: 1px solid currentColor;
+    }
+  }
+  &:hover {
+    .story-image > img {
+      transform: scale(1.2);
+      transform-origin: center;
+    }
+    .story-time {
+      display: none;
+    }
+    .story-author {
+      bottom: -45px;
+      transform: scale(0.6);
+      right: -3px;
+      z-index: 2;
+    }
+    .story-by {
+      opacity: 0;
+    }
+  }
+}
+.author {
+  &-img {
+    width: 52px;
+    height: 52px;
+    border: 1px solid rgb(255 255 255 / 75%);
+    padding: 4px;
+    border-radius: 50%;
+    object-fit: cover;
+    &--wrapper {
+      position: relative;
+      flex-shrink: 0;
+    }
+  }
+  &-name {
+    font-size: 15px;
+    color: $gray-lighter;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  &-info {
+    font-size: 13px;
+    font-weight: 400;
+    color: $gray-lighter;
+  }
+  &-detail {
+    margin-left: 16px;
+  }
+}
+@include maxWidth(1023px) {
+  .main-header-mode {
+    display: none;
+  }
+}
