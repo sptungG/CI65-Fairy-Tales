@@ -115,7 +115,7 @@
     content: "";
     position: absolute;
     top: 50%;
-    @include size(3px);
+    @include size(3.2px);
     border-radius: 50%;
     background-color: $color;
     @if $pos == "left" {
