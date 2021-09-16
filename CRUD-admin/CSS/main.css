@@ -62,8 +62,6 @@
   .search{
     display: flex;
     justify-content: space-between;
-<<<<<<< HEAD
-<<<<<<< HEAD
     margin: 20px;
   }
 
@@ -77,17 +75,10 @@
   .search button{
     width: 100px;
     margin-right: 20px;
-=======
-=======
->>>>>>> fa77b41e8d6daf1e7a079c0ee8c9792b175f458b
   }
 
   .search input{
     box-sizing: border-box;
-<<<<<<< HEAD
->>>>>>> fa77b41e8d6daf1e7a079c0ee8c9792b175f458b
-=======
->>>>>>> fa77b41e8d6daf1e7a079c0ee8c9792b175f458b
   }
 
   .products {
