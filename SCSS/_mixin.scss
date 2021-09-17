@@ -102,7 +102,7 @@
   word-break: break-word;
 }
 
-@mixin dotSeparate($pos, $color: $gray-lighter) {
+@mixin dotSeparate($pos, $color: $gray-lighter, $size: 3.2px) {
   position: relative;
   @if $pos == "left" {
     padding-left: 5px;
@@ -115,7 +115,7 @@
     content: "";
     position: absolute;
     top: 50%;
-    @include size(3.2px);
+    @include size($size);
     border-radius: 50%;
     background-color: $color;
     @if $pos == "left" {
