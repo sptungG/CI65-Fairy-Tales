@@ -571,7 +571,7 @@ section[id] {
   overflow: hidden;
   border-radius: 20px;
   transition: 0.4s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 16px 16px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 2px rgba(30, 36, 46, 0.05), 0 4px 4px rgba(30, 36, 46, 0.05), 0 8px 8px rgba(30, 36, 46, 0.05), 0 16px 16px rgba(30, 36, 46, 0.05);
 }
 .category-title {
   padding-right: 10px;
@@ -787,7 +787,7 @@ section[id] {
   overflow: hidden;
   border-radius: 20px;
   transition: 0.4s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 16px 16px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 2px rgba(30, 36, 46, 0.05), 0 4px 4px rgba(30, 36, 46, 0.05), 0 8px 8px rgba(30, 36, 46, 0.05), 0 16px 16px rgba(30, 36, 46, 0.05);
 }
 .story-item {
   position: relative;
@@ -1018,7 +1018,7 @@ section[id] {
   overflow: hidden;
   border-radius: 20px;
   transition: 0.4s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 16px 16px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 2px 2px rgba(30, 36, 46, 0.05), 0 4px 4px rgba(30, 36, 46, 0.05), 0 8px 8px rgba(30, 36, 46, 0.05), 0 16px 16px rgba(30, 36, 46, 0.05);
 }
 .favorite-list {
   display: grid !important;
@@ -1351,9 +1351,11 @@ section[id] {
   height: 100%;
 }
 .detail-title-wrapper {
-  display: flex;
-  justify-content: space-between;
   align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
   margin-bottom: 20px;
 }
 .detail-title {
@@ -1374,7 +1376,6 @@ section[id] {
   height: 60px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 10px;
 }
 .detail-author-name {
   margin-top: 10px;
@@ -1387,10 +1388,17 @@ section[id] {
   border-radius: 10px;
   color: #f56766;
   background-color: rgba(245, 103, 102, 0.1);
+  border: 1px solid transparent;
   font-weight: 600;
 }
 .detail-rating > i {
   margin-right: 5px;
+}
+.detail-rating:hover {
+  border: 1px solid #f56766;
+}
+.detail-rating:hover > i {
+  font-weight: bold;
 }
 .detail-category {
   display: flex;
@@ -1448,19 +1456,15 @@ section[id] {
   font-size: 22px;
 }
 .comment-form-icon {
-  background-color: #252936;
-  border: none;
   display: flex;
   align-items: center;
-  transition: 0.2s linear;
-  cursor: pointer;
-  color: #f7f8f9;
+  padding: 14px;
+  font-size: 20px;
   flex-shrink: 0;
-  border-radius: 10px 0 0 10px;
+  color: #f7f8f9;
   border: 1px solid #f56766;
   background-color: #f56766;
-  padding: 15px;
-  font-size: 20px;
+  border-radius: 10px 0 0 10px;
 }
 .comment-form-input {
   flex: 1;
@@ -1474,6 +1478,9 @@ section[id] {
   background-color: #1e242e;
   color: #f7f8f9;
 }
+.comment-form-input::placeholder {
+  color: #6a727f;
+}
 .comment-form-input:focus {
   border-color: rgba(245, 103, 102, 0.5);
 }
@@ -1482,13 +1489,13 @@ section[id] {
 }
 .comment-form-button {
   padding: 5px 10px;
-  background-color: #252936;
   color: #f7f8f9;
+  background-color: #252936;
   outline: none;
   cursor: pointer;
-  font-weight: 500;
   border-radius: 5px;
   flex-shrink: 0;
+  font-weight: 500;
   transition: all 0.2s linear;
   position: absolute;
   top: 50%;
@@ -1533,21 +1540,21 @@ section[id] {
   margin-top: 40px;
   position: relative;
 }
-.comment-list:before {
+.comment-list::before {
   content: "";
   width: 2px;
   height: 100%;
   background: #c7cacb;
   position: absolute;
-  left: 32px;
+  left: 26px;
   top: 0;
 }
-.comment-list:after {
+.comment-list::after {
   content: "";
   position: absolute;
   background: #c7cacb;
   bottom: -1px;
-  left: 28px;
+  left: 22px;
   width: 10px;
   height: 10px;
   border: 3px solid #222831;
@@ -1562,31 +1569,31 @@ section[id] {
   align-items: flex-start;
 }
 .comment-avatar {
-  width: 65px;
-  height: 65px;
-  z-index: 10;
+  width: 55px;
+  height: 55px;
   border-radius: 50%;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  z-index: 10;
 }
 .comment-avatar img {
+  object-position: center;
   object-fit: cover;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
 }
 .comment-head {
   background-color: #1e242e;
   padding: 10px 12px;
   border-bottom: 1px solid #1e242e;
   overflow: hidden;
-  -webkit-border-radius: 4px 10px 0 0;
+  -webkit-border-radius: 10px 10px 0 0;
   -moz-border-radius: 10px 10px 0 0;
   border-radius: 10px 10px 0 0;
-  display: flex;
   align-items: center;
+  justify-content: flex-start;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
 }
 .comment-name {
   font-size: 16px;
@@ -1627,22 +1634,22 @@ section[id] {
 }
 .comment-box {
   width: calc(100% - 90px);
+  box-shadow: 0 2px 2px rgba(30, 36, 46, 0.1), 0 4px 4px rgba(30, 36, 46, 0.1), 0 8px 8px rgba(30, 36, 46, 0.1), 0 16px 16px rgba(30, 36, 46, 0.1);
   position: relative;
   z-index: 1;
   border-radius: 10px;
-  box-shadow: 0 2px 2px rgba(30, 36, 46, 0.1), 0 4px 4px rgba(30, 36, 46, 0.1), 0 8px 8px rgba(30, 36, 46, 0.1), 0 16px 16px rgba(30, 36, 46, 0.1);
 }
 .comment-box::before {
   content: "";
   width: 20px;
   height: 20px;
+  box-shadow: 0 2px 2px rgba(30, 36, 46, 0.1), 0 4px 4px rgba(30, 36, 46, 0.1), 0 8px 8px rgba(30, 36, 46, 0.1), 0 16px 16px rgba(30, 36, 46, 0.1);
   position: absolute;
   top: 25px;
   left: 0;
   background-color: #1e242e;
-  box-shadow: 0 2px 2px rgba(30, 36, 46, 0.1), 0 4px 4px rgba(30, 36, 46, 0.1), 0 8px 8px rgba(30, 36, 46, 0.1), 0 16px 16px rgba(30, 36, 46, 0.1);
-  border-radius: 4px;
   transform: translateX(-50%) rotate(45deg);
+  border-radius: 5px;
   z-index: -1;
 }
 

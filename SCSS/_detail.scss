@@ -20,9 +20,7 @@
     @include size(100%);
   }
   &-title-wrapper {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
+    @include flex(flex-start, space-between);
     margin-bottom: 20px;
   }
   &-title {
@@ -42,7 +40,6 @@
     @include size(60px);
     border-radius: 50%;
     object-fit: cover;
-    margin-right: 10px;
   }
   &-author-name {
     margin-top: 10px;
@@ -55,10 +52,17 @@
     border-radius: 10px;
     color: $primary-color;
     background-color: rgba($primary-color, 0.1);
+    border: 1px solid transparent;
     font-weight: 600;
   }
   &-rating > i {
     margin-right: 5px;
+  }
+  &-rating:hover{
+    border: 1px solid $primary-color;
+    & > i{
+      font-weight: bold;
+    }
   }
   &-category {
     display: flex;
@@ -102,19 +106,15 @@
     font-size: 22px;
   }
   &-icon {
-    background-color: $gray;
-    border: none;
     display: flex;
     align-items: center;
-    transition: 0.2s linear;
-    cursor: pointer;
-    color: $gray-lighter;
+    padding: 14px;
+    font-size: 20px;
     flex-shrink: 0;
-    border-radius: 10px 0 0 10px;
+    color: $gray-lighter;
     border: 1px solid $primary-color;
     background-color: $primary-color;
-    padding: 15px;
-    font-size: 20px;
+    border-radius: 10px 0 0 10px;
   }
   &-input {
     flex: 1;
@@ -128,6 +128,9 @@
     background-color: $gray-darkest;
     color: $gray-lighter;
   }
+  &-input::placeholder {
+    color: $gray-light;
+  }
   &-input:focus {
     border-color: rgba($primary-color, 0.5);
   }
@@ -136,13 +139,13 @@
   }
   &-button {
     padding: 5px 10px;
-    background-color: $gray;
     color: $gray-lighter;
+    background-color: $gray;
     outline: none;
     cursor: pointer;
-    font-weight: 500;
     border-radius: 5px;
     flex-shrink: 0;
+    font-weight: 500;
     transition: all 0.2s linear;
     position: absolute;
     top: 50%;
@@ -150,12 +153,12 @@
     transform: translateY(-50%);
   }
 }
+
 .slider-buttons {
   display: flex;
   justify-content: flex-end;
   padding-top: 8px;
 }
-
 .swiper-button-next,
 .swiper-button-prev {
   font-size: 18px;
@@ -166,7 +169,6 @@
   color: $gray-lighter;
   position: relative;
   margin-left: 10px;
-
   &:before {
     content: "";
     position: absolute;
@@ -177,7 +179,6 @@
     bottom: -2px;
     transition: 0.2s;
   }
-
   &:hover:before {
     width: 100%;
   }
@@ -187,21 +188,21 @@
     margin-top: 40px;
     position: relative;
   }
-  &-list:before {
+  &-list::before {
     content: "";
     width: 2px;
     height: 100%;
     background: #c7cacb;
     position: absolute;
-    left: 32px;
+    left: 26px;
     top: 0;
   }
-  &-list:after {
+  &-list::after {
     content: "";
     position: absolute;
     background: #c7cacb;
     bottom: -1px;
-    left: 28px;
+    left: 22px;
     @include size(10px);
     border: 3px solid $gray-darker;
     -webkit-border-radius: 50%;
@@ -216,32 +217,26 @@
     align-items: flex-start;
   }
   &-avatar {
-    width: 65px;
-    height: 65px;
-    z-index: 10;
+    @include size(55px);
     border-radius: 50%;
     overflow: hidden;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    z-index: 10;
   }
-
   &-avatar img {
+    object-position: center;
     object-fit: cover;
     width: 100%;
     height: 100%;
-    border-radius: 50%;
   }
   &-head {
     background-color: $gray-darkest;
     padding: 10px 12px;
     border-bottom: 1px solid $gray-darkest;
     overflow: hidden;
-    -webkit-border-radius: 4px 10px 0 0;
+    -webkit-border-radius: 10px 10px 0 0;
     -moz-border-radius: 10px 10px 0 0;
     border-radius: 10px 10px 0 0;
-    display: flex;
-    align-items: center;
+    @include flex(center);
   }
   &-name {
     font-size: 16px;
@@ -269,22 +264,21 @@
   }
   &-box {
     width: calc(100% - 90px);
+    @include boxShadow($gray-darkest, 0.1);
     position: relative;
     z-index: 1;
     border-radius: 10px;
-    box-shadow: 0 2px 2px rgba($gray-darkest, 0.1), 0 4px 4px rgba($gray-darkest, 0.1), 0 8px 8px rgba($gray-darkest, 0.1), 0 16px 16px rgba($gray-darkest, 0.1);
   }
   &-box::before {
     content: "";
-    width: 20px;
-    height: 20px;
+    @include size(20px);
+    @include boxShadow($gray-darkest, 0.1);
     position: absolute;
     top: 25px;
     left: 0;
     background-color: $gray-darkest;
-    box-shadow: 0 2px 2px rgba($gray-darkest, 0.1), 0 4px 4px rgba($gray-darkest, 0.1), 0 8px 8px rgba($gray-darkest, 0.1), 0 16px 16px rgba($gray-darkest, 0.1);
-    border-radius: 4px;
     transform: translateX(-50%) rotate(45deg);
+    border-radius: 5px;
     z-index: -1;
   }
 }
