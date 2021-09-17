@@ -1333,9 +1333,111 @@ section[id] {
   margin-left: 30px;
   color: #f56766;
 }
-.list-group{
-  margin-top: 30px;
+
+.description{
+  overflow: visible;
+  width: 800px;
+  height: 110px;
+
+}
+
+.description-title{
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.6;
+
+  color: #f7f8f9;
+  margin-top: 10px;
+  font-size: 30px;
+}
+
+/* .fa-heart::before :hover{
+  color: red;
+  transform:  scale(1.1);
+} */
+
+.description-view{
+  margin-top: 15px;
+  margin-bottom: 26px;
+  font-size: 15px;
+}
+
+.description-all{
+  margin-top: 20px;
+
+}
+
+.description-author{
   display: flex;
+}
+
+.description-author-img{
+  width: 50px;
+  
+  border-radius: 5px;
+  
+}
+.description-author-name{
+  margin-top: 15px;
+  margin-left: 10px;
+  font-size: 19px;
+  color: #f7f8f9;
+}
+
+
+
+.img-author-detail{
+  border-radius: 50px;
+  width: 50px;
+  height: 50px;
+}
+
+.description-main{
+  margin-top: 15px;
+  margin-left: 60px;
+}
+
+.list-group{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+}
+
+.list-title{
+  
+}
+
+.heart-detail{
+  display: flex;
+  margin-top: 15px;
+}
+
+.rate-detail{
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid ;
+  
+}
+
+.date-detail{
+  font-size: 15px;
+  margin-left: 20px;
+}
+
+.description-detail{
+  display: flex;
+  margin-top: 30px;
+  justify-content: space-between;
+}
+
+.item-detail{
+  margin-top: 10px;
+  width: 300px;
+
+}
+
+.item-detail-in{
+
 }
 
 .totalIteam{
@@ -1369,11 +1471,14 @@ section[id] {
   height: auto;
 }
 .screen-detail{
-  border-radius: 30px;
-  border:3px solid rgba(245, 136, 38, 0.4);
-  background-color: white;
-  width: 900px;
-  height: 450px;
+  /* background-color: #252936; */
+
+  border-radius: 20px;
+  transition: 0.4s;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 16px 16px rgba(0, 0, 0, 0.05);
+  background-color: #f7f8f9;
+  width: 1300px;
+  height: 460px;
   margin-top: 30px;
 }
 .containerFairy{
@@ -1381,6 +1486,5 @@ section[id] {
   justify-content: center;
 }
 .containerDetail{
-  background-image: url("../IMG/BackGroundDetail.png");
-  border-radius: 0px;
+  
 }
