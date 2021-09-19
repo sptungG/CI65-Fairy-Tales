@@ -8,7 +8,7 @@ body {
   font-size: 18px;
   line-height: 1;
   color: $gray-light;
-  background-color: $gray-darker;
+  background-color: $gray;
   overflow-x: hidden;
   padding-top: 60px;
   @include hideScroll();
@@ -68,6 +68,26 @@ section[id] {
     @include gradient($primary-color, $secondary-color);
   }
 }
+.btn-mode{
+  padding: 10px 20px;
+  transition: all 0.25s ease;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: $gray;
+  color: $gray-lighter;
+  margin-left: 5px;
+  &:hover{
+    @include textGradient();
+    border: 1px solid $primary-color;
+  }
+}
+.mode-active{
+  border: 1px solid $primary-color;
+  @include textGradient();
+}
+
+
 #toTopBtn {
   display: none;
   position: fixed;
@@ -116,15 +136,3 @@ section[id] {
     transform: translate(-50%, -150%);
   }
 }
-// .category{
-//   display: none;
-// }
-// .main{
-//   display: none;
-// }
-// .profile{
-//   display: none;
-// }
-// .detail{
-//   display: none;
-// }
