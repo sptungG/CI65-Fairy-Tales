@@ -10,23 +10,7 @@
   }
   &-header-mode {
     margin-left: auto;
-    & > button {
-      padding: 10px 20px;
-      transition: all 0.25s ease;
-      border-radius: 8px;
-      cursor: pointer;
-      border: 1px solid transparent;
-      background-color: $gray;
-      color: $gray-lighter;
-    }
-    & > button:hover,
-    .mode-active > i {
-      @include textGradient();
-    }
-    & > button:hover,
-    .mode-active {
-      border: 1px solid $primary-color;
-    }
+    display: inline-flex;
   }
 }
 
@@ -88,6 +72,7 @@
     transition: 0.3s;
     padding: 15px 0;
     display: inline-flex;
+    line-height: 1.4;
   }
   &-view {
     font-size: 12px;
@@ -159,24 +144,10 @@
     padding: 4px;
     border-radius: 50%;
     object-fit: cover;
-    &--wrapper {
-      position: relative;
-      flex-shrink: 0;
-    }
   }
-  &-name {
-    font-size: 15px;
-    color: $gray-lighter;
-    font-weight: 500;
-    margin-bottom: 8px;
-  }
-  &-info {
-    font-size: 13px;
-    font-weight: 400;
-    color: $gray-lighter;
-  }
-  &-detail {
-    margin-left: 16px;
+  &-img--wrapper {
+    position: relative;
+    flex-shrink: 0;
   }
 }
 @include maxWidth(1023px) {

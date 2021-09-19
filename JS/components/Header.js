@@ -2,6 +2,8 @@ import BaseComponent from "./BaseComponent.js";
 
 export default class Header extends BaseComponent {
   render() {
+    let $header = document.createElement("header");
+    $header.classList.add("header");
     let $container = document.createElement("div");
     $container.className = "container";
     $container.innerHTML = `
@@ -15,9 +17,9 @@ export default class Header extends BaseComponent {
         <div class="header-avatar dropdown" id="lightdropdown">
           <div class="dropdown-select">
             <a class="header-user">
-              <img src="${this.props.image}" alt="" />
+              <img src="${this.props.user.image}" alt="" />
             </a>
-            <span class="header-user-name">${this.props.name}</span>
+            <span class="header-user-name">${this.props.user.name}</span>
             <i class="fa fa-angle-down dropdown-caret"></i>
           </div>
           <ul class="dropdown-list">
@@ -29,8 +31,9 @@ export default class Header extends BaseComponent {
       </div>
     </div>
     `;
+    $header.append($container);
     this.createListener();
-    return $container;
+    return $header;
   }
   createListener() {
     window.addEventListener("load", function () {
