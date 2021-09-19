@@ -30,11 +30,7 @@ export let stories = [
       name: "Voluptatum aliquam magni tenetur",
     },
     pages: [
-      {
-        image:
-          "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FCover%2Fbia_b.jpg?alt=media&token=a4c21838-2378-47a6-acfc-3fb02fe84f9d",
-        audio: "",
-      },
+      { image: "https://source.unsplash.com/random/?anime", audio: "" },
       { image: "https://source.unsplash.com/random/?girl", audio: "" },
       { image: "https://source.unsplash.com/random/?nature", audio: "" },
       { image: "https://source.unsplash.com/random/?forest", audio: "" },
