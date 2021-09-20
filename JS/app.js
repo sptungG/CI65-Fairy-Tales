@@ -10,5 +10,6 @@ import LandingPage from "./screens/LandingPage.js";
 // appendTo($app, login);
 
 let $app = document.getElementById('app');
-$app.innerHTML = new LandingPage().render();
+const landingPage = new LandingPage();
+$app.append(landingPage.render());
 
