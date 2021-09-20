@@ -710,7 +710,7 @@ section {
 .experience-year {
   position: relative;
   z-index: 2;
-  background: url("../images/img7.png") no-repeat 50%;
+  /* background: url("../images/img7.png") no-repeat 50%; */
   color: transparent;
   -webkit-background-clip: text;
   background-clip: text;
@@ -875,7 +875,7 @@ section {
   justify-content: center;
   flex-direction: column;
   text-align: center;
-  /* background: url("../images/img9.png") no-repeat center; */
+  background: url("../images/img9.png") no-repeat center;
   background-color: #1e242e;
   border-radius: 12px;
   position: relative;
