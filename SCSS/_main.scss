@@ -22,14 +22,13 @@
   &-image {
     width: 100%;
     height: 0;
-    padding-top: 60%;
+    padding-top: 75%;
     flex-shrink: 0;
     position: relative;
   }
   &-image > img {
     @include absoluteFull();
     object-fit: cover;
-    border-radius: 20px 20px 0 0;
     cursor: pointer;
     transition: 0.4s;
   }
@@ -49,7 +48,7 @@
   }
   &-title {
     font-weight: 500;
-    font-size: 20px;
+    font-size: 22px;
     line-height: 1.6;
     margin-bottom: 15px;
     color: $gray-lighter;
@@ -73,6 +72,7 @@
     padding: 15px 0;
     display: inline-flex;
     line-height: 1.4;
+    font-size: 14px;
   }
   &-view {
     font-size: 12px;
@@ -153,5 +153,8 @@
 @include maxWidth(1023px) {
   .main-header-mode {
     display: none;
+  }
+  .story-image{
+    padding-top: 60%;
   }
 }

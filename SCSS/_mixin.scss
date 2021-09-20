@@ -177,7 +177,7 @@
     background-color: $gray;
     height: auto;
     overflow: hidden;
-    border-radius: 20px;
+    border-radius: 5px;
     transition: 0.4s;
     @include boxShadow();
   }
@@ -205,5 +205,30 @@
   & > * {
     scroll-snap-align: center;
     width: auto;
+  }
+}
+@mixin dropdownListIcon($top: 18px, $right: 10px){
+  margin-top: $top;
+  &::before {
+    content: "";
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    top: 0;
+    right: $right;
+    background-color: $gray-darkest;
+    border-radius: 4px;
+    transform: translateY(-50%) rotate(45deg);
+    z-index: -1;
+  }
+  &::after {
+    content: "";
+    height: $top;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: transparent;
+    transform: translateY(-100%);
   }
 }

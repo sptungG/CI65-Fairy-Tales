@@ -12,11 +12,16 @@
     padding: 10px;
     @include flex();
   }
-  &-item > img {
+  &-item-image{
     width: 50%;
     height: 100%;
     border-radius: 10px;
     flex-shrink: 0;
+    transform: scale(0.9);
+  }
+  &-item-image > img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     transition: 0.3s;
   }
@@ -44,13 +49,13 @@
     content: "";
     background-color: $primary-color;
     height: 3px;
-    width: 100%;
+    width: 0;
     position: absolute;
     bottom: -5px;
-    left: 50%;
-    transform: translate(-50%, 100%);
-    opacity: 0;
+    left: 0;
+    transform: translateY( 100%);
     border-radius: 10px;
+    transition: all 0.3s linear;
   }
   &-item:nth-child(3n) h3::before {
     background: $primary-color;
@@ -63,13 +68,13 @@
   }
 
   &-item:hover {
-    & > img {
-      transform: scale(0.9);
+    .category-item-image{
+      transform: scale(0.8);
     }
-    & h3 {
+    .category-item-content h3 {
       @include textGradient();
       &::before {
-        opacity: 1;
+        width: 100%;
       }
     }
   }
