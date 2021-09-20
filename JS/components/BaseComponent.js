@@ -27,7 +27,7 @@ export default class BaseComponent {
       this.$element.replaceWith($element);
     }
     this.$element = $element;
-    this.afterRender();
+    this.afterRender(); 
     return this.$element;
   }
 }
