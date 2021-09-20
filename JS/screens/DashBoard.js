@@ -93,7 +93,7 @@ export default class DashBoard extends BaseComponent {
       let filterStories = stories.filter((story) => {
         return story.categories.join(",").toLowerCase().split(",").indexOf(category) != -1;
       });
-      console.log(filterStories);
+      console.log("Filter: ",category,filterStories);
       return filterStories;
     }
   }
