@@ -34,16 +34,20 @@
     display: flex;
     padding: 5px;
     border-radius: 100px;
-    border: 1px solid $gray-light;
+    border: 1px solid $gray-dark;
+    position: relative;
+  }
+  &-filter-wrapper.focus {
+    border: 1px solid rgba($gray-light, 0.5);
   }
   &-filter-wrapper > .header-search {
     padding: 10px 20px;
-    color: #fff;
+    color: $gray-light;
     flex-shrink: 0;
     border-radius: 100px;
     @include gradient();
   }
-  &-filter-wrapper > input {
+  &-filter-wrapper .header-search-input {
     width: 100%;
     padding: 10px;
     background-color: transparent;
@@ -51,6 +55,54 @@
     font-size: 16px;
     font-weight: lighter;
     color: $gray-lighter;
+  }
+  &-search-box {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 110%;
+    min-height: 150px;
+    max-height: 100vh;
+    padding: 10px;
+    padding-bottom: 0;
+    border-radius: 0 0 10px 10px;
+    background-color: $gray-darkest;
+    z-index: -1;
+    transform: translate(-50%, 50px);
+    display: none;
+    @include hideScroll();
+  }
+  &-search-box::before {
+    content: "";
+    background-color: $gray-darkest;
+    height: 70px;
+    position: absolute;
+    top: 1px;
+    width: 100%;
+    left: 0;
+    transform: translateY(-100%);
+    z-index: 10;
+  }
+  &-search-box.show {
+    display: block;
+    box-shadow: rgba(#111, 0.5) 0px 2.5px 5px;
+  }
+  &-search-item {
+    @include flex(center, space-between);
+    margin-bottom: 10px;
+    border-radius: 10px;
+  }
+  &-search-item .activity-item-image {
+    width: 130px;
+    height: 130px;
+    transform: scale(0.9);
+  }
+  &-search-item:hover{
+    background-color: $gray-dark;
+  }
+  &-search-result{
+    display: inline-block;
+    padding: 10px;
   }
   &-avatar {
     @include flex(center, flex-end);
@@ -100,28 +152,7 @@
     display: none;
     border: 1px solid $gray-darkest;
     box-shadow: 1px 1px 2px 0px rgba(black, 0.2);
-  }
-  &-list::before {
-    content: "";
-    width: 20px;
-    height: 20px;
-    position: absolute;
-    top: 0;
-    right: 10px;
-    background-color: $gray-darkest;
-    border-radius: 4px;
-    transform: translateY(-50%) rotate(45deg);
-    z-index: -1;
-  }
-  &-list::after {
-    content: "";
-    height: 18px;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    background-color: transparent;
-    transform: translateY(-100%);
+    @include dropdownListIcon();
   }
 
   &-list.show {

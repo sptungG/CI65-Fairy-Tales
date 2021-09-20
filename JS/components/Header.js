@@ -1,63 +1,136 @@
+import { removeVietnameseTones } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
-
 export default class Header extends BaseComponent {
   render() {
     let $header = document.createElement("header");
     $header.classList.add("header");
     let $container = document.createElement("div");
-    $container.className = "container";
-    $container.innerHTML = `
-    <div class="header-top">
-      <a href="index.html" class="header-logo-link"><img src="./IMG/icons/book.svg" alt="" class="header-logo" /><span>FairyStory</span></a>
-      <div class="header-top-right">
-        <div class="header-filter-wrapper">
-          <input autocomplete="off" type="text" name="search" placeholder="Type your Fairy Tale..." />
-          <button class="header-search"><i class="fas fa-search"></i></button>
-        </div>
-        <div class="header-avatar dropdown" id="lightdropdown">
-          <div class="dropdown-select">
-            <a class="header-user">
-              <img src="${this.props.user.image}" alt="" />
-            </a>
-            <span class="header-user-name">${this.props.user.name}</span>
-            <i class="fa fa-angle-down dropdown-caret"></i>
-          </div>
-          <ul class="dropdown-list">
-            <li class="dropdown-item" data-value="user-profile"><span>Profile</span><i class="far fa-address-card dropdown-item-icon"></i></li>
-            <li class="dropdown-item" data-value="mode"><span>Dark mode</span><i class="far fa-moon dropdown-item-icon"></i></li>
-            <li class="dropdown-item" data-value="logout"><span>Logout</span><i class="fas fa-sign-out-alt dropdown-item-icon"></i></li>
-          </ul>
-        </div>
-      </div>
-    </div>
+    $container.classList.add("container");
+    let $headerTop = document.createElement("div");
+    $headerTop.classList.add("header-top");
+    let $headerLogo = document.createElement("a");
+    $headerLogo.classList.add("header-logo-link");
+    $headerLogo.href = "index.html";
+    $headerLogo.innerHTML = `<img src="./IMG/icons/book.svg" alt="" class="header-logo" /><span>FairyStory</span>`;
+
+    let $headerTopRight = document.createElement("div");
+    $headerTopRight.classList.add("header-top-right");
+    let $headerFilterWrapper = document.createElement("div");
+    $headerFilterWrapper.classList.add("header-filter-wrapper");
+    let $headerSearch = document.createElement("input");
+    $headerSearch.classList.add("header-search-input");
+    $headerSearch.placeholder = "Type your Fairy Tale...";
+    $headerSearch.type = "text";
+    $headerSearch.setAttribute("autocomplete", "off");
+    $headerSearch.name = "search";
+    let $headerSearchBox = document.createElement("ul");
+    $headerSearchBox.classList.add("header-search-box");
+    let $headerSearchBtn = document.createElement("button");
+    $headerSearchBtn.classList.add("header-search");
+    $headerSearchBtn.innerHTML = `<i class="fas fa-search"></i>`;
+
+    // Search 
+    function storiesSearched(value, stories) {
+      // let storiesFilter = JSON.parse(JSON.stringify(stories));
+      let searchString = value;
+      let storiesFilter = stories.filter((story) => {
+        return removeVietnameseTones(story.name).toLowerCase().includes(removeVietnameseTones(searchString).toLowerCase());
+      });
+      if (storiesFilter.length > 0) {
+        return storiesFilter;
+      }
+    }
+    $headerSearch.addEventListener("input", (e) => {
+      $headerSearchBox.classList.add("show");
+      this.generateSearchItems(this.props.stories, $headerSearchBox);
+      this.generateSearchItems(storiesSearched(e.target.value, this.props.stories), $headerSearchBox);
+      $headerSearchBox.insertAdjacentHTML(
+        "afterbegin",
+        `<span class = "header-search-result"><strong>${storiesSearched(e.target.value, this.props.stories).length}</strong> stories matched with you.</span>`
+      );
+    });
+    $headerSearchBtn.addEventListener("click", () => {
+      $headerSearchBox.classList.toggle("show");
+      $headerFilterWrapper.classList.toggle("focus");
+      $headerSearch.focus();
+      this.generateSearchItems(this.props.stories, $headerSearchBox);
+    });
+    $headerFilterWrapper.append($headerSearch, $headerSearchBtn, $headerSearchBox);
+
+    let $headerAvt = document.createElement("div");
+    $headerAvt.classList.add("header-avatar", "dropdown");
+    let $dropdownSelect = document.createElement("div");
+    $dropdownSelect.classList.add("dropdown-select");
+    $dropdownSelect.innerHTML = `
+    <a class="header-user">
+    <img src="${this.props.user.image}" alt="" />
+    </a>
+    <span class="header-user-name">${this.props.user.name}</span>
     `;
+    let $dropdownCaret = document.createElement("i");
+    $dropdownCaret.classList.add("fa", "fa-angle-down", "dropdown-caret");
+    $dropdownSelect.append($dropdownCaret);
+    let $dropdownList = document.createElement("ul");
+    $dropdownList.classList.add("dropdown-list");
+    function handleSelectDropdown() {
+      $dropdownList.classList.remove("show");
+      $dropdownCaret.classList.remove("fa-angle-up");
+    }
+    let $dropdownOption1 = this.dropdownOption("user-profile", "Profile", "far fa-address-card", handleSelectDropdown);
+    let $dropdownOption2 = this.dropdownOption("dark-mode", "Dark mode", "far fa-moon", handleSelectDropdown);
+    let $dropdownOption3 = this.dropdownOption("logout", "Logout", "fas fa-sign-out-alt", handleSelectDropdown);
+    $dropdownList.append($dropdownOption1, $dropdownOption2, $dropdownOption3);
+
+    // Avt Listener
+    $dropdownSelect.addEventListener("click", function () {
+      $dropdownList.classList.toggle("show");
+      $dropdownCaret.classList.toggle("fa-angle-up");
+    });
+
+    $headerAvt.append($dropdownSelect, $dropdownList);
+    $headerTopRight.append($headerFilterWrapper, $headerAvt);
+    $headerTop.append($headerLogo, $headerTopRight);
+    $container.append($headerTop);
     $header.append($container);
-    this.createListener();
     return $header;
   }
-  createListener() {
-    window.addEventListener("load", function () {
-      const dropdownItems = document.querySelectorAll("#lightdropdown .dropdown-item");
-      const dropdownSelect = document.querySelector("#lightdropdown .dropdown-select");
-      const dropdownSelectText = document.querySelector("#lightdropdown .dropdown-selected");
-      const dropdownList = document.querySelector("#lightdropdown .dropdown-list");
-      const dropdownCaret = document.querySelector("#lightdropdown .dropdown-caret");
-
-      dropdownSelect.addEventListener("click", function () {
-        dropdownList.classList.toggle("show");
-        dropdownCaret.classList.toggle("fa-angle-up");
+  dropdownOption(dataValue, content, icon, handleSelectDropdown) {
+    let $dropdownOption = document.createElement("li");
+    $dropdownOption.classList.add("dropdown-item");
+    $dropdownOption.dataset.value = `${dataValue}`;
+    $dropdownOption.innerHTML = `<span>${content}</span><i class="${icon} dropdown-item-icon"></i>`;
+    $dropdownOption.addEventListener("click", handleSelectDropdown);
+    return $dropdownOption;
+  }
+  generateSearchItems(stories, list) {
+    if (list.hasChildNodes()) {
+      list.innerHTML = "";
+      return;
+    }
+    stories.forEach((story) => {
+      let $searchBoxItem = document.createElement("li");
+      $searchBoxItem.classList.add("header-search-item");
+      $searchBoxItem.dataset.id = story.id;
+      $searchBoxItem.innerHTML = `
+        <div class="activity-item-image">
+            <img src="${story.pages[0].image}" alt="" />
+            <span class="activity-item-time">${story.length}</span>
+          </div>
+          <div class="activity-item-info">
+            <h3 class="title activity-item-title">${story.name}</h3>
+            <div class="activity-item-author">${story.author.name}</div>
+            <div class="activity-item-act">
+              <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${story.date}</span></div>
+            </div>
+        </div>
+        `;
+      $searchBoxItem.addEventListener("click", () => {
+        console.log("Go to: ", story);
       });
-
-      function handleSelectDropdown(e) {
-        const { value } = e.target.dataset;
-        dropdownSelectText.textContent = value;
-        dropdownList.classList.remove("show");
-        dropdownCaret.classList.remove("fa-angle-up");
-      }
-
-      dropdownItems.forEach((el) => el.addEventListener("click", handleSelectDropdown));
+      list.appendChild($searchBoxItem);
     });
   }
+  handleInputChange() {}
 }
 // //Get the button
 // const mybutton = document.getElementById("toTopBtn");

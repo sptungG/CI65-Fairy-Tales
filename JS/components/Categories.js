@@ -7,12 +7,15 @@ export default class Categories extends BaseComponent {
     this.generateCategories(this.props.categories, $categoryList);
     return $categoryList;
   }
-  generateCategories(categories, list) {
-    categories.forEach((category) => {
+  generateCategories(categoryList, list) {
+    categoryList.forEach((category) => {
       let $categoryItem = document.createElement("li");
       $categoryItem.classList.add("category-item");
+      $categoryItem.dataset.value = category.name.toLowerCase();
       $categoryItem.innerHTML = `
-      <img src=${category.image} alt="" />
+      <div class="category-item-image">
+        <img src=${category.image} alt="" />
+      </div>
       <div class="category-item-content">
         <h3>${category.name}</h3>
         <p>${category.desc}</p>
@@ -20,5 +23,14 @@ export default class Categories extends BaseComponent {
       `;
       list.appendChild($categoryItem);
     });
+  }
+  filterStory(category, stories) {
+    if (category != "All") {
+      let filterStories = stories.filter((story) => {
+        return story.categories.join(",").toLowerCase().split(",").indexOf(category) != -1;
+      });
+      console.log(filterStories);
+      return filterStories;
+    }
   }
 }
