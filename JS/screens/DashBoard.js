@@ -63,7 +63,6 @@ export default class DashBoard extends BaseComponent {
     $storyHeaderModes.append($gridMode, $listMode);
     $storyHeader.append($storyHeaderTitle, $storyHeaderModes);
 
-
     $storyContainer.append($storyHeader);
     appendTo($storyContainer, _storyList);
     $storySection.append($storyContainer);
@@ -89,12 +88,15 @@ export default class DashBoard extends BaseComponent {
     });
   }
   filterStory(category, stories) {
-    if (category != "All") {
-      let filterStories = stories.filter((story) => {
+    let filterStories = stories;
+    if (category != "all") {
+      filterStories = stories.filter((story) => {
         return story.categories.join(",").toLowerCase().split(",").indexOf(category) != -1;
       });
-      console.log("Filter: ",category,filterStories);
+      console.log("Filter: ", category, filterStories);
       return filterStories;
     }
+    console.log("Filter: ", category, filterStories);
+    return filterStories;
   }
 }
