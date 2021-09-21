@@ -16,13 +16,184 @@
     <link rel="stylesheet" type="text/css" media="screen" href="./CSS/app.css" />
   </head>
   <body>
-    <div id="app" class="wrapper"></div>
+    <div id="app" class="wrapper">
+      <section class="admin">
+        <div class="sidebar-menu">
+          <a href="#" class="sidebar-item">
+            <i class="fas fa-plus-circle sidebar-icon"></i>
+            <span class="sidebar-text">Add Story</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <i class="fas fa-home sidebar-icon"></i>
+            <span class="sidebar-text">Home</span>
+          </a>
+          <a href="#" class="sidebar-item">
+            <i class="fas fa-users sidebar-icon"></i>
+            <span class="sidebar-text">User</span>
+          </a>
+          <a href="#" class="sidebar-item active">
+            <i class="fas fa-book sidebar-icon"></i>
+            <span class="sidebar-text">Story</span>
+          </a>
+        </div>
+        <div class="admin-left">
+          <div class="admin-search">
+            <input type="text" class="admin-search-input" placeholder="Type your Fairy Tale name here..." />
+            <button class="admin-search-btn"><i class="fas fa-search"></i></button>
+          </div>
+
+          <div class="table">
+            <table>
+              <thead>
+                <tr>
+                  <th>Story</th>
+                  <th>Author</th>
+                  <th>Desc</th>
+                  <th>Category</th>
+                  <th>Length</th>
+                  <th>Date Created</th>
+                  <th>Action</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>
+                    <div class="image-text">
+                      <img
+                        src="https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FCover%2Fbia_b.jpg?alt=media&token=a4c21838-2378-47a6-acfc-3fb02fe84f9d"
+                        alt=""
+                      />
+                      <span class="item-name">Chuông Gió Kẹo Ngọt</span>
+                    </div>
+                  </td>
+                  <td>Tân Việt</td>
+                  <td>
+                    <p class="item-desc">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro cumque deleniti libero quos excepturi, corrupti debitis cum necessitatibus,
+                      maiores aliquam accusantium id sequi soluta aspernatur! Commodi id ducimus suscipit repellat.
+                    </p>
+                  </td>
+                  <td>
+                    <ul class="item-category-list">
+                      <li class="item-category">Kid</li>
+                      <li class="item-category">History</li>
+                      <li class="item-category">Education</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <div class="item-audio">
+                      <audio
+                        src="https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FPage1%2F1.mp3?alt=media&token=087277e2-1350-40da-a79a-5bce8f8c33c5"
+                      ></audio>
+                      <div class="item-audio-length">8:30</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="item-date">16/9/2021</div>
+                  </td>
+                  <td>
+                    <div class="action">
+                      <button class="far fa-edit btn btn-edit"></button>
+                      <button class="far fa-trash-alt btn btn-delete"></button>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>
+                    <div class="image-text">
+                      <img
+                        src="https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FCover%2Fbia_b.jpg?alt=media&token=a4c21838-2378-47a6-acfc-3fb02fe84f9d"
+                        alt=""
+                      />
+                      <span class="item-name">Chuông Gió Kẹo Ngọt</span>
+                    </div>
+                  </td>
+                  <td>Tân Việt</td>
+                  <td>
+                    <p class="item-desc">
+                      Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro cumque deleniti libero quos excepturi, corrupti debitis cum necessitatibus,
+                      maiores aliquam accusantium id sequi soluta aspernatur! Commodi id ducimus suscipit repellat.
+                    </p>
+                  </td>
+                  <td>
+                    <ul class="item-category-list">
+                      <li class="item-category">Kid</li>
+                      <li class="item-category">History</li>
+                      <li class="item-category">Education</li>
+                    </ul>
+                  </td>
+                  <td>
+                    <div class="item-audio">
+                      <audio
+                        src="https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FPage1%2F1.mp3?alt=media&token=087277e2-1350-40da-a79a-5bce8f8c33c5"
+                      ></audio>
+                      <div class="item-audio-length">8:30</div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="item-date">16/9/2021</div>
+                  </td>
+                  <td>
+                    <div class="action">
+                      <button class="far fa-edit btn btn-edit"></button>
+                      <button class="far fa-trash-alt btn btn-delete"></button>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="create-story-wrapper" id="create-story-wrapper">
+            <div class="create-story-container">
+              <h3 class="create-story title">Create Story</h3>
+              <form id="create-story-form" class="create-story-form">
+                <div class="text-field">
+                  <label for="name">Story Name</label>
+                  <input autocomplete="off" type="text" name="name" placeholder="Name Story..." />
+                </div>
+                <div class="text-field">
+                  <label for="category">Categories</label>
+                  <input autocomplete="off" type="select" name="category" placeholder="Category Story (separate by space)..." />
+                </div>
+                <div class="field-wrapper">
+                  <div class="text-field">
+                    <label for="author">Author Name</label>
+                    <input autocomplete="off" type="text" name="author" placeholder="Author Name..." />
+                  </div>
+                  <div class="text-field">
+                    <label for="author-image">Author Image</label>
+                    <input autocomplete="off" type="text" name="author-image" placeholder="Author Image Link..." />
+                  </div>
+                </div>
+                <div class="field-wrapper">
+                  <div class="text-field">
+                    <label for="page-image">Page Image 1</label>
+                    <input autocomplete="off" type="text" name="page" placeholder="Page Image..." />
+                  </div>
+                  <button class="fas fa-plus-circle btn text-field-add"></button>
+                </div>
+                <div class="text-field">
+                  <label for="audio">Audio</label>
+                  <input autocomplete="off" type="number" name="audio" placeholder="Audio Story..." />
+                </div>
+                <div class="text-field">
+                  <label for="describe">Story Describe</label>
+                  <textarea rows="4" cols="50" name="describe">Story Describe ...</textarea>
+                </div>
+                <button class="create-story-btn btn" type="submit">Add Story</button>
+              </form>
+            </div>
+            <div class="story-wrapper"></div>
+          </div>
+        </div>
+      </section>
+    </div>
 
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.0.1/firebase-auth-compat.js"></script>
     <script src="./JS/firebase.js"></script>
-    <!-- <script src="./JS/slider.js"></script> -->
-    <script type="module" src="./JS/app.js"></script>
+    <script src="./JS/admin.js"></script>
+    <!-- <script type="module" src="./JS/app.js"></script> -->
   </body>
 </html>

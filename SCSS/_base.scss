@@ -55,20 +55,32 @@ section[id] {
   background: linear-gradient(to right, rgba($primary-color, 0.4), rgba($secondary-color, 0.4)), url("../IMG/bg-modal.png") no-repeat center / cover;
 }
 .btn {
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
-  font-weight: 700;
-  height: 55px;
-  padding: 0 70px;
-  border-radius: 4px;
-  letter-spacing: 1px;
+  padding: 10px 20px;
+  border-radius: 10px;
+  background-color: $gray-darkest;
+  color: $gray-lighter;
   &-primary {
-    color: #fff;
     font-family: $secondary-font;
     @include gradient($primary-color, $secondary-color);
   }
+  &-delete {
+    color: red;
+    &:hover {
+      color: red;
+      background-color: rgba(red, 0.2);
+    }
+  }
+  &-edit {
+    color: $secondary-color;
+    &:hover {
+      color: $secondary-color;
+      background-color: rgba($secondary-color, 0.2);
+    }
+  }
 }
-.btn-mode{
+.btn-mode {
   padding: 10px 20px;
   transition: all 0.25s ease;
   border-radius: 8px;
@@ -77,16 +89,15 @@ section[id] {
   background-color: $gray;
   color: $gray-lighter;
   margin-left: 5px;
-  &:hover{
+  &:hover {
     @include textGradient();
     border: 1px solid $primary-color;
   }
 }
-.mode-active{
+.mode-active {
   border: 1px solid $primary-color;
   @include textGradient();
 }
-
 
 #toTopBtn {
   display: none;

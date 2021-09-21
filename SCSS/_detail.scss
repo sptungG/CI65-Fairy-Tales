@@ -1,6 +1,5 @@
 .detail-container {
   display: grid;
-  grid-template-columns: 1fr;
   grid-template-columns: 3fr 1fr;
   grid-gap: 0 20px;
   background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
