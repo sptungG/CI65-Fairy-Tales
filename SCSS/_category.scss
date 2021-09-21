@@ -1,0 +1,99 @@
+.category {
+  width: 100%;
+  @include gridLayout(20px, "fit", 235px);
+  margin-bottom: 50px;
+  &-title {
+    padding-right: 10px;
+    @include iconTitle("../IMG/icons/all-icon.png", 25px);
+    display: inline-block;
+  }
+  &-item {
+    padding-bottom: 20px;
+    padding: 10px;
+    @include flex();
+  }
+  &-item-image{
+    width: 50%;
+    height: 100%;
+    border-radius: 10px;
+    flex-shrink: 0;
+    transform: scale(0.9);
+  }
+  &-item-image > img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.3s;
+  }
+  &-item-content {
+    height: 100%;
+    @include flex(flex-start, flex-start, column);
+    padding-left: 10px;
+  }
+  &-item-content > p {
+    font-size: 14px;
+    padding-top: 15px;
+    line-height: 1.4;
+    @include textClamp(5);
+  }
+  &-item-content > h3 {
+    font-family: $secondary-font;
+    color: $gray-lighter;
+    font-size: 20px;
+    font-weight: normal;
+    letter-spacing: 2px;
+    padding-top: 10px;
+    position: relative;
+  }
+  &-item-content > h3::before {
+    content: "";
+    background-color: $primary-color;
+    height: 3px;
+    width: 0;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    transform: translateY( 100%);
+    border-radius: 10px;
+    transition: all 0.3s linear;
+  }
+  &-item:nth-child(3n) h3::before {
+    background: $primary-color;
+  }
+  &-item:nth-child(3n + 2) h3::before {
+    background: $secondary-color;
+  }
+  &-item:nth-child(3n + 1) h3::before {
+    background: $third-color;
+  }
+
+  &-item:hover {
+    .category-item-image{
+      transform: scale(0.8);
+    }
+    .category-item-content h3 {
+      @include textGradient();
+      &::before {
+        width: 100%;
+      }
+    }
+  }
+}
+@include maxWidth(1366px) {
+  .category-item-content > h3 {
+    font-size: 16px;
+  }
+  .category-item-content > p {
+    font-size: 12px;
+  }
+}
+@include maxWidth(1023px) {
+  .category-list {
+    @include touchSlider(40%, 10px);
+  }
+}
+@include maxWidth(767px) {
+  .category-list {
+    @include touchSlider(80%, 10px);
+  }
+}
