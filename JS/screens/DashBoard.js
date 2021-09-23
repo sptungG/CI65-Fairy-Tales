@@ -38,8 +38,9 @@ export default class DashBoard extends BaseComponent {
         let _storyList = new Stories({
           stories: this.filterStory(item.dataset.value, data.stories),
         });
+        // item.classList.remove("active");
+        // $categoryList[`data-value="${item.dataset.value}"`].classList.add("active");
         $storyContainer.innerHTML = "";
-        let cate = item.dataset.value.slice(-1 * item.dataset.value.length);
         $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${capitalize(item.dataset.value)}</span>`;
         $storyContainer.append($storyHeader);
         appendTo($storyContainer, _storyList);

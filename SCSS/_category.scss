@@ -12,6 +12,9 @@
     padding: 10px;
     @include flex();
   }
+  &-item.active{
+    background-color: $gray-darkest;
+  }
   &-item-image{
     width: 50%;
     height: 100%;

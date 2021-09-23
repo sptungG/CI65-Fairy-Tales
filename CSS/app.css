@@ -684,6 +684,9 @@ section[id] {
   display: flex;
   flex-wrap: nowrap;
 }
+.category-item.active {
+  background-color: #1e242e;
+}
 .category-item-image {
   width: 50%;
   height: 100%;
