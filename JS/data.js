@@ -89,6 +89,8 @@ export let stories = [
           "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FPage7%2F7b.jpg?alt=media&token=88a7f50a-1624-4da4-afb4-ce5167270ede",
       },
     ],
+    audio:
+    "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FPage1%2F1.mp3?alt=media&token=087277e2-1350-40da-a79a-5bce8f8c33c5",
     avgRating: 5,
     usersRating: [
       { name: "amet harum temporibus possimus", rate: 5 },
@@ -175,6 +177,8 @@ export let stories = [
           "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FPage7%2F7b.jpg?alt=media&token=88a7f50a-1624-4da4-afb4-ce5167270ede",
       },
     ],
+    audio:
+    "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FPage1%2F1.mp3?alt=media&token=087277e2-1350-40da-a79a-5bce8f8c33c5",
     avgRating: 5,
     usersRating: [
       { name: "amet harum temporibus possimus", rate: 5 },
