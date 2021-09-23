@@ -5,8 +5,20 @@
     @include flex(center, space-between);
     margin-bottom: 20px;
   }
+  &-header-title-wrapper{
+    @include flex(stretch, flex-start, column);
+  }
   &-header-title {
     @include iconTitle("../IMG/icons/moon.svg", 50px);
+  }
+  &-header-category{
+    color: $secondary-color;
+    @include dotSeparate("left", currentColor);
+    font-size: 16px;
+    font-weight: lighter;
+  }
+  &-header-category-icon{
+    font-size: 18px;
   }
   &-header-mode {
     margin-left: auto;

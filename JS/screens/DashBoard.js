@@ -3,7 +3,7 @@ import Header from "../components/Header.js";
 // import Categories from "../components/Categories.js";
 import Stories from "../components/Stories.js";
 import * as data from "../data.js";
-import { appendTo } from "../models/utils.js";
+import { appendTo, capitalize } from "../models/utils.js";
 
 export default class DashBoard extends BaseComponent {
   constructor(props) {
@@ -26,12 +26,12 @@ export default class DashBoard extends BaseComponent {
     let $categorySection = document.createElement("section");
     $categorySection.classList.add("category");
     let $categoryContainer = document.createElement("div");
-    $categoryContainer.className = "container";
+    $categoryContainer.classList.add("container");
     let $categoryTitle = document.createElement("h2");
-    $categoryTitle.className = "category-title title";
+    $categoryTitle.classList.add("category-title", "title");
     $categoryTitle.innerHTML = "Categories";
     let $categoryList = document.createElement("ul");
-    $categoryList.className = "category-list";
+    $categoryList.classList.add("category-list");
     this.generateCategories(data.categories, $categoryList);
     [...$categoryList.childNodes].forEach((item) => {
       item.addEventListener("click", () => {
@@ -39,6 +39,8 @@ export default class DashBoard extends BaseComponent {
           stories: this.filterStory(item.dataset.value, data.stories),
         });
         $storyContainer.innerHTML = "";
+        let cate = item.dataset.value.slice(-1 * item.dataset.value.length);
+        $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${capitalize(item.dataset.value)}</span>`;
         $storyContainer.append($storyHeader);
         appendTo($storyContainer, _storyList);
       });
@@ -49,13 +51,17 @@ export default class DashBoard extends BaseComponent {
     let $storySection = document.createElement("main");
     $storySection.classList.add("main");
     let $storyContainer = document.createElement("div");
-    $storyContainer.className = "container";
+    $storyContainer.classList.add("container");
 
     let $storyHeader = document.createElement("div");
     $storyHeader.classList.add("main-header");
+    let $storyHeaderTitleWrapper = document.createElement("div");
+    $storyHeaderTitleWrapper.classList.add("main-header-title-wrapper");
     let $storyHeaderTitle = document.createElement("h2");
-    $storyHeaderTitle.className = "main-header-title title";
+    $storyHeaderTitle.classList.add("main-header-title", "title");
     $storyHeaderTitle.innerHTML = "Fairy Tales";
+    let $storyHeaderCategory = document.createElement("span");
+    $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">All</span>`;
     let $storyHeaderModes = document.createElement("div");
     $storyHeaderModes.classList.add("main-header-mode");
     let $gridMode = document.createElement("div");
@@ -64,8 +70,9 @@ export default class DashBoard extends BaseComponent {
     let $listMode = document.createElement("div");
     $listMode.classList.add("list-mode", "btn-mode");
     $listMode.innerHTML = `<i class="fas fa-th-list"></i>`;
+    $storyHeaderTitleWrapper.append($storyHeaderTitle, $storyHeaderCategory);
     $storyHeaderModes.append($gridMode, $listMode);
-    $storyHeader.append($storyHeaderTitle, $storyHeaderModes);
+    $storyHeader.append($storyHeaderTitleWrapper, $storyHeaderModes);
 
     $storyContainer.append($storyHeader);
     appendTo($storyContainer, _storyList);
