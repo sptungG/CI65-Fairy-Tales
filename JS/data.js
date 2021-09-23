@@ -480,7 +480,7 @@ let story = {
     { name: "amet harum temporibus possimus", rate: 5 },
     { name: "harum temporibus possimus", rate: 5 },
     { name: "amet harum possimus", rate: 5 },
-    { name: "harum temporibus possimus", rate: 4 },
+    { name: "harum temporibus possimus", rate: 4 }, 
   ],
   comments: [
     {
