@@ -18,6 +18,7 @@ export default class Profile extends BaseComponent {
     $container.classList.add("wrapper");
     let _header = new Header({
       user: data.user,
+      stories: data.stories,
     });
 
     let $profileSection = document.createElement("section");

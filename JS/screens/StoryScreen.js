@@ -16,6 +16,7 @@ export default class StoryScreen extends BaseComponent {
     $container.classList.add("wrapper");
     let _header = new Header({
       user: data.user,
+      stories: data.stories,
     });
 
     let $detailSection = document.createElement("section");
