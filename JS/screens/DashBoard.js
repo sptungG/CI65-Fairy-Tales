@@ -38,7 +38,6 @@ export default class DashBoard extends BaseComponent {
         this.state.stories = this.filterStory(item.dataset.value, data.stories);
       });
     });
-    console.log(this.state.stories);
     $categoryContainer.append($categoryTitle, $categoryList);
     $categorySection.append($categoryContainer);
 
