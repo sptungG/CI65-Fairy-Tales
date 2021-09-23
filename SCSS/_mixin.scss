@@ -164,11 +164,11 @@
 //   }
 // }
 
-@mixin gridLayout($gap: 20px, $fit: "no-fit", $fit-min: 293px) {
+@mixin gridLayout($gap: 20px, $fit: "no-fit", $fit-min: 293px, $fill-min: 280px) {
   &-list {
     display: grid;
     grid-gap: $gap;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax($fill-min, 1fr));
     @if $fit == "fit" {
       grid-template-columns: repeat(auto-fit, minmax($fit-min, 1fr));
     }

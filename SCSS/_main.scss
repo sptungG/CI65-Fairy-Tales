@@ -15,7 +15,7 @@
 }
 
 .story {
-  @include gridLayout(20px, "fit", 280px);
+  @include gridLayout(20px);
   &-item {
     position: relative;
   }

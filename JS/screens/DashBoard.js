@@ -35,7 +35,12 @@ export default class DashBoard extends BaseComponent {
     this.generateCategories(data.categories, $categoryList);
     [...$categoryList.childNodes].forEach((item) => {
       item.addEventListener("click", () => {
-        this.state.stories = this.filterStory(item.dataset.value, data.stories);
+        let _storyList = new Stories({
+          stories: this.filterStory(item.dataset.value, data.stories),
+        });
+        $storyContainer.innerHTML = "";
+        $storyContainer.append($storyHeader);
+        appendTo($storyContainer, _storyList);
       });
     });
     $categoryContainer.append($categoryTitle, $categoryList);
