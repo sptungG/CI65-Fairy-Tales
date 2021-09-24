@@ -41,19 +41,6 @@ export default class StoryScreen extends BaseComponent {
     let _storyComments = new Comment({
       story: data.stories[0],
     });
-    data.stories.forEach((story) => {
-      let p = story.desc.split("\n");
-      let pages = story.pages;
-      p.unshift(`${story.name}`);
-      for (let index = 0; index < story.pagesNum; index++) {
-        pages.push({
-          image: `../DATA/${removeVietnameseTones(story.name).split(" ").join("")}/Pages/${("0" + index).slice(-2)}.png`,
-          text: `${p[index]}`,
-        });
-      }
-      story.audio = `../DATA/${removeVietnameseTones(story.name).split(" ").join("")}/audio.mp3`;
-    });
-    // console.log(data.stories[1].desc.split("\n"),data.stories[1].desc.split("\n").length);
 
     appendTo($detailLeft, _storyDetail, _storyComments);
 

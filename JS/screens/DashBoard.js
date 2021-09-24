@@ -3,7 +3,7 @@ import Header from "../components/Header.js";
 // import Categories from "../components/Categories.js";
 import Stories from "../components/Stories.js";
 import * as data from "../data.js";
-import { appendTo, capitalize } from "../models/utils.js";
+import { appendTo, capitalize, removeVietnameseTones } from "../models/utils.js";
 
 export default class DashBoard extends BaseComponent {
   constructor(props) {
@@ -13,6 +13,18 @@ export default class DashBoard extends BaseComponent {
     };
   }
   render() {
+    data.stories.forEach((story) => {
+      let p = story.desc.split("\n");
+      let pages = story.pages;
+      p.unshift(`${story.name}`);
+      for (let index = 0; index < story.pagesNum; index++) {
+        pages.push({
+          image: `../DATA/${removeVietnameseTones(story.name).split(" ").join("")}/Pages/${("0" + index).slice(-2)}.png`,
+          text: `${p[index]}`,
+        });
+      }
+      story.audio = `../DATA/${removeVietnameseTones(story.name).split(" ").join("")}/audio.mp3`;
+    });
     let $container = document.createElement("div");
     $container.classList.add("wrapper");
     let _header = new Header({
