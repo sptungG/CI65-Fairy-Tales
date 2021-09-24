@@ -1510,7 +1510,7 @@ section[id] {
   text-align: justify;
   background-color: rgba(30, 36, 46, 0.6);
   padding: 20px;
-  border-radius: 5px;
+  border-radius: 10px;
   color: #f8f9fa;
 }
 .slider-item-image {
