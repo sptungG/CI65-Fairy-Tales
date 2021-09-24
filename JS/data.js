@@ -52,38 +52,3 @@ export let stories = [
   },
 ];
 
-let story = {
-  name: "Lorem ipsum dolor sit",
-  desc: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum aliquam magni tenetur laborum nostrum! Dignissimos recusandae autem incidunt impedit tenetur voluptate, error id, a, deserunt reprehenderit amet harum temporibus possimus.Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum aliquam magni tenetur laborum nostrum! Dignissimos recusandae autem incidunt impedit tenetur voluptate, error id, a, deserunt reprehenderit amet harum temporibus possimus.",
-  categories: ["Kid", "History", "World"],
-  date: new Date().toLocaleDateString("vi-VI"),
-  views: 100,
-  length: "8:30",
-  author: {
-    image: "https://source.unsplash.com/random/?girl",
-    name: "Voluptatum aliquam",
-  },
-  pages: [
-    { image: "https://source.unsplash.com/random/?anime" },
-    { image: "https://source.unsplash.com/random/?girl" },
-    { image: "https://source.unsplash.com/random/?nature" },
-    { image: "https://source.unsplash.com/random/?forest" },
-    { image: "https://source.unsplash.com/random/?water" },
-  ],
-  audio:
-    "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/Chu%C3%B4ng%20Gi%C3%B3%20K%E1%BA%B9o%20Ng%E1%BB%8Dt%2FPage1%2F1.mp3?alt=media&token=087277e2-1350-40da-a79a-5bce8f8c33c5",
-  avgRating: 5,
-  usersRating: [
-    { name: "amet harum temporibus possimus", rate: 5 },
-    { name: "harum temporibus possimus", rate: 5 },
-    { name: "amet harum possimus", rate: 5 },
-    { name: "harum temporibus possimus", rate: 4 }, 
-  ],
-  comments: [
-    {
-      user: { image: "https://source.unsplash.com/random", name: "Dignissimos recusandae autem" },
-      date: new Date().toLocaleDateString("vi-VI"),
-      text: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatum aliquam magni tenetur laborum nostrum! Dignissimos recusandae autem incidunt impedit tenetur voluptate, error id, a, deserunt reprehenderit amet harum temporibus possimus.",
-    },
-  ],
-};
