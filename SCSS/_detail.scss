@@ -37,6 +37,9 @@
   &-date > span {
     @include dotSeparate("left");
   }
+  &-desc > p {
+    text-align: justify;
+  }
   &-author-wrapper {
     display: flex;
     margin-bottom: 40px;

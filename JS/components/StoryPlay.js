@@ -69,7 +69,8 @@ export default class StoryPlay extends BaseComponent {
     pages.forEach((page) => {
       let $page = document.createElement("li");
       $page.classList.add("story-page-item", "slider-item");
-      $page.innerHTML = `<img src="${page.image}" alt=""/>`;
+      if(page.text) $page.innerHTML = `<p class="story-page-text slider-item-text">${page.text}</p><div class="story-page-image slider-item-image"><img src="${page.image}" alt=""/></div>`;
+      else $page.innerHTML = `<div class="story-page-image slider-item-image"><img src="${page.image}" alt=""/></div>`;
       list.appendChild($page);
     });
   }

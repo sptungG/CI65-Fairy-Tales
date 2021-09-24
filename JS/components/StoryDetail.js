@@ -43,7 +43,8 @@ export default class StoryDetail extends BaseComponent {
 
     let $desc = document.createElement("p");
     $desc.classList.add("text", "detail-desc");
-    $desc.innerHTML = `${this.props.story.desc}`;
+    // $desc.innerHTML = `${this.props.story.desc}`;
+    this.generateDesc(this.props.story.desc.split("\n"),$desc);
     let $authorWrapper = document.createElement("div");
     $authorWrapper.classList.add("detail-author-wrapper");
     $authorWrapper.innerHTML = `
@@ -59,6 +60,13 @@ export default class StoryDetail extends BaseComponent {
       $category.classList.add("detail-category-item");
       $category.innerHTML = `${category}`;
       list.appendChild($category);
+    });
+  }
+  generateDesc(textList, list){
+    textList.forEach((text) => {
+      let $text = document.createElement("p");
+      $text.innerHTML = `${text}`;
+      list.appendChild($text);
     });
   }
   generateHearts(avgNum, list) {

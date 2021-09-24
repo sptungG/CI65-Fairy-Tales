@@ -15,6 +15,6 @@ const story = new StoryScreen();
 
 // appendTo($app, login);
 // appendTo($app, register);
-appendTo($app, dashboard);
+// appendTo($app, dashboard);
 // appendTo($app, profile);
-// appendTo($app, story);
+appendTo($app, story);
