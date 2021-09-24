@@ -18,6 +18,21 @@ export function appendTo($element, ...components) {
   }
 }
 
+export function getMedia(stories){
+  stories.forEach((story) => {
+    let p = story.desc.split("\n");
+    let pages = story.pages;
+    p.unshift(`${story.name}`);
+    for (let index = 0; index < story.pagesNum; index++) {
+      pages.push({
+        image: `../DATA/${removeVietnameseTones(story.name).split(" ").join("")}/Pages/${("0" + index).slice(-2)}.png`,
+        text: `${p[index]}`,
+      });
+    }
+    story.audio = `../DATA/${removeVietnameseTones(story.name).split(" ").join("")}/audio.mp3`;
+  });
+} 
+
 // fuction remove vietnamse tones
 export function removeVietnameseTones(str) {
   str = str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g, "a");

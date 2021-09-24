@@ -4,7 +4,7 @@ import Detail from "../components/StoryDetail.js";
 import Header from "../components/Header.js";
 import StoryPlay from "../components/StoryPlay.js";
 import * as data from "../data.js";
-import { appendTo, removeVietnameseTones } from "../models/utils.js";
+import { appendTo,getMedia } from "../models/utils.js";
 import Stories from "../components/Stories.js";
 
 export default class StoryScreen extends BaseComponent {
@@ -12,6 +12,7 @@ export default class StoryScreen extends BaseComponent {
     super(props);
   }
   render() {
+    getMedia(data.stories);
     let $container = document.createElement("div");
     $container.classList.add("wrapper");
     let _header = new Header({

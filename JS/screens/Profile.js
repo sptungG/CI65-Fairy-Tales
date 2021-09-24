@@ -1,6 +1,6 @@
 import BaseComponent from "../components/BaseComponent.js";
 import Header from "../components/Header.js";
-import { appendTo } from "../models/utils.js";
+import { appendTo, getMedia } from "../models/utils.js";
 import StoriesRead from "../components/StoriesRead.js";
 import StoriesFavorite from "../components/StoriesFavorite.js";
 import UserInfo from "../components/UserInfo.js";
@@ -14,6 +14,7 @@ export default class Profile extends BaseComponent {
     };
   }
   render() {
+    getMedia(data.stories);
     let $container = document.createElement("div");
     $container.classList.add("wrapper");
     let _header = new Header({
@@ -41,7 +42,8 @@ export default class Profile extends BaseComponent {
     $title.innerHTML = "Your Favorites";
     $favoriteSection.append($title);
     let _favoriteList = new StoriesFavorite({
-      stories: data.user.storiesRated,
+      // stories: data.user.storiesRated,
+      stories: data.stories,
     });
     appendTo($favoriteSection, _favoriteList);
 
@@ -56,7 +58,8 @@ export default class Profile extends BaseComponent {
     $activityTabs.classList.add("activity-tabs");
     this.generateTabs(data.categories, $activityTabs);
     let _readList = new StoriesRead({
-      stories: data.user.storiesRead,
+      // stories: data.user.storiesRead,
+      stories: data.stories,
     });
 
     $activitySection.append($activityTitle, $activityTabs);
