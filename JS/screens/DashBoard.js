@@ -1,6 +1,5 @@
 import BaseComponent from "../components/BaseComponent.js";
 import Header from "../components/Header.js";
-// import Categories from "../components/Categories.js";
 import Stories from "../components/Stories.js";
 import * as data from "../data.js";
 import { appendTo, capitalize, getMedia } from "../models/utils.js";
@@ -9,19 +8,20 @@ export default class DashBoard extends BaseComponent {
   constructor(props) {
     super(props);
     this.state = {
-      stories: [],
+      stories: data.stories,
+      user: data.user,
     };
   }
   render() {
-    getMedia(data.stories);
+    getMedia(this.state.stories);
     let $container = document.createElement("div");
     $container.classList.add("wrapper");
     let _header = new Header({
-      user: data.user,
-      stories: data.stories,
+      user: this.state.user,
+      stories: this.state.stories,
     });
     let _storyList = new Stories({
-      stories: data.stories,
+      stories: this.state.stories,
     });
 
     let $categorySection = document.createElement("section");
@@ -37,12 +37,14 @@ export default class DashBoard extends BaseComponent {
     [...$categoryList.childNodes].forEach((item) => {
       item.addEventListener("click", () => {
         let _storyList = new Stories({
-          stories: this.filterStory(item.dataset.value, data.stories),
+          stories: this.filterStory(item.dataset.value, this.state.stories),
         });
         // item.classList.remove("active");
         // $categoryList[`data-value="${item.dataset.value}"`].classList.add("active");
         $storyContainer.innerHTML = "";
-        $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${capitalize(item.dataset.value)}</span>`;
+        $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${capitalize(
+          item.dataset.value
+        )}</span>`;
         $storyContainer.append($storyHeader);
         appendTo($storyContainer, _storyList);
       });

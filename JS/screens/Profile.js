@@ -10,16 +10,17 @@ export default class Profile extends BaseComponent {
   constructor(props) {
     super(props);
     this.state = {
-      user: {},
+      stories: data.stories,
+      user: data.user,
     };
   }
   render() {
-    getMedia(data.stories);
+    getMedia(this.state.stories);
     let $container = document.createElement("div");
     $container.classList.add("wrapper");
     let _header = new Header({
-      user: data.user,
-      stories: data.stories,
+      user: this.state.user,
+      stories: this.state.stories,
     });
 
     let $profileSection = document.createElement("section");
@@ -43,7 +44,7 @@ export default class Profile extends BaseComponent {
     $favoriteSection.append($title);
     let _favoriteList = new StoriesFavorite({
       // stories: data.user.storiesRated,
-      stories: data.stories,
+      stories: this.state.stories,
     });
     appendTo($favoriteSection, _favoriteList);
 
@@ -59,7 +60,7 @@ export default class Profile extends BaseComponent {
     this.generateTabs(data.categories, $activityTabs);
     let _readList = new StoriesRead({
       // stories: data.user.storiesRead,
-      stories: data.stories,
+      stories: this.state.stories,
     });
 
     $activitySection.append($activityTitle, $activityTabs);

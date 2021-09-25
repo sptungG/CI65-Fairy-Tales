@@ -4,20 +4,25 @@ import Detail from "../components/StoryDetail.js";
 import Header from "../components/Header.js";
 import StoryPlay from "../components/StoryPlay.js";
 import * as data from "../data.js";
-import { appendTo,getMedia } from "../models/utils.js";
+import { appendTo, getMedia } from "../models/utils.js";
 import Stories from "../components/Stories.js";
+
 
 export default class StoryScreen extends BaseComponent {
   constructor(props) {
     super(props);
+    this.state = {
+      stories: data.stories,
+      user: data.user,
+    };
   }
   render() {
-    getMedia(data.stories);
+    getMedia(this.state.stories);
     let $container = document.createElement("div");
     $container.classList.add("wrapper");
     let _header = new Header({
-      user: data.user,
-      stories: data.stories,
+      user: this.state.user,
+      stories: this.state.stories,
     });
 
     let $detailSection = document.createElement("section");
@@ -34,16 +39,16 @@ export default class StoryScreen extends BaseComponent {
     // Detail
     // Comment
     let _storyPlay = new StoryPlay({
-      story: data.stories[2],
+      story: this.state.stories[2],
     });
     let _storyDetail = new Detail({
-      story: data.stories[2],
+      story: this.state.stories[2],
     });
-    let _storyComments = new Comment({
-      story: data.stories[2],
-    });
-
-    appendTo($detailLeft, _storyDetail, _storyComments);
+    // let _storyComments = new Comment({
+    //   story: this.state.stories[2],
+    // });
+    // appendTo($detailLeft, _storyDetail, _storyComments);
+    appendTo($detailLeft, _storyDetail);
 
     let $detailRight = document.createElement("div");
     $detailRight.classList.add("detail-right");
@@ -52,7 +57,7 @@ export default class StoryScreen extends BaseComponent {
     $detailRightTitle.innerHTML = `Related Stories`;
     $detailRight.append($detailRightTitle);
     let _relatedList = new Stories({
-      stories: data.stories,
+      stories: this.state.stories,
     });
     appendTo($detailRight, _relatedList);
 

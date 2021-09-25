@@ -11,3 +11,5 @@ const firebaseApp = firebase.initializeApp(firebaseConfig);
 // const app = initializeApp(firebaseConfig);
 const db = firebaseApp.firestore();
 const auth = firebaseApp.auth();
+
+// Realtime Listener
