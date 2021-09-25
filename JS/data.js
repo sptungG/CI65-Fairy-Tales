@@ -85,16 +85,16 @@ export let stories = [
     id: "02",
     name: "Cáo thỏ và gà trống",
     // desc: cần tách \n cho đúng mạch truyện
-    desc: `Ngày xửa ngày xưa, ở một khu rừng nọ có một con dê mẹ và 7 chú dê con.Họ sống với nhau hạnh phúc trong một ngôi nhà nho nhỏ, xinh xắn và ấm cúng.\nDê mẹ thường phải vào rừng để tìm cỏ non, vì ăn cỏ no thì dê mẹ mới có sữa cho đàn dê con bú.\nMột hôm, khi chuẩn bị đi vào rừng, dê mẹ bèn gọi đàn con lại dặn dò:” Các con ở nhà nhớ khoá chặt cửa. Khi nào mẹ về, nghe thấy mẹ đọc bài thơ này thì hẵng mở cửa ra:<br>Dê con ngoan ngoãn<br>Mau mở cửa ra<br>Mẹ đã về nhà<br>Cho các con bú.\n7 chú dê con vâng lời mẹ đóng chặt cửa. Thế nhưng, có một con chó sói độc ác sống ở gần đó đã nghe thấy lời dặn của dê mẹ.\nSau một hồi tính toán, nó nảy ra ý định lừa dê con mở cửa để ăn thịt các chú.\nSau khi dê mẹ đi khỏi, chó sói liền đến gõ cửa rồi giả giọng dê mẹ:<br>“Dê con ngoan ngoãn<br>Mau mở cửa ra<br>Mẹ đã về nhà<br>Cho các con bú”<br>\nBảy chú dê con nhận ra giọng ồm ồm của chó sói nên đã nhất quyết không mở cửa.\nMột lúc sau, chó sói lại đến và gõ cửa. Lần này nó giả giọng nhẹ nhàng hơn cho giống với giọng dê mẹ.\n Nhưng lần này, nó cũng không vào được ngôi nhà vì những chú dê con thông minh đã đòi sói phải cho xem móng. Khi thấy móng chân đen xì của con sói, các chú đã không cho nó vào.\nChó sói nham hiểm liền đến tiệm bánh mua bột mỳ trắng và xoa vào móng vuốt của mình.\nKhi nó đến gõ cửa lần thứ ba, những chú dê con nhìn thấy bộ móng màu trắng và cứ tưởng rằng đó là mẹ của mình.\nDê con mở cửa cho sói vào nhà và nó lao đến và nuốt chửng cả bầy dê vào bụng,\nmay thay chú dê bé nhất trốn thoát được.\nNo nê, con sói độc ác tìm một gốc cây rồi lăn ra ngủ.\nKhi ấy, dê mẹ trở về và chú dê bé nhất nhào vào lòng mẹ nức nở.\nDê mẹ liền mổ bụng sói ra. Lần lượt từng chú dê con nhảy ra. Dê mẹ bảo dê con lấy đá nhét vào bụng sói và khâu lại.\nKhi chó sói tỉnh dậy nó cảm thấy vô cùng khát nước, nó lần mò ra giếng uống nước.\nVì trong bụng nặng trĩu toàn đá là đá nên nó bị rơi tòm xuống giếng. Thế là hết đời con sói gian ác.`,
+    desc: `Ngày xửa ngày xưa, trong khu rừng nọ, có một con Cáo và một con Thỏ. Cáo có một ngôi nhà bằng băng, còn Thỏ có một ngôi nhà bằng gỗ.\nMùa xuân đến, nhà Cáo tan ra thành nước, Cáo không còn chỗ để ở, bèn sang nhà Thỏ xin sưởi nhờ.\nThấy ngôi nhà của Thỏ sạch sẽ, ấm áp lại không bị tan khi mùa xuân tới.\nCáo nảy sinh lòng tham muốn chiếm hữu ngôi nhà liền đuổi luôn Thỏ ra ngoài.\nThỏ vừa đi vừa khóc. Một lát sau có một chú Chó đi qua.<br>Chó thấy Thỏ khóc liền đứng lại hỏi thăm:<br>- Thỏ ơi, vì sao bạn lại khóc?<br>Thỏ thấy chó hỏi thăm nên vội vàng giải thích và kể lại:<br>- Làm sao mà tôi không khóc được. Tôi có một ngôi nhà bằng gỗ, còn Cáo, Cáo có một ngôi nhà bằng băng. Mùa xuân đến nhà Cáo tan ra thành nước, Cáo xin sang nhà tôi sưởi nhờ rồi đuổi luôn tôi ra khỏi nhà.<br>Sau khi nghe Thỏ kể lại đầu đuôi câu chuyện, Chó an ủi Thỏ:<br>- Thỏ ơi, đừng buồn nữa! Tôi sẽ đuổi được Cáo đi và giúp bạn lấy lại ngôi nhà.<br>Thỏ nghe thấy ngừng khóc và dẫn Chó về nhà.\nTới cửa nhà Chó nói to:<br>- Gâu! Gâu! Gâu! Cáo cút mau!\nLúc này, trong nhà, Cáo đang ngồi ung dung bên lò sưởi và ăn bánh.<br> Nghe thấy tiếng Chó và tiếng khóc thút thít của Thỏ, Cáo nói vọng ra:<br>- Ta mà nhảy ra thì chúng mày tan xác!\nChó nghe tiếng của Cáo sợ quá liền chạy mất.\nThỏ buồn bã lại ngồi dưới bụi cây và khóc.\nMột con Gấu đi qua thấy Thỏ ngồi khóc liền hỏi han:<br>- Trời lạnh, sao cháu không vào nhà ngồi sưởi cho ấm mà lại ngồi đây khóc?<br>Thỏ thấy bác gấu hỏi thăm lại mang câu chuyện ấm ức của mình kể:<br>- Làm sao mà cháu không khóc được. Cháu có một ngôi nhà bằng gỗ, còn Cáo, Cáo có một ngôi nhà bằng băng. Mùa xuân đến nhà Cáo tan ra thành nước, Cáo xin sang nhà cháu sưởi nhờ rồi đuổi luôn cháu ra khỏi nhà.\nGấu nghe được câu chuyện liền an ủi thỏ:<br>- Thỏ ơi! Thỏ đừng khóc nữa! Ta sẽ đuổi được Cáo đi! Và lấy lại ngôi nhà cho cháu.<br>Thỏ vội vàng đáp:<br>- Không, Bác Gấu ơi, Bác không đuổi được đâu. Khi nãy, Chó đuổi mãi không được thì bác đuổi làm sao được!<br>- Được, ta sẽ đuổi được cáo đi! - Bác Gấu nói với giọng kiên quyết và dẫn Thỏ về nhà.\nTới nhà Thỏ, bác Gấu gầm to:<br>- Cáo, cút ngay! Cút ngay ra khỏi nhà Thỏ.\nVẫn cái dáng vẻ ung dung tự đắc ngồi bên lò sưởi, Cáo nói vọng ra:<br>- Gấu, khôn hồn thì ngươi hãy cút đi! Không ta mà nhảy ra thì chúng mày tan xác!\nGiống như Chó, Gấu nghe giọng Cáo sợ quá liền chạy mất.\nThỏ trở lại ngồi dưới bụi cây và khóc.<br>Một con gà Trống mào đỏ đi qua dáng vẻ oai phong, trên vai còn vác một cái hái. Gà Trống thấy Thỏ khóc bèn hỏi thăm:<br>- Thỏ ơi, sao bạn lại ngồi khóc ở đây?<br>Thỏ lại mang câu chuyện ấm ức của mình kể:<br>- Làm sao mà tôi không khóc được. tôi có một ngôi nhà bằng gỗ, còn Cáo, Cáo có một ngôi nhà bằng băng. Mùa xuân đến nhà Cáo tan ra thành nước, Cáo xin sang nhà tôi sưởi nhờ rồi đuổi luôn tôi ra khỏi nhà.\nGà Trống thấy vậy liền nói:<br>- Nào, ta về nhà đi, tôi sẽ đuổi được Cáo và lấy lại ngồi nhà cho bạn.<br>- Làm sao anh đuổi được Cáo và lấy lại ngôi nhà cho tôi được.Nãy, Chó đuổi mãi không được, bác Gấu đuổi mãi không xong thì anh đuổi làm sao được!<br>- Sao lại không chứ? Hãy tin tôi. Nào, chúng ta về nhà thôi!\nLại một lần nữa, Thỏ hi vọng sẽ lấy lại được ngôi nhà.<br>Gà Trống và Thỏ cùng về nhà Thỏ. Gà Trống vừa đi vừa cất tiếng hát:<br>- Cúc cù cu cu<br>  Ta vác hái trên vai<br>  Đi tìm Cáo gian ác<br>  Cáo ở đâu ra ngay!<br>\nCáo đang ngồi trong nhà, nghe thấy tiếng hát của Gà Trống bỗng hoảng sợ lắp bắp trả lời:<br>- Tôi, tôi đang mặc quần áo ạ!\nBên ngoài, Gà Trống lại cất tiếng hát:<br>- Cúc cù cu cu<br>  Ta vác hái trên vai<br>  Đi tìm Cáo gian ác<br>  Cáo ở đâu ra ngay!\nLần này cáo lại kiếm cớ trả lời:<br>- Cho tôi mặc áo bông đã!\nGà Trống không thể nhân nhượng được thêm, gà quát to:<br>- Cúc cù cu cu<br>  Ta vác hái trên vai<br>  Đi tìm Cáo gian ác<br>  Cáo ở đâu ra ngay!<br>Ra ngay!<br>\nCáo sợ quá, từ trong nhà gỗ vội vã nhảy vọt ra, rồi chạy biến vào trong rừng.\nThỏ cảm ơn Gà Trống vì đã lấy lại ngôi nhà giúp mình.<br> Tất cả các con vật vỗ tay chúc mừng và cảm ơn Gà Trống đã đuổi được Cáo gian ác.`,
     categories: ["Kid", "Education"],
     date: "24/9/2021",
     views: 100,
-    length: "2:59",
+    length: "6:50",
     author: {
       image: "../IMG/authors/logo-author.png",
       name: "Kể bé nghe",
     },
-    pagesNum: 19, //số lượng ảnh(.png) trong file Pages, kể cả ảnh bìa, ảnh được đặt tên 00, 01,... 10,...
+    pagesNum: 24, //số lượng ảnh(.png) trong file Pages, kể cả ảnh bìa, ảnh được đặt tên 00, 01,... 10,...
     pages: [],
     audio: "", // file audio đặt bên ngoài folder truyện
     avgRating: 5,
@@ -120,7 +120,7 @@ export let stories = [
     categories: ["Kid", "Education"],
     date: "24/9/2021",
     views: 100,
-    length: "2:59",
+    length: "5:18",
     author: {
       image: "../IMG/authors/logo-author.png",
       name: "Kể bé nghe",
@@ -151,7 +151,7 @@ export let stories = [
     categories: ["Kid", "Education"],
     date: "24/9/2021",
     views: 100,
-    length: "2:59",
+    length: "4:46",
     author: {
       image: "../IMG/authors/logo-author.png",
       name: "Kể bé nghe",
@@ -182,7 +182,7 @@ export let stories = [
     categories: ["Kid", "Education", "Motivation"],
     date: "24/9/2021",
     views: 100,
-    length: "2:59",
+    length: "3:06",
     author: {
       image: "../IMG/authors/logo-author.png",
       name: "Kể bé nghe",
@@ -213,7 +213,7 @@ export let stories = [
     categories: ["Kid", "Education"],
     date: "24/9/2021",
     views: 100,
-    length: "2:59",
+    length: "5:43",
     author: {
       image: "../IMG/authors/logo-author.png",
       name: "Kể bé nghe",
@@ -244,7 +244,7 @@ export let stories = [
     categories: ["Kid", "Family", "Education"],
     date: "24/9/2021",
     views: 100,
-    length: "2:59",
+    length: "5:01",
     author: {
       image: "../IMG/authors/logo-author.png",
       name: "Kể bé nghe",
@@ -275,7 +275,7 @@ export let stories = [
     categories: ["Kid", "History"],
     date: "24/9/2021",
     views: 100,
-    length: "2:59",
+    length: "5:42",
     author: {
       image: "../IMG/authors/logo-author.png",
       name: "Kể bé nghe",
@@ -303,10 +303,10 @@ export let stories = [
     name: "Thỏ và rùa",
     // desc: cần tách \n cho đúng mạch truyện
     desc: `Ngày xửa ngày xưa, ở một khu rừng nọ có một con dê mẹ và 7 chú dê con.Họ sống với nhau hạnh phúc trong một ngôi nhà nho nhỏ, xinh xắn và ấm cúng.\nDê mẹ thường phải vào rừng để tìm cỏ non, vì ăn cỏ no thì dê mẹ mới có sữa cho đàn dê con bú.\nMột hôm, khi chuẩn bị đi vào rừng, dê mẹ bèn gọi đàn con lại dặn dò:” Các con ở nhà nhớ khoá chặt cửa. Khi nào mẹ về, nghe thấy mẹ đọc bài thơ này thì hẵng mở cửa ra:<br>Dê con ngoan ngoãn<br>Mau mở cửa ra<br>Mẹ đã về nhà<br>Cho các con bú.\n7 chú dê con vâng lời mẹ đóng chặt cửa. Thế nhưng, có một con chó sói độc ác sống ở gần đó đã nghe thấy lời dặn của dê mẹ.\nSau một hồi tính toán, nó nảy ra ý định lừa dê con mở cửa để ăn thịt các chú.\nSau khi dê mẹ đi khỏi, chó sói liền đến gõ cửa rồi giả giọng dê mẹ:<br>“Dê con ngoan ngoãn<br>Mau mở cửa ra<br>Mẹ đã về nhà<br>Cho các con bú”<br>\nBảy chú dê con nhận ra giọng ồm ồm của chó sói nên đã nhất quyết không mở cửa.\nMột lúc sau, chó sói lại đến và gõ cửa. Lần này nó giả giọng nhẹ nhàng hơn cho giống với giọng dê mẹ.\n Nhưng lần này, nó cũng không vào được ngôi nhà vì những chú dê con thông minh đã đòi sói phải cho xem móng. Khi thấy móng chân đen xì của con sói, các chú đã không cho nó vào.\nChó sói nham hiểm liền đến tiệm bánh mua bột mỳ trắng và xoa vào móng vuốt của mình.\nKhi nó đến gõ cửa lần thứ ba, những chú dê con nhìn thấy bộ móng màu trắng và cứ tưởng rằng đó là mẹ của mình.\nDê con mở cửa cho sói vào nhà và nó lao đến và nuốt chửng cả bầy dê vào bụng,\nmay thay chú dê bé nhất trốn thoát được.\nNo nê, con sói độc ác tìm một gốc cây rồi lăn ra ngủ.\nKhi ấy, dê mẹ trở về và chú dê bé nhất nhào vào lòng mẹ nức nở.\nDê mẹ liền mổ bụng sói ra. Lần lượt từng chú dê con nhảy ra. Dê mẹ bảo dê con lấy đá nhét vào bụng sói và khâu lại.\nKhi chó sói tỉnh dậy nó cảm thấy vô cùng khát nước, nó lần mò ra giếng uống nước.\nVì trong bụng nặng trĩu toàn đá là đá nên nó bị rơi tòm xuống giếng. Thế là hết đời con sói gian ác.`,
-    categories: ["Kid", "Education"],
+    categories: ["Kid", "Education", "World"],
     date: "24/9/2021",
     views: 100,
-    length: "2:59",
+    length: "7:40",
     author: {
       image: "../IMG/authors/logo-author.png",
       name: "Kể bé nghe",
