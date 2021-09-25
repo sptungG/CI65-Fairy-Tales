@@ -1,10 +1,10 @@
 import BaseComponent from "../components/BaseComponent.js";
 import Header from "../components/Header.js";
 import { appendTo, getMedia } from "../models/utils.js";
-import StoriesRead from "../components/StoriesRead.js";
-import StoriesFavorite from "../components/StoriesFavorite.js";
 import UserInfo from "../components/UserInfo.js";
 import * as data from "../data.js";
+import StoryInGrid from "../components/StoryInGrid.js";
+import StoryInList from "../components/StoryInList.js";
 
 export default class Profile extends BaseComponent {
   constructor(props) {
@@ -41,13 +41,13 @@ export default class Profile extends BaseComponent {
     let $title = document.createElement("h2");
     $title.className = "favorite-title title";
     $title.innerHTML = "Your Favorites";
-    $favoriteSection.append($title);
-    let _favoriteList = new StoriesFavorite({
-      // stories: data.user.storiesRated,
-      stories: this.state.stories,
+    let $favoriteList = document.createElement("ul");
+    $favoriteList.classList.add("favorite-list");
+    this.state.stories.forEach((story) => {
+      let _story = new StoryInGrid({ story: story });
+      appendTo($favoriteList, _story);
     });
-    appendTo($favoriteSection, _favoriteList);
-
+    $favoriteSection.append($title, $favoriteList);
     //User Read Stories
     let $activitySection = document.createElement("section");
     $activitySection.classList.add("activity");
@@ -58,13 +58,14 @@ export default class Profile extends BaseComponent {
     let $activityTabs = document.createElement("ul");
     $activityTabs.classList.add("activity-tabs");
     this.generateTabs(data.categories, $activityTabs);
-    let _readList = new StoriesRead({
-      // stories: data.user.storiesRead,
-      stories: this.state.stories,
+    let $activityList = document.createElement("ul");
+    $activityList.classList.add("activity-list");
+    this.state.stories.forEach((story) => {
+      let _story = new StoryInList({ story: story });
+      appendTo($activityList, _story);
     });
 
-    $activitySection.append($activityTitle, $activityTabs);
-    appendTo($activitySection, _readList);
+    $activitySection.append($activityTitle, $activityTabs, $activityList);
     $storySection.append($favoriteSection, $activitySection);
     appendTo($profileContainer, _header);
     appendTo($profileContainer, _userInfo);

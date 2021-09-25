@@ -5,8 +5,7 @@ import Header from "../components/Header.js";
 import StoryPlay from "../components/StoryPlay.js";
 import * as data from "../data.js";
 import { appendTo, getMedia } from "../models/utils.js";
-import Stories from "../components/Stories.js";
-
+import StoryInGrid from "../components/StoryInGrid.js";
 
 export default class StoryScreen extends BaseComponent {
   constructor(props) {
@@ -55,12 +54,13 @@ export default class StoryScreen extends BaseComponent {
     let $detailRightTitle = document.createElement("h3");
     $detailRightTitle.classList.add("title", "relate-title");
     $detailRightTitle.innerHTML = `Related Stories`;
-    $detailRight.append($detailRightTitle);
-    let _relatedList = new Stories({
-      stories: this.state.stories,
+    let $relatedList = document.createElement("ul");
+    $relatedList.className = "story-list";
+    this.state.stories.forEach((story) => {
+      let _story = new StoryInGrid({ story: story });
+      appendTo($relatedList, _story);
     });
-    appendTo($detailRight, _relatedList);
-
+    $detailRight.append($detailRightTitle, $relatedList);
     $detailSides.append($detailLeft, $detailRight);
     appendTo($detailContainer, _storyPlay);
     $detailContainer.append($detailSides);

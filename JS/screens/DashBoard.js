@@ -1,7 +1,8 @@
 import BaseComponent from "../components/BaseComponent.js";
 import Header from "../components/Header.js";
-import Stories from "../components/Stories.js";
+import StoryInGrid from "../components/StoryInGrid.js";
 import * as data from "../data.js";
+import { filterStory, generateCategories } from "../models/stories.js";
 import { appendTo, capitalize, getMedia } from "../models/utils.js";
 
 export default class DashBoard extends BaseComponent {
@@ -20,9 +21,6 @@ export default class DashBoard extends BaseComponent {
       user: this.state.user,
       stories: this.state.stories,
     });
-    let _storyList = new Stories({
-      stories: this.state.stories,
-    });
 
     let $categorySection = document.createElement("section");
     $categorySection.classList.add("category");
@@ -33,20 +31,24 @@ export default class DashBoard extends BaseComponent {
     $categoryTitle.innerHTML = "Categories";
     let $categoryList = document.createElement("ul");
     $categoryList.classList.add("category-list");
-    this.generateCategories(data.categories, $categoryList);
+    generateCategories(data.categories, $categoryList);
+    // 
     [...$categoryList.childNodes].forEach((item) => {
       item.addEventListener("click", () => {
-        let _storyList = new Stories({
-          stories: this.filterStory(item.dataset.value, this.state.stories),
-        });
         // item.classList.remove("active");
         // $categoryList[`data-value="${item.dataset.value}"`].classList.add("active");
+        let storiesFilter = filterStory(item.dataset.value, this.state.stories);
+        let $storyList = document.createElement("ul");
+        $storyList.className = "story-list";
+        storiesFilter.forEach((story) => {
+          let _story = new StoryInGrid({ story: story });
+          appendTo($storyList, _story);
+        });
         $storyContainer.innerHTML = "";
         $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${capitalize(
           item.dataset.value
         )}</span>`;
-        $storyContainer.append($storyHeader);
-        appendTo($storyContainer, _storyList);
+        $storyContainer.append($storyHeader, $storyList);
       });
     });
     $categoryContainer.append($categoryTitle, $categoryList);
@@ -77,41 +79,17 @@ export default class DashBoard extends BaseComponent {
     $storyHeaderTitleWrapper.append($storyHeaderTitle, $storyHeaderCategory);
     $storyHeaderModes.append($gridMode, $listMode);
     $storyHeader.append($storyHeaderTitleWrapper, $storyHeaderModes);
+    let $storyList = document.createElement("ul");
+    $storyList.className = "story-list";
+    this.state.stories.forEach((story) => {
+      let _story = new StoryInGrid({ story: story });
+      appendTo($storyList, _story);
+    });
 
-    $storyContainer.append($storyHeader);
-    appendTo($storyContainer, _storyList);
+    $storyContainer.append($storyHeader, $storyList);
     $storySection.append($storyContainer);
     appendTo($container, _header);
     $container.append($categorySection, $storySection);
     return $container;
-  }
-  generateCategories(categoryList, list) {
-    categoryList.forEach((category) => {
-      let $categoryItem = document.createElement("li");
-      $categoryItem.classList.add("category-item");
-      $categoryItem.dataset.value = category.name.toLowerCase();
-      $categoryItem.innerHTML = `
-      <div class="category-item-image">
-        <img src=${category.image} alt="" />
-      </div>
-      <div class="category-item-content">
-        <h3>${category.name}</h3>
-        <p>${category.desc}</p>
-      </div>
-      `;
-      list.appendChild($categoryItem);
-    });
-  }
-  filterStory(category, stories) {
-    let filterStories = stories;
-    if (category != "all") {
-      filterStories = stories.filter((story) => {
-        return story.categories.join(",").toLowerCase().split(",").indexOf(category) != -1;
-      });
-      console.log("Filter: ", category, filterStories);
-      return filterStories;
-    }
-    console.log("Filter: ", category, filterStories);
-    return filterStories;
   }
 }
