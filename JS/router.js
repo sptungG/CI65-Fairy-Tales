@@ -21,6 +21,10 @@ router.on("/register", function () {
   }).resolve();
 
 router.on("/dashboard", function () {
+  if(!auth.currentUser) {
+    router.navigate('/login');
+    return;
+  }
     $app.innerHTML = "";
     appendTo($app, new DashBoard());
   })

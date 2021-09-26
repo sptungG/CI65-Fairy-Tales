@@ -1,4 +1,4 @@
-import "./router.js"
+// import "./router.js"
 import RegisterScreen from "./screens/RegisterScreen.js";
 import LoginScreen from "./screens/LoginScreen.js";
 import DashBoard from "./screens/DashBoard.js";
@@ -19,6 +19,6 @@ window.onload = function() {
 }
 // appendTo($app, login);
 // appendTo($app, register);
-// appendTo($app, dashboard);
+appendTo($app, dashboard);
 // appendTo($app, profile);
-appendTo($app, story);
+// appendTo($app, story);
