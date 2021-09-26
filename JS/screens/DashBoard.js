@@ -8,9 +8,13 @@ import { appendTo, capitalize, getMedia } from "../models/utils.js";
 export default class DashBoard extends BaseComponent {
   constructor(props) {
     super(props);
+    console.log(auth.currentUser);
     this.state = {
       stories: data.stories,
-      user: data.user,
+      user: {
+        // email: auth.currentUser.email,
+        // name: auth.currentUser.displayName 
+      }
     };
   }
   render() {

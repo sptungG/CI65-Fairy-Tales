@@ -1,6 +1,10 @@
 import { removeVietnameseTones } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
 export default class Header extends BaseComponent {
+  constructor(props){
+    super(props);
+  }
+  
   render() {
     let $header = document.createElement("header");
     $header.classList.add("header");

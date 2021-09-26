@@ -96,7 +96,7 @@ export default class LoginScreen extends BaseComponent {
     return $container;
   }
   // ==========================  ==========================
-  handleRegister = (event) => {
+  handleLogin = (event) => {
     event.preventDefault();
 
     let data = this.state.data;
@@ -112,7 +112,8 @@ export default class LoginScreen extends BaseComponent {
       error.password = "Invalid Password";
     }
     if (isPassed) {
-      console.log("Sign in Successfully");
+      login(data.email, data.password);
+      return;
     }
 
     let tmpState = this.state;
