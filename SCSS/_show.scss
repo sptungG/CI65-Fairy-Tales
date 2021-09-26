@@ -1,5 +1,5 @@
 .slider {
-  max-width: 800px;
+  max-width: 100%;
   margin-top: 20px;
   margin-bottom: 40px;
   position: relative;
@@ -42,8 +42,8 @@
     border-radius: 10px;
   }
   &-wrapper {
-    width: 800px;
-    height: 525px;
+    width: 100%;
+    // height: 80vh;
     overflow: hidden;
     position: relative;
   }
@@ -84,7 +84,7 @@
   &-item img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
     padding: 1px;
     flex-shrink: 0;
@@ -157,7 +157,7 @@
 @include maxWidth(1366px){
   .slider-wrapper {
     width: 100%;
-    height: 80vh;
+    // height: 80vh;
   }
   .slider-prev, .slider-next{
     background-color: transparent;
