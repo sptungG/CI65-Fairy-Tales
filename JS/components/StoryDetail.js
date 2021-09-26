@@ -1,3 +1,4 @@
+import { getImgByName } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
 
 export default class StoryDetail extends BaseComponent {
@@ -44,12 +45,11 @@ export default class StoryDetail extends BaseComponent {
     let $desc = document.createElement("p");
     $desc.classList.add("text", "detail-desc");
     // $desc.innerHTML = `${this.props.story.desc}`;
-    this.generateDesc(this.props.story.desc.split("\n"),$desc);
     let $authorWrapper = document.createElement("div");
     $authorWrapper.classList.add("detail-author-wrapper");
     $authorWrapper.innerHTML = `
-    <img src="${this.props.story.author.image}" alt="" class="detail-author-image" />
-    <span class="detail-author-name">${this.props.story.author.name}</span>
+    <img src="../DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="detail-author-image" />
+    <span class="detail-author-name">${this.props.story.authorName}</span>
     `;
     $detailContainer.append($detailCategory, $detailTitleWrapper, $desc, $authorWrapper);
     return $detailContainer;
@@ -60,13 +60,6 @@ export default class StoryDetail extends BaseComponent {
       $category.classList.add("detail-category-item");
       $category.innerHTML = `${category}`;
       list.appendChild($category);
-    });
-  }
-  generateDesc(textList, list){
-    textList.forEach((text) => {
-      let $text = document.createElement("p");
-      $text.innerHTML = `${text}`;
-      list.appendChild($text);
     });
   }
   generateHearts(avgNum, list) {

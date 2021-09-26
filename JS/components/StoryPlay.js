@@ -13,7 +13,7 @@ export default class StoryPlay extends BaseComponent {
     this.generatePages(this.props.story.pages, $pageList);
     let $pagination = document.createElement("ul");
     $pagination.classList.add("slider-dots");
-    this.generatePagination(this.props.story.pages, $pagination);
+    this.generatePagination(this.props.story.audios, $pagination);
 
     let $btnPrev = document.createElement("button");
     $btnPrev.classList.add("slider-prev", "fas", "fa-chevron-left");
@@ -69,8 +69,9 @@ export default class StoryPlay extends BaseComponent {
     pages.forEach((page) => {
       let $page = document.createElement("li");
       $page.classList.add("story-page-item", "slider-item");
-      if(page.text) $page.innerHTML = `<p class="story-page-text slider-item-text">${page.text}</p><div class="story-page-image slider-item-image"><img src="${page.image}" alt=""/></div>`;
-      else $page.innerHTML = `<div class="story-page-image slider-item-image"><img src="${page.image}" alt=""/></div>`;
+      // if(page.text) $page.innerHTML = `<p class="story-page-text slider-item-text">${page.text}</p><div class="story-page-image slider-item-image"><img src="${page.image}" alt=""/></div>`;
+      // else 
+      $page.innerHTML = `<img src="${page.image}" alt=""/>`;
       list.appendChild($page);
     });
   }
@@ -106,7 +107,7 @@ export default class StoryPlay extends BaseComponent {
           e.target.classList.add("active");
           const slideIndex = parseInt(e.target.dataset.index);
           index = slideIndex;
-          positionX = -1 * index * sliderItemWidth;
+          positionX = -2 * index * sliderItemWidth;
           sliderMain.style = `transform: translateX(${positionX}px)`;
         })
       );
@@ -117,7 +118,7 @@ export default class StoryPlay extends BaseComponent {
             return;
           }
           positionX = positionX - sliderItemWidth;
-          sliderMain.style = `transform: translateX(${positionX}px)`;
+          sliderMain.style = `transform: translateX(${positionX*2}px)`;
           index++;
         } else if (direction === -1) {
           if (index <= 0) {
@@ -125,7 +126,7 @@ export default class StoryPlay extends BaseComponent {
             return;
           }
           positionX = positionX + sliderItemWidth;
-          sliderMain.style = `transform: translateX(${positionX}px)`;
+          sliderMain.style = `transform: translateX(${positionX*2}px)`;
           index--;
         }
         [...dotItems].forEach((el) => el.classList.remove("active"));

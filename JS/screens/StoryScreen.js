@@ -47,6 +47,7 @@ export default class StoryScreen extends BaseComponent {
     //   story: this.state.stories[2],
     // });
     // appendTo($detailLeft, _storyDetail, _storyComments);
+    appendTo($detailLeft, _storyPlay);
     appendTo($detailLeft, _storyDetail);
 
     let $detailRight = document.createElement("div");
@@ -62,7 +63,6 @@ export default class StoryScreen extends BaseComponent {
     });
     $detailRight.append($detailRightTitle, $relatedList);
     $detailSides.append($detailLeft, $detailRight);
-    appendTo($detailContainer, _storyPlay);
     $detailContainer.append($detailSides);
     $detailSection.append($detailContainer);
     appendTo($container, _header);

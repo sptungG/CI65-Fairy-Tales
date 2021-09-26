@@ -18,20 +18,21 @@ export function appendTo($element, ...components) {
   }
 }
 
-export function getMedia(stories){
+export function getMedia(stories) {
   stories.forEach((story) => {
-    let p = story.desc.split("\n");
-    let pages = story.pages;
-    p.unshift(`${story.name}`);
     for (let index = 0; index < story.pagesNum; index++) {
-      pages.push({
-        image: `../DATA/${removeVietnameseTones(story.name).split(" ").join("")}/Pages/${("0" + index).slice(-2)}.png`,
-        text: `${p[index]}`,
+      story.pages.push({
+        image: `../DATA/${getImgByName(story.name)}/Pages/${("0" + index).slice(-2)}.jpg`,
       });
     }
-    story.audio = `../DATA/${removeVietnameseTones(story.name).split(" ").join("")}/audio.mp3`;
+    for (let index = 0; index < Math.floor(story.pagesNum / 2); index++) {
+      story.audios.push(`../DATA/${getImgByName(story.name)}/Audios/${("0" + index).slice(-2)}.mp3`);
+    }
   });
-} 
+}
+export function getImgByName(name) {
+  return removeVietnameseTones(name).split(" ").join("-").toLowerCase();
+}
 
 // fuction remove vietnamse tones
 export function removeVietnameseTones(str) {
@@ -62,4 +63,5 @@ export function removeVietnameseTones(str) {
   str = str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'|\"|\&|\#|\[|\]|~|\$|_|`|-|{|}|\||\\/g, " ");
   return str;
 }
-export const capitalize = str => str.charAt(0).toUpperCase() + str.slice(1)
+
+export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
