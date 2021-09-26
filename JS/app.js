@@ -21,4 +21,4 @@ window.onload = function() {
 // appendTo($app, register);
 // appendTo($app, dashboard);
 // appendTo($app, profile);
-// appendTo($app, story);
+appendTo($app, story);

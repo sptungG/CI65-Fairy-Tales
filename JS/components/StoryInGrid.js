@@ -1,3 +1,4 @@
+import { getImgByName, removeVietnameseTones } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
 
 export default class StoryInGrid extends BaseComponent {
@@ -13,7 +14,7 @@ export default class StoryInGrid extends BaseComponent {
     $storyImage.innerHTML = `
     <img src="${this.props.story.pages[0].image}" alt="" />
     <div class="author-img--wrapper story-author">
-      <img src="${this.props.story.author.image}" alt="" class="author-img" />
+      <img src="../DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="author-img" />
     </div>
     `;
     // $storyImage.addEventListener("click", function () {
@@ -22,7 +23,7 @@ export default class StoryInGrid extends BaseComponent {
     let $storyContent = document.createElement("div");
     $storyContent.classList.add("story-content");
     $storyContent.innerHTML = `
-    <span class="story-by">${this.props.story.author.name}</span>
+    <span class="story-by">${this.props.story.authorName}</span>
     <h3 class="story-title">${this.props.story.name}</h3>
 
     <div class="story-view">
