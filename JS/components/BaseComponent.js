@@ -1,6 +1,8 @@
 export default class BaseComponent {
   props;
   state;
+
+  $element;
   constructor(props) {
     this.props = props;
   }
