@@ -1,5 +1,21 @@
 import BaseComponent from "../components/BaseComponent.js";
 
+// doc: tra ve tu cloud firestore
+export function getDataFromDoc(doc) {
+  let obj = doc.data();
+  obj.id = doc.id;
+  return obj
+}
+
+// docs: mang chua document tra ve tu cloud firestore
+export function getDataFromDocs(docs) {
+  let data = [];
+  for(let doc of docs) {
+      data.push(getDataFromDoc(doc));
+  }
+  return data
+}
+
 export function validateEmail(email) {
   const regexEmail =
     /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -65,3 +81,17 @@ export function removeVietnameseTones(str) {
 }
 
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
+
+export function play(audioContainer,audio,playBtn) {
+  audioContainer.classList.add("play");
+  playBtn.querySelector("i.fas").classList.remove("fa-play");
+  playBtn.querySelector("i.fas").classList.add("fa-pause");
+  audio.play();
+}
+
+export function pause(audioContainer,audio,playBtn) {
+  audioContainer.classList.remove("play");
+  playBtn.querySelector("i.fas").classList.add("fa-play");
+  playBtn.querySelector("i.fas").classList.remove("fa-pause");
+  audio.pause();
+}

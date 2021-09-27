@@ -44,7 +44,7 @@ export default class StoryDetail extends BaseComponent {
 
     let $desc = document.createElement("p");
     $desc.classList.add("text", "detail-desc");
-    // $desc.innerHTML = `${this.props.story.desc}`;
+    $desc.innerHTML = `${this.props.story.name} ${this.props.story.desc}`;
     let $authorWrapper = document.createElement("div");
     $authorWrapper.classList.add("detail-author-wrapper");
     $authorWrapper.innerHTML = `

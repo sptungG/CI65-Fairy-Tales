@@ -1,4 +1,4 @@
-// import "./router.js"
+import "./router.js"
 import RegisterScreen from "./screens/RegisterScreen.js";
 import LoginScreen from "./screens/LoginScreen.js";
 import DashBoard from "./screens/DashBoard.js";
@@ -14,10 +14,10 @@ const dashboard = new DashBoard();
 const profile = new Profile();
 const story = new StoryScreen();
 
-// window.onload = function() {
-//     authStateChanged();
-// }
-appendTo($app, login);
+window.onload = function() {
+    authStateChanged();
+}
+// appendTo($app, login);
 // appendTo($app, register);
 // appendTo($app, dashboard);
 // appendTo($app, profile);

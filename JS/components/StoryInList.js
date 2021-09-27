@@ -11,8 +11,8 @@ export default class StoryInList extends BaseComponent {
     </div>
     <div class="activity-item-info">
       <h3 class="title activity-item-title">${this.props.story.name}</h3>
-      <div class="activity-item-author">${this.props.story.author.name}</div>
-      <div class="activity-item-desc">${this.props.story.desc}</div>
+      <div class="activity-item-author">${this.props.story.authorName}</div>
+      <div class="activity-item-desc">${this.props.story.name} ${this.props.story.desc}</div>
       <div class="activity-item-act">
         <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${this.props.story.date}</span></div>
       </div>

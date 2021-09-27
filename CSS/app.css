@@ -1314,6 +1314,11 @@ section[id] {
   padding: 3px 8px;
   font-size: 12px;
   border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
 }
 .activity-item-info {
   flex: 1;

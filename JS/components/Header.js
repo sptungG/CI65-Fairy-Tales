@@ -1,10 +1,10 @@
 import { removeVietnameseTones } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
 export default class Header extends BaseComponent {
-  constructor(props){
+  constructor(props) {
     super(props);
   }
-  
+
   render() {
     let $header = document.createElement("header");
     $header.classList.add("header");
@@ -14,7 +14,10 @@ export default class Header extends BaseComponent {
     $headerTop.classList.add("header-top");
     let $headerLogo = document.createElement("a");
     $headerLogo.classList.add("header-logo-link");
-    $headerLogo.href = "index.html";
+    $headerLogo.addEventListener("click", (e) => {
+      e.preventDefault();
+      router.navigate("/dashboard");
+    });
     $headerLogo.innerHTML = `<img src="./IMG/icons/book.svg" alt="" class="header-logo" /><span>FairyStory</span>`;
 
     let $headerTopRight = document.createElement("div");
@@ -33,7 +36,7 @@ export default class Header extends BaseComponent {
     $headerSearchBtn.classList.add("header-search");
     $headerSearchBtn.innerHTML = `<i class="fas fa-search"></i>`;
 
-    // Search 
+    // Search
     function storiesSearched(value, stories) {
       // let storiesFilter = JSON.parse(JSON.stringify(stories));
       let searchString = value;
@@ -83,6 +86,15 @@ export default class Header extends BaseComponent {
     let $dropdownOption1 = this.dropdownOption("user-profile", "Profile", "far fa-address-card", handleSelectDropdown);
     let $dropdownOption2 = this.dropdownOption("dark-mode", "Dark mode", "far fa-moon", handleSelectDropdown);
     let $dropdownOption3 = this.dropdownOption("logout", "Logout", "fas fa-sign-out-alt", handleSelectDropdown);
+    $dropdownOption1.addEventListener("click", (e) => {
+      e.preventDefault();
+      router.navigate("/profile");
+    });
+    $dropdownOption3.addEventListener("click", (e) => {
+      e.preventDefault();
+      auth.signOut();
+      router.navigate("/login");
+    });
     $dropdownList.append($dropdownOption1, $dropdownOption2, $dropdownOption3);
 
     // Avt Listener
@@ -122,7 +134,7 @@ export default class Header extends BaseComponent {
           </div>
           <div class="activity-item-info">
             <h3 class="title activity-item-title">${story.name}</h3>
-            <div class="activity-item-author">${story.author.name}</div>
+            <div class="activity-item-author">${story.authorName}</div>
             <div class="activity-item-act">
               <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${story.date}</span></div>
             </div>

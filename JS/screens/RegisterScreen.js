@@ -1,7 +1,7 @@
 import BaseComponent from "../components/BaseComponent.js";
 import InputWrapper from "../components/InputWrapper.js";
 import { register } from "../models/user.js";
-import { validateEmail, appendTo } from "../models/utils.js";
+import { validateEmail, appendTo} from "../models/utils.js";
 
 export default class RegisterScreen extends BaseComponent {
   // truyền dữ liệu thông qua props
@@ -99,7 +99,10 @@ export default class RegisterScreen extends BaseComponent {
     $link.classList.add("form-link");
     $link.href = "#";
     $link.innerHTML = "Login";
-    // $link.onclick =
+    $link.addEventListener("click", (event) => {
+      event.preventDefault();
+      router.navigate("/login");
+    });
     $p.append($link);
 
     let $form = document.createElement("form");

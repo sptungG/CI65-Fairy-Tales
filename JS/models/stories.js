@@ -1,4 +1,15 @@
+import { getDataFromDoc, getDataFromDocs } from "./utils.js";
 
+export async function getAllComics() {
+  let response = await db.collection("stories").get();
+  let data = getDataFromDocs(response.docs);
+  return data;
+}
+
+export async function getComicByTitle(title) {
+  let response = await db.collection("stories").doc(title).get();
+  return getDataFromDoc(response);
+}
 
 export function generateCategories(categoryList, list) {
   categoryList.forEach((category) => {
@@ -29,4 +40,3 @@ export function filterStory(category, stories) {
   console.log("Filter: ", category, filterStories);
   return filterStories;
 }
-

@@ -11,7 +11,11 @@ export default class Profile extends BaseComponent {
     super(props);
     this.state = {
       stories: data.stories,
-      user: data.user,
+      // user: data.user,
+      user: {
+        email: auth.currentUser.email,
+        name: auth.currentUser.displayName,
+      },
     };
   }
   render() {
@@ -30,7 +34,7 @@ export default class Profile extends BaseComponent {
     let $profileContainer = document.createElement("div");
     $profileContainer.classList.add("container");
     let _userInfo = new UserInfo({
-      user: data.user,
+      user: this.state.user,
     });
 
     //User Favorite Stories
