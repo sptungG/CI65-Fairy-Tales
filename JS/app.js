@@ -14,11 +14,11 @@ const dashboard = new DashBoard();
 const profile = new Profile();
 const story = new StoryScreen();
 
-window.onload = function() {
-    authStateChanged();
-}
-// appendTo($app, login);
+// window.onload = function() {
+//     authStateChanged();
+// }
+appendTo($app, login);
 // appendTo($app, register);
-appendTo($app, dashboard);
+// appendTo($app, dashboard);
 // appendTo($app, profile);
 // appendTo($app, story);

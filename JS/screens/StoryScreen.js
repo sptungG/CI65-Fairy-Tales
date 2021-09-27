@@ -38,13 +38,13 @@ export default class StoryScreen extends BaseComponent {
     // Detail
     // Comment
     let _storyPlay = new StoryPlay({
-      story: this.state.stories[2],
+      story: this.state.stories[0],
     });
     let _storyDetail = new Detail({
-      story: this.state.stories[2],
+      story: this.state.stories[0],
     });
     // let _storyComments = new Comment({
-    //   story: this.state.stories[2],
+    //   story: this.state.stories[0],
     // });
     // appendTo($detailLeft, _storyDetail, _storyComments);
     appendTo($detailLeft, _storyPlay);

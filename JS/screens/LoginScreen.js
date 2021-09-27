@@ -81,7 +81,7 @@ export default class LoginScreen extends BaseComponent {
 
     let $form = document.createElement("form");
     $form.classList.add("form-fill");
-    $form.onsubmit = this.handleRegister;
+    $form.onsubmit = this.handleLogin;
     appendTo($form, _email, _password);
     $form.append($btn, $p, $title);
 
@@ -97,20 +97,25 @@ export default class LoginScreen extends BaseComponent {
   }
   // ==========================  ==========================
   handleLogin = (event) => {
-    event.preventDefault();
+    event.preventDefault(); // chặn chuyển hướng đến action
 
     let data = this.state.data;
     let error = this.state.error;
+    error.email = "";
+    error.password = "";
+
     let isPassed = true;
 
-    if (data.email === "" || !validateEmail(data.email)) {
+    if (data.email == "" || !validateEmail(data.email)) {
+      error.email = "Invalid email";
       isPassed = false;
-      error.email = "Invalid Email";
     }
-    if (data.password === "") {
+
+    if (data.password == "") {
+      error.password = "Invalid password";
       isPassed = false;
-      error.password = "Invalid Password";
     }
+
     if (isPassed) {
       login(data.email, data.password);
       return;
