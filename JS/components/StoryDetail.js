@@ -53,7 +53,7 @@ export default class StoryDetail extends BaseComponent {
     let $authorWrapper = document.createElement("div");
     $authorWrapper.classList.add("detail-author-wrapper");
     $authorWrapper.innerHTML = `
-    <img src="../DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="detail-author-image" />
+    <img src="./DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="detail-author-image" />
     <span class="detail-author-name">${this.props.story.authorName}</span>
     `;
     $detailContainer.append($detailCategory, $detailTitleWrapper, $desc, $authorWrapper);

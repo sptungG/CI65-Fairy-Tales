@@ -124,11 +124,11 @@ export default class StoryPlay extends BaseComponent {
     console.log(this.props);
     let story = this.props.story;
     for (let i = 0; i < story.pagesNum; i++) {
-      $pageList.innerHTML += `<img class="page" src="../DATA/${getImgByName(story.name)}/Pages/${("0" + i).slice(-2)}.jpg">`;
+      $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/${("0" + i).slice(-2)}.jpg">`;
     }
     //play the first page
     setTimeout(() => {
-      $audio.src = `../DATA/${getImgByName(story.name)}/Audios/00.mp3`;
+      $audio.src = `./DATA/${getImgByName(story.name)}/Audios/00.mp3`;
       play($audioContainer, $audio, $playBtn);
       $audio.onended = function () {
         pause($audioContainer, $audio, $playBtn);
@@ -155,14 +155,14 @@ export default class StoryPlay extends BaseComponent {
         console.log(audioFiles);
         if (this.pageNum % 2 === 0) {
           if (this.pageNum == 2) {
-            audioFiles.push(`../DATA/${getImgByName(story.name)}/Audios/00.mp3`);
+            audioFiles.push(`./DATA/${getImgByName(story.name)}/Audios/00.mp3`);
           } else {
-            audioFiles.push(`../DATA/${getImgByName(story.name)}/Audios/${("0" + (this.pageNum - Math.floor(this.pageNum / 2) - 1)).slice(-2)}.mp3`);
+            audioFiles.push(`./DATA/${getImgByName(story.name)}/Audios/${("0" + (this.pageNum - Math.floor(this.pageNum / 2) - 1)).slice(-2)}.mp3`);
           }
           this.classList.remove("flipped");
           this.previousElementSibling.classList.remove("flipped");
         } else {
-          audioFiles.push(`../DATA/${getImgByName(story.name)}/Audios/${("0" + (this.pageNum - Math.floor(this.pageNum / 2))).slice(-2)}.mp3`);
+          audioFiles.push(`./DATA/${getImgByName(story.name)}/Audios/${("0" + (this.pageNum - Math.floor(this.pageNum / 2))).slice(-2)}.mp3`);
           this.classList.add("flipped");
           this.nextElementSibling.classList.add("flipped");
         }
@@ -188,27 +188,5 @@ export default class StoryPlay extends BaseComponent {
       };
     }
     return $container;
-  }
-  // generatePages(pages, list) {
-  //   pages.forEach((page) => {
-  //     let $page = document.createElement("li");
-  //     $page.classList.add("story-page-item", "slider-item");
-  //     // if(page.text) $page.innerHTML = `<p class="story-page-text slider-item-text">${page.text}</p><div class="story-page-image slider-item-image"><img src="${page.image}" alt=""/></div>`;
-  //     // else
-  //     $page.innerHTML = `<img src="${page.image}" alt=""/>`;
-  //     list.appendChild($page);
-  //   });
-  // }
-  // generatePagination(pages, list) {
-  //   for (const idx in pages) {
-  //     let $dot = document.createElement("li");
-  //     $dot.classList.add("slider-dot-item");
-  //     $dot.dataset.index = idx;
-  //     list.appendChild($dot);
-  //   }
-  //   return;
-  // }
-  createListener() {
-    window.addEventListener("load", function () {});
   }
 }

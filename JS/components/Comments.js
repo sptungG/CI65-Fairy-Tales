@@ -32,7 +32,7 @@ export default class Comments extends BaseComponent {
       let $comment = document.createElement("li");
       $comment.classList.add("comment-main-level");
       $comment.innerHTML = `
-      <div class="comment-avatar"><img src="${comment.user.image ? comment.user.image : "../DATA/Users/user.png"}" alt="" /></div>
+      <div class="comment-avatar"><img src="${comment.user.image ? comment.user.image : "./DATA/Users/user.png"}" alt="" /></div>
       <div class="comment-box">
         <div class="comment-head">
           <h6 class="comment-name by-author"><a href="#">${comment.user.name ? comment.user.name : "User"}</a></h6>

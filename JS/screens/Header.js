@@ -117,7 +117,7 @@ export default class Header extends BaseComponent {
         $dropdownSelect.classList.add("dropdown-select");
         $dropdownSelect.innerHTML = `
         <a class="header-user">
-        <img src="${user.image ? user.image : "../DATA/Users/user.png"}" alt="" />
+        <img src="${user.image ? user.image : "./DATA/Users/user.png"}" alt="" />
         </a>
         <span class="header-user-name">${user.displayName}</span>
         `;
@@ -182,7 +182,7 @@ export default class Header extends BaseComponent {
       $searchBoxItem.dataset.id = story.id;
       $searchBoxItem.innerHTML = `
         <div class="activity-item-image">
-            <img src="../DATA/${getImgByName(story.name)}/Pages/00.jpg" alt="" />
+            <img src="./DATA/${getImgByName(story.name)}/Pages/00.jpg" alt="" />
             <span class="activity-item-time">${story.length}</span>
           </div>
           <div class="activity-item-info">

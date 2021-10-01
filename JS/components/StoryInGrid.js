@@ -15,9 +15,9 @@ export default class StoryInGrid extends BaseComponent {
     let $storyImage = document.createElement("div");
     $storyImage.classList.add("story-image");
     $storyImage.innerHTML = `
-    <img src="../DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
+    <img src="./DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
     <div class="author-img--wrapper story-author">
-      <img src="../DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="author-img" />
+      <img src="./DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="author-img" />
     </div>
     `;
     $storyImage.addEventListener("click", (e) => {

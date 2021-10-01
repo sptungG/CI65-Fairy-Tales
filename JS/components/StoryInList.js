@@ -8,7 +8,7 @@ export default class StoryInList extends BaseComponent {
     $storyItem.dataset.id = this.props.story.id;
     $storyItem.innerHTML = `
     <div class="activity-item-image">
-      <img src="../DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
+      <img src="./DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
       <span class="activity-item-time">${this.props.story.length}</span>
     </div>
     <div class="activity-item-info">

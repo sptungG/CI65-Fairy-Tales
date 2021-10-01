@@ -36,7 +36,7 @@ export default class DashBoard extends BaseComponent {
         $categoryItem.dataset.value = category.name.toLowerCase();
         $categoryItem.innerHTML = `
         <div class="category-item-image">
-          <img src="../IMG/categories/${category.name.toLowerCase()}.png" alt="" />
+          <img src="./IMG/categories/${category.name.toLowerCase()}.png" alt="" />
         </div>
         <div class="category-item-content">
           <h3>${category.name}</h3>
