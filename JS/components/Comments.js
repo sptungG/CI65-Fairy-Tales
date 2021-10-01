@@ -1,6 +1,5 @@
 import BaseComponent from "./BaseComponent.js";
 
-
 export default class Comments extends BaseComponent {
   render() {
     let $commentsWrapper = document.createElement("div");
@@ -33,13 +32,13 @@ export default class Comments extends BaseComponent {
       let $comment = document.createElement("li");
       $comment.classList.add("comment-main-level");
       $comment.innerHTML = `
-      <div class="comment-avatar"><img src="${comment.user.image}" alt="" /></div>
+      <div class="comment-avatar"><img src="${comment.user.image ? comment.user.image : "../DATA/Users/user.png"}" alt="" /></div>
       <div class="comment-box">
         <div class="comment-head">
-          <h6 class="comment-name by-author"><a href="#">${comment.user.name}</a></h6>
-          <span class="comment-date">${comment.date}</span>
+          <h6 class="comment-name by-author"><a href="#">${comment.user.name ? comment.user.name : "User"}</a></h6>
+          <span class="comment-date">${comment.date ? comment.date : new Date().toLocaleDateString("vi-VI")}</span>
         </div>
-        <div class="comment-content">${comment.text}</div>
+        <div class="comment-content">${comment.text ? comment.text : "Lorem ipsum dolor sit amet consectetur adipisicing elit."}</div>
       </div>
       `;
       list.appendChild($comment);

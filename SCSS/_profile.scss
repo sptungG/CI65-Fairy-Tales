@@ -18,6 +18,10 @@
   }
 }
 .favorite {
+  &-title span {
+    @include dotSeparate("left");
+    margin-left: 0;
+  }
   margin-bottom: 40px;
   @include gridLayout(10px);
   &-list {
@@ -147,7 +151,12 @@
   }
 }
 .activity {
+  &-title span {
+    @include dotSeparate("left");
+    margin-left: 0;
+  }
   &-item {
+    position: relative;
     display: flex;
     padding: 10px;
     background-color: $gray;
@@ -215,8 +224,8 @@
   }
   &-item-delete {
     position: absolute;
-    right: 0;
-    top: 0;
+    right: 10px;
+    top: 10px;
     font-size: 24px;
     opacity: 0;
     visibility: hidden;
@@ -240,8 +249,8 @@
   &-tab-item.active {
     color: $primary-color;
     background-color: rgba($primary-color, 0.3);
-  } 
-  &-tab-item:hover{
+  }
+  &-tab-item:hover {
     color: $primary-color;
     background-color: rgba($primary-color, 0.3);
   }

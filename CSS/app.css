@@ -1156,6 +1156,23 @@ section[id] {
 .favorite {
   margin-bottom: 40px;
 }
+.favorite-title span {
+  position: relative;
+  padding-left: 5px;
+  margin-left: 5px;
+  margin-left: 0;
+}
+.favorite-title span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 3.2px;
+  height: 3.2px;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
 .favorite-list {
   display: grid;
   grid-gap: 10px;
@@ -1334,7 +1351,25 @@ section[id] {
   }
 }
 
+.activity-title span {
+  position: relative;
+  padding-left: 5px;
+  margin-left: 5px;
+  margin-left: 0;
+}
+.activity-title span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 3.2px;
+  height: 3.2px;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
 .activity-item {
+  position: relative;
   display: flex;
   padding: 10px;
   background-color: #252936;
@@ -1427,8 +1462,8 @@ section[id] {
 }
 .activity-item-delete {
   position: absolute;
-  right: 0;
-  top: 0;
+  right: 10px;
+  top: 10px;
   font-size: 24px;
   opacity: 0;
   visibility: hidden;

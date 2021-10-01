@@ -10,7 +10,7 @@ export default class StoryDetail extends BaseComponent {
     let $detailCategory = document.createElement("ul");
     $detailCategory.classList.add("detail-category");
     this.generateCategories(this.props.story.categories, $detailCategory);
-    
+
     // Story Detail Name, Rating, Date, Desc, Author
     let $detailTitleWrapper = document.createElement("div");
     $detailTitleWrapper.classList.add("detail-title-wrapper");
@@ -23,7 +23,9 @@ export default class StoryDetail extends BaseComponent {
     $detailAvgWrapper.classList.add("detail-avg");
     let $date = document.createElement("div");
     $date.classList.add("detail-date");
-    $date.innerHTML = `<i class="far fa-clock"></i><span class="detail-date-num">${this.props.story.createAt}</span>`;
+    $date.innerHTML = `<i class="far fa-clock"></i><span class="detail-date-num">${
+      this.props.story.createAt ? this.props.story.createAt : new Date().toLocaleDateString("vi-VI")
+    }</span>`;
     let $avgHeading = document.createElement("span");
     $avgHeading.classList.add("detail-avg-heading");
     $avgHeading.innerHTML = `User Rating`;
@@ -31,7 +33,9 @@ export default class StoryDetail extends BaseComponent {
     $avgHearts.classList.add("detail-avg-heart");
     this.generateHearts(this.props.story.avgRating, $avgHearts);
     let $avgText = document.createElement("p");
-    $avgText.innerHTML = `<span class="avg-num rating-num">${(this.props.story.avgRating) ? this.props.story.avgRating : 5}</span> average based on <span class="avg-num view-num">${99}</span> reviews.`;
+    $avgText.innerHTML = `<span class="avg-num rating-num">${
+      this.props.story.avgRating ? this.props.story.avgRating : 5
+    }</span> average based on <span class="avg-num view-num">${99}</span> reviews.`;
     // $avgText.innerHTML = `<span class="avg-num rating-num">${(this.props.story.avgRating) ? this.props.story.avgRating : 5}</span> average based on <span class="avg-num view-num">${(this.props.story.usersRating.length) ? this.props.story.usersRating.length : 99}</span> reviews.`;
     let $detailBtnWrapper = document.createElement("div");
     $detailBtnWrapper.classList.add("detail-btn-wrapper");
@@ -64,7 +68,7 @@ export default class StoryDetail extends BaseComponent {
     });
   }
   generateHearts(avgNum, list) {
-    avgNum = (avgNum) ? avgNum : 5;
+    avgNum = avgNum ? avgNum : 5;
     for (let i = 0; i < Math.floor(avgNum); i++) {
       let $heart = document.createElement("i");
       $heart.classList.add("fas", "fa-heart", "checked");

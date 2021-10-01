@@ -1,4 +1,5 @@
-import { removeVietnameseTones, getMedia, getImgByName } from "../models/utils.js";
+import { removeVietnameseTones, getImgByName } from "../models/utils.js";
+import StoryScreen from "./StoryScreen.js";
 import BaseComponent from "../components/BaseComponent.js";
 import * as data from "../data.js";
 import Profile from "./Profile.js";
@@ -6,10 +7,7 @@ import DashBoard from "./DashBoard.js";
 export default class Header extends BaseComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      user: {},
-      stories: data.stories,
-    };
+    this.state = "";
   }
 
   render() {
@@ -119,7 +117,7 @@ export default class Header extends BaseComponent {
         $dropdownSelect.classList.add("dropdown-select");
         $dropdownSelect.innerHTML = `
         <a class="header-user">
-        <img src="${user.image == undefined ? "../DATA/Users/user.png" : user.image}" alt="" />
+        <img src="${user.image ? user.image : "../DATA/Users/user.png"}" alt="" />
         </a>
         <span class="header-user-name">${user.displayName}</span>
         `;
@@ -196,10 +194,16 @@ export default class Header extends BaseComponent {
         </div>
         `;
       $searchBoxItem.addEventListener("click", () => {
-        console.log("Go to: ", story);
+        this.handleOnclick(story);
       });
       list.appendChild($searchBoxItem);
     });
+  }
+  async handleOnclick(item) {
+    let _content = document.querySelector("#dashboard");
+    _content.innerHTML = "";
+    console.log(item);
+    new StoryScreen({ id: item.id }).render();
   }
 }
 // //Get the button

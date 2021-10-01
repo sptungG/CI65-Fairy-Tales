@@ -1,3 +1,5 @@
+import { getDataFromDoc, getDataFromDocs } from "./utils.js";
+
 let router = new Navigo(null, true, "#");
 
 export async function register(name, email, password) {
@@ -18,7 +20,7 @@ export async function register(name, email, password) {
       wallpaper: "https://source.unsplash.com/random/?vietnam,nature",
       image: "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/user.png?alt=media&token=990e1356-808c-4fd3-ba10-4b9b37482091",
       bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod molestiae dignissimos similique sed accusantium quia sit laborum, sint veritatis soluta autem vero incidunt, repudiandae nihil doloremque? Mollitia officiis optio tempora?",
-      storiesRated: [],
+      storiesFavorite: [],
       storiesRead: [],
       storiesCommented: [],
     });
@@ -46,6 +48,12 @@ export async function login(email, password) {
 
 export async function logout() {
   await auth.signOut();
+}
+export function authStateChanged(callback) {
+  //dang ki, dang nhap, dang xuat
+  firebase.auth().onAuthStateChanged((user) => {
+      callback(user);
+  });
 }
 
 export async function getAllUsers() {

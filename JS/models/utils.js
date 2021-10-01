@@ -33,18 +33,6 @@ export function appendTo($element, ...components) {
   }
 }
 
-export function getMedia(stories) {
-  stories.forEach((story) => {
-    for (let index = 0; index < story.pagesNum; index++) {
-      story.pages.push({
-        image: `../DATA/${getImgByName(story.name)}/Pages/${("0" + index).slice(-2)}.jpg`,
-      });
-    }
-    for (let index = 0; index < Math.floor(story.pagesNum / 2); index++) {
-      story.audios.push(`../DATA/${getImgByName(story.name)}/Audios/${("0" + index).slice(-2)}.mp3`);
-    }
-  });
-}
 export function getImgByName(name) {
   return removeVietnameseTones(name).split(" ").join("-").toLowerCase();
 }

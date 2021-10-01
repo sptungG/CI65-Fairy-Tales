@@ -12,6 +12,7 @@ export default class InputWrapper extends BaseComponent {
     $input.type = this.props.type;
     $input.value = this.props.value;
     $input.onblur = this.props.onblur;
+    $input.autocomplete = this.props.autocomplete ? this.props.autocomplete : "off";
 
     let $error = document.createElement("div");
     $error.classList.add("form-error");

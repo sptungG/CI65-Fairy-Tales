@@ -56,6 +56,7 @@ export default class LoginScreen extends BaseComponent {
       type: "email",
       error: this.state.messageError.email,
       value: this.state.data.email,
+      autocomplete: "on",
       onblur: (event) => {
         this.handleInputChange("email", event.target.value);
       },
@@ -65,6 +66,7 @@ export default class LoginScreen extends BaseComponent {
       type: "password",
       error: this.state.messageError.password,
       value: this.state.data.password,
+      autocomplete: "on",
       onblur: (event) => {
         this.handleInputChange("password", event.target.value);
       },

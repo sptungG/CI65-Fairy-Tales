@@ -1,9 +1,10 @@
 import BaseComponent from "../components/BaseComponent.js";
-import { appendTo, getMedia } from "../models/utils.js";
+import { appendTo } from "../models/utils.js";
 import UserInfo from "../components/UserInfo.js";
 import * as data from "../data.js";
 import StoryInGrid from "../components/StoryInGrid.js";
 import StoryInList from "../components/StoryInList.js";
+import { filterStory, getStoryById } from "../models/stories.js";
 
 export default class Profile extends BaseComponent {
   render() {
@@ -15,14 +16,7 @@ export default class Profile extends BaseComponent {
           let _userInfo = new UserInfo({
             user: { ...doc.data() },
           });
-          doc.data().storiesRated.forEach((story) => {
-            let _story = new StoryInGrid({ story: story });
-            appendTo($favoriteList, _story);
-          });
-          doc.data().storiesRead.forEach((story) => {
-            let _story = new StoryInList({ story: story });
-            appendTo($activityList, _story);
-          });
+
           let $container = document.querySelector("#dashboard");
           $container.classList.add("wrapper");
 
@@ -43,37 +37,39 @@ export default class Profile extends BaseComponent {
           $favoriteSection.classList.add("favorite");
           let $title = document.createElement("h2");
           $title.className = "favorite-title title";
-          $title.innerHTML = "Your Favorites";
+          $title.innerHTML = `Your Favorites <span>${doc.data().storiesFavorite.length}</span>`;
           let $favoriteList = document.createElement("ul");
           $favoriteList.classList.add("favorite-list");
-          // this.state.stories.forEach((story) => {
-          //   let _story = new StoryInGrid({ story: story });
-          //   appendTo($favoriteList, _story);
-          // });
+          doc.data().storiesFavorite.forEach(async (item) => {
+            let story = await getStoryById(item);
+            let _story = new StoryInGrid({ story: story });
+            appendTo($favoriteList, _story);
+          });
           $favoriteSection.append($title, $favoriteList);
           //User Read Stories
           let $activitySection = document.createElement("section");
           $activitySection.classList.add("activity");
           let $activityTitle = document.createElement("h2");
           $activityTitle.className = "activity-title title";
-          $activityTitle.innerHTML = "Recent Reading";
+          $activityTitle.innerHTML = `Recent Reading <span>${doc.data().storiesRead.length}</span>`;
 
           let $activityTabs = document.createElement("ul");
           $activityTabs.classList.add("activity-tabs");
-          this.generateTabs(data.categories, $activityTabs);
-          let tabItems = document.querySelectorAll(".activity-tab-item");
-          [...tabItems].forEach((item) =>
-            item.addEventListener("click", function (e) {
-              [...tabItems].forEach((el) => el.classList.remove("active"));
-              e.target.classList.add("active");
-            })
-          );
+          data.categories.forEach((item) => {
+            let $tab = document.createElement("li");
+            $tab.dataset.value = item.name;
+            $tab.classList.add("activity-tab-item");
+            $tab.innerHTML = `${item.name}`;
+            $activityTabs.appendChild($tab);
+          });
+          
           let $activityList = document.createElement("ul");
           $activityList.classList.add("activity-list");
-          // this.state.stories.forEach((story) => {
-          //   let _story = new StoryInList({ story: story });
-          //   appendTo($activityList, _story);
-          // });
+          doc.data().storiesRead.forEach(async (item) => {
+            let story = await getStoryById(item);
+            let _story = new StoryInList({ story: story });
+            appendTo($activityList, _story);
+          });
 
           $activitySection.append($activityTitle, $activityTabs, $activityList);
           $storySection.append($favoriteSection, $activitySection);
@@ -85,13 +81,5 @@ export default class Profile extends BaseComponent {
           return $container;
         }
       });
-  }
-  generateTabs(list, tabs) {
-    list.forEach((item) => {
-      let $tab = document.createElement("li");
-      $tab.classList.add("activity-tab-item");
-      $tab.innerHTML = `${item.name}`;
-      tabs.appendChild($tab);
-    });
   }
 }

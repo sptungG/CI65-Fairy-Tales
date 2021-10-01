@@ -5,6 +5,7 @@ export default class StoryInList extends BaseComponent {
   render() {
     let $storyItem = document.createElement("li");
     $storyItem.classList.add("activity-item");
+    $storyItem.dataset.id = this.props.story.id;
     $storyItem.innerHTML = `
     <div class="activity-item-image">
       <img src="../DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
@@ -17,9 +18,22 @@ export default class StoryInList extends BaseComponent {
       <div class="activity-item-act">
         <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${this.props.story.createAt}</span></div>
       </div>
-      <div class="activity-item-delete"><i class="far fa-times-circle"></i></div>
     </div>
     `;
+    let $deleteBtn = document.createElement("div");
+    $deleteBtn.classList.add("activity-item-delete");
+    $deleteBtn.innerHTML = `<i class="far fa-times-circle"></i>`;
+    $deleteBtn.addEventListener("click", () => {
+      this.removeActivity(this.props.story.id);
+      $deleteBtn.parentElement.style.display = "none";
+    });
+    $storyItem.append($deleteBtn);
     return $storyItem;
+  }
+  async removeActivity(itemId) {
+    let usersRef = await db.collection("users").doc(auth.currentUser.uid);
+    usersRef.update({
+      storiesRead: firebase.firestore.FieldValue.arrayRemove(`${itemId}`),
+    });
   }
 }

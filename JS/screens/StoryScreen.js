@@ -2,18 +2,14 @@ import BaseComponent from "../components/BaseComponent.js";
 import Comment from "../components/Comments.js";
 import Detail from "../components/StoryDetail.js";
 import StoryPlay from "../components/StoryPlay.js";
-import * as data from "../data.js";
-import { appendTo, getMedia } from "../models/utils.js";
+import { appendTo } from "../models/utils.js";
 import StoryInGrid from "../components/StoryInGrid.js";
 import { getAllStories } from "../models/stories.js";
 
 export default class StoryScreen extends BaseComponent {
   constructor(props) {
     super(props);
-    this.state = {
-      // stories: data.stories,
-      // user: data.user,
-    };
+    this.state = "";
   }
   render() {
     db.collection("stories")
@@ -53,20 +49,20 @@ export default class StoryScreen extends BaseComponent {
           appendTo($detailLeft, _storyDetail);
           $detailSides.append($detailLeft);
 
-          // let $detailRight = document.createElement("div");
-          // $detailRight.classList.add("detail-right");
-          // let $detailRightTitle = document.createElement("h3");
-          // $detailRightTitle.classList.add("title", "relate-title");
-          // $detailRightTitle.innerHTML = `Related Stories`;
-          // let $relatedList = document.createElement("ul");
-          // $relatedList.className = "story-list";
+          let $detailRight = document.createElement("div");
+          $detailRight.classList.add("detail-right");
+          let $detailRightTitle = document.createElement("h3");
+          $detailRightTitle.classList.add("title", "relate-title");
+          $detailRightTitle.innerHTML = `Related Stories`;
+          let $relatedList = document.createElement("ul");
+          $relatedList.className = "story-list";
           // let stories = getAllStories();
           // console.log(stories);
           // stories.forEach((story) => {
           //   let _story = new StoryInGrid({ story: story });
           //   appendTo($relatedList, _story);
           // });
-          // $detailRight.append($detailRightTitle, $relatedList);
+          $detailRight.append($detailRightTitle, $relatedList);
           $detailSides.append($detailRight);
           $detailContainer.append($detailSides);
           $detailSection.append($detailContainer);
