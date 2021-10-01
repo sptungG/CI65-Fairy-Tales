@@ -1,7 +1,7 @@
 import BaseComponent from "../components/BaseComponent.js";
 import InputWrapper from "../components/InputWrapper.js";
 import { login } from "../models/user.js";
-import { validateEmail, appendTo} from "../models/utils.js";
+import { validateEmail, appendTo, modalClose } from "../models/utils.js";
 
 export default class LoginScreen extends BaseComponent {
   // truyền dữ liệu thông qua props
@@ -12,7 +12,7 @@ export default class LoginScreen extends BaseComponent {
         email: "",
         password: "",
       },
-      error: {
+      messageError: {
         email: "",
         password: "",
       },
@@ -22,33 +22,50 @@ export default class LoginScreen extends BaseComponent {
   /**
    * Xử lý sự kiện onchange của input
    */
-  handleInputChange = (fieldName, fieldValue) => {
+  handleInputChange = (fieldName, filedValue) => {
     let tmpState = this.state;
-    tmpState.data[fieldName] = fieldValue.trim();
+    if (filedValue.trim() == "") {
+      tmpState.messageError[fieldName] = `Invalid ${fieldName}`;
+    } else {
+      tmpState.messageError[fieldName] = "";
+    }
+    if (fieldName == "email" && filedValue) {
+      if (!validateEmail(filedValue)) {
+        tmpState.messageError[fieldName] = "Email is false";
+        tmpState.data[fieldName] = filedValue.trim();
+      } else {
+        tmpState.data[fieldName] = filedValue.trim();
+      }
+    }
+    if (fieldName == "password") {
+      if (filedValue.trim().length < 6) {
+        tmpState.messageError[fieldName] = "Password should be minimum 6 characters.";
+      }
+    }
+    tmpState.data[fieldName] = filedValue.trim();
+
     this.setState(tmpState);
-    console.log(this.state);
   };
 
   // ==========================  ==========================
   render() {
-    let $container = document.createElement("div");
-    $container.classList.add("container");
+    let $container = document.querySelector("#modalLogin");
 
     let _email = new InputWrapper({
       placeholder: "Email",
       type: "email",
-      error: this.state.error.email,
+      error: this.state.messageError.email,
       value: this.state.data.email,
-      onchange: (event) => {
+      onblur: (event) => {
         this.handleInputChange("email", event.target.value);
       },
     });
     let _password = new InputWrapper({
       placeholder: "Password",
       type: "password",
-      error: this.state.error.password,
+      error: this.state.messageError.password,
       value: this.state.data.password,
-      onchange: (event) => {
+      onblur: (event) => {
         this.handleInputChange("password", event.target.value);
       },
     });
@@ -70,62 +87,73 @@ export default class LoginScreen extends BaseComponent {
     $btn.innerHTML = "Sign In";
     $btn.classList.add("form-btn", "btn", "btn-primary");
 
+    let $modalRegister = document.querySelector("#modalRegister");
     let $p = document.createElement("p");
-    $p.innerHTML = "Already have account? ";
+    $p.innerHTML = "Not have account yet? ";
     let $link = document.createElement("a");
     $link.classList.add("form-link");
     $link.href = "#";
     $link.innerHTML = "Register";
     $link.addEventListener("click", (event) => {
       event.preventDefault();
-      router.navigate("/register");
+      $container.style.display = "none";
+      $modalRegister.style.display = "block";
     });
     $p.append($link);
 
+    let isPassed = true;
+
+    for (const key in this.state.data) {
+      if (!this.state.data[key]) {
+        isPassed = false;
+      }
+    }
+
+    for (const key in this.state.messageError) {
+      if (this.state.messageError[key]) {
+        isPassed = false;
+      }
+    }
     let $form = document.createElement("form");
     $form.classList.add("form-fill");
-    $form.onsubmit = this.handleLogin;
+    if (isPassed) {
+      $btn.disabled = false;
+    } else {
+      $btn.disabled = true;
+      $btn.classList.remove("btn-primary");
+      $btn.classList.add("btn-lock");
+      $btn.style.cursor = "default";
+    }
+    $form.onsubmit = async (event) => {
+      event.preventDefault();
+      await login(this.state.data.email, this.state.data.password);
+      await db
+        .collection("admins")
+        .get()
+        .then((querySnapshot) => {
+          querySnapshot.forEach((doc) => {
+            if (doc.data().email == auth.currentUser.email) {
+              router.navigate("/adminDashboard");
+            }
+          });
+        });
+      return;
+    };
     appendTo($form, _email, _password);
     $form.append($btn, $p, $title);
 
     let $wrap = document.createElement("div");
     $wrap.classList.add("form");
-    $wrap.append($wrap1, $form);
+    let $btnClose = document.createElement("i");
+    $btnClose.classList.add("far", "fa-times-circle", "modal-close");
+    modalClose($container);
+    $wrap.append($wrap1, $form, $btnClose);
     let $modal = document.createElement("div");
     $modal.classList.add("modal");
     $modal.append($wrap);
 
+    $container.innerHTML = "";
     $container.append($modal);
     return $container;
   }
-  // ==========================  ==========================
-  handleLogin = (event) => {
-    event.preventDefault(); // chặn chuyển hướng đến action
-
-    let data = this.state.data;
-    let error = this.state.error;
-    error.email = "";
-    error.password = "";
-
-    let isPassed = true;
-
-    if (data.email == "" || !validateEmail(data.email)) {
-      error.email = "Invalid email";
-      isPassed = false;
-    }
-
-    if (data.password == "") {
-      error.password = "Invalid password";
-      isPassed = false;
-    }
-
-    if (isPassed) {
-      login(data.email, data.password);
-      return;
-    }
-
-    let tmpState = this.state;
-    tmpState.error = error;
-    this.setState(tmpState);
-  };
 }

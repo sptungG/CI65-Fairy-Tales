@@ -1,4 +1,5 @@
 import { getImgByName, removeVietnameseTones } from "../models/utils.js";
+import StoryScreen from "../screens/StoryScreen.js";
 import BaseComponent from "./BaseComponent.js";
 
 export default class StoryInGrid extends BaseComponent {
@@ -12,14 +13,14 @@ export default class StoryInGrid extends BaseComponent {
     let $storyImage = document.createElement("div");
     $storyImage.classList.add("story-image");
     $storyImage.innerHTML = `
-    <img src="${this.props.story.pages[0].image}" alt="" />
+    <img src="../DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
     <div class="author-img--wrapper story-author">
       <img src="../DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="author-img" />
     </div>
     `;
-    // $storyImage.addEventListener("click", function () {
-    //   console.log("Clicked: ", this.props.story);
-    // });
+    $storyImage.addEventListener("click", (e) => {
+      this.handleOnclick(this.props.story);
+    });
     let $storyContent = document.createElement("div");
     $storyContent.classList.add("story-content");
     $storyContent.innerHTML = `
@@ -27,8 +28,8 @@ export default class StoryInGrid extends BaseComponent {
     <h3 class="story-title">${this.props.story.name}</h3>
 
     <div class="story-view">
-      <span class="story-view-num">${this.props.story.views} views</span>
-      <span class="story-date">${this.props.story.date}</span>
+      <span class="story-view-num">${this.props.story.viewsNum} views</span>
+      <span class="story-date">${this.props.story.createAt}</span>
     </div>
     `;
     let $storyRatingBtn = document.createElement("div");
@@ -36,11 +37,17 @@ export default class StoryInGrid extends BaseComponent {
     $storyRatingBtn.innerHTML = `
     <i class="far fa-heart"></i><span class="heart-num">${this.props.story.avgRating}</span>
     `;
-    $storyRatingBtn.addEventListener("click", function () {
-      console.log("Rated:", this.props.story.avgRating);
+    $storyRatingBtn.addEventListener("click", (e) => {
+      // this.handleOnclick(this.props.story.id);
     });
     $storyContent.append($storyRatingBtn);
     $storyItem.append($storyLength, $storyImage, $storyContent);
     return $storyItem;
+  }
+  async handleOnclick(item) { 
+    let _content = document.querySelector("#dashboard");
+    _content.innerHTML = "";
+    console.log(item);
+    new StoryScreen({ id: item.id }).render();
   }
 }

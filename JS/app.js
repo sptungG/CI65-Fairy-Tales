@@ -5,18 +5,19 @@ import DashBoard from "./screens/DashBoard.js";
 import Profile from "./screens/Profile.js";
 import { appendTo } from "./models/utils.js";
 import StoryScreen from "./screens/StoryScreen.js";
-import { authStateChanged } from "./models/user.js";
+import Header from "./screens/Header.js";
+// import { authStateChanged } from "./models/user.js";
 
 let $app = document.getElementById("app");
-const register = new RegisterScreen();
-const login = new LoginScreen();
-const dashboard = new DashBoard();
-const profile = new Profile();
-const story = new StoryScreen();
-
-window.onload = function() {
-    authStateChanged();
-}
+let header = new Header().render()
+let register = new RegisterScreen().render();
+let login = new LoginScreen().render();
+let dashboard = new DashBoard().render();
+// let profile = new Profile().render();
+// let story = new StoryScreen().render();
+// window.onload = function() {
+//     authStateChanged();
+// }
 // appendTo($app, login);
 // appendTo($app, register);
 // appendTo($app, dashboard);

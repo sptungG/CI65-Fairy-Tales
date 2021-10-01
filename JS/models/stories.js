@@ -1,13 +1,13 @@
 import { getDataFromDoc, getDataFromDocs } from "./utils.js";
 
-export async function getAllComics() {
+export async function getAllStories() {
   let response = await db.collection("stories").get();
   let data = getDataFromDocs(response.docs);
   return data;
 }
 
-export async function getComicByTitle(title) {
-  let response = await db.collection("stories").doc(title).get();
+export async function getStoryById(id) {
+  let response = await db.collection("stories").doc(id).get();
   return getDataFromDoc(response);
 }
 

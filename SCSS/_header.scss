@@ -15,6 +15,9 @@
       z-index: 20;
     }
   }
+  &-login-wrapper {
+    @include flex(center, space-between);
+  }
   &-top-right {
     margin-left: auto;
     width: 60%;
@@ -22,6 +25,7 @@
   }
   &-logo-link {
     @include flex(center);
+    cursor: pointer;
   }
   &-logo-link > span {
     font-family: $secondary-font;
@@ -98,10 +102,10 @@
     height: 130px;
     transform: scale(0.9);
   }
-  &-search-item:hover{
+  &-search-item:hover {
     background-color: $gray-dark;
   }
-  &-search-result{
+  &-search-result {
     display: inline-block;
     padding: 10px;
   }
@@ -115,6 +119,7 @@
     border-radius: 50%;
     border: 1px solid $gray-lighter;
     z-index: 20;
+    flex-shrink: 0;
   }
   &-user > img {
     @include size(100%);

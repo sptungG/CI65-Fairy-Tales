@@ -81,14 +81,24 @@ export function removeVietnameseTones(str) {
 
 export const capitalize = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
-export function play(audioContainer, audio, playBtn) {
+export function modalClose(container) {
+  document.body.addEventListener("click", (event) => {
+    if (event.target.matches(".modal-close")) {
+      container.style.display = "none";
+    } else if (event.target.matches(".modal")) {
+      container.style.display = "none";
+    }
+  });
+}
+
+export function play(audioContainer,audio,playBtn) {
   audioContainer.classList.add("play");
   playBtn.querySelector("i.fas").classList.remove("fa-play");
   playBtn.querySelector("i.fas").classList.add("fa-pause");
   audio.play();
 }
 
-export function pause(audioContainer, audio, playBtn) {
+export function pause(audioContainer,audio,playBtn) {
   audioContainer.classList.remove("play");
   playBtn.querySelector("i.fas").classList.add("fa-play");
   playBtn.querySelector("i.fas").classList.remove("fa-pause");

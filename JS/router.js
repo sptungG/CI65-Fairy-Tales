@@ -7,34 +7,20 @@ import Profile from "./screens/Profile.js";
 import StoryScreen from "./screens/StoryScreen.js";
 
 let $app = document.getElementById("app");
+let $dashboard = document.getElementById("dashboard");
 
 let router = new Navigo(null, true, "#");
 
-router.on("/login", function () {
-    $app.innerHTML = "";
-    appendTo($app, new LoginScreen());
-  }).resolve();
-
-router.on("/register", function () {
-    $app.innerHTML = "";
-    appendTo($app, new RegisterScreen());
-  }).resolve();
-
 router.on("/dashboard", function () {
-  if(!auth.currentUser) {
-    router.navigate('/login');
-    return;
-  }
-    $app.innerHTML = "";
-    appendTo($app, new DashBoard());
-  })
-  .resolve();
-router.on("/profile", function () {
-  $app.innerHTML = "";
-  appendTo($app, new Profile());
+  $dashboard.innerHTML = "";
+  new DashBoard().render();
 });
+// router.on("/profile", function () {
+//   $dashboard.innerHTML = "";
+//   new Profile().render();
+// });
 router.on("/story", function () {
   $app.innerHTML = "";
-  appendTo($app, new StoryScreen());
+  new StoryScreen().render();
 });
 window.router = router;

@@ -1,3 +1,4 @@
+import { getImgByName } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
 
 export default class StoryInList extends BaseComponent {
@@ -6,7 +7,7 @@ export default class StoryInList extends BaseComponent {
     $storyItem.classList.add("activity-item");
     $storyItem.innerHTML = `
     <div class="activity-item-image">
-      <img src="${this.props.story.pages[0].image}" alt="" />
+      <img src="../DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
       <span class="activity-item-time">${this.props.story.length}</span>
     </div>
     <div class="activity-item-info">
@@ -14,7 +15,7 @@ export default class StoryInList extends BaseComponent {
       <div class="activity-item-author">${this.props.story.authorName}</div>
       <div class="activity-item-desc">${this.props.story.name} ${this.props.story.desc}</div>
       <div class="activity-item-act">
-        <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${this.props.story.date}</span></div>
+        <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${this.props.story.createAt}</span></div>
       </div>
       <div class="activity-item-delete"><i class="far fa-times-circle"></i></div>
     </div>

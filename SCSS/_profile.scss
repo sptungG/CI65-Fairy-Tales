@@ -240,6 +240,10 @@
   &-tab-item.active {
     color: $primary-color;
     background-color: rgba($primary-color, 0.3);
+  } 
+  &-tab-item:hover{
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.3);
   }
   &-tab-item {
     white-space: nowrap;

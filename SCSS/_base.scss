@@ -45,30 +45,47 @@ section[id] {
   margin: 0 auto;
   padding: 0 10px;
 }
-.modal {
-  @include absoluteFull();
-  position: fixed;
-  z-index: 10;
 
-  @include flexCenter();
-  padding: 20px;
-  background: linear-gradient(to right, rgba($primary-color, 0.4), rgba($secondary-color, 0.4)), url("../IMG/bg-modal.png") no-repeat center / cover;
-}
 .btn {
-  font-size: 24px;
+  font-size: 18px;
   text-align: center;
   font-weight: 700;
-  height: 55px;
-  padding: 0 70px;
+  padding: 10px 20px;
   border-radius: 4px;
   letter-spacing: 1px;
+  transition: all 0.25s ease;
+  border: 1px solid transparent;
   &-primary {
     color: #fff;
+    border-radius: 100px;
     font-family: $secondary-font;
     @include gradient($primary-color, $secondary-color);
   }
+  &-lock {
+    color: $primary-color;
+    border-radius: 100px;
+    background-color: rgba($primary-color, 0.2);
+  }
+  &-register {
+    border-radius: 100px;
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.2);
+  }
+  &-register:hover {
+    border: 1px solid $primary-color;
+  }
+  &-login {
+    border-radius: 100px;
+    color: $secondary-color;
+    margin-right: 5px;
+    background-color: transparent;
+  }
+  &-login:hover {
+    border: 1px solid $secondary-color;
+  }
 }
-.btn-mode{
+
+.btn-mode {
   padding: 10px 20px;
   transition: all 0.25s ease;
   border-radius: 8px;
@@ -77,16 +94,15 @@ section[id] {
   background-color: $gray;
   color: $gray-lighter;
   margin-left: 5px;
-  &:hover{
+  &:hover {
     @include textGradient();
     border: 1px solid $primary-color;
   }
 }
-.mode-active{
+.mode-active {
   border: 1px solid $primary-color;
   @include textGradient();
 }
-
 
 #toTopBtn {
   display: none;
