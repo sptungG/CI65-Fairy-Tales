@@ -121,7 +121,7 @@ export default class StoryPlay extends BaseComponent {
     $playerWrapper.append($playerItems, $audioContainer, $audio, $toolBarItems);
     $container.append($wrapper, $playerWrapper);
     // let story = getStoryById(this.props.id);
-    console.log(this.props);
+    // console.log(this.props);
     let story = this.props.story;
     for (let i = 0; i < story.pagesNum; i++) {
       $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/${("0" + i).slice(-2)}.jpg">`;
@@ -152,7 +152,7 @@ export default class StoryPlay extends BaseComponent {
         $audio.pause();
 
         let audioFiles = [];
-        console.log(audioFiles);
+        // console.log(audioFiles);
         if (this.pageNum % 2 === 0) {
           if (this.pageNum == 2) {
             audioFiles.push(`./DATA/${getImgByName(story.name)}/Audios/00.mp3`);

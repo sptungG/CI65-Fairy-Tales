@@ -109,7 +109,7 @@ export default class Header extends BaseComponent {
     $headerAvt.style.display = "none";
     auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user);
+        // console.log(user);
         $headerLoginWrapper.style.display = "none";
         $headerAvt.style.display = "flex";
 

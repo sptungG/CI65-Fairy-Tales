@@ -67,7 +67,7 @@ export default class StoryInGrid extends BaseComponent {
   async handleOnclick(item) {
     let _content = document.querySelector("#dashboard");
     _content.innerHTML = "";
-    console.log(item);
+    // console.log(item);
     new StoryScreen({ id: item.id }).render();
   }
   async viewsCount(item) {

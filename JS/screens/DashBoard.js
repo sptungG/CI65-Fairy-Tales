@@ -18,7 +18,7 @@ export default class DashBoard extends BaseComponent {
           ...doc.data(),
         });
       });
-      console.log(stories);
+      // console.log(stories);
       let $container = document.querySelector("#dashboard");
       $container.classList.add("wrapper");
       let $categorySection = document.createElement("section");
