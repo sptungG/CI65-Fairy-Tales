@@ -152,3 +152,8 @@ section[id] {
     transform: translate(-50%, -150%);
   }
 }
+@include maxWidth(1023px){
+  #toTopBtn{
+    display: none;
+  }
+}

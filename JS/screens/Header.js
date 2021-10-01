@@ -4,6 +4,7 @@ import BaseComponent from "../components/BaseComponent.js";
 import * as data from "../data.js";
 import Profile from "./Profile.js";
 import DashBoard from "./DashBoard.js";
+import { getAllStories } from "../models/stories.js";
 export default class Header extends BaseComponent {
   constructor(props) {
     super(props);
@@ -41,30 +42,22 @@ export default class Header extends BaseComponent {
     $headerSearchBtn.classList.add("header-search");
     $headerSearchBtn.innerHTML = `<i class="fas fa-search"></i>`;
 
-    db.collection("stories").onSnapshot((snapshot) => {
-      let stories = [];
-      snapshot.docs.forEach((doc) => {
-        stories.push({
-          id: doc.id,
-          ...doc.data(),
-          createAt: new Date().toLocaleDateString("vi-VI"),
-        });
-      });
-      $headerSearch.addEventListener("input", (e) => {
-        $headerSearchBox.classList.add("show");
-        this.generateSearchItems(stories, $headerSearchBox);
-        this.generateSearchItems(storiesSearched(e.target.value, stories), $headerSearchBox);
-        $headerSearchBox.insertAdjacentHTML(
-          "afterbegin",
-          `<span class = "header-search-result"><strong>${storiesSearched(e.target.value, stories).length}</strong> stories matched with you.</span>`
-        );
-      });
-      $headerSearchBtn.addEventListener("click", () => {
-        $headerSearchBox.classList.toggle("show");
-        $headerFilterWrapper.classList.toggle("focus");
-        $headerSearch.focus();
-        this.generateSearchItems(stories, $headerSearchBox);
-      });
+    $headerSearch.addEventListener("input", async (e) => {
+      let stories = await getAllStories();
+      $headerSearchBox.classList.add("show");
+      this.generateSearchItems(stories, $headerSearchBox);
+      this.generateSearchItems(storiesSearched(e.target.value, stories), $headerSearchBox);
+      $headerSearchBox.insertAdjacentHTML(
+        "afterbegin",
+        `<span class = "header-search-result"><strong>${storiesSearched(e.target.value, stories).length}</strong> stories matched with you.</span>`
+      );
+    });
+    $headerSearchBtn.addEventListener("click", async () => {
+      let stories = await getAllStories();
+      $headerSearchBox.classList.toggle("show");
+      $headerFilterWrapper.classList.toggle("focus");
+      $headerSearch.focus();
+      this.generateSearchItems(stories, $headerSearchBox);
     });
     // Search
     function storiesSearched(value, stories) {
@@ -134,10 +127,10 @@ export default class Header extends BaseComponent {
         let $dropdownOption2 = this.dropdownOption("dark-mode", "Dark mode", "far fa-moon", handleSelectDropdown);
         let $dropdownOption3 = this.dropdownOption("logout", "Logout", "fas fa-sign-out-alt", handleSelectDropdown);
         $dropdownOption1.addEventListener("click", () => {
+          router.navigate("/profile");
           new Profile({
             id: user.uid,
           }).render();
-          // router.navigate("/profile");
         });
         $dropdownOption3.addEventListener("click", (e) => {
           auth.signOut();
@@ -208,7 +201,9 @@ export default class Header extends BaseComponent {
 }
 // //Get the button
 const mybutton = document.getElementById("toTopBtn");
-window.onscroll = function() {scrollFunction()};
+window.onscroll = function () {
+  scrollFunction();
+};
 
 function scrollFunction() {
   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {

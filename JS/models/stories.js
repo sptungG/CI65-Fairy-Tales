@@ -17,9 +17,7 @@ export function filterStory(category, stories) {
     filterStories = stories.filter((story) => {
       return story.categories.join(",").toLowerCase().split(",").indexOf(category) != -1;
     });
-    console.log("Filter: ", category, filterStories);
     return filterStories;
   }
-  console.log("Filter: ", category, filterStories);
   return filterStories;
 }

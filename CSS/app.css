@@ -221,6 +221,11 @@ section[id] {
   transform: translate(-50%, -150%);
 }
 
+@media screen and (max-width: 1023px) {
+  #toTopBtn {
+    display: none;
+  }
+}
 .caption {
   font-family: "Kaushan Script", cursive;
   line-height: 1.4;

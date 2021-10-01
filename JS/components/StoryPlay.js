@@ -39,7 +39,7 @@ export default class StoryPlay extends BaseComponent {
     $volumeSlider.id = "volume-slider";
     $volumeSlider.type = "range";
     $volumeSlider.step = 0.5;
-    $volumeSlider.value = 5;
+    $volumeSlider.value = 2;
     $volumeSlider.min = 1;
     $volumeSlider.max = 100;
     $volumeBtn.append($volumeIcon, $volumeSlider);

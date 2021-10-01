@@ -15,10 +15,10 @@ router.on("/dashboard", function () {
   $dashboard.innerHTML = "";
   new DashBoard().render();
 });
-// router.on("/profile", function () {
-//   $dashboard.innerHTML = "";
-//   new Profile().render();
-// });
+router.on("/profile", function () {
+  $dashboard.innerHTML = "";
+  new Profile().render();
+});
 router.on("/story", function () {
   $app.innerHTML = "";
   new StoryScreen().render();
