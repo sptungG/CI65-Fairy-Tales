@@ -114,7 +114,7 @@ section[id] {
   cursor: pointer;
   padding: 24px 32px;
   border-radius: 20px;
-  @include gradient($primary-color, $secondary-color, 0.1, 0.1);
+  background-color: rgba($primary-color, 0.2);
   border: 1px solid transparent;
   font-size: 32px;
   & > i {

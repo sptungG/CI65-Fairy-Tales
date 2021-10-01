@@ -175,7 +175,7 @@ section[id] {
   cursor: pointer;
   padding: 24px 32px;
   border-radius: 20px;
-  background-image: linear-gradient(to bottom right, rgba(245, 103, 102, 0.1), rgba(245, 136, 38, 0.1));
+  background-color: rgba(245, 103, 102, 0.2);
   border: 1px solid transparent;
   font-size: 32px;
 }
