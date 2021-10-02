@@ -77,7 +77,7 @@ export default class StoryInGrid extends BaseComponent {
     });
   }
   async favoriteCount(btn, item) {
-    let usersRef = await db.collection("users").doc(auth.currentUser.uid);
+    let userRef = await db.collection("users").doc(auth.currentUser.uid);
     let storyRef = await db.collection("stories").doc(item.id);
     if (btn.classList.contains("active")) {
       // --love
@@ -87,7 +87,7 @@ export default class StoryInGrid extends BaseComponent {
       });
 
       //remove fromfavorite of user
-      usersRef.update({
+      userRef.update({
         storiesFavorite: firebase.firestore.FieldValue.arrayRemove(`${item.id}`),
       });
     } else {
@@ -98,15 +98,17 @@ export default class StoryInGrid extends BaseComponent {
       });
 
       //add to favorite of user
-      usersRef.update({
+      userRef.update({
         storiesFavorite: firebase.firestore.FieldValue.arrayUnion(`${item.id}`),
       });
     }
   }
   async readCount(item) {
-    let usersRef = await db.collection("users").doc(auth.currentUser.uid);
-    usersRef.update({
-      storiesRead: firebase.firestore.FieldValue.arrayUnion(`${item.id}`),
-    });
+    if (auth.currentUser) {
+      let userRef = await db.collection("users").doc(auth.currentUser.uid);
+      userRef.update({
+        storiesRead: firebase.firestore.FieldValue.arrayUnion(`${item.id}`),
+      });
+    }
   }
 }

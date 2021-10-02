@@ -39,14 +39,25 @@ export default class StoryScreen extends BaseComponent {
           let _storyDetail = new Detail({
             story: doc.data(),
           });
-          // let _storyComments = new Comment({
-          //   story: doc.data(),
-          // });
-          // appendTo($detailLeft, _storyDetail, _storyComments);
+          appendTo($detailLeft, _storyDetail);
+          if (!doc.data().comments) {
+            this.getComments(doc.id);
+            let _storyComments = new Comment({
+              id: doc.id,
+              story: doc.data(),
+            });
+            appendTo($detailLeft, _storyComments);
+          } else {
+            let _storyComments = new Comment({
+              id: doc.id,
+              story: doc.data(),
+            });
+            appendTo($detailLeft, _storyComments);
+          }
 
           appendTo($detailContainer, _storyPlay);
           // appendTo($detailLeft, _storyPlay);
-          appendTo($detailLeft, _storyDetail);
+          // appendTo($detailLeft, _storyDetail);
           $detailSides.append($detailLeft);
 
           let $detailRight = document.createElement("div");
@@ -56,12 +67,22 @@ export default class StoryScreen extends BaseComponent {
           $detailRightTitle.innerHTML = `Related Stories`;
           let $relatedList = document.createElement("ul");
           $relatedList.className = "story-list";
-          // let stories = getAllStories();
-          // console.log(stories);
-          // stories.forEach((story) => {
-          //   let _story = new StoryInGrid({ story: story });
-          //   appendTo($relatedList, _story);
-          // });
+          db.collection("stories")
+            .limit(4)
+            .orderBy("viewsNum", "desc")
+            .onSnapshot((snapshot) => {
+              let stories = [];
+              snapshot.docs.forEach((doc) => {
+                stories.push({
+                  id: doc.id,
+                  ...doc.data(),
+                });
+              });
+              stories.forEach((story) => {
+                let _story = new StoryInGrid({ story: story });
+                appendTo($relatedList, _story);
+              });
+            });
           $detailRight.append($detailRightTitle, $relatedList);
           $detailSides.append($detailRight);
           $detailContainer.append($detailSides);
@@ -71,24 +92,14 @@ export default class StoryScreen extends BaseComponent {
           return $container;
         }
       });
-    // db.collection("stories")
-    //   .get()
-    //   .then((querySnapshot) => {
-    //     let stories = [];
-    //     querySnapshot.docs.forEach((doc) => {
-    //       stories.push({
-    //         id: doc.id,
-    //         ...doc.data(),
-    //         createAt: new Date().toLocaleDateString("vi-VI"),
-    //         pages: [],
-    //         audios: [],
-    //         viewsNum: 0,
-    //         avgRating: 0,
-    //         usersRating: [],
-    //       });
-    //     });
-    //     getMedia(stories);
-
-    //   });
+  }
+  async getComments(itemId) {
+    let story = db.collection("stories").doc(itemId);
+    await story.set(
+      {
+        comments: [],
+      },
+      { merge: true }
+    );
   }
 }
