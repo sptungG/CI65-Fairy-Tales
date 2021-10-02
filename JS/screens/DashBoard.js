@@ -81,7 +81,7 @@ export default class DashBoard extends BaseComponent {
     $storyHeader.append($storyHeaderTitleWrapper, $storyHeaderModes);
     let $storyList = document.createElement("ul");
     $storyList.className = "story-list";
-    db.collection("stories").onSnapshot((snapshot) => {
+    db.collection("stories").orderBy("viewsNum", "desc").onSnapshot((snapshot) => {
       let stories = [];
       snapshot.docs.forEach((doc) => {
         stories.push({

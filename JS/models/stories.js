@@ -1,4 +1,14 @@
-import { getDataFromDoc, getDataFromDocs } from "./utils.js";
+import { getDataFromDoc, getDataFromDocs, getImgByName } from "./utils.js";
+
+// export async function getPageImage(storyName, index) {
+//   let pageUrl = await storage.ref(`${getImgByName(storyName)}/Pages`).child(`${("0" + index).slice(-2)}.jpg`).getDownloadURL();
+//   return pageUrl;
+// }
+
+// export async function getPageAudio(storyName, index) {
+//   let pageUrl = await storage.ref(`${getImgByName(storyName)}/Audios`).child(`${("0" + index).slice(-2)}.jpg`).getDownloadURL();
+//   return pageUrl;
+// }
 
 export async function getAllStories() {
   let response = await db.collection("stories").get();

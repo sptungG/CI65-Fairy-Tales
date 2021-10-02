@@ -21,6 +21,8 @@ export default class StoryInGrid extends BaseComponent {
     </div>
     `;
     $storyImage.addEventListener("click", (e) => {
+      this.getComments(this.props.story);
+      this.getRating(this.props.story);
       this.viewsCount(this.props.story);
       this.readCount(this.props.story);
       this.handleOnclick(this.props.story);
@@ -109,6 +111,29 @@ export default class StoryInGrid extends BaseComponent {
       userRef.update({
         storiesRead: firebase.firestore.FieldValue.arrayUnion(`${item.id}`),
       });
+    }
+  }
+  async getComments(item) {
+    if (!item.comments) {
+      let story = db.collection("stories").doc(item.id);
+      await story.set(
+        {
+          comments: [],
+        },
+        { merge: true }
+      );
+    }
+  }
+  async getRating(item) {
+    if(!item.usersRating){
+      let story = db.collection("stories").doc(item.id);
+      await story.set(
+        {
+          avgRating: 0,
+          usersRating: [],
+        },
+        { merge: true }
+      );
     }
   }
 }

@@ -75,6 +75,12 @@
       font-weight: bold;
     }
   }
+  &-rating.active {
+    border: 1px solid $primary-color;
+    & > i {
+      font-weight: bold;
+    }
+  }
   &-category {
     display: flex;
     flex-flow: row wrap;

@@ -36,6 +36,9 @@ export default class Comments extends BaseComponent {
               }),
             });
           });
+          userRef.update({
+            storiesCommented: firebase.firestore.FieldValue.arrayUnion(`${this.props.id}`),
+          });
         }
       } else {
         alert("Đăng nhập đi rồi mới bình luận được!");

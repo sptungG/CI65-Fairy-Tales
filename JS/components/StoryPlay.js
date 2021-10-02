@@ -123,6 +123,8 @@ export default class StoryPlay extends BaseComponent {
     // let story = getStoryById(this.props.id);
     // console.log(this.props);
     let story = this.props.story;
+    // Create a reference under which you want to list
+
     for (let i = 0; i < story.pagesNum; i++) {
       $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/${("0" + i).slice(-2)}.jpg">`;
     }

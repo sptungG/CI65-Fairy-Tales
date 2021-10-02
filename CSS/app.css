@@ -1842,6 +1842,12 @@ section[id] {
 .detail-rating:hover > i {
   font-weight: bold;
 }
+.detail-rating.active {
+  border: 1px solid #f56766;
+}
+.detail-rating.active > i {
+  font-weight: bold;
+}
 .detail-category {
   display: flex;
   flex-flow: row wrap;
@@ -1888,6 +1894,106 @@ section[id] {
 }
 .detail-avg-heart i {
   margin-right: 2px;
+}
+
+.detail-btn-wrapper {
+  position: relative;
+}
+
+.rating-wrapper {
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: nowrap;
+  padding: 10px;
+  width: 300px;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #1e242e;
+  z-index: 99;
+  margin-top: 20px;
+  border-radius: 5px;
+  margin-top: 18px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+  box-shadow: 1px 1px 2px 0px rgba(0, 0, 0, 0.2);
+}
+.rating-wrapper::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 0;
+  right: 10px;
+  background-color: #1e242e;
+  border-radius: 4px;
+  transform: translateY(-50%) rotate(45deg);
+  z-index: -1;
+}
+.rating-wrapper::after {
+  content: "";
+  height: 18px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: transparent;
+  transform: translateY(-100%);
+}
+.rating-wrapper.show {
+  opacity: 1;
+  visibility: visible;
+  box-shadow: rgba(17, 17, 17, 0.5) 0px 2.5px 5px;
+}
+.rating-value {
+  position: relative;
+  padding-left: 5px;
+  margin-left: 5px;
+  font-size: 24px;
+  padding-top: 5px;
+  order: -1;
+}
+.rating-value::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 3.2px;
+  height: 3.2px;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
+.rating-message {
+  margin-top: 20px;
+}
+.rating-star {
+  display: inline-flex;
+  flex-direction: row-reverse;
+}
+.rating-star input {
+  display: none;
+}
+.rating-star label {
+  color: #eee;
+}
+.rating-star label:before {
+  font-family: "Font Awesome 5 Pro";
+  display: block;
+  font-size: 24px;
+  padding: 3px 2px;
+  margin: 0;
+  cursor: pointer;
+  font-weight: 900;
+  content: "\f005";
+  color: inherit;
+}
+.rating-star input:checked ~ label:before {
+  text-shadow: 0px 0 5px rgba(255, 157, 180, 0.28);
+  color: #f56766;
 }
 
 .comment-form {

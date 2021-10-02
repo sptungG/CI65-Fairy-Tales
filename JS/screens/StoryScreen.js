@@ -4,7 +4,6 @@ import Detail from "../components/StoryDetail.js";
 import StoryPlay from "../components/StoryPlay.js";
 import { appendTo } from "../models/utils.js";
 import StoryInGrid from "../components/StoryInGrid.js";
-import { getAllStories } from "../models/stories.js";
 
 export default class StoryScreen extends BaseComponent {
   constructor(props) {
@@ -17,6 +16,7 @@ export default class StoryScreen extends BaseComponent {
       .get()
       .then((doc) => {
         if (doc.exists) {
+          console.log(doc.data());
           let $container = document.querySelector("#dashboard");
           $container.classList.add("wrapper");
 
@@ -37,29 +37,19 @@ export default class StoryScreen extends BaseComponent {
             story: doc.data(),
           });
           let _storyDetail = new Detail({
+            id: doc.id,
             story: doc.data(),
           });
-          appendTo($detailLeft, _storyDetail);
-          if (!doc.data().comments) {
-            this.getComments(doc.id);
-            let _storyComments = new Comment({
-              id: doc.id,
-              story: doc.data(),
-            });
-            appendTo($detailLeft, _storyComments);
-          } else {
-            let _storyComments = new Comment({
-              id: doc.id,
-              story: doc.data(),
-            });
-            appendTo($detailLeft, _storyComments);
-          }
-
+          let _storyComments = new Comment({
+            id: doc.id,
+            story: doc.data(),
+          });
+          appendTo($detailLeft, _storyDetail, _storyComments);
+          
           appendTo($detailContainer, _storyPlay);
-          // appendTo($detailLeft, _storyPlay);
-          // appendTo($detailLeft, _storyDetail);
           $detailSides.append($detailLeft);
-
+          
+          
           let $detailRight = document.createElement("div");
           $detailRight.classList.add("detail-right");
           let $detailRightTitle = document.createElement("h3");
@@ -67,6 +57,7 @@ export default class StoryScreen extends BaseComponent {
           $detailRightTitle.innerHTML = `Related Stories`;
           let $relatedList = document.createElement("ul");
           $relatedList.className = "story-list";
+          $relatedList.innerHTML = "";
           db.collection("stories")
             .limit(4)
             .orderBy("viewsNum", "desc")
@@ -92,14 +83,5 @@ export default class StoryScreen extends BaseComponent {
           return $container;
         }
       });
-  }
-  async getComments(itemId) {
-    let story = db.collection("stories").doc(itemId);
-    await story.set(
-      {
-        comments: [],
-      },
-      { merge: true }
-    );
   }
 }

@@ -10,8 +10,7 @@ export default class Profile extends BaseComponent {
   render() {
     db.collection("users")
       .doc(this.props.id)
-      .get()
-      .then((doc) => {
+      .onSnapshot((doc) => {
         if (doc.exists) {
           let _userInfo = new UserInfo({
             user: { ...doc.data() },
@@ -26,9 +25,6 @@ export default class Profile extends BaseComponent {
           //User Info
           let $profileContainer = document.createElement("div");
           $profileContainer.classList.add("container");
-          // let _userInfo = new UserInfo({
-          //   user: this.state.user,
-          // });
 
           //User Favorite Stories
           let $storySection = document.createElement("div");

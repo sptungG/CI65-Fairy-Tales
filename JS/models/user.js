@@ -23,6 +23,7 @@ export async function register(name, email, password) {
       storiesFavorite: [],
       storiesRead: [],
       storiesCommented: [],
+      storiesRated: [],
     });
     await auth.signOut();
     let $register = document.querySelector("#modalRegister");
