@@ -1426,6 +1426,22 @@ section[id] {
   text-align: justify;
   line-height: 1.6;
 }
+.profile-role > span {
+  position: relative;
+  padding-left: 5px;
+  margin-left: 5px;
+}
+.profile-role > span::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  width: 3.2px;
+  height: 3.2px;
+  border-radius: 50%;
+  background-color: #f8f9fa;
+  left: 0;
+  transform: translate(-50%, -50%);
+}
 .profile-total {
   color: #f8f9fa;
   align-items: center;

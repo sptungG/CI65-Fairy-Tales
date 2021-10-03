@@ -60,7 +60,7 @@ export default class Comments extends BaseComponent {
         <div class="comment-avatar"><img src="${user.image ? user.image : "./DATA/Users/user.png"}" alt="" /></div>
         <div class="comment-box">
           <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="#">${user.name}</a></h6>
+            <h6 class="comment-name by-author"><a href="#">${user.name}</a><span>${user.role ? user.role : ""}</span></h6>
             <span class="comment-date">${comment.date}</span>
           </div>
           <div class="comment-content">${comment.text}</div>

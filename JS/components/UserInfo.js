@@ -13,6 +13,7 @@ export default class UserInfo extends BaseComponent {
       <div class="profile-edit"><i class="fas fa-pen-square"></i></div>
       <div class="profile-name title">${this.props.user.name}</div>
       <div class="profile-email">${this.props.user.email}</div>
+      <div class="profile-role"><i class="fas fa-user-tag"></i><span>${this.props.user.role ? this.props.user.role : "User"}</span></div>
       <div class="profile-bio">${this.props.user.bio}</div>
       <div class="profile-total">
         <div class="profile-favor"><i class="far fa-star"></i><span class="favor-num">${this.props.user.storiesRated.length}</span></div>

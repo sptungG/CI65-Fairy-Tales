@@ -23,20 +23,8 @@ export default class Header extends BaseComponent {
     $headerLogo.classList.add("header-logo-link");
     $headerLogo.innerHTML = `<img src="./IMG/icons/book.svg" alt="" class="header-logo" /><span>FairyStory</span>`;
     $headerLogo.addEventListener("click", async (e) => {
-      let $dashboard = document.getElementById("dashboard");
-      let $profile = document.getElementById("profile");
-      let $player = document.getElementById("player");
-      $player.innerHTML = "";
-      $profile.innerHTML = "";
-      $dashboard.innerHTML = "";
-      let user = await getUserById(auth.currentUser.uid);
-      if (user.role === "admin") {
-        router.navigate("/adminDashboard");
-        new AdminScreen().render();
-      } else {
-        router.navigate("/dashboard");
-        new DashBoard().render();
-      }
+      router.navigate("/dashboard");
+      new DashBoard().render();
     });
 
     let $headerTopRight = document.createElement("div");
@@ -137,17 +125,16 @@ export default class Header extends BaseComponent {
           $dropdownCaret.classList.remove("fa-angle-up");
         }
 
+        let $dropdownOption0 = this.dropdownOption("admin-dashboard", "Admin", "fas fa-user-cog", handleSelectDropdown);
         let $dropdownOption1 = this.dropdownOption("user-profile", "Profile", "far fa-address-card", handleSelectDropdown);
         let $dropdownOption2 = this.dropdownOption("dark-mode", "Dark mode", "far fa-moon", handleSelectDropdown);
         let $dropdownOption3 = this.dropdownOption("logout", "Logout", "fas fa-sign-out-alt", handleSelectDropdown);
+        $dropdownOption0.addEventListener("click", (e) => {
+          router.navigate("/adminDashboard");
+          new AdminScreen().render();
+        });
         $dropdownOption1.addEventListener("click", () => {
           router.navigate("/profile");
-          let $dashboard = document.getElementById("dashboard");
-          let $profile = document.getElementById("profile");
-          let $player = document.getElementById("player");
-          $player.innerHTML = "";
-          $profile.innerHTML = "";
-          $dashboard.innerHTML = "";
           new Profile({
             id: auth.currentUser.uid,
           }).render();
@@ -158,9 +145,13 @@ export default class Header extends BaseComponent {
         });
         $dropdownList.append($dropdownOption1, $dropdownOption2, $dropdownOption3);
         // Avt Listener
-        $dropdownSelect.addEventListener("click", function () {
+        $dropdownSelect.addEventListener("click", async () => {
           $dropdownList.classList.toggle("show");
           $dropdownCaret.classList.toggle("fa-angle-up");
+          let user = await getUserById(auth.currentUser.uid);
+          if (user.role === "admin") {
+            $dropdownList.append($dropdownOption0, $dropdownOption1, $dropdownOption2, $dropdownOption3);
+          }
         });
         $headerAvt.append($dropdownSelect, $dropdownList);
         $headerLoginWrapper.style.display = "none";

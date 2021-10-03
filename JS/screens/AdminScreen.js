@@ -16,7 +16,7 @@ export default class AdminScreen extends BaseComponent {
     $sidebarItem1.innerHTML = `<i class="fas fa-plus-circle sidebar-icon"></i><span class="sidebar-text">Add Story</span>`;
     let $sidebarItem2 = document.createElement("div");
     $sidebarItem2.classList.add("sidebar-item");
-    $sidebarItem2.innerHTML = `<i class="fas fa-home sidebar-icon"></i><span class="sidebar-text">Home</span>`;
+    $sidebarItem2.innerHTML = `<i class="fas fa-chart-line sidebar-icon"></i><span class="sidebar-text">Analytics</span>`;
     let $sidebarItem3 = document.createElement("div");
     $sidebarItem3.classList.add("sidebar-item");
     $sidebarItem3.innerHTML = `<i class="fas fa-users sidebar-icon"></i><span class="sidebar-text">Users</span>`;

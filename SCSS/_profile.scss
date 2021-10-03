@@ -117,6 +117,11 @@
     text-align: justify;
     line-height: 1.6;
   }
+  &-role {
+    & > span {
+      @include dotSeparate("left");
+    }
+  }
   &-total {
     color: $gray-lighter;
     @include flex(center, space-between);
