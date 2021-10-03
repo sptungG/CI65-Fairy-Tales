@@ -1,5 +1,6 @@
 import { getStoryById } from "../models/stories.js";
 import { getUserById } from "../models/user.js";
+import Profile from "../screens/Profile.js";
 import BaseComponent from "./BaseComponent.js";
 
 export default class Comments extends BaseComponent {
@@ -56,16 +57,33 @@ export default class Comments extends BaseComponent {
           // console.log(user);
           let $comment = document.createElement("li");
           $comment.classList.add("comment-main-level");
-          $comment.innerHTML = `
-        <div class="comment-avatar"><img src="${user.image ? user.image : "./DATA/Users/user.png"}" alt="" /></div>
-        <div class="comment-box">
-          <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="#">${user.name}</a><span>${user.role ? user.role : ""}</span></h6>
-            <span class="comment-date">${comment.date}</span>
-          </div>
-          <div class="comment-content">${comment.text}</div>
-        </div>
-        `;
+          let $commentAvt = document.createElement("div");
+          $commentAvt.classList.add("comment-avatar");
+          $commentAvt.innerHTML = `<img src="${user.image ? user.image : "./DATA/Users/user.png"}" alt="" />`;
+          let $commentBox = document.createElement("div");
+          $commentBox.classList.add("comment-box");
+          let $commentHead = document.createElement("div");
+          $commentHead.classList.add("comment-head");
+          let $commentName = document.createElement("h6");
+          $commentName.classList.add("comment-name", "by-author");
+          $commentName.innerHTML = `<a href="#">${user.name}</a><span>${user.role ? user.role : ""}</span>`;
+          let $commentDate = document.createElement("span");
+          $commentDate.classList.add("comment-date");
+          $commentDate.innerHTML = `${comment.date}`;
+          let $commentContent = document.createElement("div");
+          $commentContent.classList.add("comment-content");
+          $commentContent.innerHTML = `${comment.text}`;
+          $commentHead.append($commentName, $commentDate);
+          $commentBox.append($commentHead, $commentContent);
+          $comment.append($commentAvt, $commentBox);
+
+          $commentName.addEventListener("click", () => {
+            router.navigate("/profile");
+            new Profile({
+              id: comment.userId,
+            }).render();
+          });
+
           $commentList.appendChild($comment);
         });
       });

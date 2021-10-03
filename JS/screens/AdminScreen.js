@@ -21,7 +21,7 @@ export default class AdminScreen extends BaseComponent {
     $sidebarItem3.classList.add("sidebar-item");
     $sidebarItem3.innerHTML = `<i class="fas fa-users sidebar-icon"></i><span class="sidebar-text">Users</span>`;
     let $sidebarItem4 = document.createElement("div");
-    $sidebarItem4.classList.add("sidebar-item", "active");
+    $sidebarItem4.classList.add("sidebar-item");
     $sidebarItem4.innerHTML = `<i class="fas fa-book sidebar-icon"></i><span class="sidebar-text">Stories</span>`;
     $sidebarMenu.append($sidebarItem1, $sidebarItem2, $sidebarItem3, $sidebarItem4);
 
@@ -56,7 +56,7 @@ export default class AdminScreen extends BaseComponent {
     $thead.append($thStory, $thAuthor, $thDesc, $thCategory, $thLength, $thPagesNum, $thCreateAt, $thReaction, $thAction);
 
     let $tbody = document.createElement("tbody");
-    db.collection("stories").onSnapshot((snapshot) => {
+    db.collection("stories").orderBy("avgRating", "desc").onSnapshot((snapshot) => {
       snapshot.forEach((doc) => {
         let story1 = {
           id: doc.id,
