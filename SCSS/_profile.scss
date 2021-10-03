@@ -3,6 +3,9 @@
   grid-template-columns: 1fr 3fr;
   grid-gap: 0 20px;
   background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
+  @include maxWidth(1023px) {
+    grid-template-columns: 1fr 2fr;
+  }
   @include maxWidth(767px) {
     grid-template-columns: 1fr;
   }

@@ -116,6 +116,7 @@
     border: 1px solid transparent;
     cursor: pointer;
     @include flex(center, center);
+    z-index: 4;
     & > span {
       font-size: 14px;
       @include dotSeparate("left", $gray-light);

@@ -1,4 +1,4 @@
-import { register } from "./models/user.js";
+import { authStateChanged, register } from "./models/user.js";
 import { appendTo } from "./models/utils.js";
 import LoginScreen from "./screens/LoginScreen.js";
 import RegisterScreen from "./screens/RegisterScreen.js";
@@ -8,19 +8,29 @@ import StoryScreen from "./screens/StoryScreen.js";
 
 let $app = document.getElementById("app");
 let $dashboard = document.getElementById("dashboard");
+let $profile = document.getElementById("profile");
+let $player = document.getElementById("player");
 
 let router = new Navigo(null, true, "#");
 
 router.on("/dashboard", function () {
+  $player.innerHTML = "";
+  $profile.innerHTML = "";
   $dashboard.innerHTML = "";
   new DashBoard().render();
 });
 router.on("/profile", function () {
+  $player.innerHTML = "";
+  $profile.innerHTML = "";
   $dashboard.innerHTML = "";
-  new Profile().render();
+  // new Profile({
+  //   id: auth.currentUser.uid,
+  // }).render();
 });
 router.on("/story", function () {
-  $app.innerHTML = "";
-  new StoryScreen().render();
+  $dashboard.innerHTML = "";
+  $player.innerHTML = "";
+  $profile.innerHTML = "";
+  // new StoryScreen().render();
 });
 window.router = router;

@@ -19,6 +19,15 @@
     padding-bottom: 20px;
     padding-left: 10px;
   }
+  &-group label {
+    display: inline-block;
+    color: $gray-light;
+    font-weight: 600;
+    font-size: 16px;
+    cursor: pointer;
+    margin-bottom: 5px;
+    margin-left: 5px;
+  }
   &-input {
     background-color: transparent;
     padding: 10px 5px;
@@ -26,7 +35,10 @@
     width: 100%;
     color: $gray;
     border-bottom: 1px solid $primary-color;
-    color: #fff;
+    color: $gray-lighter;
+  }
+  .form-group input:focus::placeholder {
+    color: transparent;
   }
   &-btn {
     display: block;
@@ -64,9 +76,46 @@
     padding-top: 5px;
     padding-left: 5px;
     font-size: 14px;
+    height: 10px;
   }
 }
-
+@include maxWidth(1366px) {
+  .form {
+    width: 70%;
+    flex-direction: column;
+  }
+  .form-wrap {
+    width: auto;
+  }
+  .form-wrap img {
+    display: none;
+  }
+  .form-fill {
+    width: auto;
+  }
+  .form-group input::placeholder {
+    color: transparent;
+  }
+  .form-title {
+    padding-bottom: 50px;
+  }
+}
+@include maxWidth(767px) {
+  .form {
+    width: 100%;
+    padding: 20px;
+  }
+  .form-title {
+    font-size: 24px;
+    padding-bottom: 30px;
+  }
+  .form-caption {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 26px;
+    text-align: center
+  }
+}
 .modal {
   @include absoluteFull();
   position: fixed;
@@ -75,7 +124,7 @@
   @include flex(center, center);
   padding: 20px;
   @include gradient($primary-color, $secondary-color, 0.2, 0.2);
-  &-close{
+  &-close {
     @include flex(center, center);
     position: absolute;
     top: 10px;

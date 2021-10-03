@@ -62,6 +62,7 @@ export default class RegisterScreen extends BaseComponent {
     let $container = document.querySelector("#modalRegister");
 
     let _name = new InputWrapper({
+      id: "username-up",
       placeholder: "Your name",
       type: "text",
       error: this.state.messageError.name,
@@ -71,6 +72,7 @@ export default class RegisterScreen extends BaseComponent {
       },
     });
     let _email = new InputWrapper({
+      id: "email-up",
       placeholder: "Email",
       type: "email",
       error: this.state.messageError.email,
@@ -80,6 +82,7 @@ export default class RegisterScreen extends BaseComponent {
       },
     });
     let _password = new InputWrapper({
+      id: "password-up",
       placeholder: "Password",
       type: "password",
       error: this.state.messageError.password,
@@ -89,6 +92,7 @@ export default class RegisterScreen extends BaseComponent {
       },
     });
     let _confirmPassword = new InputWrapper({
+      id: "confirm-password",
       placeholder: "Confirm Password",
       type: "password",
       error: this.state.messageError.confirmPassword,

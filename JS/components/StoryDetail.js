@@ -30,13 +30,14 @@ export default class StoryDetail extends BaseComponent {
     $avgHeading.innerHTML = `User Rating`;
     let $avgHearts = document.createElement("span");
     $avgHearts.classList.add("detail-avg-heart");
-    // this.generateHearts(this.props.story.avgRating, $avgHearts);
-    this.generateHearts(4.5, $avgHearts);
+    // this.generateHearts(4.5, $avgHearts);
+    // $avgText.innerHTML = `<span class="avg-num rating-num">${4.5}</span> average based on <span class="avg-num view-num">${
+    //   this.props.story.viewsNum
+    // }</span> reviews.`;
+    this.generateHearts(this.props.story.avgRating, $avgHearts);
     let $avgText = document.createElement("p");
-    // $avgText.innerHTML = `<span class="avg-num rating-num">${this.props.story.avgRating}</span> average based on <span class="avg-num view-num">${this.props.story.usersRating.length}</span> reviews.`;
-    $avgText.innerHTML = `<span class="avg-num rating-num">${4.5}</span> average based on <span class="avg-num view-num">${
-      this.props.story.viewsNum
-    }</span> reviews.`;
+    $avgText.innerHTML = `<span class="avg-num rating-num">${this.props.story.avgRating}</span> average based on <span class="avg-num view-num">${this.props.story.usersRating.length}</span> reviews.`;
+
     let $detailBtnWrapper = document.createElement("div");
     $detailBtnWrapper.classList.add("detail-btn-wrapper");
     let $btnRating = document.createElement("button");
@@ -66,12 +67,94 @@ export default class StoryDetail extends BaseComponent {
     let $ratingMessage = document.createElement("span");
     $ratingMessage.classList.add("rating-message");
     $ratingMessage.id = "rating-message";
-    $ratingMessage.innerHTML = `Not rated yet (coming soon)`;
+    $ratingMessage.innerHTML = `Not rated yet`;
     $ratingStar.append($ratingValue);
-    $btnRating.addEventListener("click", () => {
-      $ratingWrapper.classList.toggle("show");
-      // $btnRating.classList.add("active");
-    });
+    if (auth.currentUser) {
+      $btnRating.addEventListener("click", () => {
+        $ratingWrapper.classList.toggle("show");
+        // $btnRating.classList.add("active");
+      });
+      let ratingStar = [...$ratingStar.childNodes].filter((element, index) => index % 2 === 0);
+      ratingStar.pop();
+      let that = this;
+      db.collection("users")
+        .get()
+        .then(async (e) => {
+          let isRated = false;
+          let rateTotal = 0;
+          let count = 0;
+          e.docs.forEach((doc) => {
+            doc.data().storiesRated.forEach((story) => {
+              if (story.storyId == this.props.id) {
+                rateTotal += parseInt(story.storyRated);
+                count++;
+              }
+            });
+          });
+          let storyRef = await db.collection("stories").doc(that.props.id);
+          storyRef.update({
+            avgRating: parseFloat(rateTotal / count).toFixed(2),
+          });
+          e.docs.forEach((doc) => {
+            if (doc.id == auth.currentUser.uid) {
+              doc.data().storiesRated.forEach((story) => {
+                if (story.storyId == this.props.id) {
+                  isRated = true;
+                }
+              });
+            }
+          });
+          if (isRated) {
+            e.docs.forEach((doc) => {
+              if (doc.id == auth.currentUser.uid) {
+                doc.data().storiesRated.forEach((story) => {
+                  if (story.storyId == this.props.id) {
+                    ratingStar[Math.abs(story.storyRated - 5)].checked = true;
+                    $ratingValue.innerHTML = story.storyRated + "/5";
+                  }
+                });
+              }
+            });
+            $ratingMessage.innerHTML = `Rated <i class="far fa-grin-stars"></i> <i class="far fa-grin-hearts"></i>`;
+            for (let i = 0; i < ratingStar.length; i++) {
+              ratingStar[i].disabled = true;
+            }
+          } else {
+            ratingStar.forEach((star, index) => {
+              star.addEventListener("click", async (e) => {
+                console.log(star.value);
+                $ratingValue.innerHTML = star.value + "/5";
+                $ratingMessage.innerHTML = `You rated ${that.props.story.name} ${star.value}/5`;
+                for (let i = 0; i < ratingStar.length; i++) {
+                  ratingStar[i].disabled = true;
+                }
+                let userRef = await db.collection("users").doc(auth.currentUser.uid);
+                let storyRef = await db.collection("stories").doc(that.props.id);
+                storyRef.update({
+                  avgRating: star.value,
+                  usersRating: firebase.firestore.FieldValue.arrayUnion({
+                    userId: auth.currentUser.uid,
+                    userRated: star.value,
+                  }),
+                });
+                userRef.update({
+                  storiesRated: firebase.firestore.FieldValue.arrayUnion({
+                    storyId: that.props.id,
+                    storyRated: star.value,
+                  }),
+                });
+              });
+            });
+          }
+          // console.log(count, rateTotal);
+        });
+    } else {
+      $btnRating.onclick = () => {
+        alert("Đăng nhập để đánh giá");
+      };
+      // $btnRating.disabled = true;
+      $btnRating.style = "cursor: not-allowed; opacity: 0.9;";
+    }
 
     $ratingWrapper.append($ratingHeader, $ratingStar, $ratingMessage);
 

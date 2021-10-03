@@ -52,6 +52,7 @@ export default class LoginScreen extends BaseComponent {
     let $container = document.querySelector("#modalLogin");
 
     let _email = new InputWrapper({
+      id: "email-in",
       placeholder: "Email",
       type: "email",
       error: this.state.messageError.email,
@@ -62,6 +63,7 @@ export default class LoginScreen extends BaseComponent {
       },
     });
     let _password = new InputWrapper({
+      id: "password-in",
       placeholder: "Password",
       type: "password",
       error: this.state.messageError.password,

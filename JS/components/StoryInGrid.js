@@ -22,7 +22,9 @@ export default class StoryInGrid extends BaseComponent {
     </div>
     `;
     $storyImage.addEventListener("click", (e) => {
+      e.stopPropagation();
       this.getComments(this.props.story);
+      this.getFavorite(this.props.story);
       this.getRating(this.props.story);
       this.viewsCount(this.props.story);
       this.readCount(this.props.story);
@@ -57,6 +59,7 @@ export default class StoryInGrid extends BaseComponent {
       }
     });
     $storyRatingBtn.addEventListener("click", (e) => {
+      e.stopPropagation();
       if (auth.currentUser) {
         this.favoriteCount($storyRatingBtn, this.props.story);
       } else {
@@ -68,8 +71,13 @@ export default class StoryInGrid extends BaseComponent {
     return $storyItem;
   }
   async handleOnclick(item) {
-    let _content = document.querySelector("#dashboard");
-    _content.innerHTML = "";
+    router.navigate("/story");
+    let $dashboard = document.getElementById("dashboard");
+    let $profile = document.getElementById("profile");
+    let $player = document.getElementById("player");
+    $player.innerHTML = "";
+    $profile.innerHTML = "";
+    $dashboard.innerHTML = "";
     // console.log(item);
     new StoryScreen({ id: item.id }).render();
   }
@@ -78,6 +86,14 @@ export default class StoryInGrid extends BaseComponent {
     await story.update({
       viewsNum: firebase.firestore.FieldValue.increment(1),
     });
+  }
+  async getFavorite(item){
+    let storyRef = await db.collection("stories").doc(item.id);
+    if(!item.favoriteNum){
+      storyRef.set({
+        favoriteNum: 0,
+      },{merge: true});
+    }
   }
   async favoriteCount(btn, item) {
     let userRef = await db.collection("users").doc(auth.currentUser.uid);

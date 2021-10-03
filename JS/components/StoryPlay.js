@@ -125,7 +125,7 @@ export default class StoryPlay extends BaseComponent {
     let story = this.props.story;
     // Create a reference under which you want to list
 
-    for (let i = 0; i < story.pagesNum; i++) {
+    for (let i = 0; i < story.pagesNum + 1; i++) {
       $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/${("0" + i).slice(-2)}.jpg">`;
     }
     //play the first page
@@ -140,10 +140,10 @@ export default class StoryPlay extends BaseComponent {
     //flip pages
     let pages = [...$pageList.childNodes];
 
-    for (let i = 0; i < story.pagesNum; i++) {
+    for (let i = 0; i < story.pagesNum + 1; i++) {
       let page = pages[i];
       if (i % 2 === 0) {
-        page.style.zIndex = story.pagesNum - i;
+        page.style.zIndex = story.pagesNum + 1 - i;
       }
     }
     for (let i = 0; i < pages.length; i++) {

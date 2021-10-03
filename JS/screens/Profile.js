@@ -15,8 +15,9 @@ export default class Profile extends BaseComponent {
           let _userInfo = new UserInfo({
             user: { ...doc.data() },
           });
-
-          let $container = document.querySelector("#dashboard");
+          let $dashboard = document.querySelector("#dashboard");
+          let $player = document.querySelector("#player");
+          let $container = document.querySelector("#profile");
           $container.classList.add("wrapper");
 
           let $profileSection = document.createElement("section");
@@ -36,16 +37,39 @@ export default class Profile extends BaseComponent {
           $title.innerHTML = `Your Favorites <span>${doc.data().storiesFavorite.length}</span>`;
           let $favoriteList = document.createElement("ul");
           $favoriteList.classList.add("favorite-list");
-          doc.data().storiesFavorite.forEach(async (itemId) => {
-            try {
-              let story = await getStoryById(itemId);
-              let _story = new StoryInGrid({ story: story });
-              appendTo($favoriteList, _story);
-            } catch (error) {
-              console.log(error.message);
-            }
-          });
+          doc
+            .data()
+            .storiesFavorite.reverse()
+            .forEach(async (itemId) => {
+              try {
+                let story = await getStoryById(itemId);
+                let _story = new StoryInGrid({ story: story });
+                appendTo($favoriteList, _story);
+              } catch (error) {
+                console.log(error.message);
+              }
+            });
           $favoriteSection.append($title, $favoriteList);
+          let $ratedSection = document.createElement("section");
+          $ratedSection.classList.add("rated");
+          let $titleR = document.createElement("h2");
+          $titleR.className = "rated-title title";
+          $titleR.innerHTML = `Rated Stories <span>${doc.data().storiesRated.length}</span>`;
+          let $ratedList = document.createElement("ul");
+          $ratedList.classList.add("favorite-list");
+          doc
+            .data()
+            .storiesRated.reverse()
+            .forEach(async (item) => {
+              try {
+                let story = await getStoryById(item.storyId);
+                let _story = new StoryInGrid({ story: story });
+                appendTo($ratedList, _story);
+              } catch (error) {
+                console.log(error);
+              }
+            });
+          $ratedSection.append($titleR, $ratedList);
           //User Read Stories
           let $activitySection = document.createElement("section");
           $activitySection.classList.add("activity");
@@ -65,21 +89,26 @@ export default class Profile extends BaseComponent {
 
           let $activityList = document.createElement("ul");
           $activityList.classList.add("activity-list");
-          doc.data().storiesRead.forEach(async (itemId) => {
-            try {              
-              let story = await getStoryById(itemId);
-              let _story = new StoryInList({ story: story });
-              appendTo($activityList, _story);
-            } catch (error) {
-              console.log(error.message);
-            }
-          });
+          doc
+            .data()
+            .storiesRead.reverse()
+            .forEach(async (itemId) => {
+              try {
+                let story = await getStoryById(itemId);
+                let _story = new StoryInList({ story: story });
+                appendTo($activityList, _story);
+              } catch (error) {
+                console.log(error.message);
+              }
+            });
 
           $activitySection.append($activityTitle, $activityTabs, $activityList);
-          $storySection.append($favoriteSection, $activitySection);
+          $storySection.append($favoriteSection, $ratedSection, $activitySection);
           appendTo($profileContainer, _userInfo);
           $profileContainer.append($storySection);
           $profileSection.append($profileContainer);
+          $dashboard.innerHTML = "";
+          $player.innerHTML = "";
           $container.innerHTML = "";
           $container.append($profileSection);
           return $container;

@@ -11,6 +11,8 @@ export default class DashBoard extends BaseComponent {
   }
   render() {
     let $container = document.querySelector("#dashboard");
+    let $profile = document.querySelector("#profile");
+    let $player = document.querySelector("#player");
     $container.classList.add("wrapper");
     let $categorySection = document.createElement("section");
     $categorySection.classList.add("category");
@@ -86,17 +88,14 @@ export default class DashBoard extends BaseComponent {
     let $storyList = document.createElement("ul");
     $storyList.className = "story-list";
     db.collection("stories")
-      .orderBy("viewsNum", "desc")
+      .orderBy("name", "desc")
       .onSnapshot((snapshot) => {
-        let stories = [];
+        $storyList.innerHTML = "";
         snapshot.docs.forEach((doc) => {
-          stories.push({
+          let story = {
             id: doc.id,
             ...doc.data(),
-          });
-        });
-        console.log(stories);
-        stories.forEach((story) => {
+          };
           let _story = new StoryInGrid({ story: story });
           appendTo($storyList, _story);
         });
@@ -107,6 +106,8 @@ export default class DashBoard extends BaseComponent {
 
     $storyContainer.append($storyHeader, $storyList);
     $storySection.append($storyContainer);
+    $profile.innerHTML = "";
+    $player.innerHTML = "";
     $container.innerHTML = "";
     $container.append($categorySection, $storySection);
     return $container;

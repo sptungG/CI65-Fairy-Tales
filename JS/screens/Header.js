@@ -5,6 +5,7 @@ import * as data from "../data.js";
 import Profile from "./Profile.js";
 import DashBoard from "./DashBoard.js";
 import { getAllStories } from "../models/stories.js";
+import { getUserById } from "../models/user.js";
 export default class Header extends BaseComponent {
   constructor(props) {
     super(props);
@@ -19,12 +20,17 @@ export default class Header extends BaseComponent {
     $headerTop.classList.add("header-top");
     let $headerLogo = document.createElement("a");
     $headerLogo.classList.add("header-logo-link");
+    $headerLogo.innerHTML = `<img src="./IMG/icons/book.svg" alt="" class="header-logo" /><span>FairyStory</span>`;
     $headerLogo.addEventListener("click", (e) => {
-      e.preventDefault();
       router.navigate("/dashboard");
+      let $dashboard = document.getElementById("dashboard");
+      let $profile = document.getElementById("profile");
+      let $player = document.getElementById("player");
+      $player.innerHTML = "";
+      $profile.innerHTML = "";
+      $dashboard.innerHTML = "";
       new DashBoard().render();
     });
-    $headerLogo.innerHTML = `<img src="./IMG/icons/book.svg" alt="" class="header-logo" /><span>FairyStory</span>`;
 
     let $headerTopRight = document.createElement("div");
     $headerTopRight.classList.add("header-top-right");
@@ -100,19 +106,19 @@ export default class Header extends BaseComponent {
     let $headerAvt = document.createElement("div");
     $headerAvt.classList.add("header-avatar", "dropdown");
     $headerAvt.style.display = "none";
-    auth.onAuthStateChanged((user) => {
-      if (user) {
+    auth.onAuthStateChanged(async (user) => {
+      if (user && user.displayName) {
+        let userr = await getUserById(auth.currentUser.uid);
         // console.log(user);
         $headerLoginWrapper.style.display = "none";
         $headerAvt.style.display = "flex";
-
         let $dropdownSelect = document.createElement("div");
         $dropdownSelect.classList.add("dropdown-select");
         $dropdownSelect.innerHTML = `
         <a class="header-user">
-        <img src="${user.image ? user.image : "./DATA/Users/user.png"}" alt="" />
+        <img src="${userr.image ? userr.image : "./DATA/Users/user.png"}" alt="" />
         </a>
-        <span class="header-user-name">${user.displayName}</span>
+        <span class="header-user-name">${userr.name}</span>
         `;
         let $dropdownCaret = document.createElement("i");
         $dropdownCaret.classList.add("fa", "fa-angle-down", "dropdown-caret");
@@ -129,13 +135,15 @@ export default class Header extends BaseComponent {
         let $dropdownOption3 = this.dropdownOption("logout", "Logout", "fas fa-sign-out-alt", handleSelectDropdown);
         $dropdownOption1.addEventListener("click", () => {
           router.navigate("/profile");
-          try {
-            new Profile({
-              id: user.uid,
-            }).render();            
-          } catch (error) {
-            console.error(error.message);
-          }
+          let $dashboard = document.getElementById("dashboard");
+          let $profile = document.getElementById("profile");
+          let $player = document.getElementById("player");
+          $player.innerHTML = "";
+          $profile.innerHTML = "";
+          $dashboard.innerHTML = "";
+          new Profile({
+            id: auth.currentUser.uid,
+          }).render();
         });
         $dropdownOption3.addEventListener("click", (e) => {
           auth.signOut();
@@ -202,9 +210,14 @@ export default class Header extends BaseComponent {
     });
   }
   async handleOnclick(item) {
-    let _content = document.querySelector("#dashboard");
-    _content.innerHTML = "";
-    console.log(item);
+    router.navigate("/story");
+    let $dashboard = document.getElementById("dashboard");
+    let $profile = document.getElementById("profile");
+    let $player = document.getElementById("player");
+    $player.innerHTML = "";
+    $profile.innerHTML = "";
+    $dashboard.innerHTML = "";
+    // console.log(item);
     new StoryScreen({ id: item.id }).render();
   }
 }

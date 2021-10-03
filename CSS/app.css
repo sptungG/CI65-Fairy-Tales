@@ -280,6 +280,15 @@ section[id] {
   padding-bottom: 20px;
   padding-left: 10px;
 }
+.form-group label {
+  display: inline-block;
+  color: #dee2e6;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 5px;
+  margin-left: 5px;
+}
 .form-input {
   background-color: transparent;
   padding: 10px 5px;
@@ -287,7 +296,10 @@ section[id] {
   width: 100%;
   color: #252936;
   border-bottom: 1px solid #f56766;
-  color: #fff;
+  color: #f8f9fa;
+}
+.form .form-group input:focus::placeholder {
+  color: transparent;
 }
 .form-btn {
   display: block;
@@ -333,8 +345,53 @@ section[id] {
   padding-top: 5px;
   padding-left: 5px;
   font-size: 14px;
+  height: 10px;
 }
 
+@media screen and (max-width: 1366px) {
+  .form {
+    width: 70%;
+    flex-direction: column;
+  }
+
+  .form-wrap {
+    width: auto;
+  }
+
+  .form-wrap img {
+    display: none;
+  }
+
+  .form-fill {
+    width: auto;
+  }
+
+  .form-group input::placeholder {
+    color: transparent;
+  }
+
+  .form-title {
+    padding-bottom: 50px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .form {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .form-title {
+    font-size: 24px;
+    padding-bottom: 30px;
+  }
+
+  .form-caption {
+    padding-top: 30px;
+    padding-bottom: 10px;
+    font-size: 26px;
+    text-align: center;
+  }
+}
 .modal {
   position: absolute;
   top: 0;
@@ -456,6 +513,7 @@ section[id] {
   top: 0;
   left: 50%;
   width: 120%;
+  min-width: 350px;
   min-height: 150px;
   max-height: 80vh;
   overflow-y: scroll;
@@ -1071,6 +1129,7 @@ section[id] {
   flex-direction: row;
   display: flex;
   flex-wrap: nowrap;
+  z-index: 4;
 }
 .story-line > span {
   font-size: 14px;
@@ -1149,6 +1208,11 @@ section[id] {
   grid-template-columns: 1fr 3fr;
   grid-gap: 0 20px;
   background: linear-gradient(-45deg, rgba(37, 41, 54, 0.8) 10%, rgba(37, 41, 54, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center/cover;
+}
+@media screen and (max-width: 1023px) {
+  .profile > .container {
+    grid-template-columns: 1fr 2fr;
+  }
 }
 @media screen and (max-width: 767px) {
   .profile > .container {
@@ -1983,6 +2047,16 @@ section[id] {
 }
 .rating-message {
   margin-top: 20px;
+  line-height: 1.4;
+}
+.rating-message i {
+  font-size: 20px;
+}
+.rating-message i:first-child {
+  color: #f56766;
+}
+.rating-message i:nth-child(2) {
+  color: #f58826;
 }
 .rating-star {
   display: inline-flex;
@@ -2071,6 +2145,11 @@ section[id] {
 .comment-list {
   margin-top: 40px;
   position: relative;
+  align-items: stretch;
+  justify-content: flex-start;
+  flex-direction: column-reverse;
+  display: flex;
+  flex-wrap: nowrap;
 }
 .comment-list::before {
   content: "";

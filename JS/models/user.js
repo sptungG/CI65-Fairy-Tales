@@ -1,3 +1,4 @@
+import DashBoard from "../screens/DashBoard.js";
 import { getDataFromDoc, getDataFromDocs } from "./utils.js";
 
 let router = new Navigo(null, true, "#");
@@ -13,18 +14,25 @@ export async function register(name, email, password) {
     let docId = auth.currentUser.uid;
 
     //set = add || update
-    await db.collection("users").doc(docId).set({
-      name: name,
-      email: email,
-      password: password,
-      wallpaper: "https://source.unsplash.com/random/?vietnam,nature",
-      image: "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/user.png?alt=media&token=990e1356-808c-4fd3-ba10-4b9b37482091",
-      bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod molestiae dignissimos similique sed accusantium quia sit laborum, sint veritatis soluta autem vero incidunt, repudiandae nihil doloremque? Mollitia officiis optio tempora?",
-      storiesFavorite: [],
-      storiesRead: [],
-      storiesCommented: [],
-      storiesRated: [],
-    });
+    await db
+      .collection("users")
+      .doc(docId)
+      .set(
+        {
+          name: name,
+          email: email,
+          password: password,
+          wallpaper: "https://source.unsplash.com/random/?vietnam,nature",
+          image: "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/user.png?alt=media&token=990e1356-808c-4fd3-ba10-4b9b37482091",
+          bio: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod molestiae dignissimos similique sed accusantium quia sit laborum, sint veritatis soluta autem vero incidunt, repudiandae nihil doloremque? Mollitia officiis optio tempora?",
+          storiesFavorite: [],
+          storiesRead: [],
+          storiesCommented: [],
+          storiesRated: [],
+          createAt: new Date().toLocaleDateString("vi-VI"),
+        },
+        { merge: true }
+      );
     await auth.signOut();
     let $register = document.querySelector("#modalRegister");
     $register.style.display = "none";
@@ -42,6 +50,8 @@ export async function login(email, password) {
     console.log("Sign in successfully");
     let $login = document.querySelector("#modalLogin");
     $login.style.display = "none";
+    router.navigate("/dashboard");
+    new DashBoard().render();
   } catch (error) {
     alert(error.message);
   }
@@ -53,7 +63,7 @@ export async function logout() {
 export function authStateChanged(callback) {
   //dang ki, dang nhap, dang xuat
   firebase.auth().onAuthStateChanged((user) => {
-      callback(user);
+    callback(user);
   });
 }
 
@@ -68,7 +78,10 @@ export function listenAllUsers(callback) {
     callback(getDataFromDocs(response.docs));
   });
 }
-
+export async function getUserById(id) {
+  let response = await db.collection("users").doc(id).get();
+  return getDataFromDoc(response);
+}
 export async function updateUser(id, data) {
   await db.collection("users").doc(id).update(data);
 }
