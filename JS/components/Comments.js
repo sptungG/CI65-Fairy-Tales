@@ -65,6 +65,7 @@ export default class Comments extends BaseComponent {
           let $commentHead = document.createElement("div");
           $commentHead.classList.add("comment-head");
           let $commentName = document.createElement("h6");
+          $commentName.title = `See ${user.name} profile`
           $commentName.classList.add("comment-name", "by-author");
           $commentName.innerHTML = `<a href="#">${user.name}</a><span>${user.role ? user.role : ""}</span>`;
           let $commentDate = document.createElement("span");
