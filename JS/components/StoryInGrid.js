@@ -3,7 +3,7 @@ import { authStateChanged, listenCurrentUser } from "../models/user.js";
 import { getImgByName } from "../models/utils.js";
 import StoryScreen from "../screens/StoryScreen.js";
 import BaseComponent from "./BaseComponent.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class StoryInGrid extends BaseComponent {
   render() {
     let $storyItem = document.createElement("li");

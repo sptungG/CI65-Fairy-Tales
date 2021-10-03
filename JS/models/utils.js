@@ -1,3 +1,4 @@
+import { auth, db, storage } from "../firebase.js";
 // doc: tra ve tu cloud firestore
 export function getDataFromDoc(doc) {
   let obj = doc.data();

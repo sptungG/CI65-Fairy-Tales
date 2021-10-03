@@ -1,6 +1,6 @@
 import DashBoard from "../screens/DashBoard.js";
 import { getDataFromDoc, getDataFromDocs } from "./utils.js";
-
+import { auth, db, storage } from "../firebase.js";
 let router = new Navigo(null, true, "#");
 
 export async function register(name, email, password) {

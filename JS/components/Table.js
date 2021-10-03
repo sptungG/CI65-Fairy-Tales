@@ -2,7 +2,7 @@ import { getStoryById } from "../models/stories.js";
 import { getImgByName } from "../models/utils.js";
 import StoryScreen from "../screens/StoryScreen.js";
 import BaseComponent from "./BaseComponent.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class Table extends BaseComponent {
   render() {
     // console.log(this.props);

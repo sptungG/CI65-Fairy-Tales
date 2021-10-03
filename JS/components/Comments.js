@@ -2,7 +2,7 @@ import { getStoryById } from "../models/stories.js";
 import { getUserById } from "../models/user.js";
 import Profile from "../screens/Profile.js";
 import BaseComponent from "./BaseComponent.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class Comments extends BaseComponent {
   render() {
     let $commentsWrapper = document.createElement("div");

@@ -1,6 +1,6 @@
 import { capitalize } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class InputWrapper extends BaseComponent {
   render() {
     

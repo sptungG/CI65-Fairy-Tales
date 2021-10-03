@@ -1,6 +1,6 @@
 import BaseComponent from "../components/BaseComponent.js";
 import Table from "../components/Table.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class AdminScreen extends BaseComponent {
   render() {
     let $container = document.querySelector("#dashboard");

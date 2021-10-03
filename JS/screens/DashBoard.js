@@ -3,7 +3,7 @@ import StoryInGrid from "../components/StoryInGrid.js";
 import * as data from "../data.js";
 import { filterStory, getAllStories } from "../models/stories.js";
 import { appendTo } from "../models/utils.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class DashBoard extends BaseComponent {
   constructor(props) {
     super(props);

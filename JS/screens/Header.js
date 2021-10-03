@@ -7,6 +7,7 @@ import DashBoard from "./DashBoard.js";
 import { getAllStories } from "../models/stories.js";
 import { getUserById } from "../models/user.js";
 import AdminScreen from "./AdminScreen.js";
+import { auth, db, storage } from "../firebase.js";
 export default class Header extends BaseComponent {
   constructor(props) {
     super(props);

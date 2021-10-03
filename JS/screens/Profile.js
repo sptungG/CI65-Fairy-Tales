@@ -5,7 +5,7 @@ import * as data from "../data.js";
 import StoryInGrid from "../components/StoryInGrid.js";
 import StoryInList from "../components/StoryInList.js";
 import { filterStory, getStoryById } from "../models/stories.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class Profile extends BaseComponent {
   render() {
     db.collection("users")

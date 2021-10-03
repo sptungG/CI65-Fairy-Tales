@@ -1,7 +1,7 @@
 import { getStoryById } from "../models/stories.js";
 import { getImgByName } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class StoryDetail extends BaseComponent {
   render() {
     let $detailContainer = document.createElement("div");

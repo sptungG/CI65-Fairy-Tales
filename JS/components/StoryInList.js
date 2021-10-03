@@ -1,6 +1,6 @@
 import { getImgByName } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class StoryInList extends BaseComponent {
   render() {
     let $storyItem = document.createElement("li");

@@ -1,7 +1,7 @@
 import { getStoryById } from "../models/stories.js";
 import { getImgByName, play, pause } from "../models/utils.js";
 import BaseComponent from "./BaseComponent.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class StoryPlay extends BaseComponent {
   render() {
     let $container = document.createElement("div");

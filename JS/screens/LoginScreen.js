@@ -2,7 +2,7 @@ import BaseComponent from "../components/BaseComponent.js";
 import InputWrapper from "../components/InputWrapper.js";
 import { getUserById, login } from "../models/user.js";
 import { validateEmail, appendTo, modalClose } from "../models/utils.js";
-
+import { auth, db, storage } from "../firebase.js";
 export default class LoginScreen extends BaseComponent {
   // truyền dữ liệu thông qua props
   constructor(props) {
