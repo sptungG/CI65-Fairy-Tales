@@ -126,7 +126,11 @@ export default class StoryPlay extends BaseComponent {
     // Create a reference under which you want to list
 
     for (let i = 0; i < story.pagesNum + 1; i++) {
-      $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/${("0" + i).slice(-2)}.jpg">`;
+      if (i == story.pagesNum) {
+        $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/00.jpg">`;
+      } else {
+        $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/${("0" + i).slice(-2)}.jpg">`;
+      }
     }
     //play the first page
     setTimeout(() => {
@@ -168,7 +172,7 @@ export default class StoryPlay extends BaseComponent {
           this.classList.add("flipped");
           this.nextElementSibling.classList.add("flipped");
         }
-
+        // console.log(audioFiles);
         setTimeout(() => {
           //play
           let i = 0;

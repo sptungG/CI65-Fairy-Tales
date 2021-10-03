@@ -39,15 +39,13 @@ export default class StoryScreen extends BaseComponent {
         let _storyPlay = new StoryPlay({
           story: story1,
         });
-        let story2 = await getStoryById(this.props.id);
         let _storyDetail = new Detail({
           id: this.props.id,
-          story: story2,
+          story: story1,
         });
-        let story3 = await getStoryById(this.props.id);
         let _storyComments = new Comment({
           id: this.props.id,
-          story: story3,
+          story: story1,
         });
         appendTo($detailLeft, _storyDetail, _storyComments);
 

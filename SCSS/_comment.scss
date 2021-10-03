@@ -59,7 +59,7 @@
   &-list {
     margin-top: 40px;
     position: relative;
-    @include flex(stretch, flex-start, column-reverse);
+    @include flex(stretch, flex-start, column);
   }
   &-list::before {
     content: "";

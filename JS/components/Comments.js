@@ -1,4 +1,5 @@
 import { getStoryById } from "../models/stories.js";
+import { getUserById } from "../models/user.js";
 import BaseComponent from "./BaseComponent.js";
 
 export default class Comments extends BaseComponent {
@@ -29,8 +30,6 @@ export default class Comments extends BaseComponent {
             storyRef.update({
               comments: firebase.firestore.FieldValue.arrayUnion({
                 userId: auth.currentUser.uid,
-                userName: doc.data().name,
-                userImage: doc.data().image,
                 date: new Date().toLocaleDateString("vi-VI"),
                 text: $commentInput.value.trim(),
               }),
@@ -52,14 +51,16 @@ export default class Comments extends BaseComponent {
       .doc(this.props.id)
       .onSnapshot((doc) => {
         $commentList.innerHTML = "";
-        doc.data().comments.forEach((comment) => {
+        doc.data().comments.forEach(async (comment) => {
+          let user = await getUserById(comment.userId);
+          // console.log(user);
           let $comment = document.createElement("li");
           $comment.classList.add("comment-main-level");
           $comment.innerHTML = `
-        <div class="comment-avatar"><img src="${comment.userImage ? comment.userImage : "./DATA/Users/user.png"}" alt="" /></div>
+        <div class="comment-avatar"><img src="${user.image ? user.image : "./DATA/Users/user.png"}" alt="" /></div>
         <div class="comment-box">
           <div class="comment-head">
-            <h6 class="comment-name by-author"><a href="#">${comment.userName}</a></h6>
+            <h6 class="comment-name by-author"><a href="#">${user.name}</a></h6>
             <span class="comment-date">${comment.date}</span>
           </div>
           <div class="comment-content">${comment.text}</div>

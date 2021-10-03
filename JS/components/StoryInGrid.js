@@ -23,6 +23,7 @@ export default class StoryInGrid extends BaseComponent {
     `;
     $storyImage.addEventListener("click", (e) => {
       e.stopPropagation();
+      e.stopImmediatePropagation();
       this.getComments(this.props.story);
       this.getFavorite(this.props.story);
       this.getRating(this.props.story);
@@ -49,7 +50,6 @@ export default class StoryInGrid extends BaseComponent {
     authStateChanged((user) => {
       if (user) {
         let currentUser = auth.currentUser;
-
         listenCurrentUser((user) => {
           if (user.storiesFavorite.includes(`${this.props.story.id}`)) {
             $storyRatingBtn.classList.add("active");

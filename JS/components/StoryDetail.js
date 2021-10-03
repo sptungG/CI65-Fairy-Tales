@@ -122,7 +122,7 @@ export default class StoryDetail extends BaseComponent {
           } else {
             ratingStar.forEach((star, index) => {
               star.addEventListener("click", async (e) => {
-                console.log(star.value);
+                // console.log(star.value);
                 $ratingValue.innerHTML = star.value + "/5";
                 $ratingMessage.innerHTML = `You rated ${that.props.story.name} ${star.value}/5`;
                 for (let i = 0; i < ratingStar.length; i++) {
@@ -172,6 +172,12 @@ export default class StoryDetail extends BaseComponent {
     <img src="./DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="detail-author-image" />
     <span class="detail-author-name">${this.props.story.authorName}</span>
     `;
+    let $dashboard = document.getElementById("dashboard");
+    let $profile = document.getElementById("profile");
+    let $player = document.getElementById("player");
+    $player.innerHTML = "";
+    $profile.innerHTML = "";
+    $dashboard.innerHTML = "";
     $detailContainer.append($detailCategory, $detailTitleWrapper, $desc, $authorWrapper);
     return $detailContainer;
   }
