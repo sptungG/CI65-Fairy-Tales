@@ -1,6 +1,6 @@
 import BaseComponent from "../components/BaseComponent.js";
 import InputWrapper from "../components/InputWrapper.js";
-import { login } from "../models/user.js";
+import { getUserById, login } from "../models/user.js";
 import { validateEmail, appendTo, modalClose } from "../models/utils.js";
 
 export default class LoginScreen extends BaseComponent {
@@ -135,8 +135,12 @@ export default class LoginScreen extends BaseComponent {
         .collection("admins")
         .get()
         .then((querySnapshot) => {
-          querySnapshot.forEach((doc) => {
+          querySnapshot.forEach(async (doc) => {
             if (doc.data().email == auth.currentUser.email) {
+              let userRef = await db.collection("users").doc(auth.currentUser.uid);
+              userRef.set({
+                role: "admin",
+              },{merge: true});
               router.navigate("/adminDashboard");
             }
           });

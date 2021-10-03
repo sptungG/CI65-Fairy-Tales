@@ -80,7 +80,7 @@ export default class StoryPlay extends BaseComponent {
     });
     $audio.addEventListener("timeupdate", (e) => {
       //updateProgress
-      let { duration, currentTime } = e.srcElement;
+      let { duration, currentTime } = e.target;
       let progressPercent = (currentTime / duration) * 100;
       $progress.style.width = `${progressPercent}%`;
       let durationStr = duration < 10 ? `0:0${Math.round(duration)}` : `0:${Math.round(duration)}`;
@@ -123,7 +123,6 @@ export default class StoryPlay extends BaseComponent {
     // let story = getStoryById(this.props.id);
     // console.log(this.props);
     let story = this.props.story;
-    // Create a reference under which you want to list
 
     for (let i = 0; i < story.pagesNum + 1; i++) {
       if (i == story.pagesNum) {
@@ -139,7 +138,7 @@ export default class StoryPlay extends BaseComponent {
       $audio.onended = function () {
         pause($audioContainer, $audio, $playBtn);
       };
-    }, 1000);
+    }, 0.1);
 
     //flip pages
     let pages = [...$pageList.childNodes];

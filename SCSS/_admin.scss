@@ -1,0 +1,261 @@
+.admin {
+  display: grid;
+  padding: 0 20px;
+  grid-template-columns: 1fr;
+  grid-gap: 20px 0;
+  &-search {
+    width: 100%;
+    display: flex;
+    padding: 5px;
+    background-color: $gray-darkest;
+    border-radius: 10px;
+    border: 1px solid $gray;
+    margin-bottom: 20px;
+  }
+  &-search button {
+    padding: 10px 20px;
+    color: $gray-lighter;
+    flex-shrink: 0;
+    border-radius: 5px;
+    @include gradient();
+  }
+  &-search input {
+    width: 100%;
+    padding: 10px;
+    background-color: $gray-darkest;
+    color: $gray-lighter;
+    -webkit-appearance: none;
+    font-size: 14px;
+    font-weight: 500;
+  }
+}
+.sidebar {
+  &-menu {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: $gray-darkest;
+    border-radius: 10px;
+    @include flex(stretch, space-evenly);
+    flex-grow: 1;
+    max-height: 250px;
+  }
+  &-item {
+    display: flex;
+    align-items: center;
+    padding: 15px;
+    border-radius: 10px;
+    color: $gray-lighter;
+    transition: all 0.15s ease-in;
+    @include flex(center);
+  }
+  &-item:hover,
+  &-item.active {
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.2);
+  }
+  &-icon {
+    font-size: 16px;
+    width: 30px;
+    flex-shrink: 0;
+    margin-right: 10px;
+  }
+  &-text {
+    font-weight: 500;
+    display: inline-block;
+  }
+}
+.table {
+  width: 100%;
+  overflow-x: auto;
+  background-color: $gray-darkest;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  & table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    color: $gray-light;
+  }
+  & tr {
+    border-bottom: 1px solid $gray-dark;
+  }
+  & th {
+    font-size: 18px;
+    color: $gray-lighter;
+    text-align: left;
+    font-weight: 400;
+    padding: 15px 20px;
+    white-space: nowrap;
+    margin-right: 10px;
+  }
+  & td {
+    vertical-align: middle;
+    padding: 20px;
+    font-size: 16px;
+    white-space: nowrap;
+    font-weight: normal;
+    word-wrap: break-word;
+  }
+  & .image-text {
+    display: flex;
+    align-items: center;
+  }
+  & .image-text img {
+    @include size(85px, 100px);
+    border-radius: 10px;
+    object-fit: cover;
+    margin-right: 10px;
+    flex-shrink: 0;
+  }
+  & .image-text span {
+    white-space: nowrap;
+    text-align: justify;
+    max-width: 150px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  & .item-category-list {
+    @include flex(stretch, space-between, column);
+  }
+  & .item-category-e {
+    padding: 5px;
+    border-radius: 5px;
+    color: $secondary-color;
+    background-color: rgba($secondary-color, 0.1);
+    font-size: 14px;
+    line-height: 1.4;
+    margin-bottom: 10px;
+  }
+  & .item-audio-length {
+    font-size: 16px;
+    line-height: 1.4;
+  }
+  & .action {
+    display: flex;
+    align-items: center;
+  }
+  & .item-desc {
+    white-space: nowrap;
+    text-align: justify;
+    max-width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  & .item-reaction {
+    @include flex(stretch, space-between, column);
+  }
+  & .item-reaction .reaction-e {
+    margin-bottom: 5px;
+    & > i{
+      width: 25px;
+      font-size: 18px;
+    }
+    & > span{
+      @include dotSeparate("left", currentColor);
+      padding-left: 10px;
+    }
+  }
+  & .item-rate{
+    color: $primary-color;
+  }
+  & .item-favorite{
+    color: $secondary-color;
+  }
+  & .item-view{
+    color: $third-color;
+  }
+  & .item-comment{
+    color: #ffa500;
+  }
+}
+@include maxWidth(1023px) {
+  .sidebar-menu {
+    padding: 10px;
+    flex-direction: row;
+  }
+  .sidebar-icon {
+    display: block;
+    margin: 0 auto;
+  }
+  .table th {
+    padding: 15px 30px;
+  }
+  .table td {
+    padding: 30px;
+  }
+}
+.create-story {
+  &-wrapper {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-gap: 0 20px;
+  }
+  &-container {
+    background-color: $gray-darkest;
+    width: 100%;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+  }
+  &-form {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+  }
+  &-btn {
+    font-family: $secondary-font;
+    margin-top: 20px;
+    width: 200px;
+    margin-left: auto;
+    color: $primary-color;
+    background-color: rgba($primary-color, 0.1);
+  }
+}
+
+.text-field {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+}
+.text-field label {
+  display: inline-block;
+  color: #333;
+  font-weight: 600;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  background-color: $gray-darkest;
+  padding: 1px 5px;
+  font-size: 12px;
+  transform: translateY(-50%);
+  color: $secondary-color;
+}
+.text-field input,
+.text-field textarea {
+  padding: 15px;
+  display: block;
+  width: 100%;
+  background-color: $gray-darkest;
+  color: $gray-light;
+  font-size: 14px;
+  border: 1px solid $secondary-color;
+  border-radius: 4px;
+}
+.text-field textarea {
+  resize: vertical;
+}
+.text-field-add {
+  background-color: $gray;
+  padding: 15px 30px;
+  margin-left: 10px;
+  color: $secondary-color;
+  background-color: rgba($secondary-color, 0.1);
+}
+.field-wrapper {
+  @include flex(flex-end, space-between);
+  margin-left: -10px;
+}
+.field-wrapper .text-field {
+  margin-left: 10px;
+}

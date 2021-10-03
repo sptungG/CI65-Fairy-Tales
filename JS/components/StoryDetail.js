@@ -30,10 +30,6 @@ export default class StoryDetail extends BaseComponent {
     $avgHeading.innerHTML = `User Rating`;
     let $avgHearts = document.createElement("span");
     $avgHearts.classList.add("detail-avg-heart");
-    // this.generateHearts(4.5, $avgHearts);
-    // $avgText.innerHTML = `<span class="avg-num rating-num">${4.5}</span> average based on <span class="avg-num view-num">${
-    //   this.props.story.viewsNum
-    // }</span> reviews.`;
     this.generateHearts(this.props.story.avgRating, $avgHearts);
     let $avgText = document.createElement("p");
     $avgText.innerHTML = `<span class="avg-num rating-num">${this.props.story.avgRating}</span> average based on <span class="avg-num view-num">${this.props.story.usersRating.length}</span> reviews.`;

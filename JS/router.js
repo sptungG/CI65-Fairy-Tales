@@ -5,6 +5,7 @@ import RegisterScreen from "./screens/RegisterScreen.js";
 import DashBoard from "./screens/DashBoard.js";
 import Profile from "./screens/Profile.js";
 import StoryScreen from "./screens/StoryScreen.js";
+import AdminScreen from "./screens/AdminScreen.js";
 
 let $app = document.getElementById("app");
 let $dashboard = document.getElementById("dashboard");
@@ -18,7 +19,7 @@ router.on("/dashboard", function () {
   $profile.innerHTML = "";
   $dashboard.innerHTML = "";
   new DashBoard().render();
-});
+}).resolve();
 router.on("/profile", function () {
   $player.innerHTML = "";
   $profile.innerHTML = "";
@@ -26,11 +27,19 @@ router.on("/profile", function () {
   // new Profile({
   //   id: auth.currentUser.uid,
   // }).render();
-});
+}).resolve();
 router.on("/story", function () {
   $dashboard.innerHTML = "";
   $player.innerHTML = "";
   $profile.innerHTML = "";
   // new StoryScreen().render();
-});
+}).resolve();
+router
+  .on("/adminDashboard", function () {
+    $dashboard.innerHTML = "";
+    $player.innerHTML = "";
+    $profile.innerHTML = "";
+    new AdminScreen().render();
+  })
+  .resolve();
 window.router = router;

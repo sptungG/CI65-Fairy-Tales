@@ -10,6 +10,7 @@ export default class DashBoard extends BaseComponent {
     this.state = "";
   }
   render() {
+    
     let $container = document.querySelector("#dashboard");
     let $profile = document.querySelector("#profile");
     let $player = document.querySelector("#player");
@@ -43,14 +44,10 @@ export default class DashBoard extends BaseComponent {
         let storiesFilter = filterStory(category.name.toLowerCase(), stories);
         let $storyList = document.createElement("ul");
         $storyList.className = "story-list";
-        try {
-          storiesFilter.forEach((story) => {
-            let _story = new StoryInGrid({ story: story });
-            appendTo($storyList, _story);
-          });
-        } catch (error) {
-          console.error(error.message);
-        }
+        storiesFilter.forEach((story) => {
+          let _story = new StoryInGrid({ story: story });
+          appendTo($storyList, _story);
+        });
         $storyContainer.innerHTML = "";
         $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${category.name}</span>`;
         $storyContainer.append($storyHeader, $storyList);
@@ -76,19 +73,13 @@ export default class DashBoard extends BaseComponent {
     $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">All</span>`;
     let $storyHeaderModes = document.createElement("div");
     $storyHeaderModes.classList.add("main-header-mode");
-    let $gridMode = document.createElement("div");
-    $gridMode.classList.add("grid-mode", "mode-active", "btn-mode");
-    $gridMode.innerHTML = `<i class="fas fa-th"></i>`;
-    let $listMode = document.createElement("div");
-    $listMode.classList.add("list-mode", "btn-mode");
-    $listMode.innerHTML = `<i class="fas fa-th-list"></i>`;
+
     $storyHeaderTitleWrapper.append($storyHeaderTitle, $storyHeaderCategory);
-    $storyHeaderModes.append($gridMode, $listMode);
     $storyHeader.append($storyHeaderTitleWrapper, $storyHeaderModes);
     let $storyList = document.createElement("ul");
     $storyList.className = "story-list";
     db.collection("stories")
-      .orderBy("name", "desc")
+      .orderBy("avgRating", "desc")
       .onSnapshot((snapshot) => {
         $storyList.innerHTML = "";
         snapshot.docs.forEach((doc) => {
@@ -104,6 +95,7 @@ export default class DashBoard extends BaseComponent {
         // }
       });
 
+    this.generateSortMode($storyHeaderModes, $storyList);
     $storyContainer.append($storyHeader, $storyList);
     $storySection.append($storyContainer);
     $profile.innerHTML = "";
@@ -111,5 +103,80 @@ export default class DashBoard extends BaseComponent {
     $container.innerHTML = "";
     $container.append($categorySection, $storySection);
     return $container;
+  }
+  generateSortMode(wrap, list) {
+    let $sortIcon = document.createElement("div");
+    $sortIcon.classList.add("mode-sort");
+    $sortIcon.innerHTML = `<i class="fas fa-sort-amount-down"></i> <i class="fas fa-sort-amount-down-alt"></i>`;
+    let mode = "desc";
+
+    let $rateMode = document.createElement("div");
+    $rateMode.classList.add("mode-rate", "active", "btn-mode");
+    $rateMode.innerHTML = `<i class="far fa-star"></i>`;
+    $rateMode.dataset.sortBy = "avgRating";
+    $rateMode.onclick = (e) => {
+      $rateMode.classList.add("active");
+      $viewMode.classList.remove("active");
+      $dateMode.classList.remove("active");
+      db.collection("stories")
+        .orderBy("avgRating", `${mode}`)
+        .onSnapshot((snapshot) => {
+          list.innerHTML = "";
+          snapshot.docs.forEach((doc) => {
+            let story = {
+              id: doc.id,
+              ...doc.data(),
+            };
+            let _story = new StoryInGrid({ story: story });
+            appendTo(list, _story);
+          });
+        });
+    };
+    let $viewMode = document.createElement("div");
+    $viewMode.classList.add("mode-view", "btn-mode");
+    $viewMode.innerHTML = `<i class="far fa-eye"></i>`;
+    $viewMode.dataset.sortBy = "viewsNum";
+    $viewMode.onclick = (e) => {
+      $rateMode.classList.remove("active");
+      $viewMode.classList.add("active");
+      $dateMode.classList.remove("active");
+      db.collection("stories")
+        .orderBy("viewsNum", `${mode}`)
+        .onSnapshot((snapshot) => {
+          list.innerHTML = "";
+          snapshot.docs.forEach((doc) => {
+            let story = {
+              id: doc.id,
+              ...doc.data(),
+            };
+            let _story = new StoryInGrid({ story: story });
+            appendTo(list, _story);
+          });
+        });
+    };
+    let $dateMode = document.createElement("div");
+    $dateMode.classList.add("mode-date", "btn-mode");
+    $dateMode.innerHTML = `<i class="far fa-clock"></i>`;
+    $dateMode.dataset.sortBy = "createAt";
+    $dateMode.onclick = (e) => {
+      $rateMode.classList.remove("active");
+      $viewMode.classList.remove("active");
+      $dateMode.classList.add("active");
+      db.collection("stories")
+        .orderBy("createAt", `${mode}`)
+        .onSnapshot((snapshot) => {
+          list.innerHTML = "";
+          snapshot.docs.forEach((doc) => {
+            let story = {
+              id: doc.id,
+              ...doc.data(),
+            };
+            let _story = new StoryInGrid({ story: story });
+            appendTo(list, _story);
+          });
+        });
+    };
+
+    wrap.append($rateMode, $viewMode, $dateMode, $sortIcon);
   }
 }

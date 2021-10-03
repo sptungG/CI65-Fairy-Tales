@@ -83,6 +83,21 @@ section[id] {
   &-login:hover {
     border: 1px solid $secondary-color;
   }
+  &-delete {
+    color: red;
+    &:hover {
+      color: red;
+      background-color: rgba(red, 0.2);
+    }
+  }
+  &-show {
+    color: $secondary-color;
+    background-color: transparent;
+    &:hover {
+      color: $secondary-color;
+      background-color: rgba($secondary-color, 0.2);
+    }
+  }
 }
 
 .btn-mode {
@@ -95,15 +110,48 @@ section[id] {
   color: $gray-lighter;
   margin-left: 5px;
   &:hover {
-    @include textGradient();
+    background-color: rgba($primary-color, 0.2);
     border: 1px solid $primary-color;
+    color: $secondary-color;
   }
 }
-.mode-active {
-  border: 1px solid $primary-color;
-  @include textGradient();
+.btn-mode.active {
+  & > i {
+    font-weight: bold;
+  }
+  background-color: rgba($primary-color, 0.2);
+  color: $secondary-color;
 }
-
+.mode-sort {
+  position: relative;
+  margin-left: 10px;
+  width: 80px;
+  padding: 10px 20px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  background-color: $gray;
+  color: $gray-lighter;
+  @include dotSeparate("left");
+  & > i {
+    @include centerPosition("both");
+  }
+  & > i.fa-sort-amount-down-alt {
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  &:hover {
+    & > i.fa-sort-amount-down-alt {
+      opacity: 1;
+      visibility: visible;
+    }
+    & > i.fa-sort-amount-down {
+      opacity: 0;
+      visibility: hidden;
+    }
+  }
+}
 #toTopBtn {
   display: none;
   position: fixed;
@@ -121,21 +169,21 @@ section[id] {
     @include centerPosition("both");
     @include textGradient();
   }
-  & > .fa-angle-double-up {
+  & > i.fa-angle-double-up {
     opacity: 0;
     visibility: hidden;
     transition: all 0.2s ease;
   }
-  &::before {
-    content: "";
-    position: absolute;
-    left: 50%;
-    top: 0;
-    transform: translate(-45%, -110%);
-    @include size(90px, 52px);
-    background: url("../IMG/header-airship.png") no-repeat center / cover;
-    transition: 0.3s;
-  }
+  // &::before {
+  //   content: "";
+  //   position: absolute;
+  //   left: 50%;
+  //   top: 0;
+  //   transform: translate(-45%, -110%);
+  //   @include size(90px, 52px);
+  //   background: url("../IMG/header-airship.png") no-repeat center / cover;
+  //   transition: 0.3s;
+  // }
 }
 
 #toTopBtn:hover {
@@ -148,12 +196,12 @@ section[id] {
     opacity: 0;
     visibility: hidden;
   }
-  &::before {
-    transform: translate(-50%, -150%);
-  }
+  // &::before {
+  //   transform: translate(-50%, -150%);
+  // }
 }
-@include maxWidth(1023px){
-  #toTopBtn{
+@include maxWidth(1023px) {
+  #toTopBtn {
     display: none;
   }
 }

@@ -6,6 +6,7 @@ import Profile from "./Profile.js";
 import DashBoard from "./DashBoard.js";
 import { getAllStories } from "../models/stories.js";
 import { getUserById } from "../models/user.js";
+import AdminScreen from "./AdminScreen.js";
 export default class Header extends BaseComponent {
   constructor(props) {
     super(props);
@@ -13,7 +14,7 @@ export default class Header extends BaseComponent {
   }
 
   render() {
-    let $header = document.querySelector(".header");
+    let $header = document.querySelector("#header");
     let $container = document.createElement("div");
     $container.classList.add("container");
     let $headerTop = document.createElement("div");
@@ -21,15 +22,21 @@ export default class Header extends BaseComponent {
     let $headerLogo = document.createElement("a");
     $headerLogo.classList.add("header-logo-link");
     $headerLogo.innerHTML = `<img src="./IMG/icons/book.svg" alt="" class="header-logo" /><span>FairyStory</span>`;
-    $headerLogo.addEventListener("click", (e) => {
-      router.navigate("/dashboard");
+    $headerLogo.addEventListener("click", async (e) => {
       let $dashboard = document.getElementById("dashboard");
       let $profile = document.getElementById("profile");
       let $player = document.getElementById("player");
       $player.innerHTML = "";
       $profile.innerHTML = "";
       $dashboard.innerHTML = "";
-      new DashBoard().render();
+      let user = await getUserById(auth.currentUser.uid);
+      if (user.role === "admin") {
+        router.navigate("/adminDashboard");
+        new AdminScreen().render();
+      } else {
+        router.navigate("/dashboard");
+        new DashBoard().render();
+      }
     });
 
     let $headerTopRight = document.createElement("div");
@@ -107,7 +114,7 @@ export default class Header extends BaseComponent {
     $headerAvt.classList.add("header-avatar", "dropdown");
     $headerAvt.style.display = "none";
     auth.onAuthStateChanged(async (user) => {
-      if (user && user.displayName) {
+      if (user) {
         let userr = await getUserById(auth.currentUser.uid);
         // console.log(user);
         $headerLoginWrapper.style.display = "none";
@@ -118,7 +125,7 @@ export default class Header extends BaseComponent {
         <a class="header-user">
         <img src="${userr.image ? userr.image : "./DATA/Users/user.png"}" alt="" />
         </a>
-        <span class="header-user-name">${userr.name}</span>
+        <span class="header-user-name">${userr.name ? userr.name : "Admin"}</span>
         `;
         let $dropdownCaret = document.createElement("i");
         $dropdownCaret.classList.add("fa", "fa-angle-down", "dropdown-caret");
@@ -147,7 +154,7 @@ export default class Header extends BaseComponent {
         });
         $dropdownOption3.addEventListener("click", (e) => {
           auth.signOut();
-          window.location.href = "../index.html";
+          window.location.reload();
         });
         $dropdownList.append($dropdownOption1, $dropdownOption2, $dropdownOption3);
         // Avt Listener

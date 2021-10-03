@@ -8,8 +8,7 @@
 // };
 // // Initialize Firebase
 // const firebaseApp = firebase.initializeApp(firebaseConfig);
-// // const app = initializeApp(firebaseConfig); 
-// export const db = firebaseApp.firestore();
-// export const auth = firebaseApp.auth();
-
-// // Realtime Listener
+// // const app = initializeApp(firebaseConfig);
+// const db = firebaseApp.firestore();
+// const auth = firebaseApp.auth();
+// const storage = firebase.storage();

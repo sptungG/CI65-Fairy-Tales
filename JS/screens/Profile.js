@@ -41,13 +41,9 @@ export default class Profile extends BaseComponent {
             .data()
             .storiesFavorite.reverse()
             .forEach(async (itemId) => {
-              try {
-                let story = await getStoryById(itemId);
-                let _story = new StoryInGrid({ story: story });
-                appendTo($favoriteList, _story);
-              } catch (error) {
-                console.log(error.message);
-              }
+              let story = await getStoryById(itemId);
+              let _story = new StoryInGrid({ story: story });
+              appendTo($favoriteList, _story);
             });
           $favoriteSection.append($title, $favoriteList);
           let $ratedSection = document.createElement("section");
@@ -61,13 +57,9 @@ export default class Profile extends BaseComponent {
             .data()
             .storiesRated.reverse()
             .forEach(async (item) => {
-              try {
-                let story = await getStoryById(item.storyId);
-                let _story = new StoryInGrid({ story: story });
-                appendTo($ratedList, _story);
-              } catch (error) {
-                console.log(error);
-              }
+              let story = await getStoryById(item.storyId);
+              let _story = new StoryInGrid({ story: story });
+              appendTo($ratedList, _story);
             });
           $ratedSection.append($titleR, $ratedList);
           //User Read Stories
@@ -93,13 +85,9 @@ export default class Profile extends BaseComponent {
             .data()
             .storiesRead.reverse()
             .forEach(async (itemId) => {
-              try {
                 let story = await getStoryById(itemId);
                 let _story = new StoryInList({ story: story });
                 appendTo($activityList, _story);
-              } catch (error) {
-                console.log(error.message);
-              }
             });
 
           $activitySection.append($activityTitle, $activityTabs, $activityList);

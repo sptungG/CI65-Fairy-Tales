@@ -27,14 +27,15 @@
     cursor: pointer;
     margin-bottom: 5px;
     margin-left: 5px;
+    width: 100%;
   }
-  &-input {
+  &-group input {
     background-color: transparent;
     padding: 10px 5px;
     display: block;
     width: 100%;
     color: $gray;
-    border-bottom: 1px solid $primary-color;
+    border-bottom: 2px solid $primary-color;
     color: $gray-lighter;
   }
   .form-group input:focus::placeholder {

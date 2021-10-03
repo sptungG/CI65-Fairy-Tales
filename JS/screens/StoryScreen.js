@@ -14,12 +14,11 @@ export default class StoryScreen extends BaseComponent {
   render() {
     db.collection("stories")
       .doc(this.props.id)
-      .onSnapshot(async (doc) => {
+      .onSnapshot((doc) => {
         console.log(doc.data());
         let $dashboard = document.querySelector("#dashboard");
         let $profile = document.querySelector("#profile");
         let $container = document.querySelector("#player");
-        $container.innerHTML = "";
         $container.classList.add("wrapper");
 
         let $detailSection = document.createElement("section");
@@ -35,7 +34,8 @@ export default class StoryScreen extends BaseComponent {
         // StoryPlay
         // Detail
         // Comment
-        let story1 = await getStoryById(this.props.id);
+        // let story1 = await getStoryById(this.props.id);
+        let story1 = doc.data();
         let _storyPlay = new StoryPlay({
           story: story1,
         });
@@ -79,7 +79,7 @@ export default class StoryScreen extends BaseComponent {
         $detailSection.append($detailContainer);
         $dashboard.innerHTML = "";
         $profile.innerHTML = "";
-
+        $container.innerHTML = "";
         $container.append($detailSection);
         return $container;
       });
