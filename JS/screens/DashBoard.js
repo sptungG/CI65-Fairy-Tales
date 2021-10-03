@@ -1,8 +1,8 @@
 import BaseComponent from "../components/BaseComponent.js";
 import StoryInGrid from "../components/StoryInGrid.js";
 import * as data from "../data.js";
-import { filterStory, getAllStories} from "../models/stories.js";
-import { appendTo} from "../models/utils.js";
+import { filterStory, getAllStories } from "../models/stories.js";
+import { appendTo } from "../models/utils.js";
 
 export default class DashBoard extends BaseComponent {
   constructor(props) {
@@ -41,10 +41,14 @@ export default class DashBoard extends BaseComponent {
         let storiesFilter = filterStory(category.name.toLowerCase(), stories);
         let $storyList = document.createElement("ul");
         $storyList.className = "story-list";
-        storiesFilter.forEach((story) => {
-          let _story = new StoryInGrid({ story: story });
-          appendTo($storyList, _story);
-        });
+        try {
+          storiesFilter.forEach((story) => {
+            let _story = new StoryInGrid({ story: story });
+            appendTo($storyList, _story);
+          });
+        } catch (error) {
+          console.error(error.message);
+        }
         $storyContainer.innerHTML = "";
         $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${category.name}</span>`;
         $storyContainer.append($storyHeader, $storyList);
@@ -81,20 +85,25 @@ export default class DashBoard extends BaseComponent {
     $storyHeader.append($storyHeaderTitleWrapper, $storyHeaderModes);
     let $storyList = document.createElement("ul");
     $storyList.className = "story-list";
-    db.collection("stories").orderBy("viewsNum", "desc").onSnapshot((snapshot) => {
-      let stories = [];
-      snapshot.docs.forEach((doc) => {
-        stories.push({
-          id: doc.id,
-          ...doc.data(),
+    db.collection("stories")
+      .orderBy("viewsNum", "desc")
+      .onSnapshot((snapshot) => {
+        let stories = [];
+        snapshot.docs.forEach((doc) => {
+          stories.push({
+            id: doc.id,
+            ...doc.data(),
+          });
         });
+        console.log(stories);
+        stories.forEach((story) => {
+          let _story = new StoryInGrid({ story: story });
+          appendTo($storyList, _story);
+        });
+        // if (stories.length == 0) {
+        //   $storyList.innerHTML = `<img class="img-nf" src="./IMG/404-post.png">`;
+        // }
       });
-      // console.log(stories);
-      stories.forEach((story) => {
-        let _story = new StoryInGrid({ story: story });
-        appendTo($storyList, _story);
-      });
-    });
 
     $storyContainer.append($storyHeader, $storyList);
     $storySection.append($storyContainer);

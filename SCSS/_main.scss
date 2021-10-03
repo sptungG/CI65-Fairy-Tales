@@ -1,3 +1,9 @@
+.img-nf{
+  @include centerPosition("both");
+  width: 500px;
+  height: 500px;
+  object-fit: cover;
+}
 .main {
   min-height: 100vh;
   background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
@@ -28,6 +34,10 @@
 
 .story {
   @include gridLayout(20px);
+  &-list{
+    min-height: 360px;
+    position: relative;
+  }
   &-item {
     position: relative;
   }

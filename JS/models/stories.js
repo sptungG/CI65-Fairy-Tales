@@ -22,12 +22,16 @@ export async function getStoryById(id) {
 }
 
 export function filterStory(category, stories) {
+  try {
   let filterStories = stories;
   if (category != "all") {
     filterStories = stories.filter((story) => {
-      return story.categories.join(",").toLowerCase().split(",").indexOf(category) != -1;
-    });
+        return story.categories.join(",").toLowerCase().split(",").indexOf(category) != -1;
+      });
+      return filterStories;
+    }
     return filterStories;
+  } catch (error) {
+    console.error(error.message);
   }
-  return filterStories;
 }

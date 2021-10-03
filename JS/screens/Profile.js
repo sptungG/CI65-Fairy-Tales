@@ -36,10 +36,14 @@ export default class Profile extends BaseComponent {
           $title.innerHTML = `Your Favorites <span>${doc.data().storiesFavorite.length}</span>`;
           let $favoriteList = document.createElement("ul");
           $favoriteList.classList.add("favorite-list");
-          doc.data().storiesFavorite.forEach(async (item) => {
-            let story = await getStoryById(item);
-            let _story = new StoryInGrid({ story: story });
-            appendTo($favoriteList, _story);
+          doc.data().storiesFavorite.forEach(async (itemId) => {
+            try {
+              let story = await getStoryById(itemId);
+              let _story = new StoryInGrid({ story: story });
+              appendTo($favoriteList, _story);
+            } catch (error) {
+              console.log(error.message);
+            }
           });
           $favoriteSection.append($title, $favoriteList);
           //User Read Stories
@@ -58,13 +62,17 @@ export default class Profile extends BaseComponent {
             $tab.innerHTML = `${item.name}`;
             $activityTabs.appendChild($tab);
           });
-          
+
           let $activityList = document.createElement("ul");
           $activityList.classList.add("activity-list");
-          doc.data().storiesRead.forEach(async (item) => {
-            let story = await getStoryById(item);
-            let _story = new StoryInList({ story: story });
-            appendTo($activityList, _story);
+          doc.data().storiesRead.forEach(async (itemId) => {
+            try {              
+              let story = await getStoryById(itemId);
+              let _story = new StoryInList({ story: story });
+              appendTo($activityList, _story);
+            } catch (error) {
+              console.log(error.message);
+            }
           });
 
           $activitySection.append($activityTitle, $activityTabs, $activityList);

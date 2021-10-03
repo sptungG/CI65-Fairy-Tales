@@ -123,14 +123,19 @@ export default class Header extends BaseComponent {
           $dropdownList.classList.remove("show");
           $dropdownCaret.classList.remove("fa-angle-up");
         }
+
         let $dropdownOption1 = this.dropdownOption("user-profile", "Profile", "far fa-address-card", handleSelectDropdown);
         let $dropdownOption2 = this.dropdownOption("dark-mode", "Dark mode", "far fa-moon", handleSelectDropdown);
         let $dropdownOption3 = this.dropdownOption("logout", "Logout", "fas fa-sign-out-alt", handleSelectDropdown);
         $dropdownOption1.addEventListener("click", () => {
           router.navigate("/profile");
-          new Profile({
-            id: user.uid,
-          }).render();
+          try {
+            new Profile({
+              id: user.uid,
+            }).render();            
+          } catch (error) {
+            console.error(error.message);
+          }
         });
         $dropdownOption3.addEventListener("click", (e) => {
           auth.signOut();
@@ -170,26 +175,30 @@ export default class Header extends BaseComponent {
       return;
     }
     stories.forEach((story) => {
-      let $searchBoxItem = document.createElement("li");
-      $searchBoxItem.classList.add("header-search-item");
-      $searchBoxItem.dataset.id = story.id;
-      $searchBoxItem.innerHTML = `
-        <div class="activity-item-image">
-            <img src="./DATA/${getImgByName(story.name)}/Pages/00.jpg" alt="" />
-            <span class="activity-item-time">${story.length}</span>
-          </div>
-          <div class="activity-item-info">
-            <h3 class="title activity-item-title">${story.name}</h3>
-            <div class="activity-item-author">${story.authorName}</div>
-            <div class="activity-item-act">
-              <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${story.createAt}</span></div>
+      try {
+        let $searchBoxItem = document.createElement("li");
+        $searchBoxItem.classList.add("header-search-item");
+        $searchBoxItem.dataset.id = story.id;
+        $searchBoxItem.innerHTML = `
+          <div class="activity-item-image">
+              <img src="./DATA/${getImgByName(story.name)}/Pages/00.jpg" alt="" />
+              <span class="activity-item-time">${story.length}</span>
             </div>
-        </div>
-        `;
-      $searchBoxItem.addEventListener("click", () => {
-        this.handleOnclick(story);
-      });
-      list.appendChild($searchBoxItem);
+            <div class="activity-item-info">
+              <h3 class="title activity-item-title">${story.name}</h3>
+              <div class="activity-item-author">${story.authorName}</div>
+              <div class="activity-item-act">
+                <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${story.createAt}</span></div>
+              </div>
+          </div>
+          `;
+        $searchBoxItem.addEventListener("click", () => {
+          this.handleOnclick(story);
+        });
+        list.appendChild($searchBoxItem);
+      } catch (error) {
+        console.log(error.message);
+      }
     });
   }
   async handleOnclick(item) {

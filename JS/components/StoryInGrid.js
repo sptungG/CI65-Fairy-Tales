@@ -11,13 +11,14 @@ export default class StoryInGrid extends BaseComponent {
     $storyItem.dataset.id = this.props.story.id;
     let $storyLength = document.createElement("span");
     $storyLength.classList.add("story-time");
-    $storyLength.innerHTML = `${this.props.story.length}`;
+    $storyLength.innerHTML = `${this.props.story.length ? this.props.story.length : "2:56"}`;
     let $storyImage = document.createElement("div");
     $storyImage.classList.add("story-image");
+
     $storyImage.innerHTML = `
     <img src="./DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
     <div class="author-img--wrapper story-author">
-      <img src="./DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="author-img" />
+      <img src="./DATA/Authors/${this.props.story.authorName ? getImgByName(this.props.story.authorName) : "soc-nhi"}.jpg" alt="" class="author-img" />
     </div>
     `;
     $storyImage.addEventListener("click", (e) => {
@@ -125,7 +126,7 @@ export default class StoryInGrid extends BaseComponent {
     }
   }
   async getRating(item) {
-    if(!item.usersRating){
+    if (!item.usersRating) {
       let story = db.collection("stories").doc(item.id);
       await story.set(
         {
