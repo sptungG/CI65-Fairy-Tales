@@ -18,7 +18,7 @@ export default class UserInfo extends BaseComponent {
     $profileEdit.classList.add("profile-edit");
     $profileEdit.innerHTML = `<i class="profile-edit-icon fas fa-edit"></i>`;
     $profileAvt.append($profileEdit);
-    if (auth.currentUser) {
+    if (auth.currentUser.uid === this.props.id) {
       $profileAvt.onclick = (e) => {
         $profileEdit.classList.toggle("active");
       };

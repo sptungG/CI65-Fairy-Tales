@@ -13,7 +13,7 @@ export default class Profile extends BaseComponent {
       .onSnapshot((doc) => {
         if (doc.exists) {
           let _userInfo = new UserInfo({
-            user: { ...doc.data() },
+            user: { id: this.props.id, ...doc.data() },
           });
           // console.log(doc.data());
           let $dashboard = document.querySelector("#dashboard");
