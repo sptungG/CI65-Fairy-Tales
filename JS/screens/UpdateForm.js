@@ -136,13 +136,12 @@ export default class UpdateForm extends BaseComponent {
         name: this.state.data.name,
         bio: this.state.data.bio,
         image: this.state.data.image,
-        wallpaper: this.state.data.wallpaper,
       });
       alert(`Update Successfully ${this.state.data.name}`);
       window.location.reload();
       return;
     };
-    appendTo($form, _name, _image, _wallpaper, _bio);
+    appendTo($form, _name, _image, _bio);
 
     $form.append($btn, $title);
 
