@@ -11,13 +11,11 @@ export default class UpdateForm extends BaseComponent {
         name: "",
         bio: "",
         image: "",
-        wallpaper: "",
       },
       messageError: {
         name: "",
         bio: "",
         image: "",
-        wallpaper: "",
       },
     };
   }
@@ -77,18 +75,18 @@ export default class UpdateForm extends BaseComponent {
         this.handleInputChange("image", event.target.value);
       },
     });
-    let _wallpaper = new InputWrapper({
-      id: "user-wallpaper",
-      label: "Cover",
-      placeholder: "Enter your new cover link...",
-      type: "text",
-      autocomplete: "on",
-      error: this.state.messageError.wallpaper,
-      value: this.state.data.wallpaper,
-      onblur: (event) => {
-        this.handleInputChange("wallpaper", event.target.value);
-      },
-    });
+    // let _wallpaper = new InputWrapper({
+    //   id: "user-wallpaper",
+    //   label: "Cover",
+    //   placeholder: "Enter your new cover link...",
+    //   type: "text",
+    //   autocomplete: "on",
+    //   error: this.state.messageError.wallpaper,
+    //   value: this.state.data.wallpaper,
+    //   onblur: (event) => {
+    //     this.handleInputChange("wallpaper", event.target.value);
+    //   },
+    // });
 
     let $wrap1 = document.createElement("div");
     $wrap1.classList.add("form-wrap");
