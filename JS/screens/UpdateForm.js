@@ -1,7 +1,6 @@
 import BaseComponent from "../components/BaseComponent.js";
 import InputWrapper from "../components/InputWrapper.js";
-import { getUserById, login } from "../models/user.js";
-import { validateEmail, appendTo, modalClose } from "../models/utils.js";
+import {appendTo, modalClose } from "../models/utils.js";
 import { auth, db, storage } from "../firebase.js";
 export default class UpdateForm extends BaseComponent {
   // truyền dữ liệu thông qua props
@@ -140,7 +139,7 @@ export default class UpdateForm extends BaseComponent {
         wallpaper: this.state.data.wallpaper,
       });
       alert(`Update Successfully ${this.state.data.name}`);
-      $container.innerHTML = "";
+      window.location.reload();
       return;
     };
     appendTo($form, _name, _image, _wallpaper, _bio);

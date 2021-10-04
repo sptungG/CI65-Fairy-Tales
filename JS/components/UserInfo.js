@@ -2,6 +2,7 @@ import BaseComponent from "./BaseComponent.js";
 import { auth, db, storage } from "../firebase.js";
 export default class UserInfo extends BaseComponent {
   render() {
+    console.log(this.props);
     let $profileInfo = document.createElement("div");
     $profileInfo.classList.add("profile-info");
 
@@ -17,13 +18,15 @@ export default class UserInfo extends BaseComponent {
     $profileEdit.classList.add("profile-edit");
     $profileEdit.innerHTML = `<i class="profile-edit-icon fas fa-edit"></i>`;
     $profileAvt.append($profileEdit);
-    $profileAvt.onclick = (e) => {
-      $profileEdit.classList.toggle("active");
-    };
-    let $modalProfile = document.querySelector("#modalProfile");
-    $profileEdit.onclick = (e) => {
-      $modalProfile.style.display = "block";
-    };
+    if (auth.currentUser) {
+      $profileAvt.onclick = (e) => {
+        $profileEdit.classList.toggle("active");
+      };
+      let $modalProfile = document.querySelector("#modalProfile");
+      $profileEdit.onclick = (e) => {
+        $modalProfile.style.display = "block";
+      };
+    }
     $profileImgWrapper.append($profileWallpaper, $profileAvt);
     let $profileContent = document.createElement("div");
     $profileContent.classList.add("profile-content");

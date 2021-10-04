@@ -4,7 +4,6 @@ import Detail from "../components/StoryDetail.js";
 import StoryPlay from "../components/StoryPlay.js";
 import { appendTo } from "../models/utils.js";
 import StoryInGrid from "../components/StoryInGrid.js";
-import { getStoryById } from "../models/stories.js";
 import { auth, db, storage } from "../firebase.js";
 
 export default class StoryScreen extends BaseComponent {
