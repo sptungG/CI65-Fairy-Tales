@@ -2,7 +2,7 @@ import BaseComponent from "./BaseComponent.js";
 import { auth, db, storage } from "../firebase.js";
 export default class UserInfo extends BaseComponent {
   render() {
-    console.log(this.props);
+    // console.log(this.props);
     let $profileInfo = document.createElement("div");
     $profileInfo.classList.add("profile-info");
 

@@ -15,7 +15,7 @@ export default class Profile extends BaseComponent {
           let _userInfo = new UserInfo({
             user: { ...doc.data() },
           });
-          console.log(doc.data());
+          // console.log(doc.data());
           let $dashboard = document.querySelector("#dashboard");
           let $player = document.querySelector("#player");
           let $container = document.querySelector("#profile");
@@ -86,9 +86,9 @@ export default class Profile extends BaseComponent {
             .data()
             .storiesRead.reverse()
             .forEach(async (itemId) => {
-                let story = await getStoryById(itemId);
-                let _story = new StoryInList({ story: story });
-                appendTo($activityList, _story);
+              let story = await getStoryById(itemId);
+              let _story = new StoryInList({ story: story });
+              appendTo($activityList, _story);
             });
 
           $activitySection.append($activityTitle, $activityTabs, $activityList);
