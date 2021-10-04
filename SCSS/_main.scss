@@ -20,8 +20,8 @@
   &-header-category{
     color: $secondary-color;
     @include dotSeparate("left", currentColor);
-    font-size: 16px;
-    font-weight: lighter;
+    font-size: 20px;
+    font-weight: bold;
   }
   &-header-category-icon{
     font-size: 18px;

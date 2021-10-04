@@ -83,7 +83,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Righteous", cursive, sans-serif;
+  font-family: "Charm", cursive;
 }
 
 section[id] {
@@ -113,7 +113,7 @@ section[id] {
 .btn-primary {
   color: #fff;
   border-radius: 100px;
-  font-family: "Righteous", cursive, sans-serif;
+  font-family: "Charm", cursive;
   background-image: linear-gradient(to bottom right, #f56766, #f58826);
 }
 .btn-lock {
@@ -280,11 +280,11 @@ section[id] {
 }
 
 .title {
-  font-family: "Righteous", cursive, sans-serif;
+  font-family: "Charm", cursive;
   color: #f8f9fa;
-  font-size: 24px;
-  font-weight: bold;
-  letter-spacing: 2px;
+  font-size: 28px;
+  font-weight: bolder;
+  letter-spacing: 0.5px;
   margin-bottom: 20px;
   display: inline-block;
 }
@@ -362,6 +362,7 @@ section[id] {
   display: block;
   margin: 0 auto;
   margin-bottom: 10px;
+  width: 300px;
 }
 .form-wrap {
   width: 40%;
@@ -539,12 +540,13 @@ section[id] {
   cursor: pointer;
 }
 .header-logo-link > span {
-  font-family: "Righteous", cursive, sans-serif;
+  font-family: "Kaushan Script", cursive;
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
   background-image: linear-gradient(to bottom right, #f56766, #f58826);
   font-size: 30px;
+  font-weight: bold;
 }
 .header-filter-wrapper {
   width: 60%;
@@ -679,7 +681,7 @@ section[id] {
 }
 .dropdown-select > span {
   padding: 0 5px;
-  font-family: "Righteous", cursive, sans-serif;
+  font-family: "Charm", cursive;
   color: transparent;
   background-clip: text;
   -webkit-background-clip: text;
@@ -908,11 +910,11 @@ section[id] {
   word-break: break-word;
 }
 .category-item-content > h3 {
-  font-family: "Righteous", cursive, sans-serif;
+  font-family: "Charm", cursive;
   color: #f8f9fa;
-  font-size: 20px;
+  font-size: 23px;
   font-weight: normal;
-  letter-spacing: 2px;
+  letter-spacing: 1px;
   padding-top: 10px;
   position: relative;
 }
@@ -1052,8 +1054,8 @@ section[id] {
   position: relative;
   padding-left: 5px;
   margin-left: 5px;
-  font-size: 16px;
-  font-weight: lighter;
+  font-size: 20px;
+  font-weight: bold;
 }
 .main-header-category::before {
   content: "";

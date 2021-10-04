@@ -28,9 +28,10 @@
     cursor: pointer;
   }
   &-logo-link > span {
-    font-family: $secondary-font;
+    font-family: $third-font;
     @include textGradient();
     font-size: 30px;
+    font-weight: bold;
   }
   &-filter-wrapper {
     width: 60%;
