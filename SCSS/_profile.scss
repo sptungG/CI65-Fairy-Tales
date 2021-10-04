@@ -52,21 +52,21 @@
   &-info {
     height: 100%;
     box-shadow: 0 2px 2px rgb(0 0 0 / 5%), 0 4px 4px rgb(0 0 0 / 5%), 0 8px 8px rgb(0 0 0 / 5%), 0 16px 16px rgb(0 0 0 / 5%);
-    margin-right: auto;
     background-color: $gray;
   }
   &-image {
     height: 245px;
     position: relative;
+    flex-shrink: 0;
   }
   &-image img {
     @include size(100%);
     object-fit: cover;
-    object-position: top;
   }
   &-wallpaper {
     @include size(100%);
     overflow: hidden;
+    flex-shrink: 0;
   }
   &-avt {
     @include size(200px);
@@ -79,19 +79,31 @@
     left: 50%;
     transform: translate(-50%, 40%);
     z-index: 10;
+    overflow: hidden;
   }
   &-avt > img {
     border-radius: 50%;
   }
   &-edit {
-    margin-top: 20px;
-    padding-right: 10px;
     position: absolute;
-    right: 0;
-    top: 0;
+    left: 50%;
+    bottom: 0px;
+    transform: translateX(-50%);
     font-size: 32px;
     z-index: 10;
     cursor: pointer;
+    width: 100%;
+    height: 30%;
+    padding: 10px 0;
+    background-color: rgba($gray-darkest, 0.5);
+    @include flex(center, center);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.2s ease;
+  }
+  &-edit.active {
+    opacity: 1;
+    visibility: visible;
   }
   &-edit:hover {
     color: $primary-color;

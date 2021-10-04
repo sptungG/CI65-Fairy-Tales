@@ -1,6 +1,7 @@
 import BaseComponent from "../components/BaseComponent.js";
 import Table from "../components/Table.js";
 import { auth, db, storage } from "../firebase.js";
+import { getAllUsers } from "../models/user.js";
 export default class AdminScreen extends BaseComponent {
   render() {
     let $container = document.querySelector("#dashboard");
@@ -23,6 +24,11 @@ export default class AdminScreen extends BaseComponent {
     let $sidebarItem4 = document.createElement("div");
     $sidebarItem4.classList.add("sidebar-item");
     $sidebarItem4.innerHTML = `<i class="fas fa-book sidebar-icon"></i><span class="sidebar-text">Stories</span>`;
+    let $modalAdd = document.querySelector("#modalAddStory");
+    $sidebarItem1.addEventListener("click", (e) => {
+      e.preventDefault();
+      $modalAdd.style.display = "block";
+    });
     $sidebarMenu.append($sidebarItem1, $sidebarItem2, $sidebarItem3, $sidebarItem4);
 
     let $adminLeft = document.createElement("div");
@@ -54,66 +60,64 @@ export default class AdminScreen extends BaseComponent {
     let $thAction = document.createElement("th");
     $thAction.innerHTML = `Action`;
     $thead.append($thStory, $thAuthor, $thDesc, $thCategory, $thLength, $thPagesNum, $thCreateAt, $thReaction, $thAction);
-
     let $tbody = document.createElement("tbody");
-    db.collection("stories").orderBy("avgRating", "desc").onSnapshot((snapshot) => {
-      snapshot.forEach((doc) => {
-        let story1 = {
-          id: doc.id,
-          ...doc.data(),
-        };
-        let _tr = new Table({ story: story1 }).render();
-        let $delete = _tr.querySelector("#btn-delete");
-        $delete.onclick = async (e) => {
-          await db.collection("stories").doc(doc.id).delete();
-          let users = await db.collection("users").get();
-          users.forEach((e) => {
-            e.forEach((element) => {
-              element.data().storiesRated.forEach((story) => {
-                if (story.storyId == doc.id) {
-                  element.ref.update({
-                    storiesRated: firebase.firestore.FieldValue.arrayRemove({
-                      storyId: story.storyId,
-                      storyRated: story.storyRated,
-                    }),
-                  });
-                }
-              });
+    db.collection("stories")
+      .orderBy("createAt", "desc")
+      .onSnapshot((snapshot) => {
+        snapshot.forEach((doc) => {
+          let story1 = {
+            id: doc.id,
+            ...doc.data(),
+          };
+          let _tr = new Table({ story: story1 }).render();
+          let $delete = _tr.querySelector(`[data-id="${doc.id}"]`);
+          let $tr = $delete.parentElement.parentElement.parentElement;
+          $delete.onclick = async (e) => {
+            $tr.innerHTML = "";
+            await db.collection("stories").doc(doc.id).delete();
+            let userRef = await db.collection("users").doc(auth.currentUser.uid);
+            let usersData = await getAllUsers();
+            usersData.forEach((user) => {
+              if (user.id === auth.currentUser.uid) {
+                user.storiesRated.forEach((story) => {
+                  if (story.storyId === doc.id) {
+                    userRef.update({
+                      storiesRated: firebase.firestore.FieldValue.arrayRemove({
+                        storyId: story.storyId,
+                        storyRated: story.storyRated,
+                      }),
+                    });
+                  }
+                });
+                user.storiesFavorite.forEach((storyId) => {
+                  if (storyId === doc.id) {
+                    userRef.update({
+                      storiesFavorite: firebase.firestore.FieldValue.arrayRemove(storyId),
+                    });
+                  }
+                });
+                user.storiesRead.forEach((storyId) => {
+                  if (storyId === doc.id) {
+                    userRef.update({
+                      storiesRead: firebase.firestore.FieldValue.arrayRemove(storyId),
+                    });
+                  }
+                });
+                user.storiesCommented.forEach((storyId) => {
+                  if (storyId === doc.id) {
+                    userRef.update({
+                      storiesCommented: firebase.firestore.FieldValue.arrayRemove(storyId),
+                    });
+                  }
+                });
+                alert(`Remove Successfully`)
+              }
             });
-            e.forEach((element) => {
-              element.data().storiesFavorite.forEach((storyId) => {
-                if (storyId == doc.id) {
-                  element.ref.update({
-                    storiesFavorite: firebase.firestore.FieldValue.arrayRemove(`${storyId}`),
-                  });
-                }
-              });
-            });
-            e.forEach((element) => {
-              element.data().storiesRead.forEach((storyId) => {
-                if (storyId == doc.id) {
-                  element.ref.update({
-                    storiesRead: firebase.firestore.FieldValue.arrayRemove(`${storyId}`),
-                  });
-                }
-              });
-            });
-            e.forEach((element) => {
-              element.data().storiesCommented.forEach((storyId) => {
-                if (storyId == doc.id) {
-                  element.ref.update({
-                    storiesCommented: firebase.firestore.FieldValue.arrayRemove(`${storyId}`),
-                  });
-                }
-              });
-            });
-          });
-          this.setState();
-        };
-        $tbody.append(_tr);
+          };
+          $tbody.append(_tr);
+        });
+        $table.append($thead, $tbody);
       });
-      $table.append($thead, $tbody);
-    });
     $adminTableWrap.append($table);
     $adminLeft.append($adminTableWrap);
     $adminSection.append($sidebarMenu, $adminLeft);

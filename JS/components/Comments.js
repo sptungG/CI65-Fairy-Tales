@@ -59,7 +59,7 @@ export default class Comments extends BaseComponent {
           $comment.classList.add("comment-main-level");
           let $commentAvt = document.createElement("div");
           $commentAvt.classList.add("comment-avatar");
-          $commentAvt.innerHTML = `<img src="${user.image ? user.image : "./DATA/Users/user.png"}" alt="" />`;
+          $commentAvt.innerHTML = `<img src="${user.image}" alt="" />`;
           let $commentBox = document.createElement("div");
           $commentBox.classList.add("comment-box");
           let $commentHead = document.createElement("div");

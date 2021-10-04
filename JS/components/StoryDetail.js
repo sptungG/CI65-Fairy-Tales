@@ -30,9 +30,9 @@ export default class StoryDetail extends BaseComponent {
     $avgHeading.innerHTML = `User Rating`;
     let $avgHearts = document.createElement("span");
     $avgHearts.classList.add("detail-avg-heart");
-    this.generateHearts(this.props.story.avgRating, $avgHearts);
+    this.generateHearts(!isNaN(this.props.story.avgRating) ? this.props.story.avgRating : 0, $avgHearts);
     let $avgText = document.createElement("p");
-    $avgText.innerHTML = `<span class="avg-num rating-num">${this.props.story.avgRating}</span> average based on <span class="avg-num view-num">${this.props.story.usersRating.length}</span> reviews.`;
+    $avgText.innerHTML = `<span class="avg-num rating-num">${!isNaN(this.props.story.avgRating) ? this.props.story.avgRating : 0}</span> average based on <span class="avg-num view-num">${this.props.story.usersRating.length}</span> reviews.`;
 
     let $detailBtnWrapper = document.createElement("div");
     $detailBtnWrapper.classList.add("detail-btn-wrapper");
@@ -165,7 +165,7 @@ export default class StoryDetail extends BaseComponent {
     let $authorWrapper = document.createElement("div");
     $authorWrapper.classList.add("detail-author-wrapper");
     $authorWrapper.innerHTML = `
-    <img src="./DATA/Authors/${getImgByName(this.props.story.authorName)}.jpg" alt="" class="detail-author-image" />
+    <img src="${this.props.story.authorImg ? this.props.story.authorImg : "https://source.unsplash.com/random/?girl"}" alt="" class="detail-author-image" />
     <span class="detail-author-name">${this.props.story.authorName}</span>
     `;
     let $dashboard = document.getElementById("dashboard");

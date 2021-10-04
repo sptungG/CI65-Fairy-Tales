@@ -63,7 +63,8 @@ export default class RegisterScreen extends BaseComponent {
 
     let _name = new InputWrapper({
       id: "username-up",
-      placeholder: "Your name",
+      placeholder: "Enter your name...",
+      label: "Your name",
       type: "text",
       error: this.state.messageError.name,
       value: this.state.data.name,
@@ -73,7 +74,8 @@ export default class RegisterScreen extends BaseComponent {
     });
     let _email = new InputWrapper({
       id: "email-up",
-      placeholder: "Email",
+      placeholder: "Enter your email...",
+      label: "Email",
       type: "email",
       error: this.state.messageError.email,
       value: this.state.data.email,
@@ -83,7 +85,8 @@ export default class RegisterScreen extends BaseComponent {
     });
     let _password = new InputWrapper({
       id: "password-up",
-      placeholder: "Password",
+      placeholder: "Enter your password...",
+      label: "Password",
       type: "password",
       error: this.state.messageError.password,
       value: this.state.data.password,
@@ -93,7 +96,8 @@ export default class RegisterScreen extends BaseComponent {
     });
     let _confirmPassword = new InputWrapper({
       id: "confirm-password",
-      placeholder: "Confirm Password",
+      placeholder: "Enter confirm password...",
+      label: "Confirm password",
       type: "password",
       error: this.state.messageError.confirmPassword,
       value: this.state.data.confirmPassword,
@@ -173,7 +177,7 @@ export default class RegisterScreen extends BaseComponent {
           name: "",
           email: "",
           password: "",
-          confirmpassword: "",
+          confirmPassword: "",
         },
       };
       this.setState(tmpState);

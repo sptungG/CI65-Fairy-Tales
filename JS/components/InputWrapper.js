@@ -9,7 +9,7 @@ export default class InputWrapper extends BaseComponent {
     $container.classList.add("form-group");
     let $label = document.createElement("label");
     $label.setAttribute("for", `${this.props.id}`);
-    $label.innerHTML = `${capitalize(this.props.placeholder)}`;
+    $label.innerHTML = `${capitalize(this.props.label)}`;
     let $input = document.createElement("input");
     $input.classList.add("form-input");
     $input.id = this.props.id;

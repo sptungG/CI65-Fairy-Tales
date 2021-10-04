@@ -112,9 +112,9 @@ export default class Header extends BaseComponent {
         $dropdownSelect.classList.add("dropdown-select");
         $dropdownSelect.innerHTML = `
         <a class="header-user">
-        <img src="${userr.image ? userr.image : "./DATA/Users/user.png"}" alt="" />
+        <img src="${userr.image}" alt="" />
         </a>
-        <span class="header-user-name">${userr.name ? userr.name : "Admin"}</span>
+        <span class="header-user-name">${userr.name}</span>
         `;
         let $dropdownCaret = document.createElement("i");
         $dropdownCaret.classList.add("fa", "fa-angle-down", "dropdown-caret");

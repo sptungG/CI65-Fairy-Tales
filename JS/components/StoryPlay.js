@@ -124,8 +124,8 @@ export default class StoryPlay extends BaseComponent {
     // console.log(this.props);
     let story = this.props.story;
 
-    for (let i = 0; i < story.pagesNum + 1; i++) {
-      if (i == story.pagesNum) {
+    for (let i = 0; i < parseInt(story.pagesNum) + 1; i++) {
+      if (i == parseInt(story.pagesNum)) {
         $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/00.jpg">`;
       } else {
         $pageList.innerHTML += `<img class="page" src="./DATA/${getImgByName(story.name)}/Pages/${("0" + i).slice(-2)}.jpg">`;
@@ -143,10 +143,10 @@ export default class StoryPlay extends BaseComponent {
     //flip pages
     let pages = [...$pageList.childNodes];
 
-    for (let i = 0; i < story.pagesNum + 1; i++) {
+    for (let i = 0; i < parseInt(story.pagesNum) + 1; i++) {
       let page = pages[i];
       if (i % 2 === 0) {
-        page.style.zIndex = story.pagesNum + 1 - i;
+        page.style.zIndex = parseInt(story.pagesNum) + 1 - i;
       }
     }
     for (let i = 0; i < pages.length; i++) {

@@ -343,7 +343,19 @@ section[id] {
   border-bottom: 2px solid #f56766;
   color: #f8f9fa;
 }
-.form .form-group input:focus::placeholder {
+.form-group textarea {
+  overflow: auto;
+  padding: 2px;
+  display: block;
+  width: 100%;
+  background-color: #1e242e;
+  color: #dee2e6;
+  font-size: 14px;
+  border: 2px solid #f56766;
+  border-radius: 4px;
+  resize: none;
+}
+.form-group input:focus::placeholder {
   color: transparent;
 }
 .form-btn {
@@ -469,6 +481,15 @@ section[id] {
   background-color: transparent;
   color: white;
   cursor: pointer;
+}
+
+#modalAddStory .form-group {
+  padding-bottom: 10px;
+}
+
+#modalAddStory .form-group label {
+  color: #dee2e6;
+  font-size: 14px;
 }
 
 .header {
@@ -1355,23 +1376,23 @@ section[id] {
 .profile-info {
   height: 100%;
   box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 4px 4px rgba(0, 0, 0, 0.05), 0 8px 8px rgba(0, 0, 0, 0.05), 0 16px 16px rgba(0, 0, 0, 0.05);
-  margin-right: auto;
   background-color: #252936;
 }
 .profile-image {
   height: 245px;
   position: relative;
+  flex-shrink: 0;
 }
 .profile-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: top;
 }
 .profile-wallpaper {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  flex-shrink: 0;
 }
 .profile-avt {
   width: 200px;
@@ -1385,19 +1406,35 @@ section[id] {
   left: 50%;
   transform: translate(-50%, 40%);
   z-index: 10;
+  overflow: hidden;
 }
 .profile-avt > img {
   border-radius: 50%;
 }
 .profile-edit {
-  margin-top: 20px;
-  padding-right: 10px;
   position: absolute;
-  right: 0;
-  top: 0;
+  left: 50%;
+  bottom: 0px;
+  transform: translateX(-50%);
   font-size: 32px;
   z-index: 10;
   cursor: pointer;
+  width: 100%;
+  height: 30%;
+  padding: 10px 0;
+  background-color: rgba(30, 36, 46, 0.5);
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  display: flex;
+  flex-wrap: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.2s ease;
+}
+.profile-edit.active {
+  opacity: 1;
+  visibility: visible;
 }
 .profile-edit:hover {
   color: #f56766;
@@ -2551,89 +2588,6 @@ section[id] {
   .table td {
     padding: 30px;
   }
-}
-.create-story-wrapper {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  grid-gap: 0 20px;
-}
-.create-story-container {
-  background-color: #1e242e;
-  width: 100%;
-  padding: 20px;
-  margin-bottom: 20px;
-  border-radius: 10px;
-}
-.create-story-form {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-}
-.create-story-btn {
-  font-family: "Righteous", cursive, sans-serif;
-  margin-top: 20px;
-  width: 200px;
-  margin-left: auto;
-  color: #f56766;
-  background-color: rgba(245, 103, 102, 0.1);
-}
-
-.text-field {
-  position: relative;
-  margin-top: 20px;
-  width: 100%;
-}
-
-.text-field label {
-  display: inline-block;
-  color: #333;
-  font-weight: 600;
-  cursor: pointer;
-  position: absolute;
-  top: 0;
-  left: 10px;
-  background-color: #1e242e;
-  padding: 1px 5px;
-  font-size: 12px;
-  transform: translateY(-50%);
-  color: #f58826;
-}
-
-.text-field input,
-.text-field textarea {
-  padding: 15px;
-  display: block;
-  width: 100%;
-  background-color: #1e242e;
-  color: #dee2e6;
-  font-size: 14px;
-  border: 1px solid #f58826;
-  border-radius: 4px;
-}
-
-.text-field textarea {
-  resize: vertical;
-}
-
-.text-field-add {
-  background-color: #252936;
-  padding: 15px 30px;
-  margin-left: 10px;
-  color: #f58826;
-  background-color: rgba(245, 136, 38, 0.1);
-}
-
-.field-wrapper {
-  align-items: flex-end;
-  justify-content: space-between;
-  flex-direction: row;
-  display: flex;
-  flex-wrap: nowrap;
-  margin-left: -10px;
-}
-
-.field-wrapper .text-field {
-  margin-left: 10px;
 }
 
 /*# sourceMappingURL=app.css.map */

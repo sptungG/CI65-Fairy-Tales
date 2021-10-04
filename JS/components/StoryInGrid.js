@@ -11,22 +11,19 @@ export default class StoryInGrid extends BaseComponent {
     $storyItem.dataset.id = this.props.story.id;
     let $storyLength = document.createElement("span");
     $storyLength.classList.add("story-time");
-    $storyLength.innerHTML = `${this.props.story.length ? this.props.story.length : "2:56"}`;
+    $storyLength.innerHTML = `${this.props.story.length}`;
     let $storyImage = document.createElement("div");
     $storyImage.classList.add("story-image");
 
     $storyImage.innerHTML = `
     <img src="./DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
     <div class="author-img--wrapper story-author">
-      <img src="./DATA/Authors/${this.props.story.authorName ? getImgByName(this.props.story.authorName) : "soc-nhi"}.jpg" alt="" class="author-img" />
+      <img src="${this.props.story.authorImg}" alt="" class="author-img" />
     </div>
     `;
     $storyImage.addEventListener("click", (e) => {
       e.stopPropagation();
       e.stopImmediatePropagation();
-      this.getComments(this.props.story);
-      this.getFavorite(this.props.story);
-      this.getRating(this.props.story);
       this.viewsCount(this.props.story);
       this.readCount(this.props.story);
       this.handleOnclick(this.props.story);
@@ -38,14 +35,14 @@ export default class StoryInGrid extends BaseComponent {
     <h3 class="story-title">${this.props.story.name}</h3>
 
     <div class="story-view">
-      <span class="story-view-num">${this.props.story.viewsNum ? this.props.story.viewsNum : 0} views</span>
+      <span class="story-view-num">${this.props.story.viewsNum} views</span>
       <span class="story-date">${this.props.story.createAt}</span>
     </div>
     `;
     let $storyRatingBtn = document.createElement("div");
     $storyRatingBtn.classList.add("story-line");
     $storyRatingBtn.innerHTML = `
-    <i class="far fa-heart"></i><span class="heart-num">${this.props.story.favoriteNum ? this.props.story.favoriteNum : 0}</span>
+    <i class="far fa-heart"></i><span class="heart-num">${this.props.story.favoriteNum}</span>
     `;
     authStateChanged((user) => {
       if (user) {
@@ -87,14 +84,6 @@ export default class StoryInGrid extends BaseComponent {
       viewsNum: firebase.firestore.FieldValue.increment(1),
     });
   }
-  async getFavorite(item){
-    let storyRef = await db.collection("stories").doc(item.id);
-    if(!item.favoriteNum){
-      storyRef.set({
-        favoriteNum: 0,
-      },{merge: true});
-    }
-  }
   async favoriteCount(btn, item) {
     let userRef = await db.collection("users").doc(auth.currentUser.uid);
     let storyRef = await db.collection("stories").doc(item.id);
@@ -128,29 +117,6 @@ export default class StoryInGrid extends BaseComponent {
       userRef.update({
         storiesRead: firebase.firestore.FieldValue.arrayUnion(`${item.id}`),
       });
-    }
-  }
-  async getComments(item) {
-    if (!item.comments) {
-      let story = db.collection("stories").doc(item.id);
-      await story.set(
-        {
-          comments: [],
-        },
-        { merge: true }
-      );
-    }
-  }
-  async getRating(item) {
-    if (!item.usersRating) {
-      let story = db.collection("stories").doc(item.id);
-      await story.set(
-        {
-          avgRating: 0,
-          usersRating: [],
-        },
-        { merge: true }
-      );
     }
   }
 }

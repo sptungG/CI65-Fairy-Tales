@@ -16,7 +16,7 @@ export default class StoryScreen extends BaseComponent {
     db.collection("stories")
       .doc(this.props.id)
       .onSnapshot((doc) => {
-        console.log(doc.data());
+        // console.log(doc.data());
         let $dashboard = document.querySelector("#dashboard");
         let $profile = document.querySelector("#profile");
         let $container = document.querySelector("#player");

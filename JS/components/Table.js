@@ -7,6 +7,7 @@ export default class Table extends BaseComponent {
   render() {
     // console.log(this.props);
     let $tr = document.createElement("tr");
+    // $tr.dataset.id = this.props.story.id;
     let $tdStory = document.createElement("td");
     $tdStory.innerHTML = `<div class="image-text"><img class="page" src="./DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg"><span class="item-name">${
       this.props.story.name
@@ -49,6 +50,7 @@ export default class Table extends BaseComponent {
     let $actionDelete = document.createElement("td");
     $actionDelete.classList.add("btn-delete", "btn");
     $actionDelete.id = "btn-delete";
+    $actionDelete.dataset.id = this.props.story.id;
     $actionDelete.innerHTML = `<i class="far fa-trash-alt"></i>`;
     $action.append($actionShow, $actionDelete);
     $tdAction.append($action);

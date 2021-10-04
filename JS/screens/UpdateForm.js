@@ -3,18 +3,22 @@ import InputWrapper from "../components/InputWrapper.js";
 import { getUserById, login } from "../models/user.js";
 import { validateEmail, appendTo, modalClose } from "../models/utils.js";
 import { auth, db, storage } from "../firebase.js";
-export default class LoginScreen extends BaseComponent {
+export default class UpdateForm extends BaseComponent {
   // truyền dữ liệu thông qua props
   constructor(props) {
     super(props);
     this.state = {
       data: {
-        email: "",
-        password: "",
+        name: "",
+        bio: "",
+        image: "",
+        wallpaper: "",
       },
       messageError: {
-        email: "",
-        password: "",
+        name: "",
+        bio: "",
+        image: "",
+        wallpaper: "",
       },
     };
   }
@@ -28,58 +32,69 @@ export default class LoginScreen extends BaseComponent {
       tmpState.messageError[fieldName] = `Invalid ${fieldName}`;
     } else {
       tmpState.messageError[fieldName] = "";
+      tmpState.data[fieldName] = filedValue.trim();
     }
-    if (fieldName == "email" && filedValue) {
-      if (!validateEmail(filedValue)) {
-        tmpState.messageError[fieldName] = "Email is false";
-        tmpState.data[fieldName] = filedValue.trim();
-      } else {
-        tmpState.data[fieldName] = filedValue.trim();
-      }
-    }
-    if (fieldName == "password") {
-      if (filedValue.trim().length < 6) {
-        tmpState.messageError[fieldName] = "Password should be minimum 6 characters.";
-      }
-    }
-    tmpState.data[fieldName] = filedValue.trim();
 
     this.setState(tmpState);
   };
 
   // ==========================  ==========================
   render() {
-    let $container = document.querySelector("#modalLogin");
+    let $container = document.querySelector("#modalProfile");
 
-    let _email = new InputWrapper({
-      id: "email-in",
-      label: "Email",
-      placeholder: "Enter your email...",
-      type: "email",
-      error: this.state.messageError.email,
-      value: this.state.data.email,
+    let _name = new InputWrapper({
+      id: "user-name",
+      placeholder: "Enter your new name...",
+      label: "Name",
+      type: "text",
       autocomplete: "on",
+      error: this.state.messageError.name,
+      value: this.state.data.name,
       onblur: (event) => {
-        this.handleInputChange("email", event.target.value);
+        this.handleInputChange("name", event.target.value);
       },
     });
-    let _password = new InputWrapper({
-      id: "password-in",
-      label: "Password",
-      placeholder: "Enter your password...",
-      type: "password",
-      error: this.state.messageError.password,
-      value: this.state.data.password,
+    let _bio = new InputWrapper({
+      id: "user-bio",
+      label: "Bio",
+      placeholder: "Enter your new bio...",
+      type: "text",
       autocomplete: "on",
+      error: this.state.messageError.bio,
+      value: this.state.data.bio,
       onblur: (event) => {
-        this.handleInputChange("password", event.target.value);
+        this.handleInputChange("bio", event.target.value);
+      },
+    });
+    let _image = new InputWrapper({
+      id: "user-image",
+      label: "Avatar",
+      placeholder: "Enter your new avatar link...",
+      type: "text",
+      autocomplete: "on",
+      error: this.state.messageError.image,
+      value: this.state.data.image,
+      onblur: (event) => {
+        this.handleInputChange("image", event.target.value);
+      },
+    });
+    let _wallpaper = new InputWrapper({
+      id: "user-wallpaper",
+      label: "Cover",
+      placeholder: "Enter your new cover link...",
+      type: "text",
+      autocomplete: "on",
+      error: this.state.messageError.wallpaper,
+      value: this.state.data.wallpaper,
+      onblur: (event) => {
+        this.handleInputChange("wallpaper", event.target.value);
       },
     });
 
     let $wrap1 = document.createElement("div");
     $wrap1.classList.add("form-wrap");
     let $img = document.createElement("img");
-    $img.src = "./IMG/img-bedroom.png";
+    $img.src = "./IMG/img-cat.jpg";
     $img.classList.add("form-img");
     let $caption = document.createElement("h1");
     $caption.innerHTML = "Find all types of Fairy tale story here.";
@@ -87,25 +102,11 @@ export default class LoginScreen extends BaseComponent {
     $wrap1.append($caption, $img);
 
     let $title = document.createElement("h2");
-    $title.innerHTML = "Sign In your account";
+    $title.innerHTML = "Update Profile";
     $title.classList.add("form-title");
     let $btn = document.createElement("button");
-    $btn.innerHTML = "Sign In";
+    $btn.innerHTML = "Update";
     $btn.classList.add("form-btn", "btn", "btn-primary");
-
-    let $modalRegister = document.querySelector("#modalRegister");
-    let $p = document.createElement("p");
-    $p.innerHTML = "Not have account yet? ";
-    let $link = document.createElement("a");
-    $link.classList.add("form-link");
-    $link.href = "#";
-    $link.innerHTML = "Register";
-    $link.addEventListener("click", (event) => {
-      event.preventDefault();
-      $container.style.display = "none";
-      $modalRegister.style.display = "block";
-    });
-    $p.append($link);
 
     let isPassed = true;
 
@@ -132,25 +133,19 @@ export default class LoginScreen extends BaseComponent {
     }
     $form.onsubmit = async (event) => {
       event.preventDefault();
-      await login(this.state.data.email, this.state.data.password);
-      await db
-        .collection("admins")
-        .get()
-        .then((querySnapshot) => {
-          querySnapshot.forEach(async (doc) => {
-            if (doc.data().email == auth.currentUser.email) {
-              let userRef = await db.collection("users").doc(auth.currentUser.uid);
-              userRef.set({
-                role: "admin",
-              },{merge: true});
-              router.navigate("/adminDashboard");
-            }
-          });
-        });
+      await db.collection("users").doc(auth.currentUser.uid).update({
+        name: this.state.data.name,
+        bio: this.state.data.bio,
+        image: this.state.data.image,
+        wallpaper: this.state.data.wallpaper,
+      });
+      alert(`Update Successfully ${this.state.data.name}`);
+      $container.innerHTML = "";
       return;
     };
-    appendTo($form, _email, _password);
-    $form.append($btn, $p, $title);
+    appendTo($form, _name, _image, _wallpaper, _bio);
+
+    $form.append($btn, $title);
 
     let $wrap = document.createElement("div");
     $wrap.classList.add("form");

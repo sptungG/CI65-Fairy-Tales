@@ -15,6 +15,7 @@ export default class Profile extends BaseComponent {
           let _userInfo = new UserInfo({
             user: { ...doc.data() },
           });
+          console.log(doc.data());
           let $dashboard = document.querySelector("#dashboard");
           let $player = document.querySelector("#player");
           let $container = document.querySelector("#profile");

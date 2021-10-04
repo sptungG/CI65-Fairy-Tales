@@ -38,7 +38,19 @@
     border-bottom: 2px solid $primary-color;
     color: $gray-lighter;
   }
-  .form-group input:focus::placeholder {
+  &-group textarea {
+    overflow: auto;
+    padding: 2px;
+    display: block;
+    width: 100%;
+    background-color: $gray-darkest;
+    color: $gray-light;
+    font-size: 14px;
+    border: 2px solid $primary-color;
+    border-radius: 4px;
+    resize: none;
+  }
+  &-group input:focus::placeholder {
     color: transparent;
   }
   &-btn {
@@ -114,7 +126,7 @@
     padding-top: 30px;
     padding-bottom: 10px;
     font-size: 26px;
-    text-align: center
+    text-align: center;
   }
 }
 .modal {
@@ -138,3 +150,11 @@
     cursor: pointer;
   }
 }
+#modalAddStory .form-group {
+  padding-bottom: 10px;
+}
+#modalAddStory .form-group label{
+  color: $gray-light;
+  font-size: 14px;
+}
+
