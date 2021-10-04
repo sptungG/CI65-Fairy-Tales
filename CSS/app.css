@@ -1400,6 +1400,7 @@ section[id] {
   flex-shrink: 0;
 }
 .profile-avt {
+  cursor: pointer;
   width: 200px;
   height: 200px;
   border-radius: 50%;
@@ -1417,6 +1418,7 @@ section[id] {
   border-radius: 50%;
 }
 .profile-edit {
+  cursor: pointer;
   position: absolute;
   left: 50%;
   bottom: 0px;
@@ -1435,7 +1437,7 @@ section[id] {
   flex-wrap: nowrap;
   opacity: 0;
   visibility: hidden;
-  transition: all 0.2s ease;
+  transition: all 0.1s ease;
 }
 .profile-edit.active {
   opacity: 1;

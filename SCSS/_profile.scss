@@ -69,6 +69,7 @@
     flex-shrink: 0;
   }
   &-avt {
+    cursor: pointer;
     @include size(200px);
     border-radius: 50%;
     border: 1px solid rgba($primary-color, 0.8);
@@ -85,6 +86,7 @@
     border-radius: 50%;
   }
   &-edit {
+    cursor: pointer;
     position: absolute;
     left: 50%;
     bottom: 0px;
@@ -99,7 +101,7 @@
     @include flex(center, center);
     opacity: 0;
     visibility: hidden;
-    transition: all 0.2s ease;
+    transition: all 0.1s ease;
   }
   &-edit.active {
     opacity: 1;
