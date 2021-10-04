@@ -136,6 +136,7 @@ export default class UpdateForm extends BaseComponent {
         image: this.state.data.image,
       });
       alert(`Update Successfully ${this.state.data.name}`);
+      $container.innerHTML = "";
       window.location.reload();
       return;
     };

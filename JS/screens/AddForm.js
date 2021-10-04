@@ -192,6 +192,7 @@ export default class AddForm extends BaseComponent {
       });
       alert(`Added Successfully ${this.state.data.name}`);
       $container.innerHTML = "";
+      window.location.reload();
       return;
     };
     appendTo($form, _nameStory, _authorName, _authorImg, _categories, _timeLength, _pagesNum, _desc);
