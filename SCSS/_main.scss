@@ -174,9 +174,6 @@
   }
 }
 @include maxWidth(1023px) {
-  .main-header-mode {
-    display: none;
-  }
   .story-image{
     padding-top: 60%;
   }

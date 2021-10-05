@@ -224,51 +224,15 @@ section[id] {
   visibility: hidden;
 }
 
-#toTopBtn {
-  display: none;
-  position: fixed;
-  bottom: 20px;
-  right: 30px;
-  z-index: 99;
-  outline: none;
-  cursor: pointer;
-  padding: 24px 32px;
-  border-radius: 20px;
-  background-color: rgba(245, 103, 102, 0.2);
-  border: 1px solid transparent;
-  font-size: 32px;
-}
-#toTopBtn > i {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: transparent;
-  background-clip: text;
-  -webkit-background-clip: text;
-  background-image: linear-gradient(to bottom right, #f56766, #f58826);
-}
-#toTopBtn > i.fa-angle-double-up {
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.2s ease;
-}
+@media screen and (max-width: 767px) {
+  .btn-mode {
+    margin-left: 0;
+    padding: 10px;
+  }
 
-#toTopBtn:hover {
-  border: 1px solid #f56766;
-}
-#toTopBtn:hover > .fa-angle-double-up {
-  opacity: 1;
-  visibility: visible;
-}
-#toTopBtn:hover > .fa-angle-up {
-  opacity: 0;
-  visibility: hidden;
-}
-
-@media screen and (max-width: 1023px) {
-  #toTopBtn {
-    display: none;
+  .mode-sort {
+    width: 40px;
+    padding-right: 10px;
   }
 }
 .caption {
@@ -288,6 +252,7 @@ section[id] {
   letter-spacing: 0.5px;
   margin-bottom: 20px;
   display: inline-block;
+  line-height: 1.3;
 }
 
 .text {
@@ -1266,10 +1231,6 @@ section[id] {
 }
 
 @media screen and (max-width: 1023px) {
-  .main-header-mode {
-    display: none;
-  }
-
   .story-image {
     padding-top: 60%;
   }
