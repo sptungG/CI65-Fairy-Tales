@@ -34,6 +34,8 @@ _4/10/2021_
 
 👉 Và có thể xem trang cá nhân người khác thông qua bình luận.
 
+👉 Responsive dành cho các màn hình nhỏ giúp tăng trải nghiệm hơn.
+
 👉 Đặc biệt là nghe truyện.
 
 👉 ......
