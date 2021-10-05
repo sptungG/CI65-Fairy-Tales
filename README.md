@@ -6,6 +6,8 @@
 
 **[https://ci-65-fairy-tales.vercel.app/](https://ci-65-fairy-tales.vercel.app/)**
 
+**[Facebook post](https://www.facebook.com/luocplay/posts/1007507599794589)**
+
 **🌈Mindx CI65 Team 2**
 
 _4/10/2021_
