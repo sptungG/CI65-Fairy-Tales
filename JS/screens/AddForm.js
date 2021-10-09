@@ -136,7 +136,7 @@ export default class AddForm extends BaseComponent {
     let $wrap1 = document.createElement("div");
     $wrap1.classList.add("form-wrap");
     let $img = document.createElement("img");
-    $img.src = "./IMG/img-summer.jpg";
+    $img.src = "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fimg-summer.jpg?alt=media&token=81b3ae39-eb26-43f0-8c1a-605098902f1c";
     $img.classList.add("form-img");
     let $caption = document.createElement("h1");
     $caption.innerHTML = "Find all types of Fairy tale story here.";

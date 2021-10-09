@@ -123,6 +123,25 @@ export default class StoryPlay extends BaseComponent {
     // let story = getStoryById(this.props.id);
     // console.log(this.props);
     let story = this.props.story;
+    // console.log(storage.ref(`${getImgByName(story.name)}/Pages`).listAll());
+    // let images = [];
+    // storage
+    //   .ref(`${getImgByName(story.name)}/Pages`)
+    //   .listAll()
+    //   .then((result) => {
+    //     result.items.forEach((imgRef) => {
+    //       imgRef.getDownloadURL().then((url) => {
+    //         // console.log(url);
+    //         // $pageList.innerHTML += `<img class="page" src="${url}">`;
+    //         images.push(`${url}`);
+    //       });
+    //     });
+    //   });
+    // // console.log(images.length);
+    // // images.forEach((img) => {
+    // //   console.log(img + "aaaaa");
+    // //   // $pageList.innerHTML += `<img class="page" src="${img}">`;
+    // // });
 
     for (let i = 0; i < parseInt(story.pagesNum) + 1; i++) {
       if (i == parseInt(story.pagesNum)) {

@@ -1,4 +1,4 @@
-.img-nf{
+.img-nf {
   @include centerPosition("both");
   width: 500px;
   height: 500px;
@@ -6,24 +6,27 @@
 }
 .main {
   min-height: 100vh;
-  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
+  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fcloud-bg.svg?alt=media&token=29e6719e-517c-47b7-a980-dfea57740e51") no-repeat center / cover;
   &-header {
     @include flex(center, space-between);
     margin-bottom: 20px;
   }
-  &-header-title-wrapper{
+  &-header-title-wrapper {
     @include flex(stretch, flex-start, column);
   }
   &-header-title {
-    @include iconTitle("../IMG/icons/moon.svg", 50px);
+    @include iconTitle(
+      "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fmoon.svg?alt=media&token=79f09ec4-a4cb-4758-9459-0b6f334c130b",
+      50px
+    );
   }
-  &-header-category{
+  &-header-category {
     color: $secondary-color;
     @include dotSeparate("left", currentColor);
     font-size: 20px;
     font-weight: bold;
   }
-  &-header-category-icon{
+  &-header-category-icon {
     font-size: 18px;
   }
   &-header-mode {
@@ -34,7 +37,7 @@
 
 .story {
   @include gridLayout(20px);
-  &-list{
+  &-list {
     min-height: 360px;
     position: relative;
   }
@@ -103,7 +106,7 @@
     @include dotSeparate("right", $gray-light);
     margin-right: 0;
   }
-  &-date{
+  &-date {
     margin-left: 0;
   }
 
@@ -174,7 +177,7 @@
   }
 }
 @include maxWidth(1023px) {
-  .story-image{
+  .story-image {
     padding-top: 60%;
   }
 }

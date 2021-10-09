@@ -10,7 +10,6 @@ export default class DashBoard extends BaseComponent {
     this.state = "";
   }
   render() {
-    
     let $container = document.querySelector("#dashboard");
     let $profile = document.querySelector("#profile");
     let $player = document.querySelector("#player");
@@ -28,30 +27,36 @@ export default class DashBoard extends BaseComponent {
       let $categoryItem = document.createElement("li");
       $categoryItem.classList.add("category-item");
       $categoryItem.dataset.value = category.name.toLowerCase();
-      $categoryItem.innerHTML = `
-      <div class="category-item-image">
-        <img src="./IMG/categories/${category.name.toLowerCase()}.png" alt="" />
-      </div>
-      <div class="category-item-content">
-        <h3>${category.name}</h3>
-        <p>${category.desc}</p>
-      </div>
-      `;
-      $categoryItem.addEventListener("click", async () => {
-        // item.classList.remove("active");
-        // $categoryList[`data-value="${item.dataset.value}"`].classList.add("active");
-        let stories = await getAllStories();
-        let storiesFilter = filterStory(category.name.toLowerCase(), stories);
-        let $storyList = document.createElement("ul");
-        $storyList.className = "story-list";
-        storiesFilter.forEach((story) => {
-          let _story = new StoryInGrid({ story: story });
-          appendTo($storyList, _story);
+      storage
+        .ref(`categories`)
+        .child(`${category.name.toLowerCase()}.png`)
+        .getDownloadURL()
+        .then((url) => {
+          $categoryItem.innerHTML = `
+            <div class="category-item-image">
+              <img src="${url}" alt="" />
+            </div>
+            <div class="category-item-content">
+              <h3>${category.name}</h3>
+              <p>${category.desc}</p>
+            </div>
+            `;
+          $categoryItem.addEventListener("click", async () => {
+            // item.classList.remove("active");
+            // $categoryList[`data-value="${item.dataset.value}"`].classList.add("active");
+            let stories = await getAllStories();
+            let storiesFilter = filterStory(category.name.toLowerCase(), stories);
+            let $storyList = document.createElement("ul");
+            $storyList.className = "story-list";
+            storiesFilter.forEach((story) => {
+              let _story = new StoryInGrid({ story: story });
+              appendTo($storyList, _story);
+            });
+            $storyContainer.innerHTML = "";
+            $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${category.name}</span>`;
+            $storyContainer.append($storyHeader, $storyList);
+          });
         });
-        $storyContainer.innerHTML = "";
-        $storyHeaderCategory.innerHTML = `<i class="fas fa-layer-group main-header-category-icon"></i><span class="main-header-category title">${category.name}</span>`;
-        $storyContainer.append($storyHeader, $storyList);
-      });
       $categoryList.appendChild($categoryItem);
     });
     $categoryContainer.append($categoryTitle, $categoryList);

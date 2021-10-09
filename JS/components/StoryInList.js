@@ -6,28 +6,34 @@ export default class StoryInList extends BaseComponent {
     let $storyItem = document.createElement("li");
     $storyItem.classList.add("activity-item");
     $storyItem.dataset.id = this.props.story.id;
-    $storyItem.innerHTML = `
-    <div class="activity-item-image">
-      <img src="./DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg" alt="" />
-      <span class="activity-item-time">${this.props.story.length}</span>
-    </div>
-    <div class="activity-item-info">
-      <h3 class="title activity-item-title">${this.props.story.name}</h3>
-      <div class="activity-item-author">${this.props.story.authorName}</div>
-      <div class="activity-item-desc">${this.props.story.name} ${this.props.story.desc}</div>
-      <div class="activity-item-act">
-        <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${this.props.story.createAt}</span></div>
-      </div>
-    </div>
-    `;
-    let $deleteBtn = document.createElement("div");
-    $deleteBtn.classList.add("activity-item-delete");
-    $deleteBtn.innerHTML = `<i class="far fa-times-circle"></i>`;
-    $deleteBtn.addEventListener("click", () => {
-      this.removeActivity(this.props.story.id);
-      $deleteBtn.parentElement.style.display = "none";
-    });
-    $storyItem.append($deleteBtn);
+    storage
+      .ref(`${getImgByName(this.props.story.name)}/Pages`)
+      .child(`00.jpg`)
+      .getDownloadURL()
+      .then((url) => {
+        $storyItem.innerHTML = `
+          <div class="activity-item-image">
+            <img src="${url}" alt="" />
+            <span class="activity-item-time">${this.props.story.length}</span>
+          </div>
+          <div class="activity-item-info">
+            <h3 class="title activity-item-title">${this.props.story.name}</h3>
+            <div class="activity-item-author">${this.props.story.authorName}</div>
+            <div class="activity-item-desc">${this.props.story.name} ${this.props.story.desc}</div>
+            <div class="activity-item-act">
+              <div class="activity-item-date"><i class="far fa-clock"></i><span class="time-num">${this.props.story.createAt}</span></div>
+            </div>
+        </div>
+      `;
+      let $deleteBtn = document.createElement("div");
+      $deleteBtn.classList.add("activity-item-delete");
+      $deleteBtn.innerHTML = `<i class="far fa-times-circle"></i>`;
+      $deleteBtn.addEventListener("click", () => {
+        this.removeActivity(this.props.story.id);
+        $deleteBtn.parentElement.style.display = "none";
+      });
+      $storyItem.append($deleteBtn);
+      });
     return $storyItem;
   }
   async removeActivity(itemId) {

@@ -109,7 +109,7 @@ export default class RegisterScreen extends BaseComponent {
     let $wrap1 = document.createElement("div");
     $wrap1.classList.add("form-wrap");
     let $img = document.createElement("img");
-    $img.src = "./IMG/img-bedroom.png";
+    $img.src = "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fimg-bedroom.png?alt=media&token=ecc74902-2d8d-42dd-b791-b23f279f3c96";
     $img.classList.add("form-img");
     let $caption = document.createElement("h1");
     $caption.innerHTML = "Find all types of Fairy tale story here.";
