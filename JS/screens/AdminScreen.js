@@ -73,46 +73,51 @@ export default class AdminScreen extends BaseComponent {
           let $delete = _tr.querySelector(`[data-id="${doc.id}"]`);
           let $tr = $delete.parentElement.parentElement.parentElement;
           $delete.onclick = async (e) => {
-            $tr.innerHTML = "";
-            await db.collection("stories").doc(doc.id).delete();
-            let userRef = await db.collection("users").doc(auth.currentUser.uid);
-            let usersData = await getAllUsers();
-            usersData.forEach((user) => {
-              if (user.id === auth.currentUser.uid) {
-                user.storiesRated.forEach((story) => {
-                  if (story.storyId === doc.id) {
-                    userRef.update({
-                      storiesRated: firebase.firestore.FieldValue.arrayRemove({
-                        storyId: story.storyId,
-                        storyRated: story.storyRated,
-                      }),
-                    });
-                  }
-                });
-                user.storiesFavorite.forEach((storyId) => {
-                  if (storyId === doc.id) {
-                    userRef.update({
-                      storiesFavorite: firebase.firestore.FieldValue.arrayRemove(storyId),
-                    });
-                  }
-                });
-                user.storiesRead.forEach((storyId) => {
-                  if (storyId === doc.id) {
-                    userRef.update({
-                      storiesRead: firebase.firestore.FieldValue.arrayRemove(storyId),
-                    });
-                  }
-                });
-                user.storiesCommented.forEach((storyId) => {
-                  if (storyId === doc.id) {
-                    userRef.update({
-                      storiesCommented: firebase.firestore.FieldValue.arrayRemove(storyId),
-                    });
-                  }
-                });
-                alert(`Remove Successfully`)
-              }
-            });
+            let choice = confirm(`Bạn muốn xóa ${doc.data().name} chứ?`);
+            if (choice) {
+              $tr.innerHTML = "";
+              await db.collection("stories").doc(doc.id).delete();
+              let userRef = await db.collection("users").doc(auth.currentUser.uid);
+              let usersData = await getAllUsers();
+              usersData.forEach((user) => {
+                if (user.id === auth.currentUser.uid) {
+                  user.storiesRated.forEach((story) => {
+                    if (story.storyId === doc.id) {
+                      userRef.update({
+                        storiesRated: firebase.firestore.FieldValue.arrayRemove({
+                          storyId: story.storyId,
+                          storyRated: story.storyRated,
+                        }),
+                      });
+                    }
+                  });
+                  user.storiesFavorite.forEach((storyId) => {
+                    if (storyId === doc.id) {
+                      userRef.update({
+                        storiesFavorite: firebase.firestore.FieldValue.arrayRemove(storyId),
+                      });
+                    }
+                  });
+                  user.storiesRead.forEach((storyId) => {
+                    if (storyId === doc.id) {
+                      userRef.update({
+                        storiesRead: firebase.firestore.FieldValue.arrayRemove(storyId),
+                      });
+                    }
+                  });
+                  user.storiesCommented.forEach((storyId) => {
+                    if (storyId === doc.id) {
+                      userRef.update({
+                        storiesCommented: firebase.firestore.FieldValue.arrayRemove(storyId),
+                      });
+                    }
+                  });
+                  alert(`Xóa thành công!`);
+                }
+              });
+            } else {
+              alert(`Xóa ${doc.data().name} không thành công`);
+            }
           };
           $tbody.append(_tr);
         });
