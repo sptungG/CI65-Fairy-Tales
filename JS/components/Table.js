@@ -54,7 +54,7 @@ export default class Table extends BaseComponent {
     $actionShow.addEventListener("click", () => {
       this.showStory(this.props.story);
     });
-    let $actionDelete = document.createElement("td");
+    let $actionDelete = document.createElement("div");
     $actionDelete.classList.add("btn-delete", "btn");
     $actionDelete.id = "btn-delete";
     $actionDelete.dataset.id = this.props.story.id;
