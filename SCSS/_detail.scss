@@ -3,7 +3,7 @@
   grid-template-columns: 1fr;
   grid-template-columns: 3fr 1fr;
   grid-gap: 0 40px;
-  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center / cover;
+  background: linear-gradient(-45deg, rgba($gray, 0.8) 10%, rgba($gray, 0.01)) 90%, url("https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fcloud-bg.svg?alt=media&token=29e6719e-517c-47b7-a980-dfea57740e51") no-repeat center / cover;
   padding-bottom: 60px;
   @include maxWidth(1366px) {
     grid-template-columns: 1fr;

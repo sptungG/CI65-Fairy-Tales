@@ -160,17 +160,6 @@
     color: $third-color;
     background-color: rgba($third-color, 0.2);
   }
-  @include maxWidth(1366px) {
-    &-edit {
-      margin-top: 35px;
-      padding-right: 5px;
-    }
-  }
-  @include maxWidth(767px) {
-    &-edit {
-      padding-right: 20px;
-    }
-  }
 }
 .activity {
   &-title span {

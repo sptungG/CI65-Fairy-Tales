@@ -1,7 +1,6 @@
 import { removeVietnameseTones, getImgByName } from "../models/utils.js";
 import StoryScreen from "./StoryScreen.js";
 import BaseComponent from "../components/BaseComponent.js";
-import * as data from "../data.js";
 import Profile from "./Profile.js";
 import DashBoard from "./DashBoard.js";
 import { getAllStories } from "../models/stories.js";
@@ -186,9 +185,14 @@ export default class Header extends BaseComponent {
         let $searchBoxItem = document.createElement("li");
         $searchBoxItem.classList.add("header-search-item");
         $searchBoxItem.dataset.id = story.id;
-        $searchBoxItem.innerHTML = `
+        storage
+          .ref(`${getImgByName(story.name)}/Pages`)
+          .child(`00.jpg`)
+          .getDownloadURL()
+          .then((url) => {
+            $searchBoxItem.innerHTML = `
           <div class="activity-item-image">
-              <img src="./DATA/${getImgByName(story.name)}/Pages/00.jpg" alt="" />
+              <img src="${url}" alt="" />
               <span class="activity-item-time">${story.length}</span>
             </div>
             <div class="activity-item-info">
@@ -199,9 +203,10 @@ export default class Header extends BaseComponent {
               </div>
           </div>
           `;
-        $searchBoxItem.addEventListener("click", () => {
-          this.handleOnclick(story);
-        });
+            $searchBoxItem.addEventListener("click", () => {
+              this.handleOnclick(story);
+            });
+          });
         list.appendChild($searchBoxItem);
       } catch (error) {
         console.log(error.message);
@@ -220,20 +225,3 @@ export default class Header extends BaseComponent {
     new StoryScreen({ id: item.id }).render();
   }
 }
-// //Get the button
-// const mybutton = document.getElementById("toTopBtn");
-// window.onscroll = function () {
-//   scrollFunction();
-// };
-
-// function scrollFunction() {
-//   if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-//     mybutton.style.display = "block";
-//   } else {
-//     mybutton.style.display = "none";
-//   }
-// }
-// function topFunction() {
-//   document.body.scrollTop = 0;
-//   document.documentElement.scrollTop = 0;
-// }

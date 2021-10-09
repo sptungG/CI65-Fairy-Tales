@@ -824,7 +824,7 @@ section[id] {
   right: 0;
   top: 50%;
   transform: translate(100%, -50%);
-  background: url("../IMG/icons/all-icon.png") no-repeat center/cover;
+  background: url("https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fall-icon.png?alt=media&token=8a520c93-822a-4ebd-8b9c-f66afcbbe400") no-repeat center/cover;
   width: 25px;
   height: 25px;
 }
@@ -986,7 +986,7 @@ section[id] {
 
 .main {
   min-height: 100vh;
-  background: linear-gradient(-45deg, rgba(37, 41, 54, 0.8) 10%, rgba(37, 41, 54, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center/cover;
+  background: linear-gradient(-45deg, rgba(37, 41, 54, 0.8) 10%, rgba(37, 41, 54, 0.01)) 90%, url("https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fcloud-bg.svg?alt=media&token=29e6719e-517c-47b7-a980-dfea57740e51") no-repeat center/cover;
 }
 .main-header {
   align-items: center;
@@ -1012,7 +1012,7 @@ section[id] {
   right: 0;
   top: 50%;
   transform: translate(100%, -50%);
-  background: url("../IMG/icons/moon.svg") no-repeat center/cover;
+  background: url("https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fmoon.svg?alt=media&token=79f09ec4-a4cb-4758-9459-0b6f334c130b") no-repeat center/cover;
   width: 50px;
   height: 50px;
 }
@@ -1488,17 +1488,6 @@ section[id] {
   color: #ffd651;
   background-color: rgba(255, 214, 81, 0.2);
 }
-@media screen and (max-width: 1366px) {
-  .profile-edit {
-    margin-top: 35px;
-    padding-right: 5px;
-  }
-}
-@media screen and (max-width: 767px) {
-  .profile-edit {
-    padding-right: 20px;
-  }
-}
 
 .activity-title span {
   position: relative;
@@ -1675,7 +1664,7 @@ section[id] {
   margin-bottom: 25px;
   transition: opacity 0.4s 0.2s;
   perspective: 250vw;
-  background: url("../IMG/icons/cloud-bg.svg") no-repeat center/cover;
+  background: url("https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fcloud-bg.svg?alt=media&token=29e6719e-517c-47b7-a980-dfea57740e51") no-repeat center/cover;
 }
 .story-show-wrapper {
   margin-top: 30px;
@@ -1863,7 +1852,7 @@ section[id] {
   grid-template-columns: 1fr;
   grid-template-columns: 3fr 1fr;
   grid-gap: 0 40px;
-  background: linear-gradient(-45deg, rgba(37, 41, 54, 0.8) 10%, rgba(37, 41, 54, 0.01)) 90%, url("../IMG/icons/cloud-bg.svg") no-repeat center/cover;
+  background: linear-gradient(-45deg, rgba(37, 41, 54, 0.8) 10%, rgba(37, 41, 54, 0.01)) 90%, url("https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fcloud-bg.svg?alt=media&token=29e6719e-517c-47b7-a980-dfea57740e51") no-repeat center/cover;
   padding-bottom: 60px;
 }
 @media screen and (max-width: 1366px) {

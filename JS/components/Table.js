@@ -9,9 +9,16 @@ export default class Table extends BaseComponent {
     let $tr = document.createElement("tr");
     // $tr.dataset.id = this.props.story.id;
     let $tdStory = document.createElement("td");
-    $tdStory.innerHTML = `<div class="image-text"><img class="page" src="./DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg"><span class="item-name">${
-      this.props.story.name
-    }</span></div>`;
+    storage
+      .ref(`${getImgByName(this.props.story.name)}/Pages`)
+      .child(`00.jpg`)
+      .getDownloadURL()
+      .then((url) => {
+        $tdStory.innerHTML = `<div class="image-text"><img class="page" src="${url}"><span class="item-name">${this.props.story.name}</span></div>`;
+      });
+    // $tdStory.innerHTML = `<div class="image-text"><img class="page" src="./DATA/${getImgByName(this.props.story.name)}/Pages/00.jpg"><span class="item-name">${
+    //   this.props.story.name
+    // }</span></div>`;
     let $tdAuthor = document.createElement("td");
     $tdAuthor.innerHTML = `<span>${this.props.story.authorName}</span>`;
     let $tdDesc = document.createElement("td");

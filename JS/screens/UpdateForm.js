@@ -91,7 +91,7 @@ export default class UpdateForm extends BaseComponent {
     let $wrap1 = document.createElement("div");
     $wrap1.classList.add("form-wrap");
     let $img = document.createElement("img");
-    $img.src = "./IMG/img-cat.jpg";
+    $img.src = "https://firebasestorage.googleapis.com/v0/b/fairytalesci65.appspot.com/o/icons%2Fimg-cat.jpg?alt=media&token=186eaf80-d3fd-4862-bc76-84195e19b9ad";
     $img.classList.add("form-img");
     let $caption = document.createElement("h1");
     $caption.innerHTML = "Find all types of Fairy tale story here.";
