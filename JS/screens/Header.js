@@ -141,7 +141,8 @@ export default class Header extends BaseComponent {
         });
         $dropdownOption3.addEventListener("click", (e) => {
           auth.signOut();
-          window.location.href = "../index.html";
+          router.navigate("/dashboard");
+          new DashBoard().render();
         });
         $dropdownList.append($dropdownOption1, $dropdownOption2, $dropdownOption3);
         // Avt Listener
