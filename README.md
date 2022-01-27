@@ -4,7 +4,7 @@
 
 #### DEMO
 
-**[https://ci-65-fairy-tales.vercel.app/](https://ci-65-fairy-tales.vercel.app/)**
+**[https://ci65-fairy-tales.vercel.app/](https://ci65-fairy-tales.vercel.app/)**
 
 **[Facebook post](https://www.facebook.com/luocplay/posts/1007507599794589)**
 
